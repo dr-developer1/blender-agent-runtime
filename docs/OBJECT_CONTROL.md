@@ -6,7 +6,8 @@ attempts), and expires all selection handles. Envelope/schema failures and stale
 state rejections do not consume a revision. All tools return
 `result: {"object_id": "<UUID>"}` and fill `created_ids`, `modified_ids`,
 `deleted_ids` as described below. These are explicit object changes, not a full
-scene diff. No transactions or rollback are available yet.
+scene diff. With the recovery backend enabled, these tools support checkpoint
+rollback; see [RECOVERY.md](RECOVERY.md) for transactions and bounded scene diffs.
 
 All operations run synchronously on Blender's main thread using the data API.
 They require Object mode and an editable current scene. Referenced targets must

@@ -1,6 +1,6 @@
 """The same registry drives dispatch and introspection."""
 from copy import deepcopy
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Any, Callable
 
 from .errors import ToolError
@@ -40,6 +40,12 @@ class CapabilityRegistry:
 
     def names(self):
         return sorted(self._tools)
+
+    def enable_transactions(self, names):
+        for name in names:
+            spec, handler, prepare = self._resolve(name)
+            self._tools[name] = (replace(spec, supports={**spec.supports, 'transactions': True},
+                                         transaction_safe=True), handler, prepare)
 
     def _resolve(self, name):
         try:

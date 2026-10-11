@@ -11,6 +11,7 @@ from .identity import ObjectIdentity
 from .objects import ObjectControl
 from .mesh import MeshControl
 from .validation import ValidationService, MAX_VALIDATION_ELEMENTS, MAX_ASSEMBLY_CHECKS
+from .recovery import RecoveryService, MAX_DIFF_OBJECTS, MAX_DIFF_ELEMENTS, MAX_SNAPSHOT_BYTES
 from .logging import EventLogger
 from .revisions import RuntimeState
 from .selection import (SelectionService, QUERY_SCHEMA, HANDLE_SCHEMA, QUERY_OUTPUT,
@@ -28,14 +29,16 @@ CONVENTIONS = {'up': '+Z', 'forward': '-Y', 'ground_plane': 'XY',
 FEATURES = {'capability_discovery': True, 'typed_contracts': True,
             'structured_errors': True, 'synchronous_execution': True,
             'scene_mutation': False, 'sessions': True, 'revisions': True,
-            'transactions': False, 'semantic_selection': False, 'selection_handles': False,
+            'transactions': False, 'scene_diff': False, 'semantic_selection': False, 'selection_handles': False,
             'validation': False, 'object_identity': False, 'scene_observation': False, 'evaluated_geometry': False}
 LIMITS = {'max_frame_bytes': MAX_FRAME_BYTES, 'max_in_flight_requests': 1,
           'execution_mode': 'headless', 'transport': 'loopback_tcp',
           'default_page_size': DEFAULT_PAGE_SIZE, 'max_page_size': MAX_PAGE_SIZE,
           'max_selection_handles': MAX_HANDLES, 'max_mesh_query_elements': MAX_MESH_ELEMENTS,
           'max_selection_indices': MAX_SELECTION_INDICES,
-          'max_validation_elements': MAX_VALIDATION_ELEMENTS, 'max_assembly_checks': MAX_ASSEMBLY_CHECKS}
+          'max_validation_elements': MAX_VALIDATION_ELEMENTS, 'max_assembly_checks': MAX_ASSEMBLY_CHECKS,
+          'max_active_transactions': 1, 'max_diff_objects': MAX_DIFF_OBJECTS,
+          'max_diff_elements': MAX_DIFF_ELEMENTS, 'max_snapshot_bytes': MAX_SNAPSHOT_BYTES}
 
 STRING = {'type': 'string'}
 STRING_ARRAY = {'type': 'array', 'items': STRING}
@@ -113,6 +116,17 @@ class RuntimeAPI:
             self.mesh = MeshControl(objects=self.objects, selections=self.selections, depsgraph=depsgraph)
             self.mesh.register(self.registry)
             self.features['scene_mutation'] = True
+            if depsgraph is not None:
+                self.recovery = RecoveryService(observer=self.observer, identities=self.identities, state=self.state)
+                self.recovery.register(self.registry)
+                self.features.update(transactions=True, scene_diff=True)
+                self.registry.enable_transactions([name for name in self.registry.names()
+                                                   if name.startswith(('object.', 'mesh.'))])
+
+    def close(self):
+        """Discard private checkpoints when the owning process connection closes."""
+        if hasattr(self, 'recovery'):
+            self.recovery.close()
 
     def _register_tools(self):
         tools = [

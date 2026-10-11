@@ -34,10 +34,9 @@ once immediately before its handler starts. Optional read-only preparation
 resolves revision-bound inputs before this advance; a rejected preparation also
 consumes one revision. Failed mutation attempts also consume
 a revision because they may have partially changed the scene. Invalid arguments,
-unknown tools and rejected preconditions do not advance. Future restore/rollback
-tools must declare side effects; snapshots restore scene contents, never the
-runtime counter. Public object mutation tools use these hooks; scene restoration is still exercised
-only by private test fixtures.
+unknown tools and rejected preconditions do not advance. Restore/rollback
+tools declare side effects; snapshots restore scene contents, never the
+runtime counter. Public object mutation tools use these hooks; recovery tools now use the same hooks for transaction state and scene restoration.
 Arbitrary external bpy edits are not automatically observed by this background runtime.
 
 Validation rejects missing/extra envelope and argument fields, wrong types and
@@ -99,3 +98,14 @@ validation budgets. Validation is read-only, with reports in `result`; a defect
 returns `success: true` and `result.passed: false`. `validation` in the response
 envelope remains null. `VALIDATION_LIMIT_EXCEEDED` rejects oversized scans.
 See VALIDATION.md for schemas, findings, units and approximate assembly checks.
+
+
+Milestone 10 adds `scene.diff`, `transaction.begin`, `transaction.commit` and
+`transaction.rollback`, for 31 server tools. Begin automatically saves one private
+full-file checkpoint; diff compares tracked active-scene fields to that baseline.
+Commit keeps edits and rollback reloads saved contents while preserving the session
+and advancing revision. Object/mesh descriptors advertise transaction support when
+recovery is enabled. Change arrays on commit summarize the accumulated transaction;
+rollback arrays describe restoration, or are unknown when `result.diff` is null.
+See RECOVERY.md for strict arguments, state/error handling, budgets, file-load
+limitations and cleanup. Recovery does not add fields to the API 1.0 envelope.

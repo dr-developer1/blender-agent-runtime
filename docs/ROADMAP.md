@@ -11,9 +11,9 @@ section 35 is the authoritative implementation order.
 6. Semantic Geometry Addressing — complete.
 7. Basic Object Control — complete.
 8. Core Mesh Control — complete.
-9. Validation — complete; see CURRENT_MILESTONE.md.
-10. Recovery — next.
-11. Observation.
+9. Validation — complete.
+10. Recovery — complete; see CURRENT_MILESTONE.md.
+11. Observation — next.
 12. First Vertical Slice.
 
 Continue with milestones 13–36 in the canonical plan. Each milestone needs

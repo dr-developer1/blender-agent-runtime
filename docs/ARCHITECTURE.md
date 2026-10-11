@@ -67,8 +67,8 @@ backend disabled unless requested. MutationResult carries object changes into th
 response envelope while the registry still validates schemas and advances the
 revision before execution. Copying repairs UUID identity before publishing the
 result; deletion re-resolves children and preserves their world poses. Parenting
-preflights cycles, singular transforms and shear. No general rollback or full
-scene diff is promised yet. See OBJECT_CONTROL.md.
+preflights cycles, singular transforms and shear. General rollback and transaction diffs are supplied by the
+Milestone 10 recovery service described below. See OBJECT_CONTROL.md.
 
 
 Milestone 8 enables a mesh-control backend alongside object control. Registry
@@ -79,7 +79,7 @@ work on detached BMesh data and publish an independent mesh after output checks.
 Booleans bake an EXACT modifier on a temporary object with finally cleanup.
 Linked duplicates keep their original data. No UI operator context is required.
 The tools retain object identity and report the modified target UUID; broader
-transaction recovery remains Milestone 10. See MESH_CONTROL.md.
+transaction recovery is provided by Milestone 10. See MESH_CONTROL.md.
 
 Milestone 9 registers four read-only validation tools when evaluated observation
 providers exist, independently of the mutation backend. Bounded numeric snapshots
@@ -88,3 +88,18 @@ Asset validation composes their findings and optional face material assignment.
 Reports contain concrete pass/fail checks with no score, inside the ordinary
 result envelope. No datablock publication, UUID repair, UI operator or revision
 advance occurs. See VALIDATION.md for approximate assembly semantics and limits.
+
+
+Milestone 10 enables a RecoveryService with object control and evaluated providers.
+Begin captures bounded plain UUID-keyed records and saves a private full-file copy;
+no live datablock references are retained. One checkpoint is active per runtime.
+Diff compares observations, base geometry fingerprints and writable modifier
+settings; commit reports accumulated changes and discards the file. Rollback
+checks its checksum, attempts a reverse diff, reloads with embedded scripts disabled
+and reacquires UUIDs. Invalid current observations cannot strand a valid checkpoint.
+Scene restoration never touches RuntimeState. All transaction controls declare
+side effects, so successful and rejected attempts advance revisions and invalidate
+handles/cursors. Relative external resources become absolute after reload; Blender's
+read-only filepath remains the checkpoint name. The controller owns the temporary
+root, ensuring cleanup even after child death. Server disconnect/shutdown runs API
+cleanup in finally. See RECOVERY.md for restore versus diff scope and limits.

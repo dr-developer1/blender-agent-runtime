@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 from controller.client import BlenderClient
-from controller.lifecycle import run_headless
+from controller.lifecycle import BlenderProcessError, run_headless
 
 BLENDER = os.environ.get('BLENDER_EXECUTABLE', 'blender')
 
@@ -82,7 +82,7 @@ class ApiIntegrationTests(unittest.TestCase):
     def test_scene_observation_over_ipc(self):
         with BlenderClient(executable=BLENDER) as client:
             self.assertTrue(client.call('runtime.get_supported_features')['result']['scene_observation'])
-            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 27)
+            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 31)
             summary = client.call('scene.summary')['result']
             self.assertEqual(summary['object_count'], 3)
             self.assertEqual(summary['object_types'], {'CAMERA': 1, 'LIGHT': 1, 'MESH': 1})
@@ -251,3 +251,64 @@ class ApiIntegrationTests(unittest.TestCase):
         result = run_headless(script, executable=BLENDER)
         self.assertEqual(result.returncode, 0, result.stdout)
         self.assertIn('BAR_VALIDATION_HEADLESS_OK', result.stdout)
+
+
+    def test_transactions_and_scene_diff_over_ipc(self):
+        with BlenderClient(executable=BLENDER) as client:
+            features = client.call('runtime.get_supported_features')['result']
+            self.assertTrue(features['transactions'] and features['scene_diff'])
+            oid = client.call('scene.list_objects', {'object_type': 'MESH'})['result']['objects'][0]['object_id']
+            session = client.session_id
+            baseline = client.call('scene.inspect_objects', {'object_ids': [oid]})['result']
+            started = client.call('transaction.begin')
+            self.assertTrue(started['success'], started)
+            args = {'transaction_id': started['result']['transaction_id']}
+            self.assertEqual(client.call('scene.diff', args)['result']['diff']['changes'], [])
+            self.assertTrue(client.call('object.transform', {'object_id': oid, 'location': [4, 0, 0]})['success'])
+            created = client.call('object.create_primitive', {'primitive': 'CUBE'})['result']['object_id']
+            diff = client.call('scene.diff', args)['result']['diff']
+            self.assertEqual(diff['created_ids'], [created])
+            self.assertEqual(diff['modified_ids'], [oid])
+            handle = client.call('mesh.query', {'object_id': oid, 'element_type': 'FACE',
+                'selectors': [{'kind': 'top'}]})['result']['selection_handle']
+            before = client.revision
+            restored = client.call('transaction.rollback', args)
+            self.assertTrue(restored['success'], restored)
+            self.assertEqual(client.revision, before + 1)
+            self.assertEqual(client.session_id, session)
+            self.assertEqual(restored['deleted_ids'], [created])
+            self.assertEqual(client.call('scene.inspect_objects', {'object_ids': [oid]})['result'], baseline)
+            self.assertEqual(client.call('mesh.inspect_selection', {'selection_handle': handle})
+                             ['error']['code'], 'INVALID_SELECTION_HANDLE')
+            self.assertEqual(client.call('object.transform', {'object_id': oid, 'location': [0, 0, 0]},
+                expected_revision=before)['error']['code'], 'STALE_SCENE_STATE')
+            started = client.call('transaction.begin')
+            args = {'transaction_id': started['result']['transaction_id']}
+            self.assertTrue(client.call('object.transform', {'object_id': oid, 'location': [2, 0, 0]})['success'])
+            committed = client.call('transaction.commit', args)
+            self.assertTrue(committed['success'], committed)
+            self.assertEqual(committed['modified_ids'], [oid])
+            self.assertEqual(client.call('transaction.rollback', args)['error']['code'], 'NO_ACTIVE_TRANSACTION')
+            current = client.call('scene.inspect_objects', {'object_ids': [oid]})['result']['objects'][0]
+            self.assertEqual(current['world_origin'], [2.0, 0.0, 0.0])
+            # Shutdown with an active transaction releases its private snapshot.
+            self.assertTrue(client.call('transaction.begin')['success'])
+
+    def test_real_recovery(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'recovery_smoke.py'
+        result = run_headless(script, executable=BLENDER)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_RECOVERY_HEADLESS_OK', result.stdout)
+
+
+    def test_forced_death_cleans_active_snapshot(self):
+        with BlenderClient(executable=BLENDER) as client:
+            self.assertTrue(client.call('transaction.begin')['success'])
+            directory = Path(client._directory.name)
+            self.assertEqual(len(list(directory.glob('bar-recovery-*/checkpoint.blend'))), 1)
+            client.process.kill()
+            client.process.wait(timeout=10)
+            with self.assertRaises(BlenderProcessError):
+                client.call('runtime.get_version')
+            client.close()
+            self.assertFalse(directory.exists())

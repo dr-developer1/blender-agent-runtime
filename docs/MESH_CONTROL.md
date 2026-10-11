@@ -62,8 +62,9 @@ preparation or object preflight. Successful and rejected attempts expire existin
 handles; query again before the next edit. Schema/state rejection consumes none.
 
 Errors reuse the selection and object contracts, adding `EMPTY_SELECTION`. These
-operations are not transaction-safe. Staging protects geometry from preparation,
-operation and output-budget failures but does not provide general scene rollback.
+operations advertise transaction safety when the recovery backend is enabled.
+Staging protects geometry from preparation, operation and output-budget failures;
+explicit full-file checkpoint rollback is described in [RECOVERY.md](RECOVERY.md).
 Evaluated topology editing, per-face normal extrusion, individual inset, vertex
 bevel, modifier stacks and comprehensive repair remain outside this milestone.
 

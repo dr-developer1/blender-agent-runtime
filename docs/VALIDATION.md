@@ -3,7 +3,8 @@
 Milestone 9 exposes four read-only tools in API 1.0: `validate.geometry`,
 `validate.dimensions`, `validate.assembly` and `validate.asset`. Discovery reports
 `validation: true` when scene and dependency-graph providers are attached. The
-Blender server now has 27 tools and runtime version 0.9.0.
+validation milestone brought the Blender server to 27 tools at runtime version
+0.9.0. The current server tool count/version is in CURRENT_MILESTONE.md.
 
 All tools require unique `object_ids` (1–100 managed mesh UUIDs in the active
 scene). Object mode is required. Inputs are bounded and finite. Identity scans

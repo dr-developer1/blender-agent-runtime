@@ -11,6 +11,9 @@ class BlenderProcessError(RuntimeError):
 
 def isolated_environment(directory):
     env = os.environ.copy()
+    # Recovery files live under the controller-owned directory, so cleanup also
+    # covers deadlines, crashes and forced process termination.
+    env['BAR_RECOVERY_ROOT'] = str(Path(directory).resolve())
     for name in ('BLENDER_USER_CONFIG', 'BLENDER_USER_SCRIPTS', 'BLENDER_USER_DATAFILES'):
         location = Path(directory) / name.lower()
         location.mkdir()

@@ -96,3 +96,15 @@ UUIDs, invalid arguments, Edit mode, missing objects, non-meshes and exhausted
 budgets reject without writes. Pure unit tests cover numeric algorithms and
 strict bounded schemas. Run
 `python3 -m controller.headless tests/blender/validation_smoke.py` directly.
+
+
+Milestone 10 adds transaction/diff IPC, full-file recovery and forced-death snapshot
+cleanup cases, reused by conformance. They verify one active transaction, strict
+IDs/state guards, monotonic rollback revisions and stable sessions, UUID re-resolution,
+selection-handle expiry, commit persistence, same-count geometry and modifier diffs,
+created/deleted/modified reporting, saved shared meshes, UV/material/hierarchy/UI
+state, other scenes and orphan data, relative external resource targets, corrupted
+checkpoints, unsupported Edit mode and recovery despite collisions/nonfinite/over-budget
+current scenes. Unit tests also exercise save/load failures, retained checkpoints,
+retry and numeric diff ordering. Run
+`python3 -m controller.headless tests/blender/recovery_smoke.py` directly.

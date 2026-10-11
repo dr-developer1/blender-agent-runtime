@@ -47,6 +47,7 @@ IDs on such objects cannot be initialized. Linked-library management and automat
 repair of arbitrary external edits are outside the current implementation.
 
 Resolution currently performs a full scan and validates all managed IDs. Unexpected
-write failures may leave a partially assigned batch; no transactions or rollback
-are provided yet. Subsequent initialization preserves IDs already written. The
+write failures may leave a partially assigned batch. Identity helpers do not
+create transactions; an explicit recovery checkpoint can restore saved contents
+(see RECOVERY.md). Subsequent initialization preserves IDs already written. The
 runtime records a mutation attempt's revision even if its handler fails.
