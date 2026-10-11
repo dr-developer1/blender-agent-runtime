@@ -109,3 +109,11 @@ recovery is enabled. Change arrays on commit summarize the accumulated transacti
 rollback arrays describe restoration, or are unknown when `result.diff` is null.
 See RECOVERY.md for strict arguments, state/error handling, budgets, file-load
 limitations and cleanup. Recovery does not add fields to the API 1.0 envelope.
+
+
+Milestone 11 adds `observe.camera`, `observe.render` and `observe.render_multiview`,
+for 34 server tools. Observation is read-only and transaction safe. Camera framing
+is deterministic from evaluated world mesh bounds; render results carry bounded
+inline PNGs plus camera metadata. No camera publication or API envelope changes
+are required. Discovery advertises rendering features and budgets. See
+OBSERVATION.md for target/view conventions, engines, diagnostic modes and limits.

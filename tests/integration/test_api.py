@@ -82,7 +82,7 @@ class ApiIntegrationTests(unittest.TestCase):
     def test_scene_observation_over_ipc(self):
         with BlenderClient(executable=BLENDER) as client:
             self.assertTrue(client.call('runtime.get_supported_features')['result']['scene_observation'])
-            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 31)
+            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 34)
             summary = client.call('scene.summary')['result']
             self.assertEqual(summary['object_count'], 3)
             self.assertEqual(summary['object_types'], {'CAMERA': 1, 'LIGHT': 1, 'MESH': 1})
@@ -300,6 +300,44 @@ class ApiIntegrationTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout)
         self.assertIn('BAR_RECOVERY_HEADLESS_OK', result.stdout)
 
+
+    def test_diagnostic_observation_over_ipc(self):
+        import base64
+        import struct
+        with BlenderClient(executable=BLENDER, request_timeout=60) as client:
+            features = client.call('runtime.get_supported_features')['result']
+            self.assertTrue(features['diagnostic_rendering'])
+            self.assertTrue(features['deterministic_cameras'])
+            revision = client.revision
+            cube_id = client.call('scene.list_objects', {'object_type':'MESH'})['result']['objects'][0]['object_id']
+            args = {'object_ids':[cube_id], 'view':'front', 'width':96, 'height':64}
+            camera = client.call('observe.camera', args)
+            self.assertTrue(camera['success'], camera)
+            rendered = client.call('observe.render', args)
+            self.assertTrue(rendered['success'], {k:v for k,v in rendered.items() if k != 'result'})
+            image = rendered['result']['images'][0]
+            self.assertEqual(image['camera'], camera['result']['camera'])
+            png = base64.b64decode(image['png_base64'], validate=True)
+            self.assertEqual(png[:8], b'\x89PNG\r\n\x1a\n')
+            self.assertEqual(len(png), image['byte_count'])
+            self.assertEqual(struct.unpack('>II', png[16:24]), (96,64))
+            multi = client.call('observe.render_multiview')
+            self.assertTrue(multi['success'], {k:v for k,v in multi.items() if k != 'result'})
+            self.assertEqual(len(multi['result']['images']), 6)
+            self.assertEqual([img['camera']['view'] for img in multi['result']['images']],
+                             ['front','back','left','right','top','perspective'])
+            self.assertEqual(client.revision, revision)
+            invalid = client.call('observe.render', {'engine':'EEVEE', 'mode':'wireframe'})
+            self.assertEqual(invalid['error']['code'], 'INVALID_ARGUMENT')
+            self.assertEqual(client.revision, revision)
+            self.assertEqual(client.call('scene.summary')['result']['object_count'], 3)
+            self.assertTrue(client.request('process.ping')['success'])
+
+    def test_real_diagnostic_observation(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'observation_smoke.py'
+        result = run_headless(script, executable=BLENDER, timeout=90)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_OBSERVATION_HEADLESS_OK', result.stdout)
 
     def test_forced_death_cleans_active_snapshot(self):
         with BlenderClient(executable=BLENDER) as client:

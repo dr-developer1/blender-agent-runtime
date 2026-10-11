@@ -18,7 +18,8 @@ def serve():
     with socket.create_connection(('127.0.0.1', int(os.environ['BAR_IPC_PORT'])), timeout=10) as sock:
         api = RuntimeAPI(blender_version=bpy.app.version_string, objects=lambda: bpy.data.objects,
                          scene=lambda: bpy.context.scene, view_layer=lambda: bpy.context.view_layer,
-                         depsgraph=lambda: bpy.context.evaluated_depsgraph_get(), object_control=True)
+                         depsgraph=lambda: bpy.context.evaluated_depsgraph_get(), object_control=True,
+                         observation=True)
         try:
             channel = JsonChannel(sock)
             channel.send({'type': 'ready', 'token': os.environ.pop('BAR_IPC_TOKEN'), 'pid': os.getpid(),

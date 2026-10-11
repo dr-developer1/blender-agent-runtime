@@ -103,3 +103,14 @@ handles/cursors. Relative external resources become absolute after reload; Blend
 read-only filepath remains the checkpoint name. The controller owns the temporary
 root, ensuring cleanup even after child death. Server disconnect/shutdown runs API
 cleanup in finally. See RECOVERY.md for restore versus diff scope and limits.
+
+
+Milestone 11 explicitly enables ObservationService with live evaluated providers.
+Pure camera math fits world AABB corners for canonical orthographic and perspective
+views. Rendering copies bounded evaluated meshes into an isolated temporary scene,
+uses a private camera/world/light rig and returns PNG base64 within the existing
+frame budget. Wireframe builds curves from evaluated edges; silhouette uses flat
+black geometry. Finally cleanup removes all owned datablocks and temporary files.
+The source scene, revisions, cursors and selection handles are preserved. Only the
+native global Render Result is replaceable. See OBSERVATION.md for mesh/evaluation
+scope and backend limitations.

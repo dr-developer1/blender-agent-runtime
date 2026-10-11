@@ -3,7 +3,7 @@
 A model-independent machine interface to Blender, implemented incrementally from
 [the canonical plan](BLENDER_AGENT_RUNTIME_CANONICAL_MASTER_PLAN_V2.md).
 
-Milestones 1–10 provide a persistent headless Blender process, synchronous structured
+Milestones 1–11 provide a persistent headless Blender process, synchronous structured
 IPC, shutdown/death detection, isolated headless testing, and a versioned, typed
 discovery API with structured errors, call logging, session IDs and
 monotonic revision preconditions. Objects receive persistent UUIDs with collision
@@ -15,7 +15,9 @@ duplicate, delete and parent by UUID with revision and change tracking. Core mes
 tools extrude, inset, bevel, boolean and clean up base geometry. Read-only validators
 report geometry defects, evaluated dimension mismatches, approximate assembly
 relationships and asset checks. Single transactions save private full-file checkpoints,
-report scene diffs, and commit or roll back with monotonic revisions.
+report scene diffs, and commit or roll back with monotonic revisions. Diagnostic
+observation adds deterministic fitted cameras and isolated Workbench/EEVEE PNG
+renders, including multi-view, wireframe and silhouette modes.
 Requires Python 3.10+ and a Blender executable on PATH. No Python dependencies are
 needed to run the controller or tests.
 
@@ -36,6 +38,7 @@ python3 -m controller.headless tests/blender/object_smoke.py
 python3 -m controller.headless tests/blender/mesh_smoke.py
 python3 -m controller.headless tests/blender/validation_smoke.py
 python3 -m controller.headless tests/blender/recovery_smoke.py
+python3 -m controller.headless tests/blender/observation_smoke.py --timeout 90
 ```
 
 Choose a different Blender for integration/conformance tests with
@@ -67,10 +70,10 @@ becomes unusable; create a new client to restart. Commands are never retried.
 See [architecture](docs/ARCHITECTURE.md), [current milestone](docs/CURRENT_MILESTONE.md),
 [tool contract](docs/TOOL_CONTRACT.md), [conventions](docs/CONVENTIONS.md),
 [object identity](docs/IDENTITY.md), [scene observation](docs/SCENE_OBSERVABILITY.md),
-[semantic selection](docs/SELECTION_LANGUAGE.md), [object control](docs/OBJECT_CONTROL.md), [mesh control](docs/MESH_CONTROL.md), [validation](docs/VALIDATION.md), [recovery](docs/RECOVERY.md), and [conformance](docs/CONFORMANCE.md).
+[semantic selection](docs/SELECTION_LANGUAGE.md), [object control](docs/OBJECT_CONTROL.md), [mesh control](docs/MESH_CONTROL.md), [validation](docs/VALIDATION.md), [recovery](docs/RECOVERY.md), [diagnostic observation](docs/OBSERVATION.md), and [conformance](docs/CONFORMANCE.md).
 
 Limitations: background mode only; local single-controller TCP transport; single active transaction; full-file rollback
-changes Blender’s current filepath to its private checkpoint name. API 1.0 provides discovery, scene reads, semantic base-mesh queries, basic object control, core mesh edits, technical validation and recovery.
+changes Blender’s current filepath to its private checkpoint name. API 1.0 provides discovery, scene reads, semantic base-mesh queries, basic object control, core mesh edits, technical validation, recovery and diagnostic renders.
 State preconditions guard every public call; public object mutations report UUID changes; transaction diffs summarize tracked fields and rollback restores saved contents. Identity writes remain internal; observations do not
 initialize new IDs. External scene edits are not automatically tracked.
 Loopback and a launch token restrict accidental attachment; this is not a sandbox
@@ -86,7 +89,8 @@ Available public tools: `runtime.get_version`, `runtime.get_supported_versions`,
 `object.duplicate`, `object.delete`, `object.set_parent`, `mesh.extrude`, `mesh.inset`,
 `mesh.bevel`, `mesh.boolean`, `mesh.cleanup`, `validate.geometry`, `validate.dimensions`, `validate.assembly`,
 `validate.asset`, `scene.diff`, `transaction.begin`, `transaction.commit`,
-and `transaction.rollback`. Tool schemas and
+`transaction.rollback`, `observe.camera`, `observe.render`, and
+`observe.render_multiview`. Tool schemas and
 metadata are returned by discovery. `runtime.describe_tool` takes `name`;
 `scene.list_objects` takes filters, `limit` and `cursor`; `scene.get_hierarchy`
 takes `limit` and `cursor`; `scene.inspect_objects` takes `object_ids`. Discovery and summary tools without arguments
@@ -126,3 +130,22 @@ if selection["success"]:
 Mesh edits replace the target's data independently of linked duplicates. Query a
 new handle for each edit. See the mesh control contract for local units, supported
 object states, native geometry semantics and current repair limitations.
+
+Render the six diagnostic views (384 × 384 Workbench by default):
+
+```python
+import base64
+from pathlib import Path
+
+with BlenderClient(request_timeout=60) as client:
+    response = client.call("observe.render_multiview")
+    if response["success"]:
+        for image in response["result"]["images"]:
+            Path(image["camera"]["view"] + ".png").write_bytes(
+                base64.b64decode(image["png_base64"]))
+```
+
+Single-view `observe.render` accepts `view`, `mode` and `engine`; `observe.camera`
+returns the same framing metadata without rendering. See the observation contract
+for target visibility, evaluated mesh scope, image budgets, EEVEE lighting and
+resource cleanup. These calls preserve revisions and source scene settings.

@@ -108,3 +108,15 @@ checkpoints, unsupported Edit mode and recovery despite collisions/nonfinite/ove
 current scenes. Unit tests also exercise save/load failures, retained checkpoints,
 retry and numeric diff ordering. Run
 `python3 -m controller.headless tests/blender/recovery_smoke.py` directly.
+
+
+Milestone 11 adds observation IPC and an `observation_smoke.py` fixture, reused by
+conformance. Checks cover default six-view delivery at 384 × 384 within the 1 MiB
+frame, camera consistency, PNG dimensions/content, solid/wire/silhouette pixels,
+EEVEE material appearance, repeatability, source render/UI/datablock preservation,
+transaction diff and rollback re-resolution, handle/cursor preservation, invalid
+arguments, missing/non-mesh/hidden targets, geometry/pixel/PNG budgets and injected
+render failures with cleanup. Pure unit tests project AABB corners through every
+view across square, portrait and landscape aspect ratios and verify schemas and
+revision/error semantics. Run
+`python3 -m controller.headless tests/blender/observation_smoke.py --timeout 90`.

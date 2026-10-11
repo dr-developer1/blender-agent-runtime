@@ -12,9 +12,9 @@ section 35 is the authoritative implementation order.
 7. Basic Object Control — complete.
 8. Core Mesh Control — complete.
 9. Validation — complete.
-10. Recovery — complete; see CURRENT_MILESTONE.md.
-11. Observation — next.
-12. First Vertical Slice.
+10. Recovery — complete.
+11. Observation — complete; see CURRENT_MILESTONE.md.
+12. First Vertical Slice — next.
 
 Continue with milestones 13–36 in the canonical plan. Each milestone needs
 acceptance tests, implementation, relevant verification and documentation before

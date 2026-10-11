@@ -12,6 +12,8 @@ from .objects import ObjectControl
 from .mesh import MeshControl
 from .validation import ValidationService, MAX_VALIDATION_ELEMENTS, MAX_ASSEMBLY_CHECKS
 from .recovery import RecoveryService, MAX_DIFF_OBJECTS, MAX_DIFF_ELEMENTS, MAX_SNAPSHOT_BYTES
+from .observation import (ObservationService, MAX_RENDER_SIZE, MAX_RENDER_PIXELS,
+                          MAX_RENDER_BYTES, MAX_OBSERVATION_ELEMENTS, MAX_OBSERVATION_OBJECTS)
 from .logging import EventLogger
 from .revisions import RuntimeState
 from .selection import (SelectionService, QUERY_SCHEMA, HANDLE_SCHEMA, QUERY_OUTPUT,
@@ -30,7 +32,8 @@ FEATURES = {'capability_discovery': True, 'typed_contracts': True,
             'structured_errors': True, 'synchronous_execution': True,
             'scene_mutation': False, 'sessions': True, 'revisions': True,
             'transactions': False, 'scene_diff': False, 'semantic_selection': False, 'selection_handles': False,
-            'validation': False, 'object_identity': False, 'scene_observation': False, 'evaluated_geometry': False}
+            'validation': False, 'object_identity': False, 'scene_observation': False, 'evaluated_geometry': False,
+            'diagnostic_rendering': False, 'deterministic_cameras': False}
 LIMITS = {'max_frame_bytes': MAX_FRAME_BYTES, 'max_in_flight_requests': 1,
           'execution_mode': 'headless', 'transport': 'loopback_tcp',
           'default_page_size': DEFAULT_PAGE_SIZE, 'max_page_size': MAX_PAGE_SIZE,
@@ -38,7 +41,10 @@ LIMITS = {'max_frame_bytes': MAX_FRAME_BYTES, 'max_in_flight_requests': 1,
           'max_selection_indices': MAX_SELECTION_INDICES,
           'max_validation_elements': MAX_VALIDATION_ELEMENTS, 'max_assembly_checks': MAX_ASSEMBLY_CHECKS,
           'max_active_transactions': 1, 'max_diff_objects': MAX_DIFF_OBJECTS,
-          'max_diff_elements': MAX_DIFF_ELEMENTS, 'max_snapshot_bytes': MAX_SNAPSHOT_BYTES}
+          'max_diff_elements': MAX_DIFF_ELEMENTS, 'max_snapshot_bytes': MAX_SNAPSHOT_BYTES,
+          'max_render_size': MAX_RENDER_SIZE, 'max_render_pixels': MAX_RENDER_PIXELS,
+          'max_render_png_bytes': MAX_RENDER_BYTES, 'max_observation_elements': MAX_OBSERVATION_ELEMENTS,
+          'max_observation_objects': MAX_OBSERVATION_OBJECTS, 'max_render_views': 6}
 
 STRING = {'type': 'string'}
 STRING_ARRAY = {'type': 'array', 'items': STRING}
@@ -81,7 +87,7 @@ OUTPUT_SCHEMAS = {
 
 class RuntimeAPI:
     def __init__(self, *, blender_version, logger=None, objects=None, scene=None, view_layer=None, depsgraph=None,
-                 object_control=False):
+                 object_control=False, observation=False):
         self.blender_version = blender_version
         self.logger = logger if logger is not None else EventLogger()
         self.state = RuntimeState()
@@ -108,6 +114,13 @@ class RuntimeAPI:
                 depsgraph=depsgraph)
             self.validation.register(self.registry)
             self.features['validation'] = True
+        if observation:
+            if self.identities is None or scene is None or view_layer is None or depsgraph is None:
+                raise ValueError('Diagnostic observation requires live Blender providers')
+            self.observation = ObservationService(identities=self.identities, scene=scene,
+                                                 view_layer=view_layer, depsgraph=depsgraph)
+            self.observation.register(self.registry)
+            self.features.update(diagnostic_rendering=True, deterministic_cameras=True)
         if object_control:
             if self.identities is None or scene is None or view_layer is None:
                 raise ValueError('Object control requires live Blender providers')
