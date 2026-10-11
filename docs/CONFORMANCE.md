@@ -54,3 +54,13 @@ parent UUID edges and reject cross-endpoint and reparented cursors. Inspection
 checks UUID order, duplicate/unknown/malformed IDs, excluded evaluation, base-mesh
 preservation and absence of temporary mesh data-block leaks. Run
 `python3 -m controller.headless tests/blender/geometry_smoke.py` directly.
+
+Milestone 6 checks semantic mesh addressing over persistent IPC and isolated Blender.
+Deterministic fixtures verify four top perimeter edges, upward faces, height ranges,
+sharp dihedral angles, open boundaries, disconnected components and non-manifold
+branches. World/local targeting is verified under translation, rotation and negative
+scale. Modifiers leave base queries and Blender UI selection unchanged. Handles
+reject vertex/topology/transform edits, removed/deleted objects, Edit mode, unknown
+sessions and runtime revision changes. Unit tests also verify selector intersection,
+ties, degenerate/empty geometry, schemas, handle eviction and budgets. Run
+`python3 -m controller.headless tests/blender/selection_smoke.py` directly.

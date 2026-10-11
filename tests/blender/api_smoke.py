@@ -11,10 +11,19 @@ api = RuntimeAPI(blender_version=bpy.app.version_string, objects=lambda: bpy.dat
                  scene=lambda: bpy.context.scene, view_layer=lambda: bpy.context.view_layer,
                  depsgraph=lambda: bpy.context.evaluated_depsgraph_get())
 objects_before = tuple(bpy.data.objects)
+query_arguments = {'object_id': bpy.data.objects['Cube']['bar_uuid'], 'element_type': 'EDGE',
+                   'selectors': [{'kind': 'top'}]}
+selection = api.execute({'api_version': '1.0', 'tool': 'mesh.query', 'arguments': query_arguments,
+                         'session_id': api.state.session_id, 'expected_revision': api.state.revision})
+assert selection['success'], selection
 for name in api.registry.names():
     arguments = {'name': name} if name == 'runtime.describe_tool' else {}
     if name == 'scene.inspect_objects':
         arguments = {'object_ids': [bpy.context.scene.objects[0]['bar_uuid']]}
+    if name == 'mesh.query':
+        arguments = query_arguments
+    if name == 'mesh.inspect_selection':
+        arguments = {'selection_handle': selection['result']['selection_handle']}
     response = api.execute({'api_version': '1.0', 'tool': name, 'arguments': arguments,
                             'session_id': api.state.session_id, 'expected_revision': api.state.revision})
     validate_response(response)

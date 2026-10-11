@@ -51,3 +51,11 @@ factory-startup Blender for each local test script.
 
 The current executor runs in background mode. Interactive UI integration will need
 a main-thread timer/queue executor; the blocking loop must not run inside a GUI.
+
+Milestone 6 registers `mesh.query` and `mesh.inspect_selection` when scene providers
+are present. A plain numeric base-mesh snapshot supports deterministic selector
+intersection. A bounded runtime-local handle store retains only UUIDs, revision,
+indices and geometry fingerprints, never live Blender references. Resolution
+reacquires the object and rejects changed geometry/transform. Revision changes clear
+the store lazily before its next use. Queries are read-only scene operations even
+though they create temporary addressing metadata. See SELECTION_LANGUAGE.md.

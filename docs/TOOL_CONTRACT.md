@@ -69,3 +69,11 @@ Scene providers enable observation; a dependency graph provider enables evaluate
 inspection. Scene reads enforce identity validity and state guards. Listing uses filters, bounded `limit`, and
 revision/filter/observation-bound `cursor`; see SCENE_OBSERVABILITY.md for their
 schemas, exact visibility semantics, and pagination behavior.
+
+Milestone 6 adds `mesh.query` and `mesh.inspect_selection`, bringing the server to
+thirteen tools. Discovery reports `semantic_selection` and `selection_handles`,
+and mesh/selection/handle budgets. These tools are read-only and revision guarded;
+creating a handle does not advance the timeline. See SELECTION_LANGUAGE.md for
+selector contracts, geometry space and handle expiry. New errors are
+`OBJECT_NOT_MESH`, `UNSUPPORTED_OBJECT_MODE`, `INVALID_GEOMETRY`,
+`INVALID_SELECTION_HANDLE`, `STALE_SELECTION`, and `SELECTION_LIMIT_EXCEEDED`.

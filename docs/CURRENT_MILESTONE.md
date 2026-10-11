@@ -1,41 +1,45 @@
 # Current milestone
 
-Milestone 5 — Scene Observability (steps 22–27): complete.
+Milestone 6 — Semantic Geometry Addressing (steps 28–35): complete.
 
-Implemented: `scene.summary`, filtered `scene.list_objects`, bounded cursor
-pagination, targeted `scene.inspect_objects`, paginated `scene.get_hierarchy`,
-and evaluated geometry/dimensions. The Blender server advertises eleven tools.
-Filters combine type, direct collection membership, active-view-layer visibility,
-name patterns, string custom tags and inclusive world-origin regions. Pages are
-UUID-sorted, default to 50, and cap at 100. Signed cursors bind endpoint, session,
-revision, filters and observed data, rejecting tampering and stale observations.
-Scene reads preserve UUIDs and the revision. Nested schema validation enforces
-filters and bounds. Oversized responses return structured failures.
+Implemented `mesh.query` and `mesh.inspect_selection`, selection schemas,
+spatial/geometric/topological/basic semantic selectors, bounded selection handles,
+revision invalidation and real-Blender selection conformance. The server advertises
+thirteen public tools. Runtime package version: 0.6.0; public API version: 1.0.
 
-Targeted inspection reports original/evaluated mesh and triangle counts, evaluated
-world matrices, world-axis-aligned bounds and dimensions. Mesh bounds use evaluated
-vertices; non-mesh geometry uses evaluated box corners. Parent UUIDs describe
-hierarchy without unbounded child lists. Inspection preserves request order and
-rejects duplicate/unknown IDs, other-scene objects and excluded evaluation.
-Runtime package version: 0.5.0; public API version: 1.0.
+Selectors address base mesh vertices, edges or faces in world/local coordinates,
+combine by intersection, and return temporary handles. Spatial queries cover
+extremum planes, boxes, height ranges and nearest centers. Geometric queries cover
+normal cones, lengths, areas and dihedral angles. Topological queries cover edge
+incidence and connected components. Basic semantic queries cover cap/side faces and
+open boundaries. Queries preserve geometry, UI selection, UUIDs and revision.
 
-Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 49 unit tests and 18
-real-Blender integration cases (also exercised as conformance checks), plus direct
-headless API, scene and geometry smoke checks. Includes a 253-object filtered
-pagination fixture, collection exclusions, untracked edits, cursor rejection,
-array/mirror/solidify modifiers, parent transforms, rotation, negative scale,
-nullable geometry and mesh-data leak checks. All previous lifecycle, state and
-identity regressions remain covered. Commands are in README.md.
+Handles bind the current runtime revision and UUID. Resolution reacquires live
+geometry and verifies a fingerprint covering base coordinates, topology and world
+transform, detecting untracked edits. Any revision change invalidates every handle.
+The store retains no Blender references and caps at 256 handles with oldest-created
+eviction. Queries cap at 200,000 mesh vertices + edges + polygons + loops and
+10,000 matched indices, returning structured errors instead of truncation.
 
-Limits: background runtime; public tools provide discovery/reads only. Scene reads
-never repair IDs. Scene-page computation still scans and sorts live data; geometry
-bounds scale with inspected vertex counts. Evaluated data follows current viewport
-settings, and instances are not expanded. Render-enabled flags are object flags,
-not final render visibility. Region filtering tests origins, not surfaces. External
-edits invalidate relevant cursors but are not generally revision-tracked. No general
-query language, semantic geometry addressing, transactions, recovery, AI or UI yet.
-See SCENE_OBSERVABILITY.md for exact contracts and limits.
+Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 60 unit tests, 20
+real-Blender integration cases (also exercised as conformance checks), and direct
+headless process/API/state/identity/scene/geometry/selection smoke checks. Fixtures
+verify four cube top perimeter edges, upward faces, upper-height faces, sharp
+angles, open boundaries, non-manifold branches, disconnected components,
+world/local transforms, negative scale, empty/degenerate meshes, modifier
+independence, handle eviction, budgets and invalidation. All previous lifecycle,
+state, identity and scene regressions remain covered. Commands are in README.md.
 
-Next: Milestone 6 — Semantic Geometry Addressing (steps 28–35): selection schemas,
-spatial/geometric/topological/basic semantic selectors, selection handles, revision
-invalidation and conformance tests.
+Limits: background runtime; public tools still provide discovery and reads only.
+Mesh queries require Object mode and address base geometry; generated modifier
+results and instances are excluded. Areas/normals use Newell's vector (projected
+area for nonplanar polygons). Basic outer_boundary includes holes; edge incidence
+does not certify full manifoldness. Element indices are diagnostic and temporary.
+Untracked edits restored to identical data cannot be detected without timeline
+tracking. Every query/resolution scans and hashes the base mesh. No edge-loop/ring,
+curvature, richer semantic inference, public modeling, transaction or recovery
+support yet. See SELECTION_LANGUAGE.md for exact contracts and limits.
+
+Next: Milestone 7 — Basic Object Control (steps 36–40): primitive creation,
+deterministic transforms, duplication, deletion and parenting, with revision and
+identity tracking and integration/conformance tests.

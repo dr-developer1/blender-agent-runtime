@@ -10,6 +10,8 @@ from .errors import ToolError
 from .identity import ObjectIdentity
 from .logging import EventLogger
 from .revisions import RuntimeState
+from .selection import (SelectionService, QUERY_SCHEMA, HANDLE_SCHEMA, QUERY_OUTPUT,
+                        INSPECT_OUTPUT, MAX_HANDLES, MAX_MESH_ELEMENTS, MAX_SELECTION_INDICES)
 from .scene import (SceneObserver, LIST_INPUT_SCHEMA, LIST_OUTPUT_SCHEMA, SUMMARY_OUTPUT_SCHEMA,
                     DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE, PAGE_INPUT_SCHEMA, HIERARCHY_OUTPUT_SCHEMA,
                     INSPECT_INPUT_SCHEMA, INSPECT_OUTPUT_SCHEMA)
@@ -23,10 +25,13 @@ CONVENTIONS = {'up': '+Z', 'forward': '-Y', 'ground_plane': 'XY',
 FEATURES = {'capability_discovery': True, 'typed_contracts': True,
             'structured_errors': True, 'synchronous_execution': True,
             'scene_mutation': False, 'sessions': True, 'revisions': True,
-            'transactions': False, 'semantic_selection': False, 'object_identity': False, 'scene_observation': False, 'evaluated_geometry': False}
+            'transactions': False, 'semantic_selection': False, 'selection_handles': False,
+            'object_identity': False, 'scene_observation': False, 'evaluated_geometry': False}
 LIMITS = {'max_frame_bytes': MAX_FRAME_BYTES, 'max_in_flight_requests': 1,
           'execution_mode': 'headless', 'transport': 'loopback_tcp',
-          'default_page_size': DEFAULT_PAGE_SIZE, 'max_page_size': MAX_PAGE_SIZE}
+          'default_page_size': DEFAULT_PAGE_SIZE, 'max_page_size': MAX_PAGE_SIZE,
+          'max_selection_handles': MAX_HANDLES, 'max_mesh_query_elements': MAX_MESH_ELEMENTS,
+          'max_selection_indices': MAX_SELECTION_INDICES}
 
 STRING = {'type': 'string'}
 STRING_ARRAY = {'type': 'array', 'items': STRING}
@@ -81,9 +86,13 @@ class RuntimeAPI:
             raise ValueError('Scene observation requires an object provider')
         self.observer = (SceneObserver(scene=scene, view_layer=view_layer, identities=self.identities,
                                        state=self.state, depsgraph=depsgraph) if scene is not None else None)
+        self.selections = (SelectionService(identities=self.identities, state=self.state,
+                                           scene=scene, view_layer=view_layer) if scene is not None else None)
         self.features = {**FEATURES, 'object_identity': self.identities is not None,
                          'scene_observation': self.observer is not None,
-                         'evaluated_geometry': self.observer is not None and depsgraph is not None}
+                         'evaluated_geometry': self.observer is not None and depsgraph is not None,
+                         'semantic_selection': self.selections is not None,
+                         'selection_handles': self.selections is not None}
         self.registry = CapabilityRegistry()
         self._register_tools()
 
@@ -127,6 +136,15 @@ class RuntimeAPI:
                 self.registry.register(ToolSpec('scene.inspect_objects', 'Inspect selected UUIDs and evaluated geometry.',
                                                 input_schema=INSPECT_INPUT_SCHEMA, output_schema=INSPECT_OUTPUT_SCHEMA),
                                        self.observer.inspect_objects)
+
+        if self.selections is not None:
+            self.registry.register(ToolSpec('mesh.query', 'Query base mesh elements and create a revision-bound selection handle.',
+                                            input_schema=QUERY_SCHEMA, output_schema=QUERY_OUTPUT,
+                                            supports={'semantic_selection': True, 'transactions': False}),
+                                   self.selections.query)
+            self.registry.register(ToolSpec('mesh.inspect_selection', 'Resolve a current selection handle to bounded base-mesh indices.',
+                                            input_schema=HANDLE_SCHEMA, output_schema=INSPECT_OUTPUT),
+                                   self.selections.inspect)
 
     def execute(self, message, *, request_id=None):
         with self._lock:

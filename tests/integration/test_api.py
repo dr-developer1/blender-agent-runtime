@@ -82,7 +82,7 @@ class ApiIntegrationTests(unittest.TestCase):
     def test_scene_observation_over_ipc(self):
         with BlenderClient(executable=BLENDER) as client:
             self.assertTrue(client.call('runtime.get_supported_features')['result']['scene_observation'])
-            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 11)
+            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 13)
             summary = client.call('scene.summary')['result']
             self.assertEqual(summary['object_count'], 3)
             self.assertEqual(summary['object_types'], {'CAMERA': 1, 'LIGHT': 1, 'MESH': 1})
@@ -122,3 +122,30 @@ class ApiIntegrationTests(unittest.TestCase):
         result = run_headless(script, executable=BLENDER)
         self.assertEqual(result.returncode, 0, result.stdout)
         self.assertIn('BAR_GEOMETRY_HEADLESS_OK', result.stdout)
+
+    def test_semantic_selection_over_ipc(self):
+        with BlenderClient(executable=BLENDER) as client:
+            self.assertTrue(client.call('runtime.get_supported_features')['result']['semantic_selection'])
+            cube_id = client.call('scene.list_objects', {'object_type': 'MESH'})['result']['objects'][0]['object_id']
+            response = client.call('mesh.query', {'object_id': cube_id, 'element_type': 'EDGE',
+                                                 'selectors': [{'kind': 'top'}]})
+            self.assertTrue(response['success'], response)
+            result = response['result']
+            self.assertEqual(result['matched_count'], 4)
+            self.assertEqual(result['valid_at_revision'], 0)
+            inspected = client.call('mesh.inspect_selection', {'selection_handle': result['selection_handle']})
+            self.assertEqual(len(inspected['result']['indices']), 4)
+            invalid = client.call('mesh.query', {'object_id': cube_id, 'element_type': 'FACE',
+                                                 'selectors': [{'kind': 'normal_direction', 'direction': [0, 0, 0]}]})
+            self.assertEqual(invalid['error']['code'], 'INVALID_ARGUMENT')
+            self.assertTrue(client.call('scene.summary')['success'])
+            token = result['selection_handle']
+        with BlenderClient(executable=BLENDER) as client:
+            self.assertEqual(client.call('mesh.inspect_selection', {'selection_handle': token})['error']['code'],
+                             'INVALID_SELECTION_HANDLE')
+
+    def test_real_semantic_geometry_selection(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'selection_smoke.py'
+        result = run_headless(script, executable=BLENDER)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_SELECTION_HEADLESS_OK', result.stdout)

@@ -48,7 +48,7 @@ class SceneTests(unittest.TestCase):
         self.assertEqual(before, self.objects)
         self.assertEqual(self.api.state.revision, 0)
         self.assertTrue(self.api.features['scene_observation'])
-        self.assertEqual(len(self.api.registry.names()), 10)
+        self.assertEqual(len(self.api.registry.names()), 12)
 
     def test_each_filter_and_combination(self):
         for filters, names in (({'object_type': 'LIGHT'}, ['Lamp']),

@@ -8,4 +8,6 @@
 - Dimensions mean evaluated world-space dimensions unless a tool says otherwise.
 
 Future tools must document any deviation in their schemas/descriptions. Discovery
-reports these conventions now; no geometry or unit conversion tools exist yet.
+reports these conventions. Mesh selection lengths use meters in the chosen
+coordinate space, areas use square meters and angles use degrees; see
+SELECTION_LANGUAGE.md. No explicit unit conversion tools exist yet.
