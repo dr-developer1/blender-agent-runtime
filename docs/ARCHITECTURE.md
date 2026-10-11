@@ -124,3 +124,13 @@ Disconnect and command-budget exhaustion restore the checkpoint. Structured tool
 rejections remain visible for repair; lifecycle/transport failures terminate the
 exercise. Reports distinguish supported technical results, confirmed interface
 gaps and unverified visual criteria. See STOOL_BENCHMARK.md for actual Codex evidence.
+
+
+Milestone 13 enables MaterialControl alongside object control. Two general tools
+create opaque Principled PBR materials and assign them to an entire mesh. Material
+UUIDs are persistent custom properties and resolved afresh across checkpoint
+reloads. Assignment stages a detached mesh and publishes a single DATA slot,
+preserving linked users and restoring slots/data on failure. Full-file recovery
+includes material datablocks; object diffs now hash base face assignments and slots.
+The stool baseline creates a brown PBR material and can render with EEVEE for
+material assessment. See MATERIALS.md for exact scope and limitations.

@@ -117,3 +117,11 @@ is deterministic from evaluated world mesh bounds; render results carry bounded
 inline PNGs plus camera metadata. No camera publication or API envelope changes
 are required. Discovery advertises rendering features and budgets. See
 OBSERVATION.md for target/view conventions, engines, diagnostic modes and limits.
+
+
+Milestone 13 adds `material.create` and `material.assign`, for 36 server tools.
+Discovery advertises `basic_materials`. Both are mutations, transaction safe when
+recovery is enabled. Material creation returns a material UUID in the result;
+assignment reports the changed object UUID in `modified_ids`. The API 1.0 envelope
+remains unchanged. See MATERIALS.md for linear color, opaque alpha, assignment
+semantics, UUID persistence and material resolution errors.

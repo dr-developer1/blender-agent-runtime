@@ -147,7 +147,14 @@ class RecoveryService:
                             {'name': value.name, 'object_id': value.get(UUID_PROPERTY)} if isinstance(value, bpy.types.Object)
                             else {'name': getattr(value, 'name', ''), 'type': type(value).__name__})
                 modifiers.append({'name': modifier.name, 'type': modifier.type, 'properties': properties})
-            result[row['object_id']] = {**inspected, 'geometry_fingerprint': geometry, 'modifiers': modifiers}
+            material_assignment = digest({
+                'slots': [{'link': slot.link, 'material_id': slot.material.get('bar_material_uuid'),
+                           'name': slot.material.name} if slot.material else {'link': slot.link, 'material_id': None}
+                          for slot in obj.material_slots],
+                'face_indices': [p.material_index for p in obj.data.polygons] if obj.type == 'MESH' else []})
+            result[row['object_id']] = {**inspected, 'geometry_fingerprint': geometry,
+                                      'material_assignment_fingerprint': material_assignment,
+                                      'modifiers': modifiers}
         try:
             json.dumps(result, allow_nan=False)
         except (ValueError, TypeError):

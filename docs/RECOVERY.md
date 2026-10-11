@@ -66,7 +66,7 @@ The example abbreviates the observation records and matrices. Actual before/afte
 records include object name/type, collection membership, parent UUID, visibility,
 render enablement, string tags, world origin/matrix, base and evaluated geometry
 counts (vertices, edges, faces, triangles), evaluated bounds/dimensions and their
-method, base `geometry_fingerprint`, and ordered `modifiers`. Created objects have
+method, base `geometry_fingerprint`, ordered `modifiers`, and `material_assignment_fingerprint`. Created objects have
 `before: null`; deleted objects have `after: null`. `fields` lists every changed
 record key, or every present key for creation/deletion. Comparisons are exact.
 
@@ -75,8 +75,10 @@ so same-count shape/topology edits are visible. Modifier records contain name,
 type, writable scalar/array RNA settings and pointer target labels; object targets
 also carry UUIDs. Read-only evaluation timing and other runtime diagnostics are
 excluded. Collection-valued settings, Geometry Nodes inputs/internal graphs,
-materials, UVs, custom normals and non-mesh datablock contents are not compared.
-Parent relationships and some observation metadata are included, but this is not
+material shader contents, UVs, custom normals and non-mesh datablock contents are not compared.
+Material assignment fingerprints include slot linkage, material UUID/name and
+base face material indices. Unassigned material creation is outside the object
+diff scope. Parent relationships and some observation metadata are included, but this is not
 an exhaustive Blender change audit.
 
 Diff scope is the active scene's objects. Unlinking an object from that scene

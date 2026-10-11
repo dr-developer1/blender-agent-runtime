@@ -17,6 +17,15 @@ class BenchmarkTraceTests(unittest.TestCase):
         self.assertFalse(report['supported_technical_passed'])
         self.assertEqual([f['criterion'] for f in report['failures']], ['geometry'])
 
+    def test_missing_materials_is_now_a_recipe_failure(self):
+        passed = {'passed': True, 'checks': []}
+        asset = {'passed': False, 'checks': [{'code': 'MATERIAL_ASSIGNMENT', 'passed': False}]}
+        e = Mock()
+        e.call.side_effect = [passed, passed, passed, passed, asset]
+        report = evaluate(e, {'seat': 'seat', 'legs': ['a', 'b', 'c', 'd']})
+        self.assertFalse(report['supported_technical_passed'])
+        self.assertEqual(report['failures'][0]['classification'], 'model_or_recipe')
+
     def test_trace_copies_arguments_and_omits_png_without_changing_response(self):
         response = {'success': True, 'result': {'images': [{'png_base64': 'payload', 'byte_count': 5}]}}
         client = Mock()

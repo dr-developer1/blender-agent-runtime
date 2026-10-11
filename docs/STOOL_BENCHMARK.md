@@ -45,9 +45,9 @@ belong to their recorded sessions and cannot be reused in a new runtime.
 
 ## Failure analysis and refinement
 
-Missing material creation/assignment is a confirmed interface gap: discovery has
-no such tools and `validate.asset(require_materials=True)` fails. Implement general
-basic PBR creation/assignment in Milestone 13 rather than a stool-specific tool.
+At Milestone 12, missing material creation/assignment was a confirmed interface gap: discovery has
+no such tools and `validate.asset(require_materials=True)` fails. Milestone 13 now closes this gap with general PBR creation and assignment tools.
+The table above and original artifacts remain the pre-material baseline.
 
 The initial assumption that taper was an interface limitation was incorrect.
 Cone creation and boolean subtraction compose into a frustum. The agent run
@@ -96,7 +96,8 @@ Finish using actual UUIDs returned by creation/duplication:
 ```
 
 The harness evaluates roles, renders and commits when supported technical checks
-pass, even while material/visual requirements remain incomplete. Failed technical
+pass, including material assignment as of Milestone 13. Visual requirements
+remain separately evaluated. Failed technical
 checks trigger rollback. EOF, malformed input, transport failure or call-budget
 exhaustion also leave the checkpoint subject to rollback/owned-process cleanup.
 Transaction controls and scene.diff belong to the harness and are excluded from
@@ -148,3 +149,25 @@ production-ready surfaces. Material appearance will be reassessed after Mileston
 13 using EEVEE; current scores preserve the pre-material baseline. The absent
 material is classified as an interface gap. Faceting and limited joinery are
 model/recipe quality limitations, not evidence of a failed runtime operation.
+
+
+## Milestone 13 material reassessment
+
+Runtime 0.13.0 adds two general material tools. The manual recipe creates one
+opaque warm brown Principled PBR material (linear RGBA [0.22, 0.08, 0.025, 1],
+roughness 0.65, metallic 0) and assigns it to the seat and four legs. Geometry,
+dimensions, assembly, leg count and material assignment all pass. The rerun has
+54 public calls and zero structured rejections.
+
+```bash
+python3 -m benchmarks.stool --output artifacts/stool-materials-new --engine EEVEE
+```
+
+The reviewed run lives in `artifacts/stool-materials-m13` with six EEVEE PNGs,
+report and trace. [Material review evidence](evidence/stool_material_review_m13.json)
+records image hashes and separate rubric scores; original Workbench reviews are
+retained unchanged. All six views show a warm brown surface. Material plausibility
+improves from 1 to 2: the surface has no grain or texture, and leg faceting and
+shadow noise remain visible. This closes the material-assignment interface gap,
+without claiming full visual benchmark success or physical stability. The original
+agent evidence is retained as the pre-material baseline; no new agent run is claimed.

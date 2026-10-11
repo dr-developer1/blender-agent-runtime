@@ -1,5 +1,49 @@
 # Current milestone
 
+Milestone 13 — Basic Materials (steps 68–69): complete.
+
+Implemented `material.create` and `material.assign`: opaque Principled PBR creation
+with linear RGBA/roughness/metallic and whole-base-mesh assignment by persistent
+material UUID. Assignment stages independent mesh data, preserves linked users,
+and restores data/slot overrides on failure. Unassigned materials survive checkpoint
+save/load through fake users; UUIDs resolve afresh after full-file rollback.
+Both tools advance revisions and advertise transaction safety with recovery enabled.
+Object diffs now fingerprint material slots and base face assignments. Material
+UUIDs stay in tool results; envelope change arrays remain object-only.
+See MATERIALS.md for exact contracts and unsupported states.
+
+Runtime/package version: 0.13.0; public API: 1.0; 36 public server tools.
+Read-only in-process instances keep material tools disabled with object control.
+
+The manual stool recipe assigns one warm brown material to all five objects and
+passes geometry, dimensions, assembly, leg count and material-assignment checks.
+The exercise/agent harness now requires materials before committing. Six EEVEE
+views were reviewed and separate rubric scores/image hashes recorded in
+`evidence/stool_material_review_m13.json`. Original Workbench/agent evidence remains
+unchanged. Material plausibility improves from 1 to 2: uniform brown PBR has no
+wood grain, with faceted legs and noisy shadows still visible. Full visual
+benchmark success and physical stability are not claimed.
+
+Verification: 98 unit tests, 34 real-Blender integration cases and the mirrored
+34 conformance cases. An outdated recovery tool-count assertion was corrected
+and its integration/conformance checks rerun successfully. Material coverage
+includes schemas/revision guards, discovery, real shader values/links, UUID rename,
+unassigned persistence, rollback removal/restoration, collision and missing IDs,
+linked mesh independence, single-slot replacement, edit-mode/non-mesh rejection,
+UI preservation, diff visibility and injected failure cleanup/restoration.
+The stool EEVEE rerun records 54 calls with zero structured rejections.
+
+Limits: opaque surfaces, no material listing/edit/delete, no textures/procedural
+recipes, no per-face assignment. Shader contents and unassigned material creation
+are outside object diff scope but included in full-file restore. Workbench remains
+the default shape diagnostic; use EEVEE to assess material appearance.
+
+Next: Milestone 14 — Runtime Conformance Suite (steps 70–76): operation correctness,
+inspection/selection accuracy, rollback reliability, API compatibility, performance
+and large-scene inspection coverage. Stop here per the canonical milestone workflow.
+
+## Previous milestone: first vertical slice
+
 Milestone 12 — First Vertical Slice (steps 63–67): complete.
 
 Implemented a manual public-API stool baseline, one-agent JSON-line bridge,

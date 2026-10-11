@@ -1,0 +1,80 @@
+{
+  "benchmark": "stool-v1",
+  "milestone": 13,
+  "mode": "manual",
+  "runtime_version": "0.13.0",
+  "session_id": "679f0e37-646c-48a4-8643-ea2f6f2a4c21",
+  "report_path": "artifacts/stool-materials-m13/report.json",
+  "public_call_count": 54,
+  "structured_rejections": 0,
+  "supported_technical_passed": true,
+  "material_assignment_passed": true,
+  "full_benchmark_passed": false,
+  "visual_evaluation": {
+    "rubric_version": "stool-visual-v1",
+    "evaluator_identity": "Codex (GPT-6), unblinded self-review",
+    "review_date": "2026-10-12",
+    "method": "Direct visual inspection of all six 384x384 EEVEE PNGs; technical reports reviewed separately.",
+    "scale": {
+      "1": "Requirement absent or major visual problems",
+      "2": "Noticeable problems",
+      "3": "Adequate with visible limitations",
+      "4": "Good with minor limitations",
+      "5": "Excellent"
+    },
+    "scores": {
+      "proportions": {
+        "score": 4,
+        "notes": "Compact seat and leg proportions remain clear; dimensions are separately validated."
+      },
+      "silhouette": {
+        "score": 4,
+        "notes": "Symmetric splayed legs and tapered shape remain visible; cardinal views overlap pairs of legs."
+      },
+      "structural_plausibility": {
+        "score": 3,
+        "notes": "Legs meet the seat with no joinery or bracing shown; approximate checks do not certify strength."
+      },
+      "surface_cleanliness": {
+        "score": 3,
+        "notes": "No visible holes or detached parts. Faceted legs, uneven highlights and noisy shadows beneath the seat are visible."
+      },
+      "material_plausibility": {
+        "score": 2,
+        "notes": "Warm brown opaque PBR reads as a basic wood-colored surface. Uniform color has no grain or texture; highlights and noisy shadows limit realism."
+      }
+    },
+    "images": [
+      {
+        "path": "artifacts/stool-materials-m13/front.png",
+        "sha256": "006dfca18e69fca0029c2435d3703d29c8cedc75156c4f1acb498a95046e4c7d"
+      },
+      {
+        "path": "artifacts/stool-materials-m13/back.png",
+        "sha256": "8ef7fe10c096a90e29b4b401f253d4379ca3697533814d4a2f83226d26c31108"
+      },
+      {
+        "path": "artifacts/stool-materials-m13/left.png",
+        "sha256": "f7046bf259dfd09bc503a55fda8a7a25d3f8a1f1db7eaa4b51fbc9a363ff1b6c"
+      },
+      {
+        "path": "artifacts/stool-materials-m13/right.png",
+        "sha256": "71ff4d79aa086262b7fe1be2114f27679a715a2226dedee259d7a5110a0be6de"
+      },
+      {
+        "path": "artifacts/stool-materials-m13/top.png",
+        "sha256": "930e075e75fbd4f1b0032e448cc81f72a5f46988691357e25483ea5b9895f9af"
+      },
+      {
+        "path": "artifacts/stool-materials-m13/perspective.png",
+        "sha256": "95d3181af020a72ea6a26e09b96ebba99a8869201218418212fe1849bd982a97"
+      }
+    ],
+    "limitations": [
+      "Self-review, not independent or blind evaluation.",
+      "Uniform PBR parameters do not supply wood grain.",
+      "Physical stability and exact surface contact are not certified.",
+      "Previous agent evidence is retained as a pre-material baseline, not rerun."
+    ]
+  }
+}

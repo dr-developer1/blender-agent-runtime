@@ -9,6 +9,7 @@ from .capability_registry import CapabilityRegistry, ToolSpec
 from .errors import ToolError
 from .identity import ObjectIdentity
 from .objects import ObjectControl
+from .materials import MaterialControl
 from .mesh import MeshControl
 from .validation import ValidationService, MAX_VALIDATION_ELEMENTS, MAX_ASSEMBLY_CHECKS
 from .recovery import RecoveryService, MAX_DIFF_OBJECTS, MAX_DIFF_ELEMENTS, MAX_SNAPSHOT_BYTES
@@ -33,7 +34,7 @@ FEATURES = {'capability_discovery': True, 'typed_contracts': True,
             'scene_mutation': False, 'sessions': True, 'revisions': True,
             'transactions': False, 'scene_diff': False, 'semantic_selection': False, 'selection_handles': False,
             'validation': False, 'object_identity': False, 'scene_observation': False, 'evaluated_geometry': False,
-            'diagnostic_rendering': False, 'deterministic_cameras': False}
+            'diagnostic_rendering': False, 'deterministic_cameras': False, 'basic_materials': False}
 LIMITS = {'max_frame_bytes': MAX_FRAME_BYTES, 'max_in_flight_requests': 1,
           'execution_mode': 'headless', 'transport': 'loopback_tcp',
           'default_page_size': DEFAULT_PAGE_SIZE, 'max_page_size': MAX_PAGE_SIZE,
@@ -128,13 +129,15 @@ class RuntimeAPI:
             self.objects.register(self.registry)
             self.mesh = MeshControl(objects=self.objects, selections=self.selections, depsgraph=depsgraph)
             self.mesh.register(self.registry)
-            self.features['scene_mutation'] = True
+            self.materials = MaterialControl(objects=self.objects)
+            self.materials.register(self.registry)
+            self.features.update(scene_mutation=True, basic_materials=True)
             if depsgraph is not None:
                 self.recovery = RecoveryService(observer=self.observer, identities=self.identities, state=self.state)
                 self.recovery.register(self.registry)
                 self.features.update(transactions=True, scene_diff=True)
                 self.registry.enable_transactions([name for name in self.registry.names()
-                                                   if name.startswith(('object.', 'mesh.'))])
+                                                   if name.startswith(('object.', 'mesh.', 'material.'))])
 
     def close(self):
         """Discard private checkpoints when the owning process connection closes."""

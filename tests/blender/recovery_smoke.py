@@ -36,7 +36,7 @@ def inspect(oid):
 
 features = call('runtime.get_supported_features')['result']
 assert features['transactions'] and features['scene_diff']
-assert len(api.registry.names()) == 31
+assert len(api.registry.names()) == 33
 for name in ('object.transform', 'mesh.extrude', 'mesh.query'):
     descriptor = call('runtime.describe_tool', {'name': name})['result']
     assert descriptor['supports']['transactions'] and descriptor['transaction_safe']

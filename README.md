@@ -3,7 +3,7 @@
 A model-independent machine interface to Blender, implemented incrementally from
 [the canonical plan](BLENDER_AGENT_RUNTIME_CANONICAL_MASTER_PLAN_V2.md).
 
-Milestones 1–12 provide a persistent headless Blender process, synchronous structured
+Milestones 1–13 provide a persistent headless Blender process, synchronous structured
 IPC, shutdown/death detection, isolated headless testing, and a versioned, typed
 discovery API with structured errors, call logging, session IDs and
 monotonic revision preconditions. Objects receive persistent UUIDs with collision
@@ -18,6 +18,9 @@ relationships and asset checks. Single transactions save private full-file check
 report scene diffs, and commit or roll back with monotonic revisions. Diagnostic
 observation adds deterministic fitted cameras and isolated Workbench/EEVEE PNG
 renders, including multi-view, wireframe and silhouette modes.
+Basic materials add opaque Principled PBR creation and whole-mesh assignment by
+persistent material UUID.
+
 Requires Python 3.10+ and a Blender executable on PATH. No Python dependencies are
 needed to run the controller or tests.
 
@@ -35,6 +38,7 @@ python3 -m controller.headless tests/blender/scene_smoke.py
 python3 -m controller.headless tests/blender/geometry_smoke.py
 python3 -m controller.headless tests/blender/selection_smoke.py
 python3 -m controller.headless tests/blender/object_smoke.py
+python3 -m controller.headless tests/blender/material_smoke.py
 python3 -m controller.headless tests/blender/mesh_smoke.py
 python3 -m controller.headless tests/blender/validation_smoke.py
 python3 -m controller.headless tests/blender/recovery_smoke.py
@@ -70,10 +74,10 @@ becomes unusable; create a new client to restart. Commands are never retried.
 See [architecture](docs/ARCHITECTURE.md), [current milestone](docs/CURRENT_MILESTONE.md),
 [tool contract](docs/TOOL_CONTRACT.md), [conventions](docs/CONVENTIONS.md),
 [object identity](docs/IDENTITY.md), [scene observation](docs/SCENE_OBSERVABILITY.md),
-[semantic selection](docs/SELECTION_LANGUAGE.md), [object control](docs/OBJECT_CONTROL.md), [mesh control](docs/MESH_CONTROL.md), [validation](docs/VALIDATION.md), [recovery](docs/RECOVERY.md), [diagnostic observation](docs/OBSERVATION.md), and [conformance](docs/CONFORMANCE.md).
+[semantic selection](docs/SELECTION_LANGUAGE.md), [object control](docs/OBJECT_CONTROL.md), [mesh control](docs/MESH_CONTROL.md), [basic materials](docs/MATERIALS.md), [validation](docs/VALIDATION.md), [recovery](docs/RECOVERY.md), [diagnostic observation](docs/OBSERVATION.md), and [conformance](docs/CONFORMANCE.md).
 
 Limitations: background mode only; local single-controller TCP transport; single active transaction; full-file rollback
-changes Blender’s current filepath to its private checkpoint name. API 1.0 provides discovery, scene reads, semantic base-mesh queries, basic object control, core mesh edits, technical validation, recovery and diagnostic renders.
+changes Blender’s current filepath to its private checkpoint name. API 1.0 provides discovery, scene reads, semantic base-mesh queries, basic object control, core mesh edits, technical validation, recovery diagnostic renders and basic PBR materials.
 State preconditions guard every public call; public object mutations report UUID changes; transaction diffs summarize tracked fields and rollback restores saved contents. Identity writes remain internal; observations do not
 initialize new IDs. External scene edits are not automatically tracked.
 Loopback and a launch token restrict accidental attachment; this is not a sandbox
@@ -89,8 +93,8 @@ Available public tools: `runtime.get_version`, `runtime.get_supported_versions`,
 `object.duplicate`, `object.delete`, `object.set_parent`, `mesh.extrude`, `mesh.inset`,
 `mesh.bevel`, `mesh.boolean`, `mesh.cleanup`, `validate.geometry`, `validate.dimensions`, `validate.assembly`,
 `validate.asset`, `scene.diff`, `transaction.begin`, `transaction.commit`,
-`transaction.rollback`, `observe.camera`, `observe.render`, and
-`observe.render_multiview`. Tool schemas and
+`transaction.rollback`, `observe.camera`, `observe.render`,
+`observe.render_multiview`, `material.create`, and `material.assign`. Tool schemas and
 metadata are returned by discovery. `runtime.describe_tool` takes `name`;
 `scene.list_objects` takes filters, `limit` and `cursor`; `scene.get_hierarchy`
 takes `limit` and `cursor`; `scene.inspect_objects` takes `object_ids`. Discovery and summary tools without arguments
@@ -162,6 +166,7 @@ The bridge prints a ready message and accepts public tool calls on stdin. Finish
 with seat and four leg UUIDs. Output directories must be empty; each completed
 exercise saves a report, tool trace and six PNGs. The bridge owns a checkpoint and
 rolls back on disconnection, exhausted call budget or failed technical checks.
-See [the stool exercise and actual Codex run](docs/STOOL_BENCHMARK.md). Both builds
-pass supported technical criteria, while material assignment remains a confirmed
-interface gap for Milestone 13; full benchmark success is not claimed.
+See [the stool exercise and actual Codex run](docs/STOOL_BENCHMARK.md). The original builds pass supported geometry/assembly criteria. The current manual
+recipe also passes material assignment; use `--engine EEVEE` to inspect its warm
+brown PBR surface. The original agent evidence remains the pre-material baseline.
+Full benchmark success is not claimed; wood grain and visual limitations remain.

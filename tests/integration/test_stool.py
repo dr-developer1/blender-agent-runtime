@@ -46,7 +46,8 @@ class StoolIntegrationTests(unittest.TestCase):
             roles, reports, images = build_manual(e)
             self.assertTrue(reports['supported_technical_passed'], reports)
             self.assertFalse(reports['full_benchmark_passed'])
-            self.assertFalse(reports['materials']['passed'])
+            self.assertTrue(reports['materials']['passed'])
+            self.assertFalse(reports['failures'])
             self.assertEqual(len(images['images']), 6)
             self.assertEqual(e.call('scene.summary')['object_count'], 5)
             # Each frustum has a broad upper cap and a smaller foot cap. Check

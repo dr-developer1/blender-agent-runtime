@@ -82,7 +82,7 @@ class ApiIntegrationTests(unittest.TestCase):
     def test_scene_observation_over_ipc(self):
         with BlenderClient(executable=BLENDER) as client:
             self.assertTrue(client.call('runtime.get_supported_features')['result']['scene_observation'])
-            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 34)
+            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 36)
             summary = client.call('scene.summary')['result']
             self.assertEqual(summary['object_count'], 3)
             self.assertEqual(summary['object_types'], {'CAMERA': 1, 'LIGHT': 1, 'MESH': 1})
@@ -350,3 +350,9 @@ class ApiIntegrationTests(unittest.TestCase):
                 client.call('runtime.get_version')
             client.close()
             self.assertFalse(directory.exists())
+
+    def test_basic_materials_in_real_blender(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'material_smoke.py'
+        result = run_headless(script, executable=BLENDER)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_MATERIAL_HEADLESS_OK', result.stdout)

@@ -43,7 +43,7 @@ class Exercise:
                                 'width': width, 'unit': 'mm', 'segments': 3})
 
 
-def build_manual(exercise):
+def build_manual(exercise, *, engine="WORKBENCH"):
     """Run in a fresh isolated client; commit only the supported technical checks."""
     e = exercise
     e.call('runtime.get_version')
@@ -101,11 +101,16 @@ def build_manual(exercise):
             })
             legs.append(leg)
         e.call('object.delete', {'object_id': cutter})
+        material = e.call('material.create', {
+            'name': 'Warm wood', 'base_color': [.22, .08, .025, 1],
+            'roughness': .65, 'metallic': 0})['material_id']
+        for object_id in [seat, *legs]:
+            e.call('material.assign', {'object_id': object_id, 'material_id': material})
         roles = {'seat': seat, 'legs': legs}
         reports = evaluate(e, roles)
         if not reports['supported_technical_passed']:
             raise RuntimeError('Manual baseline failed supported technical criteria')
-        images = e.call('observe.render_multiview', {'object_ids': [seat, *legs]})
+        images = e.call('observe.render_multiview', {'object_ids': [seat, *legs], 'engine': engine})
         e.call('scene.diff', control)
         e.call('transaction.commit', control)
         return roles, reports, images
@@ -132,7 +137,7 @@ def evaluate(exercise, roles):
     count = e.call('validate.assembly', {
         'object_ids': legs, 'checks': [{'kind': 'component_count', 'expected': 4}]})
     materials = e.call('validate.asset', {'object_ids': ids, 'require_materials': True})
-    passed = all(report['passed'] for report in (geometry, dimensions, assembly, count))
+    passed = all(report['passed'] for report in (geometry, dimensions, assembly, count, materials))
     failures = []
     for name, report in (('geometry', geometry), ('dimensions', dimensions),
                          ('assembly', assembly), ('leg_count', count)):
@@ -141,8 +146,8 @@ def evaluate(exercise, roles):
                              'evidence': [c for c in report['checks'] if not c['passed']]})
     if any(c['code'] == 'MATERIAL_ASSIGNMENT' and not c['passed']
            for c in materials['checks']):
-        failures.append({'criterion': 'wood_material', 'classification': 'interface',
-                         'evidence': 'Material validation fails; no public material creation/assignment tool. Basic materials are Milestone 13.'})
+        failures.append({'criterion': 'wood_material', 'classification': 'model_or_recipe',
+                         'evidence': 'Material assignment check fails; public material creation and assignment are available.'})
     return {'supported_technical_passed': passed, 'full_benchmark_passed': False,
             'geometry': geometry, 'dimensions': dimensions, 'assembly': assembly,
             'leg_count': count, 'materials': materials,
@@ -155,6 +160,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--blender', default='blender')
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--engine', choices=['WORKBENCH', 'EEVEE'], default='WORKBENCH')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     # Refuse to overwrite a previous benchmark's evidence.
@@ -163,7 +169,7 @@ def main():
     with BlenderClient(executable=args.blender, request_timeout=90) as client:
         exercise = Exercise(client)
         try:
-            roles, reports, rendered = build_manual(exercise)
+            roles, reports, rendered = build_manual(exercise, engine=args.engine)
             for image in rendered['images']:
                 (args.output / (image['camera']['view'] + '.png')).write_bytes(
                     base64.b64decode(image['png_base64'], validate=True))
