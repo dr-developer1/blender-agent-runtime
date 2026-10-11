@@ -1,0 +1,163 @@
+{
+  "benchmark": "stool-v1",
+  "reviews": [
+    {
+      "mode": "manual",
+      "session_id": "b1bcd5c0-625b-41cc-8fcd-9739bf154451",
+      "report_path": "artifacts/stool-manual-final/report.json",
+      "measured_dimensions_mm": [
+        400.0,
+        400.0,
+        450.0
+      ],
+      "public_call_count": 48,
+      "supported_technical_passed": true,
+      "full_benchmark_passed": false,
+      "visual_evaluation": {
+        "rubric_version": "stool-visual-v1",
+        "evaluator_identity": "Codex (GPT-6), same session as builder; unblinded self-review",
+        "review_date": "2026-10-12",
+        "method": "Direct visual inspection of all six Workbench PNGs; technical reports reviewed separately.",
+        "scale": {
+          "1": "Requirement absent or major visual problems",
+          "2": "Noticeable problems",
+          "3": "Adequate with visible limitations",
+          "4": "Good with minor limitations",
+          "5": "Excellent"
+        },
+        "scores": {
+          "proportions": {
+            "score": 4,
+            "notes": "Seat and leg proportions read clearly as a compact stool. Dimensions are separately validated, not inferred from the render."
+          },
+          "silhouette": {
+            "score": 4,
+            "notes": "Four gently splayed, tapered legs give a recognizable, symmetric stool silhouette; opposing legs overlap in cardinal projections."
+          },
+          "structural_plausibility": {
+            "score": 3,
+            "notes": "Legs visibly meet the seat and share a ground level. No joinery or bracing is shown. Appearance and AABB support checks do not prove strength or stability."
+          },
+          "surface_cleanliness": {
+            "score": 3,
+            "notes": "No obvious holes or detached pieces. Cylindrical faceting and uneven highlight bands remain visible. Edge rounding is subtle, especially under nonuniform object scale."
+          },
+          "material_plausibility": {
+            "score": 1,
+            "notes": "Uniform grey diagnostic shading has no wood appearance. Material assignment fails because the public material tools are scheduled for Milestone 13."
+          }
+        },
+        "images": [
+          {
+            "path": "artifacts/stool-manual-final/front.png",
+            "sha256": "d45ae32d0a15b7a4c4f491d6798c24633291b07f3c9c25bc3d5f1b11a84e28f9"
+          },
+          {
+            "path": "artifacts/stool-manual-final/back.png",
+            "sha256": "8180d760cf97a7952089b0b8c5896b8ee0e9ade8ddc008f0d8753a9039c53c6b"
+          },
+          {
+            "path": "artifacts/stool-manual-final/left.png",
+            "sha256": "fcc439ca4fb1a8f28d022293dc2a3cf8aaf2e8ada80178f8509a83947bf57da5"
+          },
+          {
+            "path": "artifacts/stool-manual-final/right.png",
+            "sha256": "30b0c2150a00a340888f1a7b2e2acb7cb0e5e4258033b29e490fe89272da1cb1"
+          },
+          {
+            "path": "artifacts/stool-manual-final/top.png",
+            "sha256": "adcbeb4dc7b24b6445db997c25fee771cd1e3abdfa075496da1e3debc9d68a21"
+          },
+          {
+            "path": "artifacts/stool-manual-final/perspective.png",
+            "sha256": "d7d7976cf75fbb6d947ea1284e71fcd8587a91a66f81b6a24a90bc7e3ef9856a"
+          }
+        ],
+        "limitations": [
+          "Self-review, not independent or blind evaluation.",
+          "Workbench lighting does not evaluate wood shaders.",
+          "Physical stability and exact surface contact are not certified."
+        ]
+      }
+    },
+    {
+      "mode": "agent",
+      "session_id": "8d19e676-6249-4222-ae88-e51ae0dd1b87",
+      "report_path": "artifacts/stool-agent/report.json",
+      "measured_dimensions_mm": [
+        399.6769,
+        399.6769,
+        450.0
+      ],
+      "public_call_count": 34,
+      "supported_technical_passed": true,
+      "full_benchmark_passed": false,
+      "visual_evaluation": {
+        "rubric_version": "stool-visual-v1",
+        "evaluator_identity": "Codex (GPT-6), same session as builder; unblinded self-review",
+        "review_date": "2026-10-12",
+        "method": "Direct visual inspection of all six Workbench PNGs; technical reports reviewed separately.",
+        "scale": {
+          "1": "Requirement absent or major visual problems",
+          "2": "Noticeable problems",
+          "3": "Adequate with visible limitations",
+          "4": "Good with minor limitations",
+          "5": "Excellent"
+        },
+        "scores": {
+          "proportions": {
+            "score": 4,
+            "notes": "Seat and leg proportions read clearly as a compact stool. Dimensions are separately validated, not inferred from the render."
+          },
+          "silhouette": {
+            "score": 4,
+            "notes": "Four gently splayed, tapered legs give a recognizable, symmetric stool silhouette; opposing legs overlap in cardinal projections."
+          },
+          "structural_plausibility": {
+            "score": 3,
+            "notes": "Legs visibly meet the seat and share a ground level. No joinery or bracing is shown. Appearance and AABB support checks do not prove strength or stability."
+          },
+          "surface_cleanliness": {
+            "score": 3,
+            "notes": "No obvious holes or detached pieces. Cylindrical faceting and uneven highlight bands remain visible. Edge rounding is subtle, especially under nonuniform object scale."
+          },
+          "material_plausibility": {
+            "score": 1,
+            "notes": "Uniform grey diagnostic shading has no wood appearance. Material assignment fails because the public material tools are scheduled for Milestone 13."
+          }
+        },
+        "images": [
+          {
+            "path": "artifacts/stool-agent/front.png",
+            "sha256": "23267b66ed6142391f6ffe3c52d495d7b2458a55f4d868bc7db58ff2d85350ad"
+          },
+          {
+            "path": "artifacts/stool-agent/back.png",
+            "sha256": "971a0a44ad9e8e35949e94862ceaf591e73923bd22969a84a96a67d588776d2c"
+          },
+          {
+            "path": "artifacts/stool-agent/left.png",
+            "sha256": "f0f1a5b1e90ec8eb11302eb2ac39bafead910ffcfcf82b4759cba97a36fc75be"
+          },
+          {
+            "path": "artifacts/stool-agent/right.png",
+            "sha256": "881494132ed9047312a88e40cbac042429e1c22fbcaa607da6231d66bd3a8a5a"
+          },
+          {
+            "path": "artifacts/stool-agent/top.png",
+            "sha256": "196edb093e5a3a873d7fa4fc7c7ff2e1e2e5d152b5784d6d3a4f65aa56de7065"
+          },
+          {
+            "path": "artifacts/stool-agent/perspective.png",
+            "sha256": "d17fd4a0b63e2087015058d8887684d3b181cf82eded2ead1d53abbd09606eb8"
+          }
+        ],
+        "limitations": [
+          "Self-review, not independent or blind evaluation.",
+          "Workbench lighting does not evaluate wood shaders.",
+          "Physical stability and exact surface contact are not certified."
+        ]
+      }
+    }
+  ]
+}

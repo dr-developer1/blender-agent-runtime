@@ -3,7 +3,7 @@
 A model-independent machine interface to Blender, implemented incrementally from
 [the canonical plan](BLENDER_AGENT_RUNTIME_CANONICAL_MASTER_PLAN_V2.md).
 
-Milestones 1–11 provide a persistent headless Blender process, synchronous structured
+Milestones 1–12 provide a persistent headless Blender process, synchronous structured
 IPC, shutdown/death detection, isolated headless testing, and a versioned, typed
 discovery API with structured errors, call logging, session IDs and
 monotonic revision preconditions. Objects receive persistent UUIDs with collision
@@ -149,3 +149,19 @@ Single-view `observe.render` accepts `view`, `mode` and `engine`; `observe.camer
 returns the same framing metadata without rendering. See the observation contract
 for target visibility, evaluated mesh scope, image budgets, EEVEE lighting and
 resource cleanup. These calls preserve revisions and source scene settings.
+
+The first vertical slice adds a repeatable manual stool and a JSON-line bridge for
+one AI agent. Run the manual exercise with:
+
+```bash
+python3 -m benchmarks.stool --output artifacts/stool-manual-new
+python3 -m benchmarks.agent --agent "your agent identity" --output artifacts/stool-agent-new
+```
+
+The bridge prints a ready message and accepts public tool calls on stdin. Finish
+with seat and four leg UUIDs. Output directories must be empty; each completed
+exercise saves a report, tool trace and six PNGs. The bridge owns a checkpoint and
+rolls back on disconnection, exhausted call budget or failed technical checks.
+See [the stool exercise and actual Codex run](docs/STOOL_BENCHMARK.md). Both builds
+pass supported technical criteria, while material assignment remains a confirmed
+interface gap for Milestone 13; full benchmark success is not claimed.

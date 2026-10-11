@@ -114,3 +114,13 @@ black geometry. Finally cleanup removes all owned datablocks and temporary files
 The source scene, revisions, cursors and selection handles are preserved. Only the
 native global Render Result is replaceable. See OBSERVATION.md for mesh/evaluation
 scope and backend limitations.
+
+Milestone 12 adds public-API exercises under benchmarks rather than extending the
+runtime tool set. The manual stool drives BlenderClient directly; the local
+JSON-line bridge lets one external AI agent inspect/discover/model through the
+same client. The harness owns a transaction, evaluates explicit seat/leg UUIDs,
+saves diagnostic PNGs and commits supported technical results or rolls back.
+Disconnect and command-budget exhaustion restore the checkpoint. Structured tool
+rejections remain visible for repair; lifecycle/transport failures terminate the
+exercise. Reports distinguish supported technical results, confirmed interface
+gaps and unverified visual criteria. See STOOL_BENCHMARK.md for actual Codex evidence.
