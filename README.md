@@ -3,9 +3,10 @@
 A model-independent machine interface to Blender, implemented incrementally from
 [the canonical plan](BLENDER_AGENT_RUNTIME_CANONICAL_MASTER_PLAN_V2.md).
 
-Milestones 1–2 provide a persistent headless Blender process, synchronous structured
+Milestones 1–3 provide a persistent headless Blender process, synchronous structured
 IPC, shutdown/death detection, isolated headless testing, and a versioned, typed
-read-only discovery API with structured errors and call logging. No modeling tools yet.
+read-only discovery API with structured errors, call logging, session IDs and
+monotonic revision preconditions. No modeling tools yet.
 Requires Python 3.10+ and a Blender executable on PATH. No Python dependencies are
 needed to run the controller or tests.
 
@@ -17,6 +18,7 @@ python3 -m unittest discover -s tests/integration -v
 python3 -m unittest discover -s conformance -v
 python3 -m controller.headless tests/blender/smoke.py
 python3 -m controller.headless tests/blender/api_smoke.py
+python3 -m controller.headless tests/blender/state_smoke.py
 ```
 
 Choose a different Blender for integration/conformance tests with
@@ -31,6 +33,7 @@ from controller.client import BlenderClient
 with BlenderClient(executable="blender") as client:
     print(client.request("process.ping"))
     print(client.request("process.ping"))  # same PID, next execution sequence
+    print(client.session_id, client.revision)  # initialized by startup handshake
     print(client.call("runtime.get_version"))
     print(client.call("runtime.list_tools"))
     print(client.call("runtime.describe_tool", {"name": "runtime.get_limits"}))
@@ -47,8 +50,9 @@ See [architecture](docs/ARCHITECTURE.md), [current milestone](docs/CURRENT_MILES
 and [conformance](docs/CONFORMANCE.md).
 
 Limitations: background mode only; local single-controller TCP transport; no scene
-recovery, session IDs, revisions, object IDs or transactions yet. API 1.0 is
-currently limited to read-only discovery; the full state contract follows in Milestone 3.
+recovery, object IDs or transactions yet. API 1.0 is limited to read-only discovery.
+State preconditions guard every public call; mutation and restore hooks are tested
+with private fixtures. External scene edits are not automatically tracked.
 Loopback and a launch token restrict accidental attachment; this is not a sandbox
 against other processes running as the same user. Headless test scripts are trusted
 local code. Integration tests skip if Blender is unavailable. A hung process is

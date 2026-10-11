@@ -31,6 +31,16 @@ class BlenderClient:
         self._lock = threading.RLock()
         self._closed = False
         self.log_output = ''
+        self._session_id = None
+        self._revision = None
+
+    @property
+    def session_id(self):
+        return self._session_id
+
+    @property
+    def revision(self):
+        return self._revision
 
     @property
     def pid(self):
@@ -76,8 +86,12 @@ class BlenderClient:
                     ready = self._channel.receive()
                     if (ready.get('type') != 'ready' or ready.get('pid') != self.pid or
                             not isinstance(ready.get('token'), str) or
-                            not hmac.compare_digest(ready['token'], token)):
+                            not hmac.compare_digest(ready['token'], token) or
+                            not isinstance(ready.get('session_id'), str) or not ready['session_id'] or
+                            type(ready.get('revision')) is not int or ready['revision'] < 0):
                         raise ProtocolError('Invalid Blender startup handshake')
+                    self._session_id = ready['session_id']
+                    self._revision = ready['revision']
                     self._sock.settimeout(self.request_timeout)
             except (OSError, EOFError, ProtocolError, BlenderProcessError) as exc:
                 self._dispose()
@@ -93,18 +107,23 @@ class BlenderClient:
                 raise ValueError('Use close() for shutdown')
             return self._exchange(command, {} if arguments is None else arguments)
 
-    def call(self, tool, arguments=None, *, api_version=API_VERSION):
+    def call(self, tool, arguments=None, *, api_version=API_VERSION,
+             session_id=None, expected_revision=None):
         """Call a public versioned tool; lifecycle commands use request()/close()."""
         with self._lock:
             if (self._closed or self.process is None or self._channel is None or
                     self.process.poll() is not None):
                 raise BlenderProcessError(f'Blender is not running (exit code {self.returncode})')
             return self._exchange(tool, {} if arguments is None else arguments,
-                                  api_version=api_version, public=True)
+                                  api_version=api_version, public=True,
+                                  session_id=self.session_id if session_id is None else session_id,
+                                  expected_revision=self.revision if expected_revision is None else expected_revision)
 
-    def _exchange(self, command, arguments, *, api_version=None, public=False):
+    def _exchange(self, command, arguments, *, api_version=None, public=False,
+                  session_id=None, expected_revision=None):
         request_id = str(uuid.uuid4())
         message = ({'id': request_id, 'api_version': api_version,
+                    'session_id': session_id, 'expected_revision': expected_revision,
                     'tool': command, 'arguments': arguments} if public else
                    {'id': request_id, 'command': command, 'arguments': arguments})
         try:
@@ -116,6 +135,14 @@ class BlenderClient:
             if public:
                 try:
                     validate_response({key: value for key, value in response.items() if key != 'id'})
+                    if response['session_id'] != self.session_id:
+                        raise ValueError('Response belongs to a different session')
+                    observed = response['revision_after'] if response['success'] else response['revision']
+                    if observed < self.revision:
+                        raise ValueError('Runtime revision moved backward')
+                    if response['success'] and response['revision_before'] != expected_revision:
+                        raise ValueError('Response does not match expected revision')
+                    self._revision = observed
                 except ValueError as exc:
                     raise ProtocolError(str(exc)) from exc
             return response

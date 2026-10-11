@@ -20,3 +20,11 @@ internal-error redaction and omission of arguments/results from logs.
 Run `python3 -m controller.headless tests/blender/api_smoke.py` for an isolated
 Blender check that all seven tools return valid success envelopes and leave scene
 objects unchanged. This supplements the persistent-process integration suite.
+
+Milestone 3 covers session bootstrap, new sessions after process restart, stale
+revision and old-session rejection, malformed state fields and recovery. A real
+Blender scene fixture creates and removes an object while verifying that restoring
+contents advances the timeline. Unit tests additionally cover conservative revision
+advancement after failure, concurrent stale edits, read stability, and client
+rejection of corrupt state responses. The state fixture can also run directly with
+`python3 -m controller.headless tests/blender/state_smoke.py`.

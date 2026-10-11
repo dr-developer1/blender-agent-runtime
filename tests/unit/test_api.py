@@ -14,7 +14,8 @@ class ApiTests(unittest.TestCase):
         self.api = RuntimeAPI(blender_version='test-blender', logger=EventLogger(self.logs))
 
     def call(self, tool, arguments=None, **extra):
-        message = {'api_version': '1.0', 'tool': tool, 'arguments': arguments or {}}
+        message = {'api_version': '1.0', 'tool': tool, 'arguments': arguments or {},
+                   'session_id': self.api.state.session_id, 'expected_revision': self.api.state.revision}
         message.update(extra)
         return self.api.execute(message, request_id='test-id')
 
@@ -47,6 +48,7 @@ class ApiTests(unittest.TestCase):
                         {'api_version': '1.0', 'tool': 'x', 'arguments': []},
                         {'api_version': '1.0', 'tool': 'x', 'arguments': {}, 'extra': 1}):
             with self.subTest(request=request):
+                request = {'session_id': self.api.state.session_id, 'expected_revision': 0, **request}
                 self.assertEqual(self.api.execute(request)['error']['code'], 'INVALID_REQUEST')
         result = self.call('runtime.list_tools', api_version='2.0')
         self.assertEqual(result['error']['code'], 'UNSUPPORTED_API_VERSION')
@@ -66,7 +68,8 @@ class ApiTests(unittest.TestCase):
             self.assertEqual(result[field], [])
         self.assertIsNone(result['validation'])
         self.assertGreaterEqual(result['metrics']['duration_ms'], 0)
-        self.assertNotIn('session_id', result)
+        self.assertEqual(result['session_id'], self.api.state.session_id)
+        self.assertEqual((result['revision_before'], result['revision_after']), (0, 0))
 
     def test_logs_omit_payloads_and_secrets(self):
         self.call('runtime.describe_tool', {'name': 'secret-value'})
@@ -100,7 +103,9 @@ class ApiTests(unittest.TestCase):
         validate_response(self.call('unknown'))
         for field, bad_value in (('api_version', '9.0'), ('warnings', 'wrong'),
                                  ('created_ids', [3]), ('success', 1),
-                                 ('metrics', {'duration_ms': float('nan')})):
+                                 ('metrics', {'duration_ms': float('nan')}),
+                                 ('session_id', ''), ('revision_before', True),
+                                 ('revision_before', 1), ('revision_after', -1)):
             with self.subTest(field=field):
                 bad = dict(good)
                 bad[field] = bad_value

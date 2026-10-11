@@ -1,9 +1,11 @@
 import json
 import os
+from pathlib import Path
 import shutil
 import unittest
 
 from controller.client import BlenderClient
+from controller.lifecycle import run_headless
 
 BLENDER = os.environ.get('BLENDER_EXECUTABLE', 'blender')
 
@@ -30,3 +32,29 @@ class ApiIntegrationTests(unittest.TestCase):
         self.assertTrue(events)
         self.assertEqual(sum(not event['success'] for event in events), 3)
         self.assertTrue(all(event['event'] == 'tool_call' for event in events))
+
+    def test_restart_and_state_preconditions_over_ipc(self):
+        with BlenderClient(executable=BLENDER) as first:
+            old_session = first.session_id
+            self.assertEqual(first.revision, 0)
+            read = first.call('runtime.get_version')
+            self.assertEqual(read['session_id'], old_session)
+            self.assertEqual((read['revision_before'], read['revision_after']), (0, 0))
+            stale = first.call('runtime.get_version', expected_revision=1)
+            self.assertEqual(stale['error']['code'], 'STALE_SCENE_STATE')
+            self.assertEqual(first.revision, 0)
+            invalid = first.call('runtime.get_version', expected_revision=True)
+            self.assertEqual(invalid['error']['code'], 'INVALID_REQUEST')
+            self.assertTrue(first.call('runtime.get_version')['success'])
+        with BlenderClient(executable=BLENDER) as second:
+            self.assertNotEqual(second.session_id, old_session)
+            rejected = second.call('runtime.get_version', session_id=old_session)
+            self.assertEqual(rejected['error']['code'], 'SESSION_MISMATCH')
+            self.assertEqual(rejected['session_id'], second.session_id)
+            self.assertTrue(second.call('runtime.get_version')['success'])
+
+    def test_real_scene_mutation_and_restore_advance_timeline(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'state_smoke.py'
+        result = run_headless(script, executable=BLENDER)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_STATE_HEADLESS_OK', result.stdout)

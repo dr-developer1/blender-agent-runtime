@@ -2,11 +2,13 @@
 from copy import deepcopy
 import json
 import time
+import threading
 
 from controller.ipc import MAX_FRAME_BYTES
 from .capability_registry import CapabilityRegistry, ToolSpec
 from .errors import ToolError
 from .logging import EventLogger
+from .revisions import RuntimeState
 from .schemas import (API_VERSION, RUNTIME_VERSION, SUPPORTED_VERSIONS, ToolRequest,
                       failure_response, object_schema, success_response)
 
@@ -16,7 +18,7 @@ CONVENTIONS = {'up': '+Z', 'forward': '-Y', 'ground_plane': 'XY',
                'dimensions': 'evaluated_world_space'}
 FEATURES = {'capability_discovery': True, 'typed_contracts': True,
             'structured_errors': True, 'synchronous_execution': True,
-            'scene_mutation': False, 'sessions': False, 'revisions': False,
+            'scene_mutation': False, 'sessions': True, 'revisions': True,
             'transactions': False, 'semantic_selection': False}
 LIMITS = {'max_frame_bytes': MAX_FRAME_BYTES, 'max_in_flight_requests': 1,
           'execution_mode': 'headless', 'transport': 'loopback_tcp'}
@@ -64,6 +66,8 @@ class RuntimeAPI:
     def __init__(self, *, blender_version, logger=None):
         self.blender_version = blender_version
         self.logger = logger if logger is not None else EventLogger()
+        self.state = RuntimeState()
+        self._lock = threading.RLock()
         self.registry = CapabilityRegistry()
         self._register_tools()
 
@@ -95,19 +99,28 @@ class RuntimeAPI:
                                             output_schema=OUTPUT_SCHEMAS[name]), handler)
 
     def execute(self, message, *, request_id=None):
+        with self._lock:
+            return self._execute(message, request_id=request_id)
+
+    def _execute(self, message, *, request_id):
         started = time.monotonic()
+        revision_before = self.state.revision
         request = None
         error = None
         try:
             request = ToolRequest.parse(message)
-            result = self.registry.invoke(request.tool, request.arguments)
+            self.state.check(request.session_id, request.expected_revision)
+            result = self.registry.invoke(request.tool, request.arguments,
+                                          before_mutation=self.state.advance)
             json.dumps(result, allow_nan=False)
         except ToolError as exc:
             error = exc
         except Exception:
             error = ToolError('INTERNAL_ERROR', 'Tool execution failed.')
         duration_ms = round((time.monotonic() - started) * 1000, 3)
-        response = failure_response(error) if error else success_response(result, duration_ms)
+        response = (failure_response(error, self.state.session_id, self.state.revision) if error else
+                    success_response(result, duration_ms, self.state.session_id,
+                                     revision_before, self.state.revision))
         # Only validated identifiers enter logs; malformed payloads are never recorded.
         self.logger.tool_call(request_id=request_id, tool=request.tool if request else None,
                               api_version=request.api_version if request else None,

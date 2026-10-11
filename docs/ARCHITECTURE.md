@@ -7,7 +7,7 @@ time. A controller lock serializes callers; the Blender Python entrypoint execut
 all commands on its main thread. No worker thread accesses bpy.
 
 Milestone 1 lifecycle commands `process.ping` and `process.shutdown` remain private
-scaffolding. Milestone 2 adds a public API 1.0 envelope (`api_version`, `tool`,
+scaffolding. Milestone 2 adds a public API 1.0 envelope (`api_version`, `session_id`, `expected_revision`, `tool`,
 `arguments`) and seven read-only discovery tools, invoked with `client.call()`.
 Both envelope types carry a private correlation ID over the same serialized channel.
 No script execution or modeling operation is available over IPC.
@@ -17,7 +17,14 @@ one capability registry, validates its arguments and returns a typed success/err
 response. Discovery uses the same registry and reports only available tools. Every
 public call emits structured metadata without arguments or results. Internal errors
 are redacted. The controller validates public responses before returning them.
-Session/revision fields are reserved for Milestone 3, rather than simulated now.
+Milestone 3 gives each API instance a fresh session UUID and an independent monotonic
+revision counter. The startup handshake supplies initial state to the controller.
+The dispatcher lock covers state validation and execution; state preconditions
+apply to reads and mutations alike. Validated tools with declared side effects
+advance the timeline before execution, including failed attempts. Scene snapshots
+must never include the counter. The controller tracks returned revisions and
+rejects different-session or backward-state responses. Public discovery is still
+read-only; test fixtures exercise real edits and scene restoration.
 
 The controller owns process lifetime, deadlines, log capture and cleanup. A timeout
 or broken protocol poisons the connection and terminates the child: an uncertain

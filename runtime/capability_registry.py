@@ -57,9 +57,11 @@ class CapabilityRegistry:
     def describe(self, name):
         return self._resolve(name)[0].describe()
 
-    def invoke(self, name, arguments):
+    def invoke(self, name, arguments, *, before_mutation=None):
         spec, handler = self._resolve(name)
         validate_arguments(arguments, spec.input_schema)
+        if spec.side_effects and before_mutation is not None:
+            before_mutation()
         result = handler(arguments)
         if not isinstance(result, dict):
             raise TypeError('Tool result must be an object')

@@ -4,9 +4,9 @@ The [canonical master plan](../BLENDER_AGENT_RUNTIME_CANONICAL_MASTER_PLAN_V2.md
 section 35 is the authoritative implementation order.
 
 1. Process Foundation — complete.
-2. API Foundation — complete; see CURRENT_MILESTONE.md.
-3. State Model — next.
-4. Identity.
+2. API Foundation — complete.
+3. State Model — complete; see CURRENT_MILESTONE.md.
+4. Identity — next.
 5. Scene Observability.
 6. Semantic Geometry Addressing.
 7. Basic Object Control.
