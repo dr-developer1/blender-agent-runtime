@@ -10,6 +10,7 @@ import time
 import uuid
 
 from .ipc import JsonChannel, ProtocolError
+from runtime.schemas import API_VERSION, validate_response
 from .lifecycle import BlenderProcessError, blender_command, isolated_environment
 
 
@@ -92,15 +93,31 @@ class BlenderClient:
                 raise ValueError('Use close() for shutdown')
             return self._exchange(command, {} if arguments is None else arguments)
 
-    def _exchange(self, command, arguments):
+    def call(self, tool, arguments=None, *, api_version=API_VERSION):
+        """Call a public versioned tool; lifecycle commands use request()/close()."""
+        with self._lock:
+            if (self._closed or self.process is None or self._channel is None or
+                    self.process.poll() is not None):
+                raise BlenderProcessError(f'Blender is not running (exit code {self.returncode})')
+            return self._exchange(tool, {} if arguments is None else arguments,
+                                  api_version=api_version, public=True)
+
+    def _exchange(self, command, arguments, *, api_version=None, public=False):
         request_id = str(uuid.uuid4())
-        message = {'id': request_id, 'command': command, 'arguments': arguments}
+        message = ({'id': request_id, 'api_version': api_version,
+                    'tool': command, 'arguments': arguments} if public else
+                   {'id': request_id, 'command': command, 'arguments': arguments})
         try:
             self._channel.send(message)
             response = self._channel.receive()
             if (response.get('id') != request_id or type(response.get('success')) is not bool or
                     not isinstance(response.get('result' if response['success'] else 'error'), dict)):
                 raise ProtocolError('Invalid or uncorrelated response')
+            if public:
+                try:
+                    validate_response({key: value for key, value in response.items() if key != 'id'})
+                except ValueError as exc:
+                    raise ProtocolError(str(exc)) from exc
             return response
         except (OSError, EOFError, ProtocolError) as exc:
             self._dispose()

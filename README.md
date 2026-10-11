@@ -3,8 +3,9 @@
 A model-independent machine interface to Blender, implemented incrementally from
 [the canonical plan](BLENDER_AGENT_RUNTIME_CANONICAL_MASTER_PLAN_V2.md).
 
-Milestone 1 provides a persistent headless Blender process, synchronous structured
-IPC, shutdown/death detection, and isolated headless testing. No modeling tools yet.
+Milestones 1–2 provide a persistent headless Blender process, synchronous structured
+IPC, shutdown/death detection, isolated headless testing, and a versioned, typed
+read-only discovery API with structured errors and call logging. No modeling tools yet.
 Requires Python 3.10+ and a Blender executable on PATH. No Python dependencies are
 needed to run the controller or tests.
 
@@ -15,6 +16,7 @@ python3 -m unittest discover -s tests/unit -v
 python3 -m unittest discover -s tests/integration -v
 python3 -m unittest discover -s conformance -v
 python3 -m controller.headless tests/blender/smoke.py
+python3 -m controller.headless tests/blender/api_smoke.py
 ```
 
 Choose a different Blender for integration/conformance tests with
@@ -29,6 +31,9 @@ from controller.client import BlenderClient
 with BlenderClient(executable="blender") as client:
     print(client.request("process.ping"))
     print(client.request("process.ping"))  # same PID, next execution sequence
+    print(client.call("runtime.get_version"))
+    print(client.call("runtime.list_tools"))
+    print(client.call("runtime.describe_tool", {"name": "runtime.get_limits"}))
 ```
 
 `close()` requests shutdown, waits for process exit, and cleans temporary resources.
@@ -37,12 +42,21 @@ error responses. Captured Blender output is available as `client.log_output` aft
 cleanup. After a timeout or protocol failure the client terminates Blender and
 becomes unusable; create a new client to restart. Commands are never retried.
 
-See [architecture](docs/ARCHITECTURE.md), [current milestone](docs/CURRENT_MILESTONE.md)
+See [architecture](docs/ARCHITECTURE.md), [current milestone](docs/CURRENT_MILESTONE.md),
+[tool contract](docs/TOOL_CONTRACT.md), [conventions](docs/CONVENTIONS.md),
 and [conformance](docs/CONFORMANCE.md).
 
 Limitations: background mode only; local single-controller TCP transport; no scene
-recovery, public API versioning, revisions, object IDs or capability discovery yet.
+recovery, session IDs, revisions, object IDs or transactions yet. API 1.0 is
+currently limited to read-only discovery; the full state contract follows in Milestone 3.
 Loopback and a launch token restrict accidental attachment; this is not a sandbox
 against other processes running as the same user. Headless test scripts are trusted
 local code. Integration tests skip if Blender is unavailable. A hung process is
 terminated after its deadline, so graceful shutdown is not guaranteed in that case.
+
+Available public tools: `runtime.get_version`, `runtime.get_supported_versions`,
+`runtime.list_tools`, `runtime.describe_tool`, `runtime.describe_capabilities`,
+`runtime.get_supported_features`, and `runtime.get_limits`. Tool schemas and
+metadata are returned by discovery. Only `runtime.describe_tool` takes an argument
+(`name`); the other tools take an empty object. Unsupported API versions and bad
+arguments return structured failures while keeping the process usable.

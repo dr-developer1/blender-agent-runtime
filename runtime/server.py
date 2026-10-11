@@ -8,6 +8,7 @@ import threading
 # Blender executes this file as a script, outside an installed package.
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from controller.ipc import JsonChannel
+from runtime.api import RuntimeAPI
 
 
 def serve():
@@ -19,12 +20,20 @@ def serve():
         channel.send({'type': 'ready', 'token': os.environ.pop('BAR_IPC_TOKEN'), 'pid': os.getpid()})
         sock.settimeout(None)
         sequence = 0
+        api = RuntimeAPI(blender_version=bpy.app.version_string)
         while True:
             try:
                 request = channel.receive()
             except EOFError:
                 return
             request_id = request.get('id')
+            if 'command' not in request:
+                valid_id = isinstance(request_id, str) and bool(request_id)
+                public_request = {key: value for key, value in request.items() if key != 'id'}
+                response = api.execute(public_request if valid_id else {},
+                                       request_id=request_id if valid_id else None)
+                channel.send({'id': request_id if valid_id else None, **response})
+                continue
             command = request.get('command')
             arguments = request.get('arguments')
             error = None

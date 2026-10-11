@@ -1,20 +1,23 @@
 # Current milestone
 
-Milestone 1 — Process Foundation (steps 1–6): complete.
+Milestone 2 — API Foundation (steps 7–13): complete.
 
-Implemented: persistent headless Blender process; private structured IPC;
-serialized synchronous execution on Blender's main thread; clean shutdown;
-process-death and timeout detection; isolated headless script runner.
+Implemented: typed request/response contracts; strict argument schemas; structured
+errors; API 1.0 version validation; a shared capability registry; seven read-only
+discovery tools; JSON call metadata logging; documented axes, units, angles,
+rotation order and evaluated dimension conventions. The controller exposes public
+calls via `client.call()` while retaining private lifecycle `request()`/`close()`.
 
-Verified on Linux with Python 3.12.3 and Blender 5.2.2 LTS. Five transport unit
-tests and ten real-process acceptance tests cover persistence, concurrent callers,
-main-thread execution, invalid requests/arguments, recovery after command rejection,
-shutdown, crashes, early exit, missing executable and timeout cleanup. The headless
-runner verifies factory scene startup and propagates script failure/timeout.
-The conformance entrypoint reuses these process acceptance tests.
+Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 17 unit tests, 11
+integration tests, 11 conformance checks reusing the integration suite, and an
+isolated headless API smoke check. Includes all Milestone 1 lifecycle regressions.
+Exact commands are in README.md. Tool contracts are in TOOL_CONTRACT.md.
 
-Next: Milestone 2 — schemas, structured errors, API versioning, capability registry,
-tool discovery, logging and conventions. The current IPC envelope is private;
-Milestone 2 will introduce the public tool contract from the canonical plan.
-Session IDs and scene revisions follow in Milestone 3. Do not add modeling tools,
-AI integration or adapters ahead of their canonical milestones.
+Limits: read-only discovery; schema validator currently handles only the object/
+string argument subset used by discovery. Public envelopes intentionally omit
+session and revision fields until the next milestone. No modeling tools, recovery,
+AI integration or adapters have been added.
+
+Next: Milestone 3 — State Model (steps 14–16): session IDs, monotonic revisions,
+and stale-state protection. Extend the API 1.0 foundation to the planned state
+contract before adding identity or scene operations.

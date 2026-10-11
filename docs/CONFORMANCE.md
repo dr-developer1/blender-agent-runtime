@@ -9,3 +9,14 @@ concurrent controller callers, execution on the Blender main thread, structured
 command rejection and subsequent recovery, clean exit, forced process death,
 missing executable, and independent headless script success/failure propagation.
 Transport unit tests check framing, non-finite/malformed JSON, bounds and disconnects.
+
+
+Milestone 2 adds real-process API discovery, descriptor lookup, version rejection,
+invalid-argument rejection, unknown-tool handling, subsequent-call recovery and
+captured JSON logs. Unit tests independently check strict schemas, version contracts,
+response validation, registry consistency, descriptor isolation, non-JSON outputs,
+internal-error redaction and omission of arguments/results from logs.
+
+Run `python3 -m controller.headless tests/blender/api_smoke.py` for an isolated
+Blender check that all seven tools return valid success envelopes and leave scene
+objects unchanged. This supplements the persistent-process integration suite.
