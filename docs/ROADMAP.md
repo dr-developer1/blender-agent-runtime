@@ -5,9 +5,9 @@ section 35 is the authoritative implementation order.
 
 1. Process Foundation — complete.
 2. API Foundation — complete.
-3. State Model — complete; see CURRENT_MILESTONE.md.
-4. Identity — next.
-5. Scene Observability.
+3. State Model — complete.
+4. Identity — complete; see CURRENT_MILESTONE.md.
+5. Scene Observability — next.
 6. Semantic Geometry Addressing.
 7. Basic Object Control.
 8. Core Mesh Control.

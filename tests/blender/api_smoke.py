@@ -7,7 +7,7 @@ import bpy
 from runtime.api import RuntimeAPI
 from runtime.schemas import validate_response
 
-api = RuntimeAPI(blender_version=bpy.app.version_string)
+api = RuntimeAPI(blender_version=bpy.app.version_string, objects=lambda: bpy.data.objects)
 objects_before = tuple(bpy.data.objects)
 for name in api.registry.names():
     arguments = {'name': name} if name == 'runtime.describe_tool' else {}

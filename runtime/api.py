@@ -7,6 +7,7 @@ import threading
 from controller.ipc import MAX_FRAME_BYTES
 from .capability_registry import CapabilityRegistry, ToolSpec
 from .errors import ToolError
+from .identity import ObjectIdentity
 from .logging import EventLogger
 from .revisions import RuntimeState
 from .schemas import (API_VERSION, RUNTIME_VERSION, SUPPORTED_VERSIONS, ToolRequest,
@@ -19,7 +20,7 @@ CONVENTIONS = {'up': '+Z', 'forward': '-Y', 'ground_plane': 'XY',
 FEATURES = {'capability_discovery': True, 'typed_contracts': True,
             'structured_errors': True, 'synchronous_execution': True,
             'scene_mutation': False, 'sessions': True, 'revisions': True,
-            'transactions': False, 'semantic_selection': False}
+            'transactions': False, 'semantic_selection': False, 'object_identity': False}
 LIMITS = {'max_frame_bytes': MAX_FRAME_BYTES, 'max_in_flight_requests': 1,
           'execution_mode': 'headless', 'transport': 'loopback_tcp'}
 
@@ -63,11 +64,16 @@ OUTPUT_SCHEMAS = {
 
 
 class RuntimeAPI:
-    def __init__(self, *, blender_version, logger=None):
+    def __init__(self, *, blender_version, logger=None, objects=None):
         self.blender_version = blender_version
         self.logger = logger if logger is not None else EventLogger()
         self.state = RuntimeState()
         self._lock = threading.RLock()
+        self.identities = ObjectIdentity(objects) if objects is not None else None
+        # Bootstrap is part of the initial scene baseline, before state is published.
+        if self.identities is not None:
+            self.identities.ensure_all()
+        self.features = {**FEATURES, 'object_identity': self.identities is not None}
         self.registry = CapabilityRegistry()
         self._register_tools()
 
@@ -83,13 +89,13 @@ class RuntimeAPI:
             ('runtime.describe_tool', 'Describe one tool and its typed arguments.',
              lambda args: self.registry.describe(args['name'])),
             ('runtime.get_supported_features', 'Report implemented and unavailable features.',
-             lambda args: dict(FEATURES)),
+             lambda args: dict(self.features)),
             ('runtime.get_limits', 'Report transport and execution limits.',
              lambda args: dict(LIMITS)),
             ('runtime.describe_capabilities', 'Describe available tools, conventions and limits.',
              lambda args: {'api_version': API_VERSION,
                            'tools': [self.registry.describe(name) for name in self.registry.names()],
-                           'features': dict(FEATURES), 'limits': dict(LIMITS),
+                           'features': dict(self.features), 'limits': dict(LIMITS),
                            'conventions': deepcopy(CONVENTIONS)}),
         ]
         for name, description, handler in tools:

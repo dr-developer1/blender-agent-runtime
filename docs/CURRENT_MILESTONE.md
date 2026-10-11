@@ -1,28 +1,31 @@
 # Current milestone
 
-Milestone 3 — State Model (steps 14–16): complete.
+Milestone 4 — Identity (steps 17–21): complete.
 
-Implemented: fresh runtime session UUIDs; monotonic revision counters; strict
-state fields on every public request; session and stale-state rejection before
-execution; revision fields on success/error responses; authenticated state
-bootstrap; automatic controller state tracking with explicit observation
-precondition overrides; response timeline validation; serialized mutation hooks.
-Read-only discovery leaves revisions unchanged. Declared mutation attempts advance
-before execution, including failures; scene restoration never rewinds the counter.
-Runtime package version: 0.3.0; public API version: 1.0.
+Implemented: persistent `bar_uuid` object custom properties; startup management of
+all Blender data objects; strict canonical UUID validation; live UUID resolution;
+known-duplicate identity assignment; fail-closed collision handling; structured
+missing-object, malformed-identity, read-only and write-failure errors. IDs survive
+renames and .blend save/load. Removing data makes IDs unresolved; name reuse does
+not revive identity. Resolution retains no object references across file loads.
+The Blender server advertises `object_identity` support through discovery.
+Runtime package version: 0.4.0; public API version: 1.0.
 
-Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 25 unit tests, 13
-integration tests, 13 conformance checks reusing the integration suite, and an
-isolated headless API smoke check. Integration includes a real Blender create/
-restore fixture. Checks cover stale and wrong-session rejection, restart identity,
-concurrent edits, failures, monotonic restoration and corrupt controller responses,
-plus all prior lifecycle and discovery regressions. Commands are in README.md.
+Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 35 unit tests, 15
+integration tests, and 15 conformance checks reusing the integration suite, plus
+direct headless identity/API smoke checks. Real Blender tests cover data-block and
+operator duplication, collision/malformed-ID rejection, deletion, name reuse,
+save/load with the existing resolver, and persistence across two Blender processes
+with different sessions. Mutation and file-load fixtures verify revision hooks.
+All prior lifecycle, API and state checks pass. Commands are in README.md.
 
-Limits: seven production tools remain read-only discovery. Mutation and rollback
-hooks are exercised through private test fixtures, not public modeling tools.
-External bpy edits are not automatically tracked. Argument schemas still support
-only the discovery object/string subset. No recovery snapshots, object IDs,
-transactions, AI integration or adapters have been added.
+Limits: identity helpers are internal; seven public tools remain discovery only.
+Missing IDs are initialized as part of the revision-zero baseline before the
+startup handshake. Later writes must run inside revision-guarded mutation handlers.
+Unknown collisions require explicit repair; linked-library management and automatic
+tracking of external edits are not implemented. Resolution scans all current data.
+No scene observation tools, recovery snapshots, transactions, AI or adapters yet.
+See IDENTITY.md for the service contract and error behavior.
 
-Next: Milestone 4 — Identity (steps 17–21): persistent object UUIDs, resolution,
-and save/load, duplication and deletion tests.
+Next: Milestone 5 — Scene Observability (steps 22–24): scene summary, filtered
+object listing and pagination.

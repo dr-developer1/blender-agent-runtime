@@ -55,3 +55,8 @@ preconditions. They are not advertised as public tools. Use `close()` for shutdo
 One JSON log event is emitted per public call with request ID, tool name, API
 version, outcome, error code and duration. Arguments, results, credentials and
 exception text are excluded. Logs share the captured Blender output stream.
+
+Milestone 4 advertises `object_identity: true` when a live object provider is
+attached (including the Blender server). UUID initialization precedes publication
+of revision zero. The seven public tools remain discovery only; identity helpers
+and their errors are documented in IDENTITY.md for subsequent scene tools.

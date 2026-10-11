@@ -28,3 +28,12 @@ contents advances the timeline. Unit tests additionally cover conservative revis
 advancement after failure, concurrent stale edits, read stability, and client
 rejection of corrupt state responses. The state fixture can also run directly with
 `python3 -m controller.headless tests/blender/state_smoke.py`.
+
+Milestone 4 verifies startup identity capability reporting, UUID assignment,
+rename-safe resolution, Blender data-block and operator duplication, collision and
+malformed-ID detection, deletion and name reuse, and save/load with live-reference
+reacquisition. A second check writes a .blend file in one isolated process and
+resolves the same UUIDs in another process with a different session. Unit tests
+also cover read-only objects, write failures, generation collisions, and rejection
+of unmanaged or removed objects. Run the lifecycle fixture directly with
+`python3 -m controller.headless tests/blender/identity_smoke.py`.

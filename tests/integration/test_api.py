@@ -2,6 +2,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import tempfile
 import unittest
 
 from controller.client import BlenderClient
@@ -18,6 +19,8 @@ class ApiIntegrationTests(unittest.TestCase):
             self.assertTrue(version['success'])
             self.assertEqual(version['api_version'], '1.0')
             self.assertTrue(version['result']['blender_version'])
+            features = client.call('runtime.get_supported_features')['result']
+            self.assertTrue(features['object_identity'])
             names = client.call('runtime.list_tools')['result']['tools']
             for name in names:
                 self.assertTrue(client.call('runtime.describe_tool', {'name': name})['success'])
@@ -58,3 +61,20 @@ class ApiIntegrationTests(unittest.TestCase):
         result = run_headless(script, executable=BLENDER)
         self.assertEqual(result.returncode, 0, result.stdout)
         self.assertIn('BAR_STATE_HEADLESS_OK', result.stdout)
+
+    def test_real_object_identity_lifecycle(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'identity_smoke.py'
+        result = run_headless(script, executable=BLENDER)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_IDENTITY_HEADLESS_OK', result.stdout)
+
+    def test_uuid_persists_across_blender_processes(self):
+        fixture = Path(__file__).resolve().parents[1] / 'blender' / 'identity_persistence.py'
+        with tempfile.TemporaryDirectory(prefix='bar-identity-integration-') as directory:
+            for mode in ('write', 'read'):
+                script = Path(directory) / (mode + '.py')
+                script.write_text('import runpy\nrunpy.run_path(' + repr(str(fixture)) +
+                                  ', init_globals=' + repr({'mode': mode, 'path': directory}) + ')\n')
+                result = run_headless(script, executable=BLENDER)
+                self.assertEqual(result.returncode, 0, result.stdout)
+            self.assertIn('BAR_IDENTITY_PERSISTENCE_OK', result.stdout)

@@ -26,6 +26,14 @@ must never include the counter. The controller tracks returned revisions and
 rejects different-session or backward-state responses. Public discovery is still
 read-only; test fixtures exercise real edits and scene restoration.
 
+Milestone 4 attaches a persistent `bar_uuid` custom property to every object in
+Blender data during startup, preserving valid existing IDs. The optional live
+object provider keeps the API testable without importing bpy. Identity resolution
+rescans current data instead of retaining references across deletion or file loads.
+Known duplicates receive fresh IDs; ambiguous collisions are rejected. Identity
+writes after bootstrap belong inside mutation handlers, while the initial IDs form
+the revision-zero baseline. See IDENTITY.md for the internal service contract.
+
 The controller owns process lifetime, deadlines, log capture and cleanup. A timeout
 or broken protocol poisons the connection and terminates the child: an uncertain
 command is never automatically retried. A separate headless runner launches a fresh
