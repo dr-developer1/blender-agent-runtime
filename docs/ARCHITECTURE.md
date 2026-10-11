@@ -134,3 +134,11 @@ preserving linked users and restoring slots/data on failure. Full-file recovery
 includes material datablocks; object diffs now hash base face assignments and slots.
 The stool baseline creates a brown PBR material and can render with EEVEE for
 material assessment. See MATERIALS.md for exact scope and limitations.
+
+Milestone 14 makes real-Blender conformance a reportable acceptance gate. The
+repository runner reuses the integration fixtures and adds fixed API descriptor
+compatibility, warm IPC latency, large-scene ground-truth inspection and repeated
+full-file recovery cases. Reports keep individual outcomes and timings, and skips
+cannot produce a passing acceptance result. The compatibility baseline is static
+and reviewed separately from measured evidence. No public tools are added; see
+CONFORMANCE.md for coverage, budgets and supported environment limits.

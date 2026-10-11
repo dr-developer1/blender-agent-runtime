@@ -13,9 +13,12 @@ section 35 is the authoritative implementation order.
 8. Core Mesh Control — complete.
 9. Validation — complete.
 10. Recovery — complete.
-11. Observation — complete; see CURRENT_MILESTONE.md.
-12. First Vertical Slice — next.
+11. Observation — complete.
+12. First Vertical Slice — complete.
+13. Basic Materials — complete.
+14. Runtime Conformance Suite — complete; see CURRENT_MILESTONE.md.
+15. Benchmark Expansion — next.
 
-Continue with milestones 13–36 in the canonical plan. Each milestone needs
+Continue with milestones 15–36 in the canonical plan. Each milestone needs
 acceptance tests, implementation, relevant verification and documentation before
 moving on. The current milestone is the handoff document for the next coding session.

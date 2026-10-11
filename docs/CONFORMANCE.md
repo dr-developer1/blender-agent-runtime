@@ -1,8 +1,61 @@
 # Conformance
 
+Milestone 14 supplies a model-independent acceptance gate for steps 70–76.
+Run from the repository root:
+
+```bash
+python3 -m unittest discover -s tests/unit -v
+python3 -m conformance --output artifacts/conformance.json
+```
+
+The report command runs the inherited real-Blender integration fixtures plus the
+dedicated conformance cases. It records test IDs, pass/fail/error/skip outcomes,
+elapsed times, failure tracebacks, environment and performance measurements. It
+returns nonzero if any check fails, is skipped, or no tests run. Plain unittest
+discovery remains supported, but unittest can return success when Blender checks
+are skipped. Set `BLENDER_EXECUTABLE` to select a different Blender executable.
+
+| Canonical step | Acceptance evidence |
+| --- | --- |
+| 70: operation correctness | Existing object/mesh/material fixtures, analytic dimensions, signed volume, manifold edges, real shader links and copy isolation |
+| 71: inspection accuracy | Existing evaluated modifier/world-bound fixtures plus large-scene UUID/name/world-origin ground truth |
+| 72: selection accuracy | Existing exact-index/coordinate fixtures for caps, edges, normals, connected components, transform spaces and handle expiry |
+| 73: rollback reliability | Existing full-file failure/lifecycle fixtures plus five successive transform/extrude/duplicate/restore cycles on 250 objects |
+| 74: API compatibility | Frozen API 1.0 descriptors for 36 server tools, unsupported-version rejection and subsequent recovery |
+| 75: performance | 25 warm public IPC summaries; timed large-scene summary, pagination, hierarchy, inspection and repeated rollback |
+| 76: large scenes | 2,001 objects, complete UUID-ordered pages, 1,000 exact tag matches, 100 targeted inspections, bounded recovery rejections |
+
+`conformance/api_1_0.json` freezes tool versions, input/output schemas, supports,
+side effects and transaction safety. It deliberately excludes editorial descriptions
+and the runtime package version. A contract change must be reviewed with its API
+compatibility implications before updating this file; the suite never rewrites it.
+This milestone pins exact descriptors, so additive tool/schema changes also require
+an explicit baseline review. This verifies the current API against the saved
+contract; it does not claim a matrix of historical runtime binaries.
+
+The large-scene fixture uses 2,000 empties and one cube: it tests inspection scale,
+not dense-mesh throughput. Every timed group has a fixed 30-second regression
+budget, and all 25 warm IPC calls together have a 10-second budget. Startup is
+excluded from the IPC sample. The fixture has a 120-second process deadline.
+These intentionally broad bounds tolerate machine differences and catch severe
+regressions; measured durations are useful evidence, not universal latency promises.
+
+Recovery rejects the 2,001-object fixture with `RECOVERY_LIMIT_EXCEEDED`.
+Even after reducing it to 1,000 objects, its serialized snapshot exceeds the
+independent response budget and rejects with `RESPONSE_TOO_LARGE`. Both checks
+verify that no transaction is left active and subsequent inspection works. Five
+rollback cycles run on 250 objects, assert exact restored inspection, stable session,
+monotonic revisions, restored counts and deletion of the private checkpoint.
+The object cap alone does not guarantee that a snapshot fits all budgets.
+
+Recorded Milestone 14 evidence is in `docs/evidence/conformance_m14.json`.
+The coverage remains limited to the supported runtime contract and the recorded
+Blender/platform combination; multi-release Blender support and stronger
+large-scene scaling are separate work.
+
 Milestone 1 reuses the integration acceptance tests against real isolated Blender
 processes. Run `python3 -m unittest discover -s conformance -v` from the repo root.
-No AI model is involved. Future capability conformance will live in this directory.
+No AI model is involved. Dedicated capability conformance also lives in this directory.
 
 Checks cover persistent process identity, contiguous execution sequence under
 concurrent controller callers, execution on the Blender main thread, structured

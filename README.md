@@ -3,7 +3,7 @@
 A model-independent machine interface to Blender, implemented incrementally from
 [the canonical plan](BLENDER_AGENT_RUNTIME_CANONICAL_MASTER_PLAN_V2.md).
 
-Milestones 1–13 provide a persistent headless Blender process, synchronous structured
+Milestones 1–14 provide a persistent headless Blender process, synchronous structured
 IPC, shutdown/death detection, isolated headless testing, and a versioned, typed
 discovery API with structured errors, call logging, session IDs and
 monotonic revision preconditions. Objects receive persistent UUIDs with collision
@@ -30,6 +30,7 @@ From the repository root:
 python3 -m unittest discover -s tests/unit -v
 python3 -m unittest discover -s tests/integration -v
 python3 -m unittest discover -s conformance -v
+python3 -m conformance --output artifacts/conformance.json
 python3 -m controller.headless tests/blender/smoke.py
 python3 -m controller.headless tests/blender/api_smoke.py
 python3 -m controller.headless tests/blender/state_smoke.py
@@ -44,6 +45,12 @@ python3 -m controller.headless tests/blender/validation_smoke.py
 python3 -m controller.headless tests/blender/recovery_smoke.py
 python3 -m controller.headless tests/blender/observation_smoke.py --timeout 90
 ```
+
+The conformance report records per-test outcomes, elapsed times, environment and
+large-scene/IPC measurements. Its command exits nonzero on failures or skipped
+tests; run it from the repository checkout. API 1.0 descriptors are pinned to a
+reviewable compatibility baseline. Performance budgets are broad regression gates,
+not throughput guarantees. See [conformance](docs/CONFORMANCE.md).
 
 Choose a different Blender for integration/conformance tests with
 `BLENDER_EXECUTABLE=/absolute/path/to/blender`. The headless runner accepts

@@ -1,0 +1,237 @@
+{
+  "format_version": 1,
+  "timestamp": "2026-10-11T22:22:03.088785+00:00",
+  "python_version": "3.12.3",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "blender_executable": "blender",
+  "passed": true,
+  "tests_run": 37,
+  "skipped": 0,
+  "tests": [
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_basic_materials_in_real_blender",
+      "status": "passed",
+      "seconds": 2.9858793379989947
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_diagnostic_observation_over_ipc",
+      "status": "passed",
+      "seconds": 3.913875296999322
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_forced_death_cleans_active_snapshot",
+      "status": "passed",
+      "seconds": 2.5990168369989988
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_mesh_control_over_ipc",
+      "status": "passed",
+      "seconds": 2.8035782930001005
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_object_control_over_ipc",
+      "status": "passed",
+      "seconds": 2.7469189509993157
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_public_discovery_contract_and_recovery",
+      "status": "passed",
+      "seconds": 2.7451998720007396
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_diagnostic_observation",
+      "status": "passed",
+      "seconds": 4.879335584000728
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_evaluated_geometry_and_hierarchy",
+      "status": "passed",
+      "seconds": 2.6936693000006926
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_filtered_scene_and_bounded_pagination",
+      "status": "passed",
+      "seconds": 3.0374066839995066
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_mesh_control",
+      "status": "passed",
+      "seconds": 2.7685217159996682
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_object_control",
+      "status": "passed",
+      "seconds": 2.7338881050000055
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_object_identity_lifecycle",
+      "status": "passed",
+      "seconds": 2.729578106998815
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_recovery",
+      "status": "passed",
+      "seconds": 3.1818017690002307
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_scene_mutation_and_restore_advance_timeline",
+      "status": "passed",
+      "seconds": 2.6667331910011853
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_semantic_geometry_selection",
+      "status": "passed",
+      "seconds": 2.7139475049989414
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_validation",
+      "status": "passed",
+      "seconds": 2.6424694339984853
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_restart_and_state_preconditions_over_ipc",
+      "status": "passed",
+      "seconds": 5.363901585000349
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_scene_observation_over_ipc",
+      "status": "passed",
+      "seconds": 2.675886832999822
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_semantic_selection_over_ipc",
+      "status": "passed",
+      "seconds": 5.373808069000006
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_transactions_and_scene_diff_over_ipc",
+      "status": "passed",
+      "seconds": 2.7218662699997367
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_uuid_persists_across_blender_processes",
+      "status": "passed",
+      "seconds": 5.279095367000991
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_validation_over_ipc",
+      "status": "passed",
+      "seconds": 2.679010169000321
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_clean_shutdown",
+      "status": "passed",
+      "seconds": 2.717213998999796
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_crash_detection",
+      "status": "passed",
+      "seconds": 2.5885656839982403
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_early_process_exit",
+      "status": "passed",
+      "seconds": 0.1019891620017006
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_headless_runner_success_and_failure",
+      "status": "passed",
+      "seconds": 5.199838024998826
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_headless_runner_timeout",
+      "status": "passed",
+      "seconds": 0.2041922930002329
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_invalid_request_and_recovery",
+      "status": "passed",
+      "seconds": 2.660837438999806
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_missing_executable",
+      "status": "passed",
+      "seconds": 0.0014010770009917906
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_persistent_serial_main_thread_execution",
+      "status": "passed",
+      "seconds": 2.6473703230003593
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_request_timeout_terminates_child",
+      "status": "passed",
+      "seconds": 4.680995888000325
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_structured_errors_and_recovery",
+      "status": "passed",
+      "seconds": 2.6712617590001173
+    },
+    {
+      "test": "conformance.test_runtime.RuntimeConformanceTests.test_api_1_0_compatibility",
+      "status": "passed",
+      "seconds": 2.712817620998976
+    },
+    {
+      "test": "conformance.test_runtime.RuntimeConformanceTests.test_large_scene_accuracy_performance_and_repeated_rollback",
+      "status": "passed",
+      "seconds": 7.344643730000826,
+      "metrics": {
+        "blender_version": "5.2.2 LTS",
+        "measurements": {
+          "filtered_pagination_1000": {
+            "budget_seconds": 30,
+            "seconds": 0.40746353400027147
+          },
+          "five_full_file_rollbacks_250": {
+            "budget_seconds": 30,
+            "seconds": 0.796493455000018
+          },
+          "hierarchy_2001": {
+            "budget_seconds": 30,
+            "seconds": 0.9334097070004646
+          },
+          "inspect_100": {
+            "budget_seconds": 30,
+            "seconds": 0.07142567600021721
+          },
+          "pagination_2001": {
+            "budget_seconds": 30,
+            "seconds": 0.9562041770004726
+          },
+          "summary_2001": {
+            "budget_seconds": 30,
+            "seconds": 0.0321049590002076
+          }
+        },
+        "object_count": 2001,
+        "recovery_object_count": 250,
+        "rollback_cycles": 5
+      }
+    },
+    {
+      "test": "conformance.test_runtime.RuntimeConformanceTests.test_warm_public_ipc_latency",
+      "status": "passed",
+      "seconds": 2.691179498000565,
+      "metrics": {
+        "samples": 25,
+        "median_seconds": 0.0004121019992453512,
+        "max_seconds": 0.0007502180014853366,
+        "total_seconds": 0.011607445007030037,
+        "budget_seconds": 10
+      }
+    },
+    {
+      "test": "tests.integration.test_stool.StoolIntegrationTests.test_agent_bridge_rejections_and_disconnect_restore_checkpoint",
+      "status": "passed",
+      "seconds": 2.7814750960005767
+    },
+    {
+      "test": "tests.integration.test_stool.StoolIntegrationTests.test_manual_public_api_baseline_and_recovery",
+      "status": "passed",
+      "seconds": 4.214510376999897
+    }
+  ],
+  "failures": []
+}

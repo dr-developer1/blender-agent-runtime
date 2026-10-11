@@ -1,5 +1,44 @@
 # Current milestone
 
+Milestone 14 — Runtime Conformance Suite (steps 70–76): complete.
+
+Added a repository conformance report command, a frozen API 1.0 descriptor baseline
+for all 36 public server tools, timed warm IPC reads and a deterministic large-scene
+fixture. Existing real-Blender fixtures supply operation, evaluated inspection,
+semantic selection and full-file recovery correctness. The report preserves
+individual outcomes, timings, tracebacks, environment and performance measurements;
+it returns nonzero on failures or skipped checks. Unit tests verify subtest failures,
+errors, skipped reasons and measured result recording.
+
+The stress fixture verifies exact listing/hierarchy coverage over 2,001 objects,
+1,000 tag-filtered matches and 100 targeted world-origin inspections. It checks
+clean rejection above the recovery object cap and above the independent snapshot
+byte budget, then performs five transform/extrude/duplicate/rollback cycles on
+250 objects with exact restored inspection, stable sessions, monotonic revisions
+and checkpoint cleanup. The independent IPC case measures 25 warmed summaries.
+See CONFORMANCE.md for fixed performance budgets and the coverage map.
+
+Runtime/package version: 0.14.0; public API: 1.0; 36 public server tools.
+No new public runtime capability. Compatibility pins exact descriptors and requires
+explicit baseline review for additive changes as well as breaking changes.
+
+Verification: 101 unit tests and 37 real-Blender conformance cases (the existing
+34 integration cases plus three dedicated gates), with zero skipped checks.
+Machine-readable run evidence is saved in `evidence/conformance_m14.json`.
+An unavailable-executable run also verified nonzero exit and 37 recorded skips.
+
+Limits: measured on the recorded Linux/Blender environment; the large fixture uses
+empties and a cube rather than dense meshes. Broad timing gates detect severe
+regressions and do not establish throughput guarantees. Recovery's 1,000-object
+cap does not guarantee all scenes fit its separate byte/element budgets. API
+compatibility compares current descriptors to a saved baseline, not historical
+binary releases. Report tooling runs from the repository checkout.
+
+Next: Milestone 15 — Benchmark Expansion (steps 77–96). Stop here per the canonical
+milestone workflow.
+
+## Previous milestone: basic materials
+
 Milestone 13 — Basic Materials (steps 68–69): complete.
 
 Implemented `material.create` and `material.assign`: opaque Principled PBR creation
