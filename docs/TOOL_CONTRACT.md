@@ -34,8 +34,8 @@ once immediately before its handler starts. Failed mutation attempts also consum
 a revision because they may have partially changed the scene. Invalid arguments,
 unknown tools and rejected preconditions do not advance. Future restore/rollback
 tools must declare side effects; snapshots restore scene contents, never the
-runtime counter. This milestone adds the hooks and verifies them with private
-test fixtures; public tools provide discovery and read-only scene observation.
+runtime counter. Public object mutation tools use these hooks; scene restoration is still exercised
+only by private test fixtures.
 Arbitrary external bpy edits are not automatically observed by this background runtime.
 
 Validation rejects missing/extra envelope and argument fields, wrong types and
@@ -77,3 +77,9 @@ creating a handle does not advance the timeline. See SELECTION_LANGUAGE.md for
 selector contracts, geometry space and handle expiry. New errors are
 `OBJECT_NOT_MESH`, `UNSUPPORTED_OBJECT_MODE`, `INVALID_GEOMETRY`,
 `INVALID_SELECTION_HANDLE`, `STALE_SELECTION`, and `SELECTION_LIMIT_EXCEEDED`.
+
+Milestone 7 adds five public object mutations, for eighteen server tools, and
+advertises `scene_mutation: true`. Their handlers report created, modified and
+deleted UUIDs in the success envelope. This is explicit change reporting rather
+than a full scene diff. See OBJECT_CONTROL.md for schemas, units, parenting,
+copy/deletion semantics and new errors.

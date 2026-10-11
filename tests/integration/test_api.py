@@ -82,7 +82,7 @@ class ApiIntegrationTests(unittest.TestCase):
     def test_scene_observation_over_ipc(self):
         with BlenderClient(executable=BLENDER) as client:
             self.assertTrue(client.call('runtime.get_supported_features')['result']['scene_observation'])
-            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 13)
+            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 18)
             summary = client.call('scene.summary')['result']
             self.assertEqual(summary['object_count'], 3)
             self.assertEqual(summary['object_types'], {'CAMERA': 1, 'LIGHT': 1, 'MESH': 1})
@@ -149,3 +149,34 @@ class ApiIntegrationTests(unittest.TestCase):
         result = run_headless(script, executable=BLENDER)
         self.assertEqual(result.returncode, 0, result.stdout)
         self.assertIn('BAR_SELECTION_HEADLESS_OK', result.stdout)
+
+    def test_object_control_over_ipc(self):
+        with BlenderClient(executable=BLENDER) as client:
+            self.assertTrue(client.call('runtime.get_supported_features')['result']['scene_mutation'])
+            created = client.call('object.create_primitive', {'primitive': 'CUBE', 'size': 450, 'unit': 'mm'})
+            self.assertTrue(created['success'], created)
+            oid = created['result']['object_id']
+            self.assertEqual(created['created_ids'], [oid])
+            self.assertEqual(client.revision, 1)
+            moved = client.call('object.transform', {'object_id': oid, 'location': [0, 0, 225], 'unit': 'mm'})
+            self.assertTrue(moved['success'], moved)
+            self.assertEqual(moved['modified_ids'], [oid])
+            inspected = client.call('scene.inspect_objects', {'object_ids': [oid]})['result']['objects'][0]
+            for dimension in inspected['evaluated_dimensions']:
+                self.assertAlmostEqual(dimension, 0.45, places=6)
+            duplicate = client.call('object.duplicate', {'object_id': oid})
+            self.assertTrue(duplicate['success'], duplicate)
+            copied_id = duplicate['result']['object_id']
+            parented = client.call('object.set_parent', {'object_id': copied_id, 'parent_id': oid})
+            self.assertTrue(parented['success'], parented)
+            deleted = client.call('object.delete', {'object_id': oid})
+            self.assertEqual(deleted['deleted_ids'], [oid])
+            self.assertEqual(deleted['modified_ids'], [copied_id])
+            self.assertEqual(client.revision, 5)
+            self.assertTrue(client.call('scene.inspect_objects', {'object_ids': [copied_id]})['success'])
+
+    def test_real_object_control(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'object_smoke.py'
+        result = run_headless(script, executable=BLENDER)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_OBJECT_HEADLESS_OK', result.stdout)

@@ -1,4 +1,4 @@
-"""Read-only API foundation, injectable without importing bpy."""
+"""Versioned API dispatcher, injectable without importing bpy."""
 from copy import deepcopy
 import json
 import time
@@ -8,6 +8,7 @@ from controller.ipc import MAX_FRAME_BYTES
 from .capability_registry import CapabilityRegistry, ToolSpec
 from .errors import ToolError
 from .identity import ObjectIdentity
+from .objects import ObjectControl
 from .logging import EventLogger
 from .revisions import RuntimeState
 from .selection import (SelectionService, QUERY_SCHEMA, HANDLE_SCHEMA, QUERY_OUTPUT,
@@ -16,7 +17,7 @@ from .scene import (SceneObserver, LIST_INPUT_SCHEMA, LIST_OUTPUT_SCHEMA, SUMMAR
                     DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE, PAGE_INPUT_SCHEMA, HIERARCHY_OUTPUT_SCHEMA,
                     INSPECT_INPUT_SCHEMA, INSPECT_OUTPUT_SCHEMA)
 from .schemas import (API_VERSION, RUNTIME_VERSION, SUPPORTED_VERSIONS, ToolRequest,
-                      failure_response, object_schema, success_response)
+                      failure_response, object_schema, success_response, MutationResult)
 
 CONVENTIONS = {'up': '+Z', 'forward': '-Y', 'ground_plane': 'XY',
                'length_units': ['mm', 'cm', 'm'], 'internal_length_unit': 'm',
@@ -73,7 +74,8 @@ OUTPUT_SCHEMAS = {
 
 
 class RuntimeAPI:
-    def __init__(self, *, blender_version, logger=None, objects=None, scene=None, view_layer=None, depsgraph=None):
+    def __init__(self, *, blender_version, logger=None, objects=None, scene=None, view_layer=None, depsgraph=None,
+                 object_control=False):
         self.blender_version = blender_version
         self.logger = logger if logger is not None else EventLogger()
         self.state = RuntimeState()
@@ -95,6 +97,12 @@ class RuntimeAPI:
                          'selection_handles': self.selections is not None}
         self.registry = CapabilityRegistry()
         self._register_tools()
+        if object_control:
+            if self.identities is None or scene is None or view_layer is None:
+                raise ValueError('Object control requires live Blender providers')
+            self.objects = ObjectControl(identities=self.identities, scene=scene, view_layer=view_layer)
+            self.objects.register(self.registry)
+            self.features['scene_mutation'] = True
 
     def _register_tools(self):
         tools = [
@@ -171,6 +179,9 @@ class RuntimeAPI:
         response = (failure_response(error, self.state.session_id, self.state.revision) if error else
                     success_response(result, duration_ms, self.state.session_id,
                                      revision_before, self.state.revision))
+        if error is None and isinstance(result, MutationResult):
+            for field in ('created_ids', 'modified_ids', 'deleted_ids'):
+                response[field] = getattr(result, field)
         # Only validated identifiers enter logs; malformed payloads are never recorded.
         self.logger.tool_call(request_id=request_id, tool=request.tool if request else None,
                               api_version=request.api_version if request else None,

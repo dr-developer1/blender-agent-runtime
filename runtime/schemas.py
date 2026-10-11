@@ -7,7 +7,16 @@ from .errors import ToolError
 
 API_VERSION = '1.0'
 SUPPORTED_VERSIONS = (API_VERSION,)
-RUNTIME_VERSION = '0.6.0'
+RUNTIME_VERSION = '0.7.0'
+
+
+class MutationResult(dict):
+    """Tool data plus explicit object changes for the public response envelope."""
+    def __init__(self, result, *, created_ids=(), modified_ids=(), deleted_ids=()):
+        super().__init__(result)
+        self.created_ids = list(created_ids)
+        self.modified_ids = list(modified_ids)
+        self.deleted_ids = list(deleted_ids)
 
 
 class ErrorBody(TypedDict):

@@ -10,7 +10,7 @@ Milestone 1 lifecycle commands `process.ping` and `process.shutdown` remain priv
 scaffolding. Milestone 2 adds a public API 1.0 envelope (`api_version`, `session_id`, `expected_revision`, `tool`,
 `arguments`) and seven read-only discovery tools, invoked with `client.call()`.
 Both envelope types carry a private correlation ID over the same serialized channel.
-No script execution or modeling operation is available over IPC.
+No script execution is available over IPC.
 
 The Blender-independent API dispatcher validates the request, resolves a tool in
 one capability registry, validates its arguments and returns a typed success/error
@@ -23,7 +23,7 @@ The dispatcher lock covers state validation and execution; state preconditions
 apply to reads and mutations alike. Validated tools with declared side effects
 advance the timeline before execution, including failed attempts. Scene snapshots
 must never include the counter. The controller tracks returned revisions and
-rejects different-session or backward-state responses. Public tools remain read-only; test fixtures exercise real edits and scene restoration.
+rejects different-session or backward-state responses. Public object tools declare mutations; test fixtures also exercise scene restoration.
 
 Milestone 4 attaches a persistent `bar_uuid` custom property to every object in
 Blender data during startup, preserving valid existing IDs. The optional live
@@ -59,3 +59,13 @@ indices and geometry fingerprints, never live Blender references. Resolution
 reacquires the object and rejects changed geometry/transform. Revision changes clear
 the store lazily before its next use. Queries are read-only scene operations even
 though they create temporary addressing metadata. See SELECTION_LANGUAGE.md.
+
+Milestone 7 explicitly enables a Blender object-control backend on the server.
+Five object tools use direct datablock construction and edits, with no operator
+context or UI selection dependency. Plain in-process API instances keep this
+backend disabled unless requested. MutationResult carries object changes into the
+response envelope while the registry still validates schemas and advances the
+revision before execution. Copying repairs UUID identity before publishing the
+result; deletion re-resolves children and preserves their world poses. Parenting
+preflights cycles, singular transforms and shear. No general rollback or full
+scene diff is promised yet. See OBJECT_CONTROL.md.

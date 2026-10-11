@@ -18,7 +18,7 @@ response validation, registry consistency, descriptor isolation, non-JSON output
 internal-error redaction and omission of arguments/results from logs.
 
 Run `python3 -m controller.headless tests/blender/api_smoke.py` for an isolated
-Blender check that all advertised tools return valid success envelopes and leave scene
+Blender check that all advertised read-only tools return valid success envelopes and leave scene
 objects unchanged. This supplements the persistent-process integration suite.
 
 Milestone 3 covers session bootstrap, new sessions after process restart, stale
@@ -64,3 +64,14 @@ reject vertex/topology/transform edits, removed/deleted objects, Edit mode, unkn
 sessions and runtime revision changes. Unit tests also verify selector intersection,
 ties, degenerate/empty geometry, schemas, handle eviction and budgets. Run
 `python3 -m controller.headless tests/blender/selection_smoke.py` directly.
+
+Milestone 7 exercises all five object-control tools over persistent IPC and an
+isolated Blender fixture. Checks cover primitive dimensions, outward winding,
+unit conversion, absolute XYZ transforms, omitted quaternion/delta components,
+independent/shared mesh copies and fresh UUIDs, rename/deletion/name reuse,
+parenting cycles, local/world pose preservation, direct-child handling on deletion,
+singular parents, sheared poses, constraints, Edit mode, schema/precondition versus
+handler revision behavior, change arrays and selection-handle expiry. Unit tests
+verify closed primitive edge incidence and opposite winding, bounded schemas,
+mutation envelopes and explicit backend availability. Run
+`python3 -m controller.headless tests/blender/object_smoke.py` directly.

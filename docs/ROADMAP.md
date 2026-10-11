@@ -8,9 +8,9 @@ section 35 is the authoritative implementation order.
 3. State Model — complete.
 4. Identity — complete.
 5. Scene Observability — complete.
-6. Semantic Geometry Addressing — complete; see CURRENT_MILESTONE.md.
-7. Basic Object Control — next.
-8. Core Mesh Control.
+6. Semantic Geometry Addressing — complete.
+7. Basic Object Control — complete; see CURRENT_MILESTONE.md.
+8. Core Mesh Control — next.
 9. Validation.
 10. Recovery.
 11. Observation.

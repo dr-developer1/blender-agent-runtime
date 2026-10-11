@@ -1,45 +1,44 @@
 # Current milestone
 
-Milestone 6 — Semantic Geometry Addressing (steps 28–35): complete.
+Milestone 7 — Basic Object Control (steps 36–40): complete.
 
-Implemented `mesh.query` and `mesh.inspect_selection`, selection schemas,
-spatial/geometric/topological/basic semantic selectors, bounded selection handles,
-revision invalidation and real-Blender selection conformance. The server advertises
-thirteen public tools. Runtime package version: 0.6.0; public API version: 1.0.
+Implemented `object.create_primitive`, `object.transform`, `object.duplicate`,
+`object.delete`, and `object.set_parent`, using Blender's data API on the main
+thread. The server advertises eighteen public tools and `scene_mutation: true`.
+Runtime package version: 0.7.0; public API version: 1.0.
 
-Selectors address base mesh vertices, edges or faces in world/local coordinates,
-combine by intersection, and return temporary handles. Spatial queries cover
-extremum planes, boxes, height ranges and nearest centers. Geometric queries cover
-normal cones, lengths, areas and dihedral angles. Topological queries cover edge
-incidence and connected components. Basic semantic queries cover cap/side faces and
-open boundaries. Queries preserve geometry, UI selection, UUIDs and revision.
+Primitives cover cube, plane, cylinder and cone with finite bounded arguments,
+m/cm/mm lengths and XYZ Euler degrees. Transforms set absolute parent-local
+components and bake delta transforms. Copies receive fresh UUIDs, with independent
+object data by default and optional shared data. Parenting detects cycles and
+preserves world pose by default; clearing parents and deleting parents preserve
+representable child world poses. Singular parents, shear, constraints, animation,
+rigid-body state and non-object parenting are rejected where necessary for precise
+transform behavior. Object control requires Object mode and leaves UI selection
+and active-object state alone except when deleting the active/selected object.
 
-Handles bind the current runtime revision and UUID. Resolution reacquires live
-geometry and verifies a fingerprint covering base coordinates, topology and world
-transform, detecting untracked edits. Any revision change invalidates every handle.
-The store retains no Blender references and caps at 256 handles with oldest-created
-eviction. Queries cap at 200,000 mesh vertices + edges + polygons + loops and
-10,000 matched indices, returning structured errors instead of truncation.
+Every mutation attempt consumes one revision after schema/state checks; rejected
+handler preflight also advances, following the existing conservative policy.
+Success envelopes report created/modified/deleted UUIDs. Revision changes expire
+selection handles. State preconditions reject stale edits before execution.
 
-Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 60 unit tests, 20
-real-Blender integration cases (also exercised as conformance checks), and direct
-headless process/API/state/identity/scene/geometry/selection smoke checks. Fixtures
-verify four cube top perimeter edges, upward faces, upper-height faces, sharp
-angles, open boundaries, non-manifold branches, disconnected components,
-world/local transforms, negative scale, empty/degenerate meshes, modifier
-independence, handle eviction, budgets and invalidation. All previous lifecycle,
-state, identity and scene regressions remain covered. Commands are in README.md.
+Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 64 unit tests, 22
+real-Blender integration cases, the same 22 conformance checks, and all eight direct
+headless process/API/state/identity/scene/geometry/selection/object smoke fixtures.
+Fixtures cover primitive dimensions and outward topology, unit conversion,
+transform preservation, copying and shared data, identity after rename/delete,
+parenting cycles, world/local pose behavior, child preservation, singular/sheared
+transforms, constraints, Edit mode, state rejection and handle invalidation.
+All checks passed. Commands are in README.md; exact contracts in OBJECT_CONTROL.md.
 
-Limits: background runtime; public tools still provide discovery and reads only.
-Mesh queries require Object mode and address base geometry; generated modifier
-results and instances are excluded. Areas/normals use Newell's vector (projected
-area for nonplanar polygons). Basic outer_boundary includes holes; edge incidence
-does not certify full manifoldness. Element indices are diagnostic and temporary.
-Untracked edits restored to identical data cannot be detected without timeline
-tracking. Every query/resolution scans and hashes the base mesh. No edge-loop/ring,
-curvature, richer semantic inference, public modeling, transaction or recovery
-support yet. See SELECTION_LANGUAGE.md for exact contracts and limits.
+Limits: background runtime; basic primitive set only; no UVs/material assignment,
+mesh edits, recovery or transactions yet. Transforms use parent-local components,
+not evaluated world dimensions. Copies share materials and nested references;
+delete removes the object globally and retains orphan datablocks. Change arrays
+report direct object changes, not all indirect dependencies or a full scene diff.
+Externally edited state is not automatically revision-tracked. See
+OBJECT_CONTROL.md for supported object states and rejection semantics.
 
-Next: Milestone 7 — Basic Object Control (steps 36–40): primitive creation,
-deterministic transforms, duplication, deletion and parenting, with revision and
-identity tracking and integration/conformance tests.
+Next: Milestone 8 — Core Mesh Control (steps 41–45): extrude, inset, bevel,
+boolean and cleanup, consuming semantic selection handles where applicable, with
+revision/identity/change tracking and integration/conformance tests.
