@@ -10,6 +10,7 @@ from .errors import ToolError
 from .identity import ObjectIdentity
 from .objects import ObjectControl
 from .mesh import MeshControl
+from .validation import ValidationService, MAX_VALIDATION_ELEMENTS, MAX_ASSEMBLY_CHECKS
 from .logging import EventLogger
 from .revisions import RuntimeState
 from .selection import (SelectionService, QUERY_SCHEMA, HANDLE_SCHEMA, QUERY_OUTPUT,
@@ -28,12 +29,13 @@ FEATURES = {'capability_discovery': True, 'typed_contracts': True,
             'structured_errors': True, 'synchronous_execution': True,
             'scene_mutation': False, 'sessions': True, 'revisions': True,
             'transactions': False, 'semantic_selection': False, 'selection_handles': False,
-            'object_identity': False, 'scene_observation': False, 'evaluated_geometry': False}
+            'validation': False, 'object_identity': False, 'scene_observation': False, 'evaluated_geometry': False}
 LIMITS = {'max_frame_bytes': MAX_FRAME_BYTES, 'max_in_flight_requests': 1,
           'execution_mode': 'headless', 'transport': 'loopback_tcp',
           'default_page_size': DEFAULT_PAGE_SIZE, 'max_page_size': MAX_PAGE_SIZE,
           'max_selection_handles': MAX_HANDLES, 'max_mesh_query_elements': MAX_MESH_ELEMENTS,
-          'max_selection_indices': MAX_SELECTION_INDICES}
+          'max_selection_indices': MAX_SELECTION_INDICES,
+          'max_validation_elements': MAX_VALIDATION_ELEMENTS, 'max_assembly_checks': MAX_ASSEMBLY_CHECKS}
 
 STRING = {'type': 'string'}
 STRING_ARRAY = {'type': 'array', 'items': STRING}
@@ -98,6 +100,11 @@ class RuntimeAPI:
                          'selection_handles': self.selections is not None}
         self.registry = CapabilityRegistry()
         self._register_tools()
+        if self.observer is not None and depsgraph is not None:
+            self.validation = ValidationService(identities=self.identities, scene=scene,
+                depsgraph=depsgraph)
+            self.validation.register(self.registry)
+            self.features['validation'] = True
         if object_control:
             if self.identities is None or scene is None or view_layer is None:
                 raise ValueError('Object control requires live Blender providers')

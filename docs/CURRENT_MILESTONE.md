@@ -1,41 +1,48 @@
 # Current milestone
 
-Milestone 8 — Core Mesh Control (steps 41–45): complete.
+Milestone 9 — Validation (steps 46–49): complete.
 
-Implemented `mesh.extrude`, `mesh.inset`, `mesh.bevel`, `mesh.boolean` and
-`mesh.cleanup`. The server advertises 23 public tools. Runtime package version:
-0.8.0; public API version: 1.0.
+Implemented `validate.geometry`, `validate.dimensions`, `validate.assembly` and
+`validate.asset`. The server advertises 27 public tools. Runtime package version:
+0.9.0; public API version: 1.0.
 
-Extrude/inset use FACE handles; bevel uses EDGE handles. Read-only preparation
-resolves handles at the current revision under the dispatcher lock, before the
-mutation advance. Every schema-valid attempt consumes one revision, including
-preparation rejection; schema/state failures consume none. Success reports the
-target UUID in `modified_ids`; edits keep objects and UUIDs intact.
+Validators use bounded numeric mesh snapshots and return `passed` plus concrete
+checks in `result`. Geometry checks cover empty/nonfinite meshes, negative scale,
+collapsed dimensions, loose and non-manifold topology, zero-area/degenerate faces,
+normal validity, adjacent winding, exact coincident geometry and component counts.
+UUID collisions remain structured resolver errors. Closed geometry is the default;
+explicit open-surface policy permits flat boundaries. Evaluated dimension checks
+include modifiers and world transforms and compare the union of requested bounds.
 
-BMesh edits stage independent mesh data, check output budgets and publish only the
-target's new data. Linked duplicates retain the original mesh. Extrusion uses a
-local displacement vector; inset uses an even region border; bevel uses bounded
-segments and overlap clamping. Lengths use m/cm/mm normalized in local mesh space,
-independent of handle query space. Boolean bakes an EXACT modifier from a temporary
-copy and retains its operand; temporary objects are cleaned on success or failure.
-Cleanup optionally welds nearby vertices and recalculates normals.
+Assembly validation takes explicit declarations for ground, contact, support,
+non-overlap, clearance, bounds symmetry, object count and connected object boxes.
+Every spatial relationship uses evaluated world AABBs and reports that method.
+Asset validation combines geometry with optional dimensions, assembly declarations
+and base-face material assignment checks. No composite score is produced.
 
-Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 67 unit tests and 24
-real-Blender integration cases plus the same 24 conformance checks passed. Fixtures verify all five operations, signed volumes and manifold edges,
-UV/material preservation, linked-copy isolation, units and local scaled offsets,
-boolean volumes and empty intersections, welding/normals, handle resolution and
-expiry, stale revisions, unsupported states, Edit mode and output-budget rejection
-without staged mesh leaks. Exact commands are in README.md and contracts in
-MESH_CONTROL.md.
+All tools are read-only, state guarded, and independent of the mutation backend.
+They preserve geometry, identity, Blender UI state, revision and current handles.
+Scans are limited to 200,000 total mesh elements; assembly calls allow at most
+200 checks and all validators accept at most 100 unique mesh UUIDs.
 
-Limits: Object mode and editable active-scene meshes only; no shape keys, modifiers
-or vertex groups. Boolean operands follow the same restrictions. Query space
-selects elements but edit units/vectors remain object-local. No evaluated topology
-editing, individual inset, vertex bevel, comprehensive geometry repair or general
-rollback. Original orphan mesh datablocks are retained. Publication isolates linked
-copies; mesh layers follow Blender's native interpolation. External changes are
-not automatically revision-tracked. Change arrays report the directly edited
-object, not a full scene diff. Tools are not transaction-safe.
+Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 74 unit tests, 26
+real-Blender integration cases and the same 26 conformance checks passed. The
+isolated validation and API discovery fixtures also passed. Cases verify defects
+versus execution failures, empty/nonfinite geometry, planar policy, singular and
+negative transforms, modifier/rotation-aware dimensions, all assembly check kinds,
+asset composition, material assignment, unchanged data/UI/handles/revisions,
+strict schemas, stale state, missing/non-mesh objects, collisions, Edit mode and
+budget rejection. Exact commands are in README.md and contracts in VALIDATION.md.
 
-Next: Milestone 9 — Validation (steps 46–49): geometry, evaluated dimensions,
-assembly and asset validators, with structured findings and conformance tests.
+Limits: Object mode and active-scene meshes only. Assembly checks approximate
+bounds rather than exact surface contact/collision or physical stability. Symmetry
+compares boxes, and component count compares requested objects. Geometry does not
+prove outward orientation, detect self-intersections, certify nonplanar polygon
+area, or find near-duplicates. Material checks verify assignment rather than visual
+quality. Bounds for empty/nonfinite meshes return an execution error. Asset
+validation is configurable technical checking, not export or production-quality
+certification. External changes are not automatically revision tracked. No general
+repair, transaction recovery or rollback yet.
+
+Next: Milestone 10 — Recovery (steps 50–56): scene diff, transaction begin,
+snapshot, commit, rollback, monotonic rollback revisions and UUID re-resolution.

@@ -92,3 +92,10 @@ Milestone 8 adds `mesh.extrude`, `mesh.inset`, `mesh.bevel`, `mesh.boolean` and
 inputs under the dispatcher lock before advancing, then edit staged mesh data.
 These tools report only the target UUID in `modified_ids`. See MESH_CONTROL.md
 for arguments, local units, copy-on-write behavior and `EMPTY_SELECTION`.
+
+Milestone 9 adds `validate.geometry`, `validate.dimensions`, `validate.assembly`
+and `validate.asset`, for 27 server tools. Discovery advertises `validation` and
+validation budgets. Validation is read-only, with reports in `result`; a defect
+returns `success: true` and `result.passed: false`. `validation` in the response
+envelope remains null. `VALIDATION_LIMIT_EXCEEDED` rejects oversized scans.
+See VALIDATION.md for schemas, findings, units and approximate assembly checks.

@@ -84,3 +84,15 @@ local offsets under scaling, exact boolean operations and empty intersections,
 cleanup welding/normals, handle preparation and invalidation, stale preconditions,
 unsupported states, Edit mode, output budgets and staged-data/temporary-object
 cleanup. Run the fixture with `python3 -m controller.headless tests/blender/mesh_smoke.py`.
+
+Milestone 9 adds validation over IPC and a `validation_smoke.py` fixture, reused
+by conformance. Checks cover all four tools, failed findings versus execution
+errors, topology defects, empty/nonfinite geometry, open-surface policy, negative
+and singular transforms, modifier/rotation-aware dimensions, assembly contact,
+support, ground, overlap, clearance, symmetry, count and disconnected boxes,
+asset composition and material assignment. Validation preserves mesh datablocks,
+UI selections, object identity, revisions and valid selection handles. Duplicate
+UUIDs, invalid arguments, Edit mode, missing objects, non-meshes and exhausted
+budgets reject without writes. Pure unit tests cover numeric algorithms and
+strict bounded schemas. Run
+`python3 -m controller.headless tests/blender/validation_smoke.py` directly.

@@ -24,6 +24,13 @@ for name in api.registry.names():
         arguments = query_arguments
     if name == 'mesh.inspect_selection':
         arguments = {'selection_handle': selection['result']['selection_handle']}
+    if name.startswith('validate.'):
+        cube_id = bpy.data.objects['Cube']['bar_uuid']
+        arguments = {'object_ids': [cube_id]}
+        if name == 'validate.dimensions':
+            arguments['expected'] = [2,2,2]
+        if name == 'validate.assembly':
+            arguments['checks'] = [{'kind': 'component_count', 'expected': 1}]
     response = api.execute({'api_version': '1.0', 'tool': name, 'arguments': arguments,
                             'session_id': api.state.session_id, 'expected_revision': api.state.revision})
     validate_response(response)

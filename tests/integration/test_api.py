@@ -82,7 +82,7 @@ class ApiIntegrationTests(unittest.TestCase):
     def test_scene_observation_over_ipc(self):
         with BlenderClient(executable=BLENDER) as client:
             self.assertTrue(client.call('runtime.get_supported_features')['result']['scene_observation'])
-            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 23)
+            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 27)
             summary = client.call('scene.summary')['result']
             self.assertEqual(summary['object_count'], 3)
             self.assertEqual(summary['object_types'], {'CAMERA': 1, 'LIGHT': 1, 'MESH': 1})
@@ -217,3 +217,37 @@ class ApiIntegrationTests(unittest.TestCase):
         result = run_headless(script, executable=BLENDER)
         self.assertEqual(result.returncode, 0, result.stdout)
         self.assertIn('BAR_MESH_HEADLESS_OK', result.stdout)
+
+    def test_validation_over_ipc(self):
+        with BlenderClient(executable=BLENDER) as client:
+            self.assertTrue(client.call('runtime.get_supported_features')['result']['validation'])
+            oid = client.call('scene.list_objects', {'object_type': 'MESH'})['result']['objects'][0]['object_id']
+            before = client.revision
+            handle = client.call('mesh.query', {'object_id': oid, 'element_type': 'FACE',
+                'selectors': [{'kind': 'top'}]})['result']['selection_handle']
+            for tool, args in [
+                ('validate.geometry', {'object_ids': [oid]}),
+                ('validate.dimensions', {'object_ids': [oid], 'expected': [2000,2000,2000], 'unit': 'mm'}),
+                ('validate.assembly', {'object_ids': [oid], 'checks': [
+                    {'kind': 'ground', 'object_id': oid, 'plane': -1}]}),
+                ('validate.asset', {'object_ids': [oid], 'dimensions': {'expected': [2,2,2]}})]:
+                response = client.call(tool, args)
+                self.assertTrue(response['success'], response)
+                self.assertTrue(response['result']['passed'], response)
+                self.assertEqual(response['modified_ids'], [])
+                self.assertEqual(response['revision_after'], before)
+            failed = client.call('validate.dimensions', {'object_ids': [oid], 'expected': [1,1,1]})
+            self.assertTrue(failed['success'])
+            self.assertFalse(failed['result']['passed'])
+            self.assertTrue(client.call('mesh.inspect_selection', {'selection_handle': handle})['success'])
+            self.assertEqual(client.call('validate.geometry', {'object_ids': [oid, oid]})
+                ['error']['code'], 'INVALID_ARGUMENT')
+            self.assertEqual(client.call('validate.geometry', {'object_ids': [oid]}, expected_revision=before+1)
+                ['error']['code'], 'STALE_SCENE_STATE')
+            self.assertEqual(client.revision, before)
+
+    def test_real_validation(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'validation_smoke.py'
+        result = run_headless(script, executable=BLENDER)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_VALIDATION_HEADLESS_OK', result.stdout)

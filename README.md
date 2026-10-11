@@ -3,7 +3,7 @@
 A model-independent machine interface to Blender, implemented incrementally from
 [the canonical plan](BLENDER_AGENT_RUNTIME_CANONICAL_MASTER_PLAN_V2.md).
 
-Milestones 1–8 provide a persistent headless Blender process, synchronous structured
+Milestones 1–9 provide a persistent headless Blender process, synchronous structured
 IPC, shutdown/death detection, isolated headless testing, and a versioned, typed
 discovery API with structured errors, call logging, session IDs and
 monotonic revision preconditions. Objects receive persistent UUIDs with collision
@@ -12,7 +12,9 @@ read-only observation. Targeted inspection reports evaluated geometry and world
 bounds; hierarchy pages expose parent UUIDs. Semantic base-mesh queries create temporary
 revision-bound selection handles. Basic object tools create primitives, set transforms,
 duplicate, delete and parent by UUID with revision and change tracking. Core mesh
-tools extrude, inset, bevel, boolean and clean up base geometry.
+tools extrude, inset, bevel, boolean and clean up base geometry. Read-only validators
+report geometry defects, evaluated dimension mismatches, approximate assembly
+relationships and asset checks.
 Requires Python 3.10+ and a Blender executable on PATH. No Python dependencies are
 needed to run the controller or tests.
 
@@ -31,6 +33,7 @@ python3 -m controller.headless tests/blender/geometry_smoke.py
 python3 -m controller.headless tests/blender/selection_smoke.py
 python3 -m controller.headless tests/blender/object_smoke.py
 python3 -m controller.headless tests/blender/mesh_smoke.py
+python3 -m controller.headless tests/blender/validation_smoke.py
 ```
 
 Choose a different Blender for integration/conformance tests with
@@ -62,10 +65,10 @@ becomes unusable; create a new client to restart. Commands are never retried.
 See [architecture](docs/ARCHITECTURE.md), [current milestone](docs/CURRENT_MILESTONE.md),
 [tool contract](docs/TOOL_CONTRACT.md), [conventions](docs/CONVENTIONS.md),
 [object identity](docs/IDENTITY.md), [scene observation](docs/SCENE_OBSERVABILITY.md),
-[semantic selection](docs/SELECTION_LANGUAGE.md), [object control](docs/OBJECT_CONTROL.md), [mesh control](docs/MESH_CONTROL.md), and [conformance](docs/CONFORMANCE.md).
+[semantic selection](docs/SELECTION_LANGUAGE.md), [object control](docs/OBJECT_CONTROL.md), [mesh control](docs/MESH_CONTROL.md), [validation](docs/VALIDATION.md), and [conformance](docs/CONFORMANCE.md).
 
 Limitations: background mode only; local single-controller TCP transport; no scene
-recovery or transactions yet. API 1.0 provides discovery, scene reads, semantic base-mesh queries, basic object control and core mesh edits.
+recovery or transactions yet. API 1.0 provides discovery, scene reads, semantic base-mesh queries, basic object control, core mesh edits and technical validation.
 State preconditions guard every public call; public object mutations report UUID changes; restore hooks are tested with private fixtures. Identity writes remain internal; observations do not
 initialize new IDs. External scene edits are not automatically tracked.
 Loopback and a launch token restrict accidental attachment; this is not a sandbox
@@ -79,7 +82,8 @@ Available public tools: `runtime.get_version`, `runtime.get_supported_versions`,
 `scene.list_objects`, `scene.get_hierarchy`, `scene.inspect_objects`, `mesh.query`,
 `mesh.inspect_selection`, `object.create_primitive`, `object.transform`,
 `object.duplicate`, `object.delete`, `object.set_parent`, `mesh.extrude`, `mesh.inset`,
-`mesh.bevel`, `mesh.boolean`, and `mesh.cleanup`. Tool schemas and
+`mesh.bevel`, `mesh.boolean`, `mesh.cleanup`, `validate.geometry`, `validate.dimensions`, `validate.assembly`,
+and `validate.asset`. Tool schemas and
 metadata are returned by discovery. `runtime.describe_tool` takes `name`;
 `scene.list_objects` takes filters, `limit` and `cursor`; `scene.get_hierarchy`
 takes `limit` and `cursor`; `scene.inspect_objects` takes `object_ids`. Discovery and summary tools without arguments

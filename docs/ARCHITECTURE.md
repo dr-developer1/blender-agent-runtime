@@ -80,3 +80,11 @@ Booleans bake an EXACT modifier on a temporary object with finally cleanup.
 Linked duplicates keep their original data. No UI operator context is required.
 The tools retain object identity and report the modified target UUID; broader
 transaction recovery remains Milestone 10. See MESH_CONTROL.md.
+
+Milestone 9 registers four read-only validation tools when evaluated observation
+providers exist, independently of the mutation backend. Bounded numeric snapshots
+feed geometry checks and evaluated world AABB dimension/relationship checks.
+Asset validation composes their findings and optional face material assignment.
+Reports contain concrete pass/fail checks with no score, inside the ordinary
+result envelope. No datablock publication, UUID repair, UI operator or revision
+advance occurs. See VALIDATION.md for approximate assembly semantics and limits.
