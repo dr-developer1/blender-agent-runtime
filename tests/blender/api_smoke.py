@@ -7,10 +7,14 @@ import bpy
 from runtime.api import RuntimeAPI
 from runtime.schemas import validate_response
 
-api = RuntimeAPI(blender_version=bpy.app.version_string, objects=lambda: bpy.data.objects)
+api = RuntimeAPI(blender_version=bpy.app.version_string, objects=lambda: bpy.data.objects,
+                 scene=lambda: bpy.context.scene, view_layer=lambda: bpy.context.view_layer,
+                 depsgraph=lambda: bpy.context.evaluated_depsgraph_get())
 objects_before = tuple(bpy.data.objects)
 for name in api.registry.names():
     arguments = {'name': name} if name == 'runtime.describe_tool' else {}
+    if name == 'scene.inspect_objects':
+        arguments = {'object_ids': [bpy.context.scene.objects[0]['bar_uuid']]}
     response = api.execute({'api_version': '1.0', 'tool': name, 'arguments': arguments,
                             'session_id': api.state.session_id, 'expected_revision': api.state.revision})
     validate_response(response)

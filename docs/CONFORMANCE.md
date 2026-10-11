@@ -18,7 +18,7 @@ response validation, registry consistency, descriptor isolation, non-JSON output
 internal-error redaction and omission of arguments/results from logs.
 
 Run `python3 -m controller.headless tests/blender/api_smoke.py` for an isolated
-Blender check that all seven tools return valid success envelopes and leave scene
+Blender check that all advertised tools return valid success envelopes and leave scene
 objects unchanged. This supplements the persistent-process integration suite.
 
 Milestone 3 covers session bootstrap, new sessions after process restart, stale
@@ -37,3 +37,20 @@ resolves the same UUIDs in another process with a different session. Unit tests
 also cover read-only objects, write failures, generation collisions, and rejection
 of unmanaged or removed objects. Run the lifecycle fixture directly with
 `python3 -m controller.headless tests/blender/identity_smoke.py`.
+
+Milestone 5 checks scene summary and paginated UUID listing over persistent IPC.
+A real Blender fixture adds 253 objects and verifies type, collection, visibility,
+name, tag and world-origin region filters, bounded complete pagination, exclusion
+visibility, collision-free resolution, and read-only state. It rejects tampered,
+filter-mismatched, edited-scene and old-revision cursors. Orphans and other-scene
+objects remain excluded. Unit checks also cover empty scenes, nested invalid
+arguments, schema rejection, response size limits and subsequent-call recovery.
+Run `python3 -m controller.headless tests/blender/scene_smoke.py` directly.
+
+Targeted inspection tests compare original mesh counts with array/mirror/solidify
+results and verify evaluated world bounds under parenting, rotation and negative
+scale. Geometry-free objects have nullable dimensions. Hierarchy checks paginate
+parent UUID edges and reject cross-endpoint and reparented cursors. Inspection
+checks UUID order, duplicate/unknown/malformed IDs, excluded evaluation, base-mesh
+preservation and absence of temporary mesh data-block leaks. Run
+`python3 -m controller.headless tests/blender/geometry_smoke.py` directly.

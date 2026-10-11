@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from typing import Any, Callable
 
 from .errors import ToolError
-from .schemas import object_schema, validate_arguments
+from .schemas import object_schema, validate_arguments, validate_schema
 
 
 @dataclass(frozen=True)
@@ -33,16 +33,9 @@ class CapabilityRegistry:
     def register(self, spec: ToolSpec, handler: Callable):
         if spec.name in self._tools:
             raise ValueError(f'Duplicate tool: {spec.name}')
-        # Refuse schemas the boundary validator cannot enforce.
-        schema = spec.input_schema
-        if (schema.get('type') != 'object' or schema.get('additionalProperties') is not False or
-                not isinstance(schema.get('properties'), dict) or
-                not isinstance(schema.get('required'), list) or
-                not set(schema['required']) <= set(schema['properties']) or
-                any(rule.get('type') != 'string' or set(rule) - {'type', 'minLength'}
-                    for rule in schema['properties'].values()) or
-                set(schema) != {'type', 'properties', 'required', 'additionalProperties'}):
-            raise ValueError('Unsupported argument schema')
+        validate_schema(spec.input_schema)
+        if spec.input_schema['type'] != 'object':
+            raise ValueError('Tool arguments must use an object schema')
         self._tools[spec.name] = (deepcopy(spec), handler)
 
     def names(self):

@@ -35,18 +35,21 @@ a revision because they may have partially changed the scene. Invalid arguments,
 unknown tools and rejected preconditions do not advance. Future restore/rollback
 tools must declare side effects; snapshots restore scene contents, never the
 runtime counter. This milestone adds the hooks and verifies them with private
-test fixtures; the seven production tools remain read-only discovery. Arbitrary
-external bpy edits are not automatically observed by this background runtime.
+test fixtures; public tools provide discovery and read-only scene observation.
+Arbitrary external bpy edits are not automatically observed by this background runtime.
 
 Validation rejects missing/extra envelope and argument fields, wrong types and
 unsupported API versions before executing a tool. Discovery tools take `{}` except
 `runtime.describe_tool`, which requires a nonempty string `name`. Descriptors expose
 input/output JSON schemas, version, side effects, supports and transaction safety.
-The argument validator supports object schemas with required string properties
-and no additional properties.
+The argument validator supports nested objects, string maps, bounded strings and
+integers, booleans, and arrays of finite numbers. Unsupported schema keywords are
+rejected at registration.
 
 Errors: `INVALID_REQUEST`, `UNSUPPORTED_API_VERSION`, `SESSION_MISMATCH`,
-`STALE_SCENE_STATE`, `UNKNOWN_TOOL`, `INVALID_ARGUMENT`, `INTERNAL_ERROR`.
+`STALE_SCENE_STATE`, `UNKNOWN_TOOL`, `INVALID_ARGUMENT`, `INVALID_CURSOR`,
+`RESPONSE_TOO_LARGE`, `OBJECT_NOT_IN_SCENE`, `OBJECT_NOT_EVALUATED`,
+`INTERNAL_ERROR`, and the identity errors in IDENTITY.md.
 Internal exception text is not returned. Transport errors remain
 `BlenderProcessError` and terminate the connection.
 
@@ -58,5 +61,11 @@ exception text are excluded. Logs share the captured Blender output stream.
 
 Milestone 4 advertises `object_identity: true` when a live object provider is
 attached (including the Blender server). UUID initialization precedes publication
-of revision zero. The seven public tools remain discovery only; identity helpers
-and their errors are documented in IDENTITY.md for subsequent scene tools.
+of revision zero. Identity helpers and their errors are documented in IDENTITY.md.
+
+Milestone 5 adds `scene.summary`, `scene.list_objects`, `scene.get_hierarchy`,
+and `scene.inspect_objects`, bringing the Blender server to eleven public tools.
+Scene providers enable observation; a dependency graph provider enables evaluated
+inspection. Scene reads enforce identity validity and state guards. Listing uses filters, bounded `limit`, and
+revision/filter/observation-bound `cursor`; see SCENE_OBSERVABILITY.md for their
+schemas, exact visibility semantics, and pagination behavior.

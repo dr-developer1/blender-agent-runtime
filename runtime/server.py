@@ -16,7 +16,9 @@ def serve():
 
     assert threading.current_thread() is threading.main_thread()
     with socket.create_connection(('127.0.0.1', int(os.environ['BAR_IPC_PORT'])), timeout=10) as sock:
-        api = RuntimeAPI(blender_version=bpy.app.version_string, objects=lambda: bpy.data.objects)
+        api = RuntimeAPI(blender_version=bpy.app.version_string, objects=lambda: bpy.data.objects,
+                         scene=lambda: bpy.context.scene, view_layer=lambda: bpy.context.view_layer,
+                 depsgraph=lambda: bpy.context.evaluated_depsgraph_get())
         channel = JsonChannel(sock)
         channel.send({'type': 'ready', 'token': os.environ.pop('BAR_IPC_TOKEN'), 'pid': os.getpid(),
                       'session_id': api.state.session_id, 'revision': api.state.revision})

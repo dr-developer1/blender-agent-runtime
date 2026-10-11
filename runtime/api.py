@@ -10,6 +10,9 @@ from .errors import ToolError
 from .identity import ObjectIdentity
 from .logging import EventLogger
 from .revisions import RuntimeState
+from .scene import (SceneObserver, LIST_INPUT_SCHEMA, LIST_OUTPUT_SCHEMA, SUMMARY_OUTPUT_SCHEMA,
+                    DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE, PAGE_INPUT_SCHEMA, HIERARCHY_OUTPUT_SCHEMA,
+                    INSPECT_INPUT_SCHEMA, INSPECT_OUTPUT_SCHEMA)
 from .schemas import (API_VERSION, RUNTIME_VERSION, SUPPORTED_VERSIONS, ToolRequest,
                       failure_response, object_schema, success_response)
 
@@ -20,9 +23,10 @@ CONVENTIONS = {'up': '+Z', 'forward': '-Y', 'ground_plane': 'XY',
 FEATURES = {'capability_discovery': True, 'typed_contracts': True,
             'structured_errors': True, 'synchronous_execution': True,
             'scene_mutation': False, 'sessions': True, 'revisions': True,
-            'transactions': False, 'semantic_selection': False, 'object_identity': False}
+            'transactions': False, 'semantic_selection': False, 'object_identity': False, 'scene_observation': False, 'evaluated_geometry': False}
 LIMITS = {'max_frame_bytes': MAX_FRAME_BYTES, 'max_in_flight_requests': 1,
-          'execution_mode': 'headless', 'transport': 'loopback_tcp'}
+          'execution_mode': 'headless', 'transport': 'loopback_tcp',
+          'default_page_size': DEFAULT_PAGE_SIZE, 'max_page_size': MAX_PAGE_SIZE}
 
 STRING = {'type': 'string'}
 STRING_ARRAY = {'type': 'array', 'items': STRING}
@@ -64,7 +68,7 @@ OUTPUT_SCHEMAS = {
 
 
 class RuntimeAPI:
-    def __init__(self, *, blender_version, logger=None, objects=None):
+    def __init__(self, *, blender_version, logger=None, objects=None, scene=None, view_layer=None, depsgraph=None):
         self.blender_version = blender_version
         self.logger = logger if logger is not None else EventLogger()
         self.state = RuntimeState()
@@ -73,7 +77,13 @@ class RuntimeAPI:
         # Bootstrap is part of the initial scene baseline, before state is published.
         if self.identities is not None:
             self.identities.ensure_all()
-        self.features = {**FEATURES, 'object_identity': self.identities is not None}
+        if scene is not None and self.identities is None:
+            raise ValueError('Scene observation requires an object provider')
+        self.observer = (SceneObserver(scene=scene, view_layer=view_layer, identities=self.identities,
+                                       state=self.state, depsgraph=depsgraph) if scene is not None else None)
+        self.features = {**FEATURES, 'object_identity': self.identities is not None,
+                         'scene_observation': self.observer is not None,
+                         'evaluated_geometry': self.observer is not None and depsgraph is not None}
         self.registry = CapabilityRegistry()
         self._register_tools()
 
@@ -104,6 +114,20 @@ class RuntimeAPI:
             self.registry.register(ToolSpec(name, description, input_schema=schema,
                                             output_schema=OUTPUT_SCHEMAS[name]), handler)
 
+        if self.observer is not None:
+            self.registry.register(ToolSpec('scene.summary', 'Summarize the active scene.',
+                                            output_schema=SUMMARY_OUTPUT_SCHEMA), self.observer.summary)
+            self.registry.register(ToolSpec('scene.list_objects', 'List filtered objects in bounded pages.',
+                                            input_schema=LIST_INPUT_SCHEMA, output_schema=LIST_OUTPUT_SCHEMA),
+                                   self.observer.list_objects)
+            self.registry.register(ToolSpec('scene.get_hierarchy', 'List parent relationships in bounded pages.',
+                                            input_schema=PAGE_INPUT_SCHEMA, output_schema=HIERARCHY_OUTPUT_SCHEMA),
+                                   self.observer.hierarchy)
+            if self.features['evaluated_geometry']:
+                self.registry.register(ToolSpec('scene.inspect_objects', 'Inspect selected UUIDs and evaluated geometry.',
+                                                input_schema=INSPECT_INPUT_SCHEMA, output_schema=INSPECT_OUTPUT_SCHEMA),
+                                       self.observer.inspect_objects)
+
     def execute(self, message, *, request_id=None):
         with self._lock:
             return self._execute(message, request_id=request_id)
@@ -118,7 +142,9 @@ class RuntimeAPI:
             self.state.check(request.session_id, request.expected_revision)
             result = self.registry.invoke(request.tool, request.arguments,
                                           before_mutation=self.state.advance)
-            json.dumps(result, allow_nan=False)
+            encoded = json.dumps(result, allow_nan=False, separators=(',', ':')).encode('utf-8')
+            if len(encoded) > MAX_FRAME_BYTES - 4096:
+                raise ToolError('RESPONSE_TOO_LARGE', 'Result exceeds the transport budget; request a smaller page.')
         except ToolError as exc:
             error = exc
         except Exception:

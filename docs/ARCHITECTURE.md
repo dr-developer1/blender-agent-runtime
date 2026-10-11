@@ -23,8 +23,7 @@ The dispatcher lock covers state validation and execution; state preconditions
 apply to reads and mutations alike. Validated tools with declared side effects
 advance the timeline before execution, including failed attempts. Scene snapshots
 must never include the counter. The controller tracks returned revisions and
-rejects different-session or backward-state responses. Public discovery is still
-read-only; test fixtures exercise real edits and scene restoration.
+rejects different-session or backward-state responses. Public tools remain read-only; test fixtures exercise real edits and scene restoration.
 
 Milestone 4 attaches a persistent `bar_uuid` custom property to every object in
 Blender data during startup, preserving valid existing IDs. The optional live
@@ -33,6 +32,17 @@ rescans current data instead of retaining references across deletion or file loa
 Known duplicates receive fresh IDs; ambiguous collisions are rejected. Identity
 writes after bootstrap belong inside mutation handlers, while the initial IDs form
 the revision-zero baseline. See IDENTITY.md for the internal service contract.
+
+Milestone 5 attaches live scene and view-layer providers. Scene observations reuse
+the identity index without storing long-lived object references. Listing filters
+current observations and emits bounded pages sorted by UUID. Signed cursors bind
+the query, session, revision and observation digest, detecting stale timelines and
+changed matching data between pages. No server-side cursor cache is retained.
+Nested schemas validate filters and page bounds before execution. Oversized results
+return structured errors instead of overflowing the transport. Computation still
+scans scene data for each page. Targeted UUID inspection reads the evaluated
+dependency graph and reports base/evaluated mesh counts plus world-space bounds.
+Hierarchy pages expose parent UUID edges without unbounded child arrays; see SCENE_OBSERVABILITY.md for current limits.
 
 The controller owns process lifetime, deadlines, log capture and cleanup. A timeout
 or broken protocol poisons the connection and terminates the child: an uncertain

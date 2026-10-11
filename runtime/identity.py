@@ -99,10 +99,14 @@ class ObjectIdentity:
         self._write(obj, object_id)
         return object_id
 
+    def index(self):
+        """Return a validated current UUID index; callers must not retain it."""
+        return self._index(self._snapshot())
+
     def resolve(self, object_id):
         """Resolve exactly one current object; never use its display name."""
         validate_uuid(object_id)
-        index = self._index(self._snapshot())
+        index = self.index()
         if object_id not in index:
             raise ToolError('OBJECT_NOT_FOUND', 'No current object has this UUID.',
                             {'object_id': object_id})

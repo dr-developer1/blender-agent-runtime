@@ -1,31 +1,41 @@
 # Current milestone
 
-Milestone 4 — Identity (steps 17–21): complete.
+Milestone 5 — Scene Observability (steps 22–27): complete.
 
-Implemented: persistent `bar_uuid` object custom properties; startup management of
-all Blender data objects; strict canonical UUID validation; live UUID resolution;
-known-duplicate identity assignment; fail-closed collision handling; structured
-missing-object, malformed-identity, read-only and write-failure errors. IDs survive
-renames and .blend save/load. Removing data makes IDs unresolved; name reuse does
-not revive identity. Resolution retains no object references across file loads.
-The Blender server advertises `object_identity` support through discovery.
-Runtime package version: 0.4.0; public API version: 1.0.
+Implemented: `scene.summary`, filtered `scene.list_objects`, bounded cursor
+pagination, targeted `scene.inspect_objects`, paginated `scene.get_hierarchy`,
+and evaluated geometry/dimensions. The Blender server advertises eleven tools.
+Filters combine type, direct collection membership, active-view-layer visibility,
+name patterns, string custom tags and inclusive world-origin regions. Pages are
+UUID-sorted, default to 50, and cap at 100. Signed cursors bind endpoint, session,
+revision, filters and observed data, rejecting tampering and stale observations.
+Scene reads preserve UUIDs and the revision. Nested schema validation enforces
+filters and bounds. Oversized responses return structured failures.
 
-Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 35 unit tests, 15
-integration tests, and 15 conformance checks reusing the integration suite, plus
-direct headless identity/API smoke checks. Real Blender tests cover data-block and
-operator duplication, collision/malformed-ID rejection, deletion, name reuse,
-save/load with the existing resolver, and persistence across two Blender processes
-with different sessions. Mutation and file-load fixtures verify revision hooks.
-All prior lifecycle, API and state checks pass. Commands are in README.md.
+Targeted inspection reports original/evaluated mesh and triangle counts, evaluated
+world matrices, world-axis-aligned bounds and dimensions. Mesh bounds use evaluated
+vertices; non-mesh geometry uses evaluated box corners. Parent UUIDs describe
+hierarchy without unbounded child lists. Inspection preserves request order and
+rejects duplicate/unknown IDs, other-scene objects and excluded evaluation.
+Runtime package version: 0.5.0; public API version: 1.0.
 
-Limits: identity helpers are internal; seven public tools remain discovery only.
-Missing IDs are initialized as part of the revision-zero baseline before the
-startup handshake. Later writes must run inside revision-guarded mutation handlers.
-Unknown collisions require explicit repair; linked-library management and automatic
-tracking of external edits are not implemented. Resolution scans all current data.
-No scene observation tools, recovery snapshots, transactions, AI or adapters yet.
-See IDENTITY.md for the service contract and error behavior.
+Verification on Linux, Python 3.12.3 and Blender 5.2.2 LTS: 49 unit tests and 18
+real-Blender integration cases (also exercised as conformance checks), plus direct
+headless API, scene and geometry smoke checks. Includes a 253-object filtered
+pagination fixture, collection exclusions, untracked edits, cursor rejection,
+array/mirror/solidify modifiers, parent transforms, rotation, negative scale,
+nullable geometry and mesh-data leak checks. All previous lifecycle, state and
+identity regressions remain covered. Commands are in README.md.
 
-Next: Milestone 5 — Scene Observability (steps 22–24): scene summary, filtered
-object listing and pagination.
+Limits: background runtime; public tools provide discovery/reads only. Scene reads
+never repair IDs. Scene-page computation still scans and sorts live data; geometry
+bounds scale with inspected vertex counts. Evaluated data follows current viewport
+settings, and instances are not expanded. Render-enabled flags are object flags,
+not final render visibility. Region filtering tests origins, not surfaces. External
+edits invalidate relevant cursors but are not generally revision-tracked. No general
+query language, semantic geometry addressing, transactions, recovery, AI or UI yet.
+See SCENE_OBSERVABILITY.md for exact contracts and limits.
+
+Next: Milestone 6 — Semantic Geometry Addressing (steps 28–35): selection schemas,
+spatial/geometric/topological/basic semantic selectors, selection handles, revision
+invalidation and conformance tests.

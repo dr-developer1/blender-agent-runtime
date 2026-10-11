@@ -78,3 +78,47 @@ class ApiIntegrationTests(unittest.TestCase):
                 result = run_headless(script, executable=BLENDER)
                 self.assertEqual(result.returncode, 0, result.stdout)
             self.assertIn('BAR_IDENTITY_PERSISTENCE_OK', result.stdout)
+
+    def test_scene_observation_over_ipc(self):
+        with BlenderClient(executable=BLENDER) as client:
+            self.assertTrue(client.call('runtime.get_supported_features')['result']['scene_observation'])
+            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 11)
+            summary = client.call('scene.summary')['result']
+            self.assertEqual(summary['object_count'], 3)
+            self.assertEqual(summary['object_types'], {'CAMERA': 1, 'LIGHT': 1, 'MESH': 1})
+            objects = []
+            arguments = {'limit': 1}
+            while True:
+                response = client.call('scene.list_objects', arguments)
+                self.assertTrue(response['success'], response)
+                objects.extend(response['result']['objects'])
+                cursor = response['result']['next_cursor']
+                if cursor is None:
+                    break
+                arguments['cursor'] = cursor
+            self.assertEqual({row['name'] for row in objects}, {'Cube', 'Camera', 'Light'})
+            self.assertEqual(len({row['object_id'] for row in objects}), 3)
+            filtered = client.call('scene.list_objects', {'object_type': 'MESH'})['result']
+            self.assertEqual([row['name'] for row in filtered['objects']], ['Cube'])
+            self.assertEqual(client.call('scene.list_objects', {'limit': True})['error']['code'], 'INVALID_ARGUMENT')
+            self.assertEqual(client.call('scene.list_objects', {'cursor': 'bad'})['error']['code'], 'INVALID_CURSOR')
+            self.assertTrue(client.call('scene.summary')['success'])
+            cube_id = filtered['objects'][0]['object_id']
+            inspected = client.call('scene.inspect_objects', {'object_ids': [cube_id]})['result']['objects'][0]
+            self.assertEqual(inspected['evaluated_dimensions'], [2.0, 2.0, 2.0])
+            self.assertEqual(inspected['evaluated_geometry']['vertices'], 8)
+            hierarchy = client.call('scene.get_hierarchy')['result']
+            self.assertEqual(len(hierarchy['nodes']), 3)
+            self.assertEqual(client.revision, 0)
+
+    def test_real_filtered_scene_and_bounded_pagination(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'scene_smoke.py'
+        result = run_headless(script, executable=BLENDER)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_SCENE_HEADLESS_OK', result.stdout)
+
+    def test_real_evaluated_geometry_and_hierarchy(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'geometry_smoke.py'
+        result = run_headless(script, executable=BLENDER)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_GEOMETRY_HEADLESS_OK', result.stdout)

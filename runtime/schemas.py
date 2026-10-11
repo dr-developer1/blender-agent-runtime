@@ -7,7 +7,7 @@ from .errors import ToolError
 
 API_VERSION = '1.0'
 SUPPORTED_VERSIONS = (API_VERSION,)
-RUNTIME_VERSION = '0.4.0'
+RUNTIME_VERSION = '0.5.0'
 
 
 class ErrorBody(TypedDict):
@@ -68,20 +68,85 @@ def object_schema(properties=None, required=()):
             'required': list(required), 'additionalProperties': False}
 
 
-def validate_arguments(arguments, schema):
-    """Validate the deliberately small object/string schema subset used by discovery."""
-    if not isinstance(arguments, dict):
-        raise ToolError('INVALID_ARGUMENT', 'Arguments must be an object.')
-    properties = schema['properties']
-    unknown = set(arguments) - set(properties)
-    missing = set(schema['required']) - set(arguments)
-    if unknown or missing:
-        raise ToolError('INVALID_ARGUMENT', 'Unexpected or missing arguments.',
-                        {'unknown': sorted(unknown), 'missing': sorted(missing)})
-    for name, value in arguments.items():
-        rule = properties[name]
-        if not isinstance(value, str) or len(value) < rule.get('minLength', 0):
-            raise ToolError('INVALID_ARGUMENT', f'{name} must be a nonempty string.', {'field': name})
+def validate_schema(schema):
+    """Validate only the JSON Schema subset that this runtime can enforce."""
+    if not isinstance(schema, dict):
+        raise ValueError('Unsupported argument schema')
+    kind = schema.get('type')
+    allowed = {'string': {'type', 'minLength', 'maxLength', 'enum'},
+               'integer': {'type', 'minimum', 'maximum'},
+               'number': {'type', 'minimum', 'maximum'},
+               'boolean': {'type'},
+               'array': {'type', 'items', 'minItems', 'maxItems'},
+               'object': {'type', 'properties', 'required', 'additionalProperties'}}
+    if not isinstance(kind, str) or kind not in allowed or set(schema) - allowed[kind]:
+        raise ValueError('Unsupported argument schema')
+    for key in ('minLength', 'maxLength', 'minItems', 'maxItems'):
+        if key in schema and (type(schema[key]) is not int or schema[key] < 0):
+            raise ValueError('Invalid schema bound')
+    for key in ('minimum', 'maximum'):
+        if key in schema and (type(schema[key]) not in (int, float) or (type(schema[key]) is float and not math.isfinite(schema[key]))):
+            raise ValueError('Invalid schema bound')
+    for low, high in (('minLength', 'maxLength'), ('minItems', 'maxItems'), ('minimum', 'maximum')):
+        if low in schema and high in schema and schema[low] > schema[high]:
+            raise ValueError('Invalid schema bounds')
+    if 'enum' in schema and (not isinstance(schema['enum'], list) or not schema['enum'] or
+                             any(not isinstance(item, str) for item in schema['enum'])):
+        raise ValueError('Unsupported enum')
+    if kind == 'array':
+        validate_schema(schema.get('items'))
+    if kind == 'object':
+        if (set(schema) != allowed[kind] or not isinstance(schema['properties'], dict) or
+                not isinstance(schema['required'], list) or
+                any(not isinstance(key, str) for key in schema['required']) or
+                not set(schema['required']) <= set(schema['properties']) or
+                any(not isinstance(key, str) for key in schema['properties'])):
+            raise ValueError('Unsupported object schema')
+        for rule in schema['properties'].values():
+            validate_schema(rule)
+        additional = schema['additionalProperties']
+        if type(additional) is not bool:
+            validate_schema(additional)
+
+
+def validate_arguments(arguments, schema, path='arguments'):
+    """Enforce the registered schema before a handler may execute."""
+    def invalid():
+        raise ToolError('INVALID_ARGUMENT', 'Argument does not match its schema.', {'field': path})
+    kind = schema['type']
+    if kind == 'object':
+        if not isinstance(arguments, dict) or any(not isinstance(key, str) for key in arguments):
+            invalid()
+        properties = schema['properties']
+        unknown = set(arguments) - set(properties)
+        missing = set(schema['required']) - set(arguments)
+        additional = schema['additionalProperties']
+        if missing or (unknown and additional is False):
+            raise ToolError('INVALID_ARGUMENT', 'Unexpected or missing arguments.',
+                            {'field': path, 'unknown': sorted(unknown), 'missing': sorted(missing)})
+        for name, value in arguments.items():
+            rule = properties.get(name, additional)
+            if rule is not True:
+                validate_arguments(value, rule, path + '.' + name)
+    elif kind == 'string':
+        if (not isinstance(arguments, str) or len(arguments) < schema.get('minLength', 0) or
+                len(arguments) > schema.get('maxLength', float('inf')) or
+                ('enum' in schema and arguments not in schema['enum'])):
+            invalid()
+    elif kind == 'boolean':
+        if type(arguments) is not bool:
+            invalid()
+    elif kind in ('integer', 'number'):
+        if (type(arguments) not in ((int,) if kind == 'integer' else (int, float)) or
+                (type(arguments) is float and not math.isfinite(arguments)) or arguments < schema.get('minimum', -float('inf')) or
+                arguments > schema.get('maximum', float('inf'))):
+            invalid()
+    elif kind == 'array':
+        if (not isinstance(arguments, list) or len(arguments) < schema.get('minItems', 0) or
+                len(arguments) > schema.get('maxItems', float('inf'))):
+            invalid()
+        for index, value in enumerate(arguments):
+            validate_arguments(value, schema['items'], f'{path}[{index}]')
 
 
 def success_response(result, duration_ms, session_id, revision_before, revision_after) -> SuccessResponse:

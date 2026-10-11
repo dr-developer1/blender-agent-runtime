@@ -3,11 +3,13 @@
 A model-independent machine interface to Blender, implemented incrementally from
 [the canonical plan](BLENDER_AGENT_RUNTIME_CANONICAL_MASTER_PLAN_V2.md).
 
-Milestones 1–4 provide a persistent headless Blender process, synchronous structured
+Milestones 1–5 provide a persistent headless Blender process, synchronous structured
 IPC, shutdown/death detection, isolated headless testing, and a versioned, typed
 read-only discovery API with structured errors, call logging, session IDs and
 monotonic revision preconditions. Objects receive persistent UUIDs with collision
-detection and resolution. No modeling tools yet.
+detection and resolution. Scene summaries and filtered object pages provide
+read-only observation. Targeted inspection reports evaluated geometry and world
+bounds; hierarchy pages expose parent UUIDs. No modeling tools yet.
 Requires Python 3.10+ and a Blender executable on PATH. No Python dependencies are
 needed to run the controller or tests.
 
@@ -21,6 +23,8 @@ python3 -m controller.headless tests/blender/smoke.py
 python3 -m controller.headless tests/blender/api_smoke.py
 python3 -m controller.headless tests/blender/state_smoke.py
 python3 -m controller.headless tests/blender/identity_smoke.py
+python3 -m controller.headless tests/blender/scene_smoke.py
+python3 -m controller.headless tests/blender/geometry_smoke.py
 ```
 
 Choose a different Blender for integration/conformance tests with
@@ -38,6 +42,8 @@ with BlenderClient(executable="blender") as client:
     print(client.session_id, client.revision)  # initialized by startup handshake
     print(client.call("runtime.get_version"))
     print(client.call("runtime.list_tools"))
+    print(client.call("scene.summary"))
+    print(client.call("scene.list_objects", {"object_type": "MESH", "limit": 25}))
     print(client.call("runtime.describe_tool", {"name": "runtime.get_limits"}))
 ```
 
@@ -49,13 +55,14 @@ becomes unusable; create a new client to restart. Commands are never retried.
 
 See [architecture](docs/ARCHITECTURE.md), [current milestone](docs/CURRENT_MILESTONE.md),
 [tool contract](docs/TOOL_CONTRACT.md), [conventions](docs/CONVENTIONS.md),
-[object identity](docs/IDENTITY.md), and [conformance](docs/CONFORMANCE.md).
+[object identity](docs/IDENTITY.md), [scene observation](docs/SCENE_OBSERVABILITY.md),
+and [conformance](docs/CONFORMANCE.md).
 
 Limitations: background mode only; local single-controller TCP transport; no scene
-recovery or transactions yet. API 1.0 is limited to read-only discovery.
+recovery or transactions yet. API 1.0 provides discovery and scene reads.
 State preconditions guard every public call; mutation and restore hooks are tested
-with private fixtures. Identity helpers are internal; scene listing follows in
-Milestone 5. External scene edits are not automatically tracked.
+with private fixtures. Identity writes remain internal; observations do not
+initialize new IDs. External scene edits are not automatically tracked.
 Loopback and a launch token restrict accidental attachment; this is not a sandbox
 against other processes running as the same user. Headless test scripts are trusted
 local code. Integration tests skip if Blender is unavailable. A hung process is
@@ -63,7 +70,10 @@ terminated after its deadline, so graceful shutdown is not guaranteed in that ca
 
 Available public tools: `runtime.get_version`, `runtime.get_supported_versions`,
 `runtime.list_tools`, `runtime.describe_tool`, `runtime.describe_capabilities`,
-`runtime.get_supported_features`, and `runtime.get_limits`. Tool schemas and
-metadata are returned by discovery. Only `runtime.describe_tool` takes an argument
-(`name`); the other tools take an empty object. Unsupported API versions and bad
+`runtime.get_supported_features`, `runtime.get_limits`, `scene.summary`,
+`scene.list_objects`, `scene.get_hierarchy`, and `scene.inspect_objects`. Tool schemas and
+metadata are returned by discovery. `runtime.describe_tool` takes `name`;
+`scene.list_objects` takes filters, `limit` and `cursor`; `scene.get_hierarchy`
+takes `limit` and `cursor`; `scene.inspect_objects` takes `object_ids`. Other tools
+take `{}`. Unsupported API versions and bad
 arguments return structured failures while keeping the process usable.
