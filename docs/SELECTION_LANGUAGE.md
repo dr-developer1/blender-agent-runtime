@@ -19,7 +19,7 @@ indices = client.call('mesh.inspect_selection', {
 Queries inspect **base** mesh data in Object mode. Modifiers, evaluated instances
 and generated geometry are not addressed. Geometry inspection remains evaluated
 through `scene.inspect_objects`. Queries do not change Blender selection, geometry,
-UUIDs or revisions. No `mesh.select` or modeling tool is exposed yet.
+UUIDs or revisions. Core mesh edits consume handles; see [mesh control](MESH_CONTROL.md).
 
 Lengths use the selected coordinate space, in meters under the project conventions;
 areas are square meters. Angles are degrees. World geometry includes the current
@@ -56,7 +56,7 @@ semantic selectors describe geometry, without inferring engineering roles.
 `valid_at_revision`, `space`, and `geometry: "BASE"`. `mesh.inspect_selection` takes
 only `selection_handle` and adds ascending `indices` to those fields. Indices are
 current base-mesh indices for debugging and seed queries, never persistent element
-identities. Use handles to carry selections to future mutation tools.
+identities. Use handles to carry selections to mesh mutation tools.
 
 Handles belong to one runtime session and revision. Any revision advance, including
 a failed mutation attempt or future rollback, invalidates every handle. Expired,
@@ -74,5 +74,5 @@ vertices + edges + polygons + polygon loops per query, 10,000 matched indices.
 Exceeding mesh/selection budgets returns `SELECTION_LIMIT_EXCEEDED`; no truncated
 selection is returned. Each query and resolution reads and hashes the whole base
 mesh. Scene edits remain serialized through the runtime. The internal resolver
-must be called before a future mutation advances the timeline. Broader topology,
+must be called before a mutation advances the timeline. Broader topology,
 edge loops/rings, curvature and richer semantic inference remain future work.

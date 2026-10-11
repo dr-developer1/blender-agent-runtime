@@ -30,7 +30,9 @@ The controller rejects responses from another session or a backward timeline.
 
 Reads leave the revision unchanged. The dispatcher serializes state checks and
 execution. After argument validation, any tool declaring side effects advances
-once immediately before its handler starts. Failed mutation attempts also consume
+once immediately before its handler starts. Optional read-only preparation
+resolves revision-bound inputs before this advance; a rejected preparation also
+consumes one revision. Failed mutation attempts also consume
 a revision because they may have partially changed the scene. Invalid arguments,
 unknown tools and rejected preconditions do not advance. Future restore/rollback
 tools must declare side effects; snapshots restore scene contents, never the
@@ -83,3 +85,10 @@ advertises `scene_mutation: true`. Their handlers report created, modified and
 deleted UUIDs in the success envelope. This is explicit change reporting rather
 than a full scene diff. See OBJECT_CONTROL.md for schemas, units, parenting,
 copy/deletion semantics and new errors.
+
+
+Milestone 8 adds `mesh.extrude`, `mesh.inset`, `mesh.bevel`, `mesh.boolean` and
+`mesh.cleanup`, for 23 server tools. Handle-consuming mutations resolve their
+inputs under the dispatcher lock before advancing, then edit staged mesh data.
+These tools report only the target UUID in `modified_ids`. See MESH_CONTROL.md
+for arguments, local units, copy-on-write behavior and `EMPTY_SELECTION`.

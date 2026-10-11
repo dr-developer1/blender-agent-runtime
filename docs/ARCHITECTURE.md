@@ -69,3 +69,14 @@ revision before execution. Copying repairs UUID identity before publishing the
 result; deletion re-resolves children and preserves their world poses. Parenting
 preflights cycles, singular transforms and shear. No general rollback or full
 scene diff is promised yet. See OBJECT_CONTROL.md.
+
+
+Milestone 8 enables a mesh-control backend alongside object control. Registry
+entries can provide read-only preparation under the existing dispatcher lock;
+selection handles resolve at the observed revision, then every validated mutation
+attempt advances once even if preparation rejects. Extrude/inset/bevel/cleanup
+work on detached BMesh data and publish an independent mesh after output checks.
+Booleans bake an EXACT modifier on a temporary object with finally cleanup.
+Linked duplicates keep their original data. No UI operator context is required.
+The tools retain object identity and report the modified target UUID; broader
+transaction recovery remains Milestone 10. See MESH_CONTROL.md.

@@ -75,3 +75,12 @@ handler revision behavior, change arrays and selection-handle expiry. Unit tests
 verify closed primitive edge incidence and opposite winding, bounded schemas,
 mutation envelopes and explicit backend availability. Run
 `python3 -m controller.headless tests/blender/object_smoke.py` directly.
+
+
+Milestone 8 adds a mesh-control IPC case and isolated `mesh_smoke.py` fixture,
+reused by conformance. They verify all five tools, signed solid volumes and manifold
+edges, UV/material preservation, copy-on-write linked meshes, unit conversion,
+local offsets under scaling, exact boolean operations and empty intersections,
+cleanup welding/normals, handle preparation and invalidation, stale preconditions,
+unsupported states, Edit mode, output budgets and staged-data/temporary-object
+cleanup. Run the fixture with `python3 -m controller.headless tests/blender/mesh_smoke.py`.

@@ -9,6 +9,7 @@ from .capability_registry import CapabilityRegistry, ToolSpec
 from .errors import ToolError
 from .identity import ObjectIdentity
 from .objects import ObjectControl
+from .mesh import MeshControl
 from .logging import EventLogger
 from .revisions import RuntimeState
 from .selection import (SelectionService, QUERY_SCHEMA, HANDLE_SCHEMA, QUERY_OUTPUT,
@@ -102,6 +103,8 @@ class RuntimeAPI:
                 raise ValueError('Object control requires live Blender providers')
             self.objects = ObjectControl(identities=self.identities, scene=scene, view_layer=view_layer)
             self.objects.register(self.registry)
+            self.mesh = MeshControl(objects=self.objects, selections=self.selections, depsgraph=depsgraph)
+            self.mesh.register(self.registry)
             self.features['scene_mutation'] = True
 
     def _register_tools(self):

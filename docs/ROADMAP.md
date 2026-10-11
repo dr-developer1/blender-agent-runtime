@@ -9,9 +9,9 @@ section 35 is the authoritative implementation order.
 4. Identity — complete.
 5. Scene Observability — complete.
 6. Semantic Geometry Addressing — complete.
-7. Basic Object Control — complete; see CURRENT_MILESTONE.md.
-8. Core Mesh Control — next.
-9. Validation.
+7. Basic Object Control — complete.
+8. Core Mesh Control — complete; see CURRENT_MILESTONE.md.
+9. Validation — next.
 10. Recovery.
 11. Observation.
 12. First Vertical Slice.

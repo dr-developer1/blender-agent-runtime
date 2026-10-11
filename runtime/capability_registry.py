@@ -28,15 +28,15 @@ class ToolSpec:
 
 class CapabilityRegistry:
     def __init__(self):
-        self._tools: dict[str, tuple[ToolSpec, Callable]] = {}
+        self._tools: dict[str, tuple[ToolSpec, Callable, Callable | None]] = {}
 
-    def register(self, spec: ToolSpec, handler: Callable):
+    def register(self, spec: ToolSpec, handler: Callable, *, prepare=None):
         if spec.name in self._tools:
             raise ValueError(f'Duplicate tool: {spec.name}')
         validate_schema(spec.input_schema)
         if spec.input_schema['type'] != 'object':
             raise ValueError('Tool arguments must use an object schema')
-        self._tools[spec.name] = (deepcopy(spec), handler)
+        self._tools[spec.name] = (deepcopy(spec), handler, prepare)
 
     def names(self):
         return sorted(self._tools)
@@ -51,11 +51,16 @@ class CapabilityRegistry:
         return self._resolve(name)[0].describe()
 
     def invoke(self, name, arguments, *, before_mutation=None):
-        spec, handler = self._resolve(name)
+        spec, handler, prepare = self._resolve(name)
         validate_arguments(arguments, spec.input_schema)
-        if spec.side_effects and before_mutation is not None:
-            before_mutation()
-        result = handler(arguments)
+        # Resolve revision-bound inputs under the dispatcher lock, before advance.
+        # Even rejected preparation consumes a revision, like handler preflight.
+        try:
+            prepared = prepare(arguments) if prepare is not None else None
+        finally:
+            if spec.side_effects and before_mutation is not None:
+                before_mutation()
+        result = handler(arguments, prepared) if prepare is not None else handler(arguments)
         if not isinstance(result, dict):
             raise TypeError('Tool result must be an object')
         return result

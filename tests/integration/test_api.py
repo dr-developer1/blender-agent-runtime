@@ -26,7 +26,7 @@ class ApiIntegrationTests(unittest.TestCase):
                 self.assertTrue(client.call('runtime.describe_tool', {'name': name})['success'])
             self.assertEqual(client.call('runtime.list_tools', api_version='9.0')['error']['code'],
                              'UNSUPPORTED_API_VERSION')
-            self.assertEqual(client.call('mesh.bevel')['error']['code'], 'UNKNOWN_TOOL')
+            self.assertEqual(client.call('mesh.unsupported')['error']['code'], 'UNKNOWN_TOOL')
             self.assertEqual(client.call('runtime.describe_tool', {'name': False})['error']['code'],
                              'INVALID_ARGUMENT')
             self.assertTrue(client.call('runtime.get_limits')['success'])
@@ -82,7 +82,7 @@ class ApiIntegrationTests(unittest.TestCase):
     def test_scene_observation_over_ipc(self):
         with BlenderClient(executable=BLENDER) as client:
             self.assertTrue(client.call('runtime.get_supported_features')['result']['scene_observation'])
-            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 18)
+            self.assertEqual(len(client.call('runtime.list_tools')['result']['tools']), 23)
             summary = client.call('scene.summary')['result']
             self.assertEqual(summary['object_count'], 3)
             self.assertEqual(summary['object_types'], {'CAMERA': 1, 'LIGHT': 1, 'MESH': 1})
@@ -180,3 +180,40 @@ class ApiIntegrationTests(unittest.TestCase):
         result = run_headless(script, executable=BLENDER)
         self.assertEqual(result.returncode, 0, result.stdout)
         self.assertIn('BAR_OBJECT_HEADLESS_OK', result.stdout)
+
+    def test_mesh_control_over_ipc(self):
+        with BlenderClient(executable=BLENDER) as client:
+            oid = client.call('object.create_primitive', {'primitive': 'CUBE'})['result']['object_id']
+            def query(kind, selector):
+                result = client.call('mesh.query', {'object_id': oid, 'element_type': kind,
+                    'selectors': [selector]})
+                self.assertTrue(result['success'], result)
+                return result['result']['selection_handle']
+            for tool, kind, selector, values in [
+                ('mesh.extrude', 'FACE', {'kind': 'top'}, {'offset': [0, 0, 250], 'unit': 'mm'}),
+                ('mesh.inset', 'FACE', {'kind': 'top'}, {'thickness': .1}),
+                ('mesh.bevel', 'EDGE', {'kind': 'manifold'}, {'width': .02, 'segments': 2})]:
+                handle = query(kind, selector)
+                before = client.revision
+                result = client.call(tool, {'selection_handle': handle, **values})
+                self.assertTrue(result['success'], result)
+                self.assertEqual(result['modified_ids'], [oid])
+                self.assertEqual(client.revision, before + 1)
+                self.assertEqual(client.call('mesh.inspect_selection', {'selection_handle': handle})
+                    ['error']['code'], 'INVALID_SELECTION_HANDLE')
+            result = client.call('mesh.cleanup', {'object_id': oid, 'merge_distance': .00001})
+            self.assertTrue(result['success'], result)
+            operand = client.call('object.create_primitive', {'primitive': 'CUBE',
+                'location': [1, 0, 0]})['result']['object_id']
+            result = client.call('mesh.boolean', {'object_id': oid, 'operand_id': operand,
+                'operation': 'DIFFERENCE'})
+            self.assertTrue(result['success'], result)
+            self.assertEqual(result['modified_ids'], [oid])
+            inspected = client.call('scene.inspect_objects', {'object_ids': [oid, operand]})
+            self.assertTrue(inspected['success'], inspected)
+
+    def test_real_mesh_control(self):
+        script = Path(__file__).resolve().parents[1] / 'blender' / 'mesh_smoke.py'
+        result = run_headless(script, executable=BLENDER)
+        self.assertEqual(result.returncode, 0, result.stdout)
+        self.assertIn('BAR_MESH_HEADLESS_OK', result.stdout)
