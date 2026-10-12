@@ -1,0 +1,24 @@
+{
+  "format_version": 1,
+  "reviewer": "Codex",
+  "milestone": 15,
+  "api_version": "1.0",
+  "changed_descriptors": [
+    "material.create"
+  ],
+  "unchanged_descriptors": 35,
+  "public_tool_count": 36,
+  "added_optional_input_fields": [
+    "surface",
+    "grain_axis"
+  ],
+  "added_optional_output_fields": [
+    "surface",
+    "grain_axis"
+  ],
+  "existing_properties_and_required_fields_unchanged": true,
+  "plain_defaults_preserved": "Real-Blender material smoke verifies the original unlinked Principled defaults; no new result fields are returned when surface is omitted.",
+  "previous_descriptor_sha256": "1516558caf32e63aa55c61eb89c73f62825b567cadbc545537a074b1b614ace4",
+  "updated_baseline_sha256": "ee338ab6db377799416738b8591420721536ad6c6de7ee5e869508c6d504d80a",
+  "rationale": "Repeated flat-material benchmark failures required a reusable bounded procedural surface option. Arbitrary node editing and external image textures remain outside scope."
+}

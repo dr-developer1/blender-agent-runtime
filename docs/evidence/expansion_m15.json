@@ -1,0 +1,2185 @@
+{
+  "format_version": 1,
+  "timestamp": "2026-10-11T22:42:57.295914+00:00",
+  "milestone": 15,
+  "benchmark_count": 20,
+  "public_api": "1.0",
+  "environment": {
+    "platform": "Linux",
+    "python": "3.12.3",
+    "blender": "5.2.2 LTS"
+  },
+  "provenance": {
+    "codex_scripted_eevee": "The active Codex session authored/executed a separate scripted plan; reasoning at script-authoring time, shared briefs and baseline knowledge, no per-call model invocation.",
+    "protocol_replay": "Manual recipe through agent bridge; not an independent AI build.",
+    "agent_plan_source": "docs/evidence/expansion_codex_plan_m15_original.py",
+    "agent_plan_sha256": "baf8838f55c7f6ac4fdd0232f4b5b2d081652f18494d576a35925f75efb56e17",
+    "early_manual_runtime_version": "0.14.0",
+    "final_scripted_agent_runtime_version": "0.15.0",
+    "note": "Manual artifacts were collected while the working-tree version still read 0.14.0. Final conformance/agent builds use 0.15.0. Earlier failed and incomplete debugging attempts are retained locally, not counted as completed exercises. Original plan source is archived with its original hash. Current catalog includes repaired v2 lamp/crate briefs; use the followup evidence for current builds."
+  },
+  "verification": {
+    "unit_tests": 107,
+    "real_blender_conformance_cases": 40,
+    "skipped": 0,
+    "supplemental_checks": [
+      "filled_bore_preserving_outer_dimensions",
+      "advertised_complete_brief_and_tolerance",
+      "manual_and_replay_complete_summary_flags"
+    ]
+  },
+  "runs": {
+    "manual_workbench": {
+      "directory": "artifacts/expansion-m15-manual-final",
+      "benchmark_count": 20,
+      "technical_passed": true,
+      "tool_calls": 854,
+      "records": [
+        {
+          "benchmark": "coffee_table",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 43,
+            "tool_seconds": 0.9500337900062732,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "835b0c35-2177-46a5-a49e-8239695cbcc3",
+          "final_revision": 21,
+          "roles": {
+            "top": "d5f6d594-7635-4ffc-b441-9b0a738d60c0",
+            "leg_1": "3dbbb158-e262-4204-8d7f-53b03d4566c0",
+            "leg_2": "629d4b59-da4a-4700-a7c7-e22cab0416b0",
+            "leg_3": "672858f1-85ab-4afa-a1bd-bda620bc4a60",
+            "leg_4": "1b538925-1f57-40af-b2bd-9d48f67977fe"
+          },
+          "report_sha256": "e3517315e54912d482258dcc9f726f1f87d762594c5c632fa52d0f555f282be7",
+          "trace_sha256": "4a9393dd108ba4e0366ebd66c2ece23c452958ea261b69270cfb143957b08538"
+        },
+        {
+          "benchmark": "storage_crate",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 43,
+            "tool_seconds": 2.061390275006488,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "d423b5c5-3d01-401e-914b-95623221d4a9",
+          "final_revision": 21,
+          "roles": {
+            "base": "89f8f249-4c96-4cfc-a60f-bf1ef969a193",
+            "left": "ac644580-6bfd-46f6-affd-0ec9b5652cc1",
+            "right": "b8c77378-9176-438c-a2ee-0f5ecfc8e148",
+            "front": "99ef55b4-a128-470a-9b16-13287396e5f3",
+            "back": "f45a1c54-75d8-4faa-9557-f947e44268e0"
+          },
+          "report_sha256": "acc8935461d9ce748515fd34ddebf7be4916a2d0c081080cfe245fd1b67f0d77",
+          "trace_sha256": "3b2d0559141acf9062c60a044b2f176840bdf5de5af57014e244e5fcf0ee1ce0"
+        },
+        {
+          "benchmark": "wall_shelf",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 34,
+            "tool_seconds": 1.272283451999101,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "c5ed5841-1648-43ff-8fd8-00f6ff0e5eaf",
+          "final_revision": 16,
+          "roles": {
+            "shelf": "35c88960-938a-4c44-bb5f-b32c20977cdb",
+            "bracket_left": "de6b4b0f-7062-46df-930e-453d5b67f77a",
+            "bracket_right": "708a36e1-8783-42b8-9105-02364935a635"
+          },
+          "report_sha256": "3347fec839626ff7525b65b2a31c48f79aad77d6dcde931d83ea94a7db40cb05",
+          "trace_sha256": "173d61e742e8caa6f9abf937eaf9def33f33d3c8fe98cb771568a771771c8ebc"
+        },
+        {
+          "benchmark": "bottle",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 45,
+            "tool_seconds": 1.6667834269992454,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "45677d16-aa7b-4d4c-b448-c97731a67009",
+          "final_revision": 27,
+          "roles": {
+            "body": "17f90a9a-b5a7-4bad-a996-2bba122a0707",
+            "shoulder": "65f733dd-9325-42f8-9946-a85220314068",
+            "neck": "d7e25a2b-d94f-4d39-b854-73c02b2e0387"
+          },
+          "report_sha256": "246409116a55c49853f0a1fae9266ede6987beca6e3af3733dc3ce4d5348c1d5",
+          "trace_sha256": "c392c87ff6c72f7c5796a02cf2658dfe6def377ded8ac3d132e7837c6944e018"
+        },
+        {
+          "benchmark": "bookshelf",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 53,
+            "tool_seconds": 0.9332623139980569,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "27145a4c-1517-4d2d-9b37-310f903f0340",
+          "final_revision": 27,
+          "roles": {
+            "left": "0796a298-97a3-468f-8858-cf086dd61d5b",
+            "right": "31a82671-4979-41a2-8504-50b5ba1f5c6c",
+            "shelf_1": "c1bbee01-d730-440f-b513-8e17532bfc76",
+            "shelf_2": "8ca4ef67-1618-4b05-9680-4d9e3ebd54dd",
+            "shelf_3": "2d5b7d6e-73ad-4ebe-b1b9-ebde654426b6",
+            "shelf_4": "53b112cb-e10c-4f11-a9b5-c64308f865b5",
+            "shelf_5": "82e7f76f-c68e-45b1-8866-1a88bcf8bb01"
+          },
+          "report_sha256": "a49c3fb52b9559d5ede40a6686e4630e6b55bf097e5e9f0e603a02f632ecd8c7",
+          "trace_sha256": "07a05053364488efc216dd561e90172d6b0316568c2cea9015d6874f35aabf90"
+        },
+        {
+          "benchmark": "cabinet",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 53,
+            "tool_seconds": 1.7923768410018965,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "72cdda39-ff2a-4e66-bc27-27ca1699e84b",
+          "final_revision": 27,
+          "roles": {
+            "left": "59f57f6e-08b7-4a95-a80d-0e6f8d2f629b",
+            "right": "b7156530-fe31-4cda-be5b-28f3e556ef26",
+            "shelf_1": "1352c7f5-e232-49b7-ba70-2fe635d51ef2",
+            "shelf_2": "1d68fe47-2ff4-4439-8284-01dd7028406b",
+            "shelf_3": "fd425889-c38e-458a-b3d7-365b442a90fb",
+            "door_left": "714e11a6-c701-48db-bea6-4a0eff912b42",
+            "door_right": "42dbbe9f-9cae-4b79-994c-f6a42188bf27"
+          },
+          "report_sha256": "e91b16c68e134e0b67ecc193b5e32fbbd999c15b0ed53fd8d4ee943b18c9d22a",
+          "trace_sha256": "7cab52d8f01c47b2d26836d9f94755fd2e748bfe767a78c470567ad56495fc32"
+        },
+        {
+          "benchmark": "desk_lamp",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 37,
+            "tool_seconds": 1.223538500002178,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "e2f6e25c-fbd5-4ce6-b907-47ec3db1e7b6",
+          "final_revision": 19,
+          "roles": {
+            "base": "0c8297f2-9c2b-49b5-9f55-34a9e4970fad",
+            "stem": "206c8ca4-e5e1-4df6-9435-114b4ef230d0",
+            "shade": "27ad773f-78c2-4ed1-a430-896947873370"
+          },
+          "report_sha256": "630fa6518ed5eaef974570a2481570a309ec43a1971c73f74549bc90c730499f",
+          "trace_sha256": "9b848a6ea991221d038c47583b55e4b150706d982465b5a5b7ad74c69af80e19"
+        },
+        {
+          "benchmark": "sci_fi_crate",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 59,
+            "tool_seconds": 2.1866278709912876,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "ff6a030b-018d-46bc-86d0-c43cdad24e6d",
+          "final_revision": 31,
+          "roles": {
+            "base": "81660c7e-8999-4170-9132-8aed7d2d1f48",
+            "left": "d01f4f92-f9d4-4987-a4d7-be38fe61703c",
+            "right": "5257a90b-a9a4-421d-a938-85a3922088ad",
+            "front": "c22fad6a-2d53-4c7e-8b01-3170ffd652c6",
+            "back": "3fb5f294-8ce8-4d5a-a588-5a83e722aba8",
+            "lid": "2ef54526-75a7-47c3-aa86-a7d85ce35abb",
+            "armor_left": "cac56179-73f8-478c-9a93-03620fc3b3e3",
+            "armor_right": "c5b3fb94-2453-4e34-8ce7-b11a22a9c422"
+          },
+          "report_sha256": "122012a0e360a4861e953fe79cb1f778fd237b4f93768d3a4d97571882be40be",
+          "trace_sha256": "f1804bebe513617b5e615d2856ecd30dc86d302af637b6c9a88802f10acd8af6"
+        },
+        {
+          "benchmark": "metal_bracket",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 32,
+            "tool_seconds": 1.3569764719959494,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "b9af0f49-beca-4307-905c-dd3bd065bafe",
+          "final_revision": 16,
+          "roles": {
+            "base": "8b83bd3e-47ee-438c-92eb-a78c3a079e34",
+            "upright": "105bc7ef-0458-40a5-b749-ade6f9a01311"
+          },
+          "report_sha256": "a421480e7c605101759e08ad057b5d1bf29037a43cb0578501d4f79b7c5a9b97",
+          "trace_sha256": "9456fee62b6527eddf5211fe40264933f86e1b2e7faae8bcecccc32678207e2f"
+        },
+        {
+          "benchmark": "pipe_connector",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 36,
+            "tool_seconds": 1.6635776009970868,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "44a72015-f640-4377-b70f-1810ed1b021c",
+          "final_revision": 20,
+          "roles": {
+            "tube": "b141c31d-3ed4-4272-97cc-92fedb3fb216",
+            "flange": "91777bcf-6080-4ccc-b243-738107c35f16"
+          },
+          "report_sha256": "dd91e5088b3b128f279e284d35a2c88561c5cf6ceb5ea72cda8da91150b7a6e5",
+          "trace_sha256": "5eeb3537a7fdfd40cdcf5a06e2794defdb9fcd9325f0100e09052ec6cec7475d"
+        },
+        {
+          "benchmark": "drawer",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 43,
+            "tool_seconds": 2.3244355609986087,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "2f0e0a53-116a-4486-a722-5aacc1de6389",
+          "final_revision": 21,
+          "roles": {
+            "base": "6c800e08-aeb3-40b5-b977-8e4b420123bc",
+            "left": "90cf7fd1-818b-4bcd-bac5-74723ae09c3f",
+            "right": "42640072-900e-41c0-9516-c99e55b40b47",
+            "front": "309e457b-08d9-4fc7-8c7f-1ec3c274df95",
+            "back": "1ae743a7-1248-4b9f-9100-0af0a2159ceb"
+          },
+          "report_sha256": "6053947058ef1d84ed7d02bbb73e8ec69ada24ec6ff5b2b588579bd6eacaa83c",
+          "trace_sha256": "345693c0805b24bb97ab38069f86578eecb4bb52837e783db8a6f50a27edcd7e"
+        },
+        {
+          "benchmark": "bench",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 43,
+            "tool_seconds": 0.9568852669963235,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "15a4f16b-fb9f-4faa-bd3a-519d969c1ef2",
+          "final_revision": 21,
+          "roles": {
+            "top": "9bee0fe7-a371-4ad0-8c3f-526d2182414c",
+            "leg_1": "0d78b3b3-55a9-45be-acca-6ad09f7c8568",
+            "leg_2": "a8e117cf-dd0a-4e14-9ece-f1f730178e1d",
+            "leg_3": "79af2b3d-4b1c-4270-8863-d2cfc08fb51c",
+            "leg_4": "9afe9215-ab5f-4f12-b1dc-9963ff9f72e7"
+          },
+          "report_sha256": "f4fa1c02f0484541e9d5aed071ae4a323b75f93bf91fee62380d8160cbbd8e82",
+          "trace_sha256": "12426eb81787c68768e419f24351ec19744c7a9ff9ce926146b30561de0b864f"
+        },
+        {
+          "benchmark": "simple_chair",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 48,
+            "tool_seconds": 1.5669143769955554,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "1db59405-1000-40c0-9e8d-fd6b46a4df5c",
+          "final_revision": 24,
+          "roles": {
+            "top": "6b0c5e11-14e1-4109-a65b-e7da889f715a",
+            "leg_1": "c7789c09-a22f-406f-a458-409863c8da57",
+            "leg_2": "92cccef9-f637-414c-b3d8-3f93a5253886",
+            "leg_3": "a279e0b3-7d0b-41d4-9669-19d493c13915",
+            "leg_4": "ea67a113-7958-4fde-8ee8-24c3f4187975",
+            "backrest": "a5811ad4-50a0-4740-a345-fae65c386e33"
+          },
+          "report_sha256": "809b6e67ddc44c846fd82bb20fad2ac0183caef3f7185cecd9ebb3e6423b1dbe",
+          "trace_sha256": "13c921f11791828756fabe0bd0cc35c07351fb4e9e5784ad975c6dad55af538b"
+        },
+        {
+          "benchmark": "shelving_unit",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 58,
+            "tool_seconds": 1.2420032519912638,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "5241bf92-cee0-40fd-8514-7ca534d834e6",
+          "final_revision": 30,
+          "roles": {
+            "left": "df8eed35-4445-4252-88b7-01520ebbdb87",
+            "right": "f8ca9100-bdbc-462e-81a3-18903b02ca03",
+            "shelf_1": "7e784c9e-9d78-442f-a7e3-c0f85a7b4c03",
+            "shelf_2": "61ffa0fd-1cf7-4905-9683-6a57058c877a",
+            "shelf_3": "6d5e602a-677a-4d0a-932d-4f0950e1970b",
+            "shelf_4": "835652be-5091-432b-9253-bea1e0d1fcc3",
+            "shelf_5": "f7542961-9b36-47e5-b484-3bb23d2e26df",
+            "shelf_6": "3b222705-6c41-4382-9263-3da5dc9ab77f"
+          },
+          "report_sha256": "bb6328de847f5c2fba9a105998ba8a082ca1e39ac14ac942bec4bfd13ca255e5",
+          "trace_sha256": "f7cea34b2c55da6a44ea746d489287d81be0ce291fc4de22a08b60f3dfe969bb"
+        },
+        {
+          "benchmark": "planter",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 27,
+            "tool_seconds": 2.567781767998895,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "4223611d-7e2f-4172-864f-17e31c505a05",
+          "final_revision": 13,
+          "roles": {
+            "pot": "f27ce0bc-84c9-4f9c-9a16-b79f3c1c2d21"
+          },
+          "report_sha256": "f597870e2d85bde022a97b4856fd3be5549b82662cff64f8e02e02b28893a1f3",
+          "trace_sha256": "8247f6a4ae5be65ddc396e58538a9b5e7f6516e210a733e7590cd1c05005b4f2"
+        },
+        {
+          "benchmark": "toolbox",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 64,
+            "tool_seconds": 1.813509660996715,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "c09b9291-ef1e-4299-83f4-d63f0dbec290",
+          "final_revision": 34,
+          "roles": {
+            "base": "5ca741fe-1a7c-4303-b88c-cbc6e64aa35b",
+            "left": "5d0fc6bf-cdde-41bf-aadc-67bb40114354",
+            "right": "7b94b382-d4c5-4806-b95b-1b72c777267c",
+            "front": "97e83a8d-e60e-4ac4-ba98-f45a1505b6b4",
+            "back": "7e63facd-8cb0-4888-9dde-692dc11e6fa3",
+            "handle_left": "c9b8c83a-a42e-48c5-b0dc-5a15381ce40c",
+            "handle_right": "dba3ca54-d34b-420e-8261-1dba88c5d875",
+            "handle": "efc36cbe-c194-46db-a170-624341c7c762",
+            "crossbar": "5a6c3741-bb0a-424b-bf64-d84fbdd0e7ff"
+          },
+          "report_sha256": "5f9655400a3b2736f7728ac985c4d96f7e76a57f252deb6c105b0f04b63c2a39",
+          "trace_sha256": "1b3fb588ea5adb18f5770d33005cebc6cd0fa6aaba6cde5836d1c0726592d6a4"
+        },
+        {
+          "benchmark": "monitor_stand",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 33,
+            "tool_seconds": 1.1035851220021868,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "14c36d85-16b9-429d-a5a3-8fdd1c3180d0",
+          "final_revision": 15,
+          "roles": {
+            "top": "2b376e5d-4300-46b9-9f04-e0431e28ec30",
+            "left": "cb5d1870-491c-40d6-bb29-3c7259a82219",
+            "right": "1338e1d0-c05e-48ce-8976-6d9899d7ba7c"
+          },
+          "report_sha256": "8cc2f67df31f231ed0d5b12f994455495d9597387b9e4d4f3030db22a936e53b",
+          "trace_sha256": "adabb3a972f2a281767908df021237cf1dc2225240d401c4b58acba0f896b4ba"
+        },
+        {
+          "benchmark": "side_table",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 43,
+            "tool_seconds": 1.3367699550071848,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "c62acdb7-dd1f-44ec-a8e3-3e72dcca93c3",
+          "final_revision": 21,
+          "roles": {
+            "top": "7757df4b-64ec-49e3-98a0-57b1511a94ea",
+            "leg_1": "46debfd6-2903-420b-ba19-ae8b7c763e83",
+            "leg_2": "6c9ed8e3-e30a-4962-aada-0a34b7158bef",
+            "leg_3": "655dfa44-8cf6-47bf-bef8-09a657172b4e",
+            "leg_4": "866977aa-a840-4cdf-a910-53338255e2b7"
+          },
+          "report_sha256": "40a1f2b6c68e42c46ef276cda189c4dd2eac5e70bac24ad6b49ad7eca08a907a",
+          "trace_sha256": "32d0530f968e0ea4e44a7456f7a3d7a45e1e3fb74023058ece08008f031e5c69"
+        },
+        {
+          "benchmark": "appliance_housing",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 27,
+            "tool_seconds": 1.839817909998601,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "803005ff-2db8-4317-8392-987bf32e9a1d",
+          "final_revision": 13,
+          "roles": {
+            "housing": "b0ee9ecd-139d-4d34-acfd-9c88896e3d8f"
+          },
+          "report_sha256": "f9615eaf6e5ba0cb30d843c3cb3023b9e6deca689593c89805de447cca8a043f",
+          "trace_sha256": "0532775ae788b901ddbdd06629b1ea4f2850e59418f9a7022ec775c895077d36"
+        },
+        {
+          "benchmark": "product_casing",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 33,
+            "tool_seconds": 1.3547782609948626,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "77196fcd-9224-4d13-a53a-3b2a16b23272",
+          "final_revision": 17,
+          "roles": {
+            "shell": "2c6802b3-cf88-49e3-a48f-2ea8b22b8b71",
+            "lid": "2a891fdd-273f-400f-8e00-3ab01a8bbbce"
+          },
+          "report_sha256": "f3aa2b0a4d67deba4a0a224f96d59509eaf1a3fec3b7dbb7de2c472619578c0a",
+          "trace_sha256": "b4b991ce641ea7e4f8aa64b94de506e444934e84c0323379121736fa1e560665"
+        }
+      ]
+    },
+    "manual_eevee": {
+      "directory": "artifacts/expansion-m15-materials",
+      "benchmark_count": 20,
+      "technical_passed": true,
+      "tool_calls": 864,
+      "records": [
+        {
+          "benchmark": "coffee_table",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 43,
+            "tool_seconds": 6.639940959996238,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "e734535c-5f1c-41fa-900a-769591aa349e",
+          "final_revision": 21,
+          "roles": {
+            "top": "a35c24eb-3292-4fc5-983b-1c9d363fa6ab",
+            "leg_1": "dfaa248f-a713-4cdc-a481-ee1c6ed534b8",
+            "leg_2": "379e729d-62c1-4c4e-958b-48296d3b3b14",
+            "leg_3": "fa845f1a-7759-4563-a427-94f070586a34",
+            "leg_4": "521a8fd6-a8b9-4339-a63b-2cbfd6c5fc7b"
+          },
+          "report_sha256": "59dee3c3c57879c46ca59bdce683c2fd933dfc969a45eca8a5a67a8458003bb6",
+          "trace_sha256": "77b10f85184bc9224c8dbb5d14633826f2946eebd844c27306d02afad69688b9"
+        },
+        {
+          "benchmark": "storage_crate",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 43,
+            "tool_seconds": 7.919285477997619,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "05166dd0-629e-43cb-b9e7-f52baffbfd9d",
+          "final_revision": 21,
+          "roles": {
+            "base": "565924a2-a918-4beb-a312-faaac65febc9",
+            "left": "d897883a-dcfc-4847-8e81-07e1573745a5",
+            "right": "132daa22-dfe6-421c-867a-6f216095ba57",
+            "front": "98d0c254-1b5b-496a-b101-52d564b0d8b2",
+            "back": "fe70bdd4-382c-48d5-b921-249326e68fed"
+          },
+          "report_sha256": "147e853db21a71c12ef17f5c862818b223e9a18a8974c5e9118feda98998ec7e",
+          "trace_sha256": "2c43355ce9f23a599ee06c081b60f77fd42d7c1036a0481c3fcc79842ca44f6b"
+        },
+        {
+          "benchmark": "wall_shelf",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 34,
+            "tool_seconds": 6.570767263001471,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "7f1ab15a-e903-4b65-9e79-1cdcc2ecda93",
+          "final_revision": 16,
+          "roles": {
+            "shelf": "eaeebe44-5bce-48d2-822e-20d9f771d880",
+            "bracket_left": "722b0d2c-0d70-48bb-8e65-a383a50a2bd4",
+            "bracket_right": "0acb2ea2-a5b0-4011-a071-7b4458c3b0c5"
+          },
+          "report_sha256": "336d631b6626aebcd66b294602ab6fae0624bf05e9c7141deecb8e342856fa87",
+          "trace_sha256": "7c9f03d63a2245e80e9a79f6bc4e44e9e958ec2569d5497515aa5f5ce2581100"
+        },
+        {
+          "benchmark": "bottle",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 48,
+            "tool_seconds": 7.384253354995963,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "a9278d42-458c-4902-ae17-891137c85ae7",
+          "final_revision": 27,
+          "roles": {
+            "body": "54e19cde-048f-4116-9938-3b08cf2beb6f",
+            "shoulder": "5e7cd8d5-80c1-4de5-ab48-bcfa12439388",
+            "neck": "21658a17-9732-461f-8c08-b97ac21c92e4"
+          },
+          "report_sha256": "8cf59c1a50625d1a8fcc42f0a93eb03ccc99bff9acbd1b0c28433bf97ffbde44",
+          "trace_sha256": "79c67054cb6d602fb422f174190ea6b42135c663dbbe13f85cbbbf9875d22b15"
+        },
+        {
+          "benchmark": "bookshelf",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 53,
+            "tool_seconds": 6.554984066993711,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "c95c47fe-9a65-4695-90aa-079f78a0049a",
+          "final_revision": 27,
+          "roles": {
+            "left": "fced366d-8053-410e-9705-da99561c7482",
+            "right": "8b488cb9-f3c4-454c-bf90-72df4a1487f3",
+            "shelf_1": "aa95f61f-f071-4b42-9e03-305789da7772",
+            "shelf_2": "5cd0e4b8-93fc-4db6-8faa-54109fbd4004",
+            "shelf_3": "d24e5ad7-867f-4250-a8f6-31ae6c638a23",
+            "shelf_4": "5da01ba4-fca1-4abc-b6d7-145cf6a5cbc5",
+            "shelf_5": "3584b63e-2a62-45f4-a4a9-a02434235457"
+          },
+          "report_sha256": "62da5de4447fbe06ad177e02431ab21dac7a20b5e2edde65ba6908e5067df62c",
+          "trace_sha256": "b621a84b3f5a9d90b92dfce34f5e5ae25ed6423dfe2ddce1d5bdfee8e9ff8dc7"
+        },
+        {
+          "benchmark": "cabinet",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 53,
+            "tool_seconds": 6.960543527000482,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "3ab9bdb1-24aa-447b-85f2-acbd99fec5f1",
+          "final_revision": 27,
+          "roles": {
+            "left": "e4cc523d-e1ed-4b14-8cc2-557b095c0b08",
+            "right": "f482ae69-5706-4d79-948c-3e2601303c4e",
+            "shelf_1": "ccece293-3c49-43fc-aba9-be117e60a418",
+            "shelf_2": "a39a0b3b-366b-434b-b9f2-5184aeb07cf7",
+            "shelf_3": "6fe4e6eb-7de6-43b2-848e-0e8b11692a26",
+            "door_left": "739cd975-25b5-4402-bb57-b4b58b42d0ec",
+            "door_right": "dfe4ddca-d134-4e94-8c87-5731811ec1ff"
+          },
+          "report_sha256": "e1b4434acb92cd39988163a2b6b17c7723315ce5137950adf78e72e18ce49f8f",
+          "trace_sha256": "7782337f560fc915452fa8ad1cd4dc4a755559e703c41409ea648b048defa8a3"
+        },
+        {
+          "benchmark": "desk_lamp",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 38,
+            "tool_seconds": 6.144749351004066,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "352057a4-8540-48f8-8ba9-67f6f396dcc7",
+          "final_revision": 19,
+          "roles": {
+            "base": "2e4773f4-057e-4e00-912c-b741571c02e5",
+            "stem": "6a3a6a75-446c-4dd3-8c9e-b2e8cf4f0d22",
+            "shade": "d6f44b73-5c3e-4b7f-9975-9baa1ba73d9b"
+          },
+          "report_sha256": "bdaf4506a25a5dbe4f0ea84a38ed77d112778d37a24bcdc31175fb012acef1e5",
+          "trace_sha256": "ff8e9a82a65a683122809115822cdef2f8e203a38d1f122301b4e7fb79132150"
+        },
+        {
+          "benchmark": "sci_fi_crate",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 59,
+            "tool_seconds": 7.728149779002706,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "9cc61051-d742-420f-9e22-069baccab3dc",
+          "final_revision": 31,
+          "roles": {
+            "base": "1275e2be-ed33-4619-bac6-72329d913878",
+            "left": "67b05567-e2f7-4cb5-992d-7208064d2dcd",
+            "right": "b3bc1b69-c76b-433b-9cb2-ef70e8bc88e5",
+            "front": "3518c49f-dfaa-48da-bffa-97a63727671f",
+            "back": "6c1677b9-72be-4df4-a149-272704783947",
+            "lid": "809d8517-1f48-4383-89aa-351e63318428",
+            "armor_left": "755334d7-d465-48b5-9485-4b3842b02f1d",
+            "armor_right": "3853906e-297c-4eeb-9244-f3e964f60854"
+          },
+          "report_sha256": "613f2c194a5cb0275b61786f9a88aa0b23d82572ff80bed21e66ead093fc1413",
+          "trace_sha256": "302451b28277c047557aa4f23c230ce8d6785bafda64c42a09f47385184f80ba"
+        },
+        {
+          "benchmark": "metal_bracket",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 33,
+            "tool_seconds": 6.347947890004434,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "acdbdd74-b31f-4f43-9dba-6e95dedafbc5",
+          "final_revision": 16,
+          "roles": {
+            "base": "af4d1f28-d10a-4d01-96db-469093867480",
+            "upright": "5277c66b-9f58-4649-b1ff-371b3042664d"
+          },
+          "report_sha256": "d5314f5bd118ec561f7322cd84ea6f30f494e4440c8b38665ca3dec2db30f225",
+          "trace_sha256": "5d9b1a1928ccdb08dfb7fc4f9d1bf433a95f00eaefc54d587fb2fde46aa792df"
+        },
+        {
+          "benchmark": "pipe_connector",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 38,
+            "tool_seconds": 6.596709417997772,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "971a1bde-454e-4baf-8264-10be41594e20",
+          "final_revision": 20,
+          "roles": {
+            "tube": "5619245d-d60c-4f14-bfd3-6dadefb01eeb",
+            "flange": "11c784c7-fb58-49d7-884b-5763a0981a13"
+          },
+          "report_sha256": "75c84af0cbb06b0528eafe71dd6afda762defdcf55f372797a24a8de0ff840f1",
+          "trace_sha256": "08cb2f6ed5556bae17a11a451b57d7ec26bdd1d39e7c2b68024390afbf71dd7d"
+        },
+        {
+          "benchmark": "drawer",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 43,
+            "tool_seconds": 6.5100113660028,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "965ecce9-67af-4dc9-98bc-3607312a3ca8",
+          "final_revision": 21,
+          "roles": {
+            "base": "2e5044de-ddca-45af-a97e-95e64ef68817",
+            "left": "0223f560-1e3f-4953-bb3b-35d764e5cf43",
+            "right": "e2ac174f-f3ee-457b-a780-02a25a52c921",
+            "front": "884053d5-8198-4eb5-bfc4-349a1a2fbd4b",
+            "back": "bb9fcb50-f9a3-469a-b6db-6109f7c19f02"
+          },
+          "report_sha256": "e9be3912f04f804e699e9eab4bfcdc87abc0481aa6f0560d39809dedae62d096",
+          "trace_sha256": "cb31866fe9be7e8c8a3e1c1ebc098ca2a9fd006a7030987068467467d48947ac"
+        },
+        {
+          "benchmark": "bench",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 43,
+            "tool_seconds": 5.599385990002702,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "d23bbeb8-2353-4f04-9562-b4ee0ab9bab8",
+          "final_revision": 21,
+          "roles": {
+            "top": "ef6d3cf8-9881-40a0-9f75-e13984fb3621",
+            "leg_1": "d7065d6a-5c58-4fae-80de-fc3916eff098",
+            "leg_2": "a5d6a378-106e-4d16-9e48-3b00b805349f",
+            "leg_3": "f6b76f72-ef11-44cd-ab4d-7bc9742da609",
+            "leg_4": "48dfff33-d47f-4f28-86d0-539edbf7ac56"
+          },
+          "report_sha256": "0632b7ed65e2d66ec4c28e92d01b8b0e2d069559c78ae205524e87d88bb75ba7",
+          "trace_sha256": "eeec35bd69c7f5cf9dbc721438267b44a83a4f2f1a8cd19031f088e985f60132"
+        },
+        {
+          "benchmark": "simple_chair",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 48,
+            "tool_seconds": 6.247332763998202,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "a6645514-e340-45e8-980f-d4b72791947e",
+          "final_revision": 24,
+          "roles": {
+            "top": "f9d448ec-94f8-479a-a2de-5ceeaa8a06ac",
+            "leg_1": "c0b787c5-b175-4a4c-8edb-e078e6de862b",
+            "leg_2": "1e15e19e-4dc4-4156-8c40-4042a8b7ca28",
+            "leg_3": "7c71c0e4-4cd7-4062-b8e8-ae2b7ae061e0",
+            "leg_4": "c97eeb79-65c2-410d-aea6-e8ea9e3cba65",
+            "backrest": "9b98e14e-0a51-47da-9245-759b8f4d6b5f"
+          },
+          "report_sha256": "c3993337e6b22fd45a41ca01bede158d7a12c8a060fad62ba71cdf06ee7f1179",
+          "trace_sha256": "2c324ec164578ff69d1dd9033904f6177843310f2393f406eef93c3977c90e20"
+        },
+        {
+          "benchmark": "shelving_unit",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 58,
+            "tool_seconds": 6.081794545008961,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "cf85ecc2-624f-49a8-b8ac-8af9e4808d13",
+          "final_revision": 30,
+          "roles": {
+            "left": "ae96acd0-5430-410c-87b6-7bd30327fc31",
+            "right": "1d07b19c-83ea-4eaf-b244-5f1ddaa6f8da",
+            "shelf_1": "3bbfef82-c0c5-483d-b551-1090e2a597d4",
+            "shelf_2": "92a53d64-87cd-48c7-9db5-25fee1cdf9b5",
+            "shelf_3": "7155499e-a4cc-44eb-9ac5-1a27d3576d42",
+            "shelf_4": "f3d8d6ca-200b-42ab-b283-43ac7be805f0",
+            "shelf_5": "4d3fdf2a-bda7-4387-9288-8a867b226968",
+            "shelf_6": "ce6781c6-e2ae-470f-a719-868b574dbf9d"
+          },
+          "report_sha256": "b00edef70fb66c62be1dc040a3b1e8ba986ef3952467765544438ef5dd6f05c6",
+          "trace_sha256": "9e555b8a9849078462f2e7a51f5b846933b306ec2248a861ed4909cc1ce9a1d9"
+        },
+        {
+          "benchmark": "planter",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 28,
+            "tool_seconds": 7.834831634001603,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "f84fc8f5-48b1-43bc-a708-6786788b68c9",
+          "final_revision": 13,
+          "roles": {
+            "pot": "44ec1429-03d5-4155-bf0b-63a28770030b"
+          },
+          "report_sha256": "719dd942cfe69f7435978e0143c42ca15bfff2f355e0966ece6979c5b72cf37f",
+          "trace_sha256": "8bd2816cb810439acd4f6b92b9123b800b03c17d2705e0a385f8c006e32cfd96"
+        },
+        {
+          "benchmark": "toolbox",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 64,
+            "tool_seconds": 6.43363379999937,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "81753714-d505-4b3a-8f49-ca630f0addeb",
+          "final_revision": 34,
+          "roles": {
+            "base": "09ac35d7-8086-451e-84cd-564ba9855275",
+            "left": "68b7f0a7-7bdd-4adb-a194-2f74fe7ef815",
+            "right": "10cff166-921a-4009-90f6-d603b5a40420",
+            "front": "1af6fc8f-612d-4217-a7af-272eaef144c9",
+            "back": "edef8edc-2bdb-4c84-ac40-9afbd79832f7",
+            "handle_left": "37aa2676-8e0e-4a37-992e-47ec7862b439",
+            "handle_right": "c0243c11-0d55-43bf-982d-6be17d9390c7",
+            "handle": "c8b4b09d-3db0-4947-8ed4-e54c21024c50",
+            "crossbar": "55cfc4d7-408c-43bf-9c5a-1c40bc93f5f2"
+          },
+          "report_sha256": "a252b3b4b1e35665d9d1805d447f72de363ec5393f2e9b3ccbd82fc8b83999ab",
+          "trace_sha256": "4dbc4891994acded9f733243d233f19a0564ebbd161c4fa7c02f5ceb6174534f"
+        },
+        {
+          "benchmark": "monitor_stand",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 33,
+            "tool_seconds": 5.847016789004556,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "b3cfbb12-3505-4bd1-b30a-73ac4f4681a0",
+          "final_revision": 15,
+          "roles": {
+            "top": "126b5a6f-4d84-44bd-b00d-6fc0d57b851e",
+            "left": "0cacde2f-8b47-4c14-b2a3-c5f199ffbb84",
+            "right": "0a955ac6-8dad-460a-a4af-aa9ed5f97d3b"
+          },
+          "report_sha256": "8671b1e510a80da8b4ea8be7797228a77868365481735a9c6459d57836101c02",
+          "trace_sha256": "a4dcf0914cdaa5f2c38530e6496395abeb13a711b4faadc536765984f969becf"
+        },
+        {
+          "benchmark": "side_table",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 43,
+            "tool_seconds": 6.076216263993047,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "0b4cc03d-8bb7-4695-bacf-83713005c98c",
+          "final_revision": 21,
+          "roles": {
+            "top": "800e2300-f257-4dad-8b39-8523aa81def3",
+            "leg_1": "7bb1966b-9660-47cb-ac54-934abe508896",
+            "leg_2": "f2ac6c79-db78-4544-bc13-8742a2be7fda",
+            "leg_3": "029104bb-6ada-4eb4-9116-43d2e9b40162",
+            "leg_4": "978f6c4e-bf8e-4844-bdfb-96759b8a0189"
+          },
+          "report_sha256": "8a4cddaa64a15261ee3a98ccea953ae0ac4fe37c31a3748acee7c520a7ebbabd",
+          "trace_sha256": "1e68802aab5beffed31acd67afe4d26355b34120a70560832a513995cf3103da"
+        },
+        {
+          "benchmark": "appliance_housing",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 28,
+            "tool_seconds": 6.821071452999604,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "eeb0d4d7-aef3-44ab-bfbf-6cead150665f",
+          "final_revision": 13,
+          "roles": {
+            "housing": "f096e197-87fc-48f1-8270-878bf96690f6"
+          },
+          "report_sha256": "c2d60a82499dc23e92fb32102ddeafa2181474a286f1a61d9de65404121fda4b",
+          "trace_sha256": "fb397ef5fda9e835837b0632c9b82cb0fce0193de096d65ae27e2392f8a0491c"
+        },
+        {
+          "benchmark": "product_casing",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 34,
+            "tool_seconds": 5.988009996004621,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "f74c69dc-68c1-4ec0-954c-fb4d6b6a3edd",
+          "final_revision": 17,
+          "roles": {
+            "shell": "420e78aa-1a39-4ae3-ab05-a95d68c352e9",
+            "lid": "d462ea89-5450-489e-967a-c638058dee0c"
+          },
+          "report_sha256": "e974e909b9e33f1b308e409d004bf4824e906b6f1bc0ed58bea5ca8ac74b88a5",
+          "trace_sha256": "212a2bd5839443078922850d79300c31144e4e6e6904402696511cd3ce494c9d"
+        }
+      ]
+    },
+    "protocol_replay": {
+      "directory": "artifacts/expansion-m15-replay",
+      "benchmark_count": 20,
+      "technical_passed": true,
+      "tool_calls": 837,
+      "records": [
+        {
+          "benchmark": "coffee_table",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 42,
+            "tool_seconds": 0.873294431998147,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "90f52ec9-9d39-454e-a7a1-aeff342987d7",
+          "final_revision": 21,
+          "roles": {
+            "top": "f432cebf-e62f-4942-a725-501258288557",
+            "leg_1": "4b03b86c-c6ae-4150-a76b-8b04e9ed93a2",
+            "leg_2": "b45abff2-f6ae-42a9-8d7a-df8ec54d618d",
+            "leg_3": "f2e7db39-4d92-46f8-9f31-d92f1812c009",
+            "leg_4": "263d3c2f-62b6-437e-8ef7-a554257cb5f9"
+          },
+          "report_sha256": "1cdc8b90e9644ef2f33dfc6dc660da136ec936f90ad59138aa2575a76e928bc6",
+          "trace_sha256": "a095d75f90d707593e70fc74598c7c74605255ffe69c15e77470be1b6610ec6b"
+        },
+        {
+          "benchmark": "storage_crate",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 42,
+            "tool_seconds": 2.052260272001149,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "cb9f5a68-4f3a-41c8-a1ea-ad36f8a63791",
+          "final_revision": 21,
+          "roles": {
+            "base": "5b5fe3c6-0d33-42e9-95ac-ad74d200a9b8",
+            "left": "f763d653-d89b-43f5-a101-0c6ecdf54166",
+            "right": "7f4042af-096c-4801-9151-379b9499673b",
+            "front": "0a577ed1-f28a-494e-8bae-2c1c2fb9b327",
+            "back": "de3353a7-a45a-4c4c-baca-b4859549e1e4"
+          },
+          "report_sha256": "b391e0f634b1edb3040ba03e4679110c21e0882fbb53592ebb7120e4c692b11f",
+          "trace_sha256": "bfcf971115b9c134f1ab0b96010a3b898c5f6b600bda49eb4a8350802d910801"
+        },
+        {
+          "benchmark": "wall_shelf",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 33,
+            "tool_seconds": 1.1880510519949894,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "8bc0682b-6e60-45ea-8e26-5d5218b6cf2f",
+          "final_revision": 16,
+          "roles": {
+            "shelf": "d9f9de50-05e6-4108-ad07-58eaabc60799",
+            "bracket_left": "4816ccc0-6f53-457b-9307-16f6ccb0d0ab",
+            "bracket_right": "076387e3-e42c-4371-8eee-e1645a1e9642"
+          },
+          "report_sha256": "31c7a8fdacd405efb0b9d16cdfee8880638e8b88046d8969f540cf60f8ae8b46",
+          "trace_sha256": "e4fc18398f43234a6a73459e7cdece63b9196f17cfc02c0325b67de6aa374394"
+        },
+        {
+          "benchmark": "bottle",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 44,
+            "tool_seconds": 1.6387684070014075,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "89f739fc-6a7e-41b5-a1f2-ff572f3989e6",
+          "final_revision": 27,
+          "roles": {
+            "body": "3528c749-8dff-4d95-8212-9f9eafbc82ec",
+            "shoulder": "ee05f163-d8bb-4b1e-bf87-a313b8d6b62a",
+            "neck": "fbaeb474-7e66-4c82-ae7c-5c6d6b8fca08"
+          },
+          "report_sha256": "f4bd25d0fea14070590c3073253f58651d54406f57273676020ff105c234656f",
+          "trace_sha256": "60e71d34daf9f0af53d2da1f51159770efec98fc2730a2c45f6854a79745b312"
+        },
+        {
+          "benchmark": "bookshelf",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 52,
+            "tool_seconds": 0.9096808580015932,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "0bca5861-593d-4595-8e4e-87f79d9c4f50",
+          "final_revision": 27,
+          "roles": {
+            "left": "a0a93fac-4cb8-4e37-88fd-01110df9c9df",
+            "right": "fa51f84c-6adf-40b8-9bc7-420093f2f2cc",
+            "shelf_1": "cab1a7e4-5355-46bf-a997-102196b5dfdc",
+            "shelf_2": "cd42bde0-e511-403f-940b-5193f73f2d7a",
+            "shelf_3": "70df8cb5-773e-4b97-9854-e9da7e962cb2",
+            "shelf_4": "7fda0718-2ec9-4646-9d32-dde8a92e47a0",
+            "shelf_5": "da66ec7d-300e-407c-bb4e-f2c51627501c"
+          },
+          "report_sha256": "d2f95764f77c4cfa9baa94c8ac725b0315191b26c4eb89249ff506550a641c27",
+          "trace_sha256": "b69eec18f7bb7bd5e54866dcd443e7adf232bcefd9d309aaf6d05f7d203db18e"
+        },
+        {
+          "benchmark": "cabinet",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 52,
+            "tool_seconds": 1.8112721479883476,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "bd4604e8-82a5-4eda-8dcd-2a91f5fc7418",
+          "final_revision": 27,
+          "roles": {
+            "left": "f8fa3261-1c2a-43e2-8c27-9db52fc52258",
+            "right": "3364f89e-dd36-4ee3-b03f-89e484b00f49",
+            "shelf_1": "1aef3592-7bc2-4669-9a31-a64dcd4f2cd5",
+            "shelf_2": "ae0e7010-4b9a-4600-adab-60ef43ab4980",
+            "shelf_3": "cb9e5425-a0a9-420b-a8a5-eb187c25529e",
+            "door_left": "1197c7f7-7741-4eeb-be02-e5fc9d8135c2",
+            "door_right": "90b67a53-5209-43e8-8cab-99a8c4419184"
+          },
+          "report_sha256": "a48bfb3b59d2b5fcefdb9aa2193a112a29cf829e461d5ad3a9d48b6e629f0880",
+          "trace_sha256": "7fbce27cb7fae8d0eaac30939054f812f39057b52a75ebc849c1b2e3eb0732f0"
+        },
+        {
+          "benchmark": "desk_lamp",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 36,
+            "tool_seconds": 1.2037749789997179,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "ce563cd2-4878-4795-85d4-6f3bb73fd7b2",
+          "final_revision": 19,
+          "roles": {
+            "base": "9d3a15ba-b140-4a3c-b291-9894888b5767",
+            "stem": "25ed294b-51a8-444c-84c4-5b59ea0fe41a",
+            "shade": "d87d444d-e65d-4712-9129-aad9832b7b91"
+          },
+          "report_sha256": "db15620000b939104f72b90a143ca931e4d4a2d59e88f1397a64a580f4f35b30",
+          "trace_sha256": "a118ccb9d78edeb98a6381777d52d86429587bf997d69ea87938bbf9608bcd59"
+        },
+        {
+          "benchmark": "sci_fi_crate",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 58,
+            "tool_seconds": 2.2232893200016406,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "328414b9-504f-4e9c-91bc-c2f30646e780",
+          "final_revision": 31,
+          "roles": {
+            "base": "0d61e69f-1336-4d91-81da-c0516e697342",
+            "left": "60fe2029-b17d-4c11-a7fc-05b46d9f3569",
+            "right": "cfa36960-563f-42f3-bb90-17b1c1d7164f",
+            "front": "6d001e32-1833-4d31-9970-fb8cb3a94c3c",
+            "back": "fc8ccd66-251d-4570-b34a-8391f5521992",
+            "lid": "bfa76abe-71fa-4223-84e1-d9d394b4678c",
+            "armor_left": "be5848c9-c97c-4a85-b88a-6429e880ed53",
+            "armor_right": "0c667ef3-5e21-4c83-8fa2-53838948f847"
+          },
+          "report_sha256": "41720832406436268949492cdf34c419734044580feddb51afb856d8d17d334e",
+          "trace_sha256": "8da0459d70cb3fa40483b6ce705687433e62565f311f654fdc18becbfe73d961"
+        },
+        {
+          "benchmark": "metal_bracket",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 31,
+            "tool_seconds": 1.3510857279961783,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "18540464-ed74-4c9f-9412-5458399385ef",
+          "final_revision": 16,
+          "roles": {
+            "base": "70eddbad-8057-4571-a9b6-1c9cbb438b25",
+            "upright": "35375f78-5db8-4111-986e-289f1eb822b6"
+          },
+          "report_sha256": "629d7aa61c31a1fd0574b0e0c5227845211a25274fa555ed3fcdb782c0d13c76",
+          "trace_sha256": "c443102cd450bf7ce9336f0b0a9fdedb56c682b7fa632b347f23dcc4c3b4eaa6"
+        },
+        {
+          "benchmark": "pipe_connector",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 35,
+            "tool_seconds": 2.056941822009321,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "7331d145-ac5f-461a-8a7b-37b81b68bc20",
+          "final_revision": 20,
+          "roles": {
+            "tube": "5cb6585d-e169-48f7-ae01-664c2707b382",
+            "flange": "1d80e44c-d22c-4e69-9da3-d45eeb719f21"
+          },
+          "report_sha256": "fd555b69b2e76ef4e5ae35f948725e940872c8aafc520759a2b38f4c5e9fb3b3",
+          "trace_sha256": "5f04b95b35287d680d167655d23f5fd4a3a62ece4381579b6ef1462eed2bbba2"
+        },
+        {
+          "benchmark": "drawer",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 42,
+            "tool_seconds": 1.8106022699957975,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "f2e35313-12c2-49b5-8fad-409e3aa9a3aa",
+          "final_revision": 21,
+          "roles": {
+            "base": "d14c83ee-a45a-45f2-bac6-60dfa95797f8",
+            "left": "2f830daa-601a-44b6-ac54-c4182a747213",
+            "right": "98dbf54a-c747-4620-af66-dac9674424ef",
+            "front": "cbbebd47-27cf-4071-beee-f38889f4460f",
+            "back": "96966254-d720-435c-8c16-5456023c85d6"
+          },
+          "report_sha256": "539802c648981a5982e05d1e0f7c2efe2e3f168c3aef05274004be2f18d1cb8a",
+          "trace_sha256": "701f42622fe6747234b6dc539dacb148946fcd13712fde79316ddd6a03f996db"
+        },
+        {
+          "benchmark": "bench",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 42,
+            "tool_seconds": 0.9808800039972994,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "0716c3e8-ec1f-4e1f-b8db-05ce69d27c78",
+          "final_revision": 21,
+          "roles": {
+            "top": "c21f095e-5c76-4ab3-89b8-a24ce4bcb349",
+            "leg_1": "571c6f30-cf8a-4cd9-92ac-046be2b9bf3c",
+            "leg_2": "b0b7559d-d464-408f-9cd7-d8b41dab970b",
+            "leg_3": "dee3ec3e-d14d-4145-b645-bbbfbe53b449",
+            "leg_4": "766e87a8-170e-4da7-9271-5e6d2c1ab27f"
+          },
+          "report_sha256": "63fff6c8f350158e76668c1af21e6adea7d273570e1245df185aa463f12f707f",
+          "trace_sha256": "df96830c870cf41f2671514d7cd06c14985923058b182ce67aa001ab2a0fc974"
+        },
+        {
+          "benchmark": "simple_chair",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 47,
+            "tool_seconds": 1.3634551229988574,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "1bb10d30-c7e7-461a-a1e6-e084409bded1",
+          "final_revision": 24,
+          "roles": {
+            "top": "61625356-9524-47cb-b6ba-fea07f9c72ae",
+            "leg_1": "44b7a9c1-8695-481a-9893-45548d91cf7d",
+            "leg_2": "4e802379-74dd-4301-a307-0a4643514881",
+            "leg_3": "45c91b1e-a5ba-46f5-a627-ac0423976768",
+            "leg_4": "870e258e-dcae-4e8d-89c0-4e9fe8ab72d8",
+            "backrest": "c3483402-ff32-497a-80a5-af152674a34f"
+          },
+          "report_sha256": "6aa6868ad38d3026551b561887e8d29e523ad017f05714b21bf8845c909e1d02",
+          "trace_sha256": "70877f0a35d8426939226b687ccce254f08f62a711889bf573e7a47df36d63ba"
+        },
+        {
+          "benchmark": "shelving_unit",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 57,
+            "tool_seconds": 1.0850269190013933,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "5155a540-2cda-4780-9904-c323596eef56",
+          "final_revision": 30,
+          "roles": {
+            "left": "7f995948-4b2d-4714-8c4c-9755c9c6985e",
+            "right": "9205d324-c2fc-4303-9ebb-a3758201c998",
+            "shelf_1": "0d9bad54-5073-4d28-90eb-cd0d4bb332ac",
+            "shelf_2": "510a4e8b-c8c4-4c8e-b849-41f479451dc2",
+            "shelf_3": "af71eabf-e572-4e91-ab8d-b277d923518c",
+            "shelf_4": "5ae2d293-79f1-4101-bca7-ff35289b8456",
+            "shelf_5": "bc379d22-6d27-47a0-82ad-b9ea720cfecc",
+            "shelf_6": "1faa2321-e72f-4cf7-96f9-1e70a595583e"
+          },
+          "report_sha256": "f2e130a0a46be1357b2f41a54bfe66d2df99e23278640dea42ddb5f83daed954",
+          "trace_sha256": "07e2d30fe8d6982570ecc5ea8267dba2e9d6a5979893e6534f475fc2ddf77cb1"
+        },
+        {
+          "benchmark": "planter",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 27,
+            "tool_seconds": 2.906166621005468,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "aa098755-127c-409e-be14-daf3ae7fb4a6",
+          "final_revision": 13,
+          "roles": {
+            "pot": "d44948c6-80a7-4a0c-b054-758a0e2dc8c2"
+          },
+          "report_sha256": "a4aa83d68d56a2dc8695bf8641459d832ad73336b7c9328c34cdcfc7d7cd760d",
+          "trace_sha256": "785bec4eaa0f1c539f2a4c246a29145e88859f2cb37fbd6c5c77c15e2c32baaf"
+        },
+        {
+          "benchmark": "toolbox",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 63,
+            "tool_seconds": 1.6479837480055721,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "7efe5ad0-bf94-423a-bca0-7e5d91ee3259",
+          "final_revision": 34,
+          "roles": {
+            "base": "75b6dc14-e679-48a9-a7c8-dc7d2710593b",
+            "left": "3d3ac7a1-b852-479a-ad8a-bef1ba109b33",
+            "right": "91cf3373-39bb-4186-bb03-5bbd357224aa",
+            "front": "826ce903-57c9-49f0-bc94-f0d95b35e060",
+            "back": "3de9ca9b-4954-4bc6-aa72-2fcd95f96ffa",
+            "handle_left": "a40afbe3-6ef3-4d36-b666-dc3e6d0bfaa0",
+            "handle_right": "95f1471d-4300-476d-9d13-b57f8457eaf7",
+            "handle": "7d1e66a2-78c1-4875-b941-c6f854b15481",
+            "crossbar": "cff883b9-ea3a-44c9-af49-9fee2ae4abaf"
+          },
+          "report_sha256": "a9837148548c55fb04a31bec1f002718c5c6344e0d441420cea209b047a2209f",
+          "trace_sha256": "298da35cf4205c182226aaab1f7b9d7fb1566ff355d15276200ee2fde66e55a9"
+        },
+        {
+          "benchmark": "monitor_stand",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 32,
+            "tool_seconds": 1.2858296659996995,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "8be6cfd7-0bbe-499e-b695-e1127113c077",
+          "final_revision": 15,
+          "roles": {
+            "top": "581a5339-7b6d-4ce5-b65b-edf7c2d6abd6",
+            "left": "227f0a69-6b43-4e4e-a6d2-28c5942b0080",
+            "right": "61e7d869-9d88-43a5-85a9-7831f955b3f8"
+          },
+          "report_sha256": "ec3eebf751f17b0681297e2c8fafa4bcd7dfd3a825f398d95966002d278efdb1",
+          "trace_sha256": "4902a0f52a6dac2e28398a88439cfda232d70e724d530611a21f5367acf022c4"
+        },
+        {
+          "benchmark": "side_table",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 42,
+            "tool_seconds": 1.3627885420028178,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "d785cfb8-725f-49d9-a151-919d9402dddb",
+          "final_revision": 21,
+          "roles": {
+            "top": "36a94d9e-3c14-40e2-8a3a-8b7e7beaa10d",
+            "leg_1": "3251d2f4-d634-4c93-9119-ba36014dc21b",
+            "leg_2": "7d49f3a5-9fc3-4bef-a911-b797ffe0230d",
+            "leg_3": "b727f5c1-2c8d-4a24-bbee-7f027c77f861",
+            "leg_4": "b4012832-c898-4ce9-bd4e-cf668e8d936a"
+          },
+          "report_sha256": "731e04cf539bc3f4e263e5a253f0af1b89e26dbdee3a1795e881dc273692bd9d",
+          "trace_sha256": "12f8274bb79dd518c988e4a70523a98244dde2cb1ad62b5fff905d2e300b35e9"
+        },
+        {
+          "benchmark": "appliance_housing",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 27,
+            "tool_seconds": 2.088441783002054,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "66ce075a-00e2-41b1-b7e5-0ab706a44202",
+          "final_revision": 13,
+          "roles": {
+            "housing": "17720208-c53c-4fa0-af89-95b69ff27a54"
+          },
+          "report_sha256": "491f25070ed1db897d136bc00f49ffb429ab6fb1af91ed195d03d86a946c7e89",
+          "trace_sha256": "fcb09d8c85278f2318ec8044c0a10446db1620e4f55aa7462c1b07ab5297b445"
+        },
+        {
+          "benchmark": "product_casing",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "WORKBENCH",
+          "metrics": {
+            "tool_calls": 33,
+            "tool_seconds": 1.2717998040006933,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "b390f39e-5418-43e4-9ff3-8ece198afc4d",
+          "final_revision": 17,
+          "roles": {
+            "shell": "c93186f2-04b8-46b8-afa4-154a787e84f8",
+            "lid": "21ebd1d1-c329-4b0c-bbd3-cbcceff29ea0"
+          },
+          "report_sha256": "6a058b762e745fef1946518f474037324d20a0cecd29f026da48219ea8151ff7",
+          "trace_sha256": "24a2bebbbe99dbd32ada8f5e6955f43cc2ee95c792d5a95beff398d63ddc6db8"
+        }
+      ]
+    },
+    "codex_scripted_eevee": {
+      "directory": "artifacts/expansion-m15-codex-final",
+      "benchmark_count": 20,
+      "technical_passed": true,
+      "tool_calls": 826,
+      "records": [
+        {
+          "benchmark": "coffee_table",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 39,
+            "tool_seconds": 5.677319447999253,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "ea848f10-d164-4660-b62d-a403a22a4dff",
+          "final_revision": 18,
+          "roles": {
+            "top": "43c6e71c-81d2-46a5-be7f-8b14cdf6ecad",
+            "leg_1": "dc1b8e79-33f7-47a0-a14c-43c61e0b39c6",
+            "leg_2": "6f528d51-4d48-4300-83d0-d4caa877d728",
+            "leg_3": "fe58528a-a1b6-4ecb-ae59-71fae989190a",
+            "leg_4": "6d5eebb7-36dc-4f9b-94ef-0d2f867aacfc"
+          },
+          "report_sha256": "5fe3ac493bf986d27bebd2dbcc8570886f6ae4bdef47557e5a8072e649f34d3b",
+          "trace_sha256": "9cc7e0dd6f3856df4f1e5c0788e7e1cb4089f6153e32bf8cb61530edd3c0cfcc"
+        },
+        {
+          "benchmark": "storage_crate",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 41,
+            "tool_seconds": 7.177334022002469,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "d1281f0c-ac63-449f-8316-3c14ac7b728f",
+          "final_revision": 19,
+          "roles": {
+            "base": "33e0a179-3035-457b-bc03-bcfa373f98c8",
+            "left": "5d8238fe-252e-4b34-8341-a86a0328f6c2",
+            "right": "cafb5293-4052-416b-9dbd-90e2cd0c74ed",
+            "front": "14d3127f-6d7b-40e3-92b5-4831b41253ad",
+            "back": "01c1ff6c-a33c-4d8a-8920-529d208c44fe"
+          },
+          "report_sha256": "ba53a19927e1871e6fbe50046b4bcf723b7513fc08cedc908882f0e18eabfbf6",
+          "trace_sha256": "c7bc88a57aa2e54e32e43a2090b26b17dfe6f0e8b0a4776d12845b42a71305ad"
+        },
+        {
+          "benchmark": "wall_shelf",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 34,
+            "tool_seconds": 5.766809776998343,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "01fc51dc-e78c-4f09-a426-cfd540758cb4",
+          "final_revision": 15,
+          "roles": {
+            "shelf": "66412659-fd0d-41a7-9b36-815ccfd31520",
+            "bracket_left": "0873711e-de97-48cc-b6e2-c55fbc2ce5a2",
+            "bracket_right": "9c7000e3-28e6-4e44-84cf-cacd09865c3f"
+          },
+          "report_sha256": "cc99db1e850e31cb7f766ceee2270c2bfc8c8bbc42a8a3cc5b04a7133341836c",
+          "trace_sha256": "9205c13014465b93fca0bc6b33f6136811455795b0f7e65487433c4aef75370b"
+        },
+        {
+          "benchmark": "bottle",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 50,
+            "tool_seconds": 6.897353867994752,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "c5d1075b-29d3-4bb8-af1c-bf3febe1ba1b",
+          "final_revision": 27,
+          "roles": {
+            "body": "8deb5523-541f-41f2-bf46-edffa013524a",
+            "shoulder": "7729b1d8-0e03-4e0d-970a-03e7119cdd97",
+            "neck": "79f68b5b-9eb7-466b-bc2d-3002ab437fad"
+          },
+          "report_sha256": "0943b57b0209a0e37b07a382bcef1fdac5e39a1090d8404ba6606bfc7d5c4445",
+          "trace_sha256": "aa57a3cbf8ebccb580273274ba05d0524f519df6d2269d609ba9e774a6ec0708"
+        },
+        {
+          "benchmark": "bookshelf",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 45,
+            "tool_seconds": 5.552827227002126,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "0cee9b17-a46c-464b-880b-345e60165fa9",
+          "final_revision": 22,
+          "roles": {
+            "left": "69e13302-81b1-40ff-803c-221242f4c47f",
+            "right": "bc9cabf2-f1d1-4658-810a-e4261fbcdadb",
+            "shelf_1": "5bff19c9-a234-49db-a906-e7f5227289b0",
+            "shelf_2": "5ba72458-9451-4849-91e3-20b0307e93e3",
+            "shelf_3": "cdfec25a-229b-4a66-9d52-620effce2efe",
+            "shelf_4": "3330a036-fe28-438d-a5e4-7f6bebca753f",
+            "shelf_5": "1691453c-49ed-4ad7-a5b9-ee3c8ecb851a"
+          },
+          "report_sha256": "075e593dec73dc83722f3241c9c9efa948a60d3b4ceb8726a7050af6e236d71d",
+          "trace_sha256": "b452ca0521a044d699bde5ebb828b48edfb1cf2d7d13cd88994ec4462ab96ec7"
+        },
+        {
+          "benchmark": "cabinet",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 47,
+            "tool_seconds": 6.729968611003642,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "3927ef37-5c4b-433c-b206-94dcd7e92ce7",
+          "final_revision": 23,
+          "roles": {
+            "left": "f8488111-0844-44dd-8a9c-c00c4ce9a26d",
+            "right": "1a1e2594-4237-47e3-9ed9-aa8022a03ed8",
+            "shelf_1": "0e33eccd-0845-4b03-a4dd-0ed3fd1a51c9",
+            "shelf_2": "dc35c474-0ab7-4d7f-8c98-49ac5a652b33",
+            "shelf_3": "a7a1eb1d-550d-472e-b650-20942e1483ad",
+            "door_left": "e1354ec0-800f-4e22-af91-76b5e255f92f",
+            "door_right": "ed636f59-2a12-4249-9094-4bcdd4d0e600"
+          },
+          "report_sha256": "b48e3908776a77d27a1171941b0ccb7e9db6f7dd1a3eb24e58523b116f116f9f",
+          "trace_sha256": "6ec2ec69eca0d05dc219df74ab3c1cc9429ed76a23fd55263cc11e791c6b277b"
+        },
+        {
+          "benchmark": "desk_lamp",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 40,
+            "tool_seconds": 5.930138218000138,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "50b5b28c-1601-4ed5-996e-8345a227bfc2",
+          "final_revision": 19,
+          "roles": {
+            "base": "ef694c7b-938a-44ec-b20d-497a80322003",
+            "stem": "98b2c2e1-376b-4b28-a8da-cea3c67db7e6",
+            "shade": "5fd8ebdd-5774-45e1-9771-80b6aa75752d"
+          },
+          "report_sha256": "b74e5bbc09d680721a1575ade9912be9b588f0f84c5f9cc9a941d73b74069416",
+          "trace_sha256": "24c26ce41ea75ecdb7adff13a91efe5eb2d535a99e5a3831642d3560430dcc51"
+        },
+        {
+          "benchmark": "sci_fi_crate",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 55,
+            "tool_seconds": 7.504618636998202,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "572b9408-294d-4463-810e-e78a18863df0",
+          "final_revision": 28,
+          "roles": {
+            "base": "5a30a688-8aec-4435-b317-05d5bee6c1c5",
+            "left": "b1c454b7-cd7f-4fba-a364-01c0df8190a0",
+            "right": "eb9e2542-31f5-4c64-af03-28c923a6c45f",
+            "front": "c162802d-9e3b-493d-90d7-fb6459d2a300",
+            "back": "720d8750-1da8-43cf-b2ac-d8eec1d520c8",
+            "lid": "fcb905e6-30ca-4d05-bfde-15a5fd02eec1",
+            "armor_left": "4ee22e5d-0155-4862-acf8-c4367666a95e",
+            "armor_right": "d89b4654-9598-420a-9f75-13884e714dad"
+          },
+          "report_sha256": "3cf7bd11a6fbf7179a136e2b47b2dddf2f324291321e11ea124c2170539d9d4b",
+          "trace_sha256": "a51f906f1d9fe280ef9f87538f3bea421db600abbcb2e3d44ae7bb61c8f41664"
+        },
+        {
+          "benchmark": "metal_bracket",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 35,
+            "tool_seconds": 6.434819091007739,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "5284d451-7927-4846-88d1-7a4696260fe5",
+          "final_revision": 16,
+          "roles": {
+            "base": "d9bf4c45-2dd9-40a6-a2a6-8ce5d35a8556",
+            "upright": "283bebbb-e146-4186-a7a1-ba2eee69d133"
+          },
+          "report_sha256": "97e00bf36ebe510847b8364224ea658096ad6c72d988ff8aeb63777d13f1a28d",
+          "trace_sha256": "069db66fc6a8733350df173d40a38560fd821a7d39fb075b51ec3a830260ebdf"
+        },
+        {
+          "benchmark": "pipe_connector",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 40,
+            "tool_seconds": 6.609559790005733,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "aa0aad9b-791d-4160-a3ef-6b24cfcc83ee",
+          "final_revision": 20,
+          "roles": {
+            "tube": "2d4207ad-4e1f-4d63-a7ae-f0297695d0d2",
+            "flange": "5f4750b4-6bba-4423-954a-e9c54cf57bbc"
+          },
+          "report_sha256": "0fe7280ca0988e488bd412237f4109710b54122e5765066ed73c8b13cccf5ae4",
+          "trace_sha256": "e242c7c5d0f5434f41c507ae2bbece0477cbaf9f9536b1062f500b05c1ff73fb"
+        },
+        {
+          "benchmark": "drawer",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 41,
+            "tool_seconds": 6.338807830998121,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "377cb606-3494-451d-a9a0-841e5862bfd6",
+          "final_revision": 19,
+          "roles": {
+            "base": "78667858-d616-4de3-b826-d51d9ad12007",
+            "left": "6fa6e6b3-4144-49de-b4ce-6372a57b1f80",
+            "right": "116dfe92-6e10-4459-a53a-69340da9b1e6",
+            "front": "38271ccd-c1c1-48bc-9506-30cf9c6e1d0f",
+            "back": "42293637-b5dd-48e2-8d25-9c92f8847887"
+          },
+          "report_sha256": "e483d3886d75e0ecb1e220f814da7ef6f42a5fcee4d5e3e3cadbded9cc5e7f22",
+          "trace_sha256": "ee8f6ad3fcf5f3a3978840bda99ca4ac88b2b8b5b2b10feca6e42993fa94cf56"
+        },
+        {
+          "benchmark": "bench",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 39,
+            "tool_seconds": 5.412337736992413,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "6ceb981e-e410-4924-b1a1-330db92ec800",
+          "final_revision": 18,
+          "roles": {
+            "top": "21504297-cec6-41ce-a2bd-ad0c54346263",
+            "leg_1": "cfdfb3dc-9c0e-4984-9b2c-49db9277e940",
+            "leg_2": "30b92ac8-3ea1-4629-b75c-a6c1ab06a597",
+            "leg_3": "2b852847-3364-4bd6-982a-582ff8a4fa3a",
+            "leg_4": "15b6f69d-e79f-4493-950d-4d3b522a9458"
+          },
+          "report_sha256": "c3b593648ac35b01e9b868c82a41d10c89d3d047dd814ad168770923ca60ac8d",
+          "trace_sha256": "57586fa06f98fa84794485283caedb01ea3f7600e71d2b4447f8d23f10b24c83"
+        },
+        {
+          "benchmark": "simple_chair",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 44,
+            "tool_seconds": 6.1505010449927795,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "2f378e17-9381-4971-aa85-dce684d4f1b4",
+          "final_revision": 21,
+          "roles": {
+            "top": "a6553e34-a6be-4ba2-a120-7378e1ecec9b",
+            "leg_1": "a8925335-c269-4bec-9472-a17e6cd6a2f8",
+            "leg_2": "4dfc684a-e694-4e55-a007-d9c757c548f7",
+            "leg_3": "4eab1978-f7de-4440-8f12-17f884620c90",
+            "leg_4": "815c626a-096a-441f-8f27-356255a61d35",
+            "backrest": "767511d5-5643-4a7f-bb95-0100e949fa54"
+          },
+          "report_sha256": "ccffb0fdd9b9f55877c3345a13cff28813b81d3a9b123dc8480d1b8bb1eb821c",
+          "trace_sha256": "c22aae32ea7a589d97d16adc6e49c26d73927362abab543bfb34002706029ed1"
+        },
+        {
+          "benchmark": "shelving_unit",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 48,
+            "tool_seconds": 5.6749078200027725,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "91958e28-a44c-4a6e-8bd0-d740fdcdbb66",
+          "final_revision": 24,
+          "roles": {
+            "left": "56c50108-ce83-440c-bafe-600fab4f2002",
+            "right": "bc9019f2-8211-487f-9261-4fa3345db4d8",
+            "shelf_1": "423b3a98-40f8-408c-beee-b8a458e15c9f",
+            "shelf_2": "ac9bbce8-da8f-433b-8780-8e33e9b7c44e",
+            "shelf_3": "ef9379b1-3586-4179-9d66-53fd65d9a35c",
+            "shelf_4": "01363e77-57c5-469d-805c-22d3f85fe743",
+            "shelf_5": "1394326f-9e80-4064-89e2-4281d1ea7600",
+            "shelf_6": "e96652a3-64b6-494e-bb85-33e06a3fc55a"
+          },
+          "report_sha256": "df2eb3a3f6ea356c4a09448b13ecba34f6b29c07c271795f57388915677a4150",
+          "trace_sha256": "87798169ae6d69c1448a630ebfeddab23b85488aceabca6167b5199f01559943"
+        },
+        {
+          "benchmark": "planter",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 30,
+            "tool_seconds": 7.732183656993584,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "2b15a97a-bf5f-4d2f-b9a9-019087cef5cd",
+          "final_revision": 13,
+          "roles": {
+            "pot": "54790b6c-ac66-4a8e-a737-14f86264c431"
+          },
+          "report_sha256": "99635b38e238845d3d851a8bd5f93410a71253117415a4c565ac31ea0942d251",
+          "trace_sha256": "f86a41f8ca3e40ed9b136cdb7ea7cfef93224d4e8b5d9fb1dd3157f4f8de4f62"
+        },
+        {
+          "benchmark": "toolbox",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 60,
+            "tool_seconds": 6.3555148059931525,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "31ac8d57-0611-4061-ad3f-11016532e667",
+          "final_revision": 31,
+          "roles": {
+            "base": "ac90c39a-3ac9-4f08-9e59-7bb5f51fc3b2",
+            "left": "e06b5f3f-19bb-4c5c-bfa4-6a9071df73b5",
+            "right": "ffa56982-d182-41b4-8838-56c165b72529",
+            "front": "eeac9152-4139-46fa-8764-f3958731410e",
+            "back": "a6fd2fb0-d5bb-444e-9c24-b4a06baadadf",
+            "handle_left": "19f04ad2-c19e-42fd-b127-30de77d23c9e",
+            "handle_right": "6bacbc7f-459c-4c20-9d5e-af414e56b3c2",
+            "handle": "695f8d9e-2343-4725-921f-01b21a90bed4",
+            "crossbar": "ed2b166d-2310-4866-9175-87e5d550af09"
+          },
+          "report_sha256": "78875bb25bc49604ef4b9769c00c348b3dcad553ef4c83f1635b59c38d3d728d",
+          "trace_sha256": "2daeb2597c452e0734df825674dd81d8a7c7592fb1c612ac62feb09caaba1c4a"
+        },
+        {
+          "benchmark": "monitor_stand",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 33,
+            "tool_seconds": 5.70878184799767,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "e16037bf-01cc-45f5-9255-1ade81523c03",
+          "final_revision": 14,
+          "roles": {
+            "top": "aec5f0c6-9dd6-4f1f-b4a2-02526baa68a6",
+            "left": "8b0ddbf3-2a34-4255-b3fc-3da94901b80f",
+            "right": "735fba8f-63f7-458b-8b5b-4cadb5db1aba"
+          },
+          "report_sha256": "e8d38d21fc84eb936b794c3fbed7cb918e65fd19220045016fb701462ec40b59",
+          "trace_sha256": "6515eceb591896656a6d2bb83e048cc0cd1b26f83283e7ba891288533b0ad40b"
+        },
+        {
+          "benchmark": "side_table",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 39,
+            "tool_seconds": 5.899592598996605,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "fcc95767-ad7b-453a-a259-debd603dc16e",
+          "final_revision": 18,
+          "roles": {
+            "top": "739b40a1-5aca-4397-8397-9f9956b87fa7",
+            "leg_1": "a3521f25-52da-462e-abf6-2a5289994820",
+            "leg_2": "63987631-d7a8-48b0-8326-3393630e853a",
+            "leg_3": "29bb9875-bcf8-40ee-84a0-572aac0da482",
+            "leg_4": "5343f6c8-ef1b-41c1-ad76-2a59ba2d7be7"
+          },
+          "report_sha256": "85c7b4a31b5553b7d4115e847b8ae37ac279bf2fc11de3891bf9b364adea139e",
+          "trace_sha256": "d0e0f3c7d64904eb92485aee6e244769b0b77b26733039b52353a1a19d7cc461"
+        },
+        {
+          "benchmark": "appliance_housing",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 30,
+            "tool_seconds": 6.686981063006897,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "97f39c91-1404-479c-853f-0f1f02df6d26",
+          "final_revision": 13,
+          "roles": {
+            "housing": "35ccd32f-bc24-4ba2-a626-6ef0b0eb99b4"
+          },
+          "report_sha256": "e056c24a63eaa53a46e68ab70e4e033ac6740fddcbc14d28f1842345ff431ea6",
+          "trace_sha256": "f6ea89403903ad41348d465d90ea8bd0dfc9e4e5d33d70e67d5ca606fe2ce035"
+        },
+        {
+          "benchmark": "product_casing",
+          "technical_passed": true,
+          "full_benchmark_passed": false,
+          "engine": "EEVEE",
+          "metrics": {
+            "tool_calls": 36,
+            "tool_seconds": 5.92229894099728,
+            "structured_rejections": 0,
+            "selection_rejections": 0,
+            "rollbacks": 0,
+            "rejections": [],
+            "context_usage": null,
+            "context_usage_note": "The local bridge cannot measure model token usage."
+          },
+          "session_id": "3d80ebae-dc68-473e-92aa-8264279415ad",
+          "final_revision": 17,
+          "roles": {
+            "shell": "18786050-fa40-4a60-a431-1fcedd2327da",
+            "lid": "e2809c83-4e8a-4084-8884-53848dfbebee"
+          },
+          "report_sha256": "397d78a2dc8d45e994d3672c9121bd3de0fa03ef09dcd2d58281f602d6702127",
+          "trace_sha256": "fe9d7e9b844dc27ef7be097a7af138dccff4049e053bb97335d37d36b7d85217"
+        }
+      ]
+    }
+  }
+}

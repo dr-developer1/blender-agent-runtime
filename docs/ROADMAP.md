@@ -16,9 +16,11 @@ section 35 is the authoritative implementation order.
 11. Observation — complete.
 12. First Vertical Slice — complete.
 13. Basic Materials — complete.
-14. Runtime Conformance Suite — complete; see CURRENT_MILESTONE.md.
-15. Benchmark Expansion — next.
+14. Runtime Conformance Suite — complete.
+15. Benchmark Expansion — complete; all twenty briefs pass runtime, scripted-agent
+    and convincing-asset visual gates. See CURRENT_MILESTONE.md.
+16. Adapters — queued; not started.
 
-Continue with milestones 15–36 in the canonical plan. Each milestone needs
+Continue with milestones 16–36 in the canonical plan. Each milestone needs
 acceptance tests, implementation, relevant verification and documentation before
 moving on. The current milestone is the handoff document for the next coding session.

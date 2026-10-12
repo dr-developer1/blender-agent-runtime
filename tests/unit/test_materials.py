@@ -30,6 +30,8 @@ class MaterialContractTests(unittest.TestCase):
     def test_invalid_parameters_reject_before_mutation(self):
         advance = Mock()
         for tool, args in [('material.create', {'roughness': 1.1}),
+                           ('material.create', {'surface': 'glass'}),
+                           ('material.create', {'grain_axis': 'W'}),
                            ('material.create', {'metallic': True}),
                            ('material.create', {'base_color': [0, 0, 0]}),
                            ('material.assign', {'object_id': 'x'}),
@@ -40,5 +42,6 @@ class MaterialContractTests(unittest.TestCase):
 
     def test_valid_boundary_parameters(self):
         schema = self.registry.describe('material.create')['input_schema']
-        for args in ({}, {'base_color': [0, 1, 0, 1], 'roughness': 0, 'metallic': 1}):
+        for args in ({}, {'base_color': [0, 1, 0, 1], 'roughness': 0, 'metallic': 1},
+                     {'surface':'wood','grain_axis':'Z'}):
             validate_arguments(args, schema)

@@ -1,0 +1,484 @@
+{
+  "format_version": 1,
+  "rubric_version": "asset-quality-v1",
+  "visual_threshold": 4,
+  "expected_reviews": 40,
+  "evaluation_complete": true,
+  "asset_quality_passed": false,
+  "production_readiness": "unassessed",
+  "errors": [],
+  "outcomes": [
+    {
+      "benchmark": "coffee_table",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Recognizable thin top/four-leg table. No apron/joinery or grain."
+    },
+    {
+      "benchmark": "coffee_table",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Recognizable thin top/four-leg table. No apron/joinery or grain."
+    },
+    {
+      "benchmark": "storage_crate",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable open box, separate wall seams; no crate slats/joinery or grain."
+    },
+    {
+      "benchmark": "storage_crate",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable open box, separate wall seams; no crate slats/joinery or grain."
+    },
+    {
+      "benchmark": "wall_shelf",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Recognizable shelf; brackets are thick planar supports with no mounting hardware."
+    },
+    {
+      "benchmark": "wall_shelf",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Recognizable shelf; brackets are thick planar supports with no mounting hardware."
+    },
+    {
+      "benchmark": "bottle",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "proportions",
+        "silhouette",
+        "structural_plausibility",
+        "surface_cleanliness",
+        "material_plausibility"
+      ],
+      "notes": "Stepped flat shoulder and visible body seam; simple open neck, no cap/glass."
+    },
+    {
+      "benchmark": "bottle",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "proportions",
+        "silhouette",
+        "structural_plausibility",
+        "surface_cleanliness",
+        "material_plausibility"
+      ],
+      "notes": "Stepped flat shoulder and visible body seam; simple open neck, no cap/glass."
+    },
+    {
+      "benchmark": "bookshelf",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Clear shelf spacing, open back; no joinery, anti-tip hardware or wood grain."
+    },
+    {
+      "benchmark": "bookshelf",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Clear shelf spacing, open back; no joinery, anti-tip hardware or wood grain."
+    },
+    {
+      "benchmark": "cabinet",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "proportions",
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Static blank doors, open back and no hinges/handles; assignment does not imply wood grain."
+    },
+    {
+      "benchmark": "cabinet",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "proportions",
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Static blank doors, open back and no hinges/handles; assignment does not imply wood grain."
+    },
+    {
+      "benchmark": "desk_lamp",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Stem reaches the solid shade roof at Z=442 mm; opposing cap/roof faces are checked through semantic queries. Recognizable upright lamp with clean outline. No luminaire or electrical assembly."
+    },
+    {
+      "benchmark": "desk_lamp",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Stem reaches the solid shade roof at Z=442 mm; opposing cap/roof faces are checked through semantic queries. Recognizable upright lamp with clean outline. No luminaire or electrical assembly."
+    },
+    {
+      "benchmark": "sci_fi_crate",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "proportions",
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Both contrasting inlays are visible in front and perspective, with narrow pocket seams; the old disappearing/coplanar artifacts are gone. Still a simple closed crate with no latches or functional hardware."
+    },
+    {
+      "benchmark": "sci_fi_crate",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "proportions",
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Both contrasting inlays are visible in front and perspective, with narrow pocket seams; the old disappearing/coplanar artifacts are gone. Still a simple closed crate with no latches or functional hardware."
+    },
+    {
+      "benchmark": "metal_bracket",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Clear L profile and visible through-hole; no fasteners or load assessment."
+    },
+    {
+      "benchmark": "metal_bracket",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Clear L profile and visible through-hole; no fasteners or load assessment."
+    },
+    {
+      "benchmark": "pipe_connector",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "surface_cleanliness",
+        "material_plausibility"
+      ],
+      "notes": "Readable flange and visible axial bore; facets and no thread/seals."
+    },
+    {
+      "benchmark": "pipe_connector",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "surface_cleanliness",
+        "material_plausibility"
+      ],
+      "notes": "Readable flange and visible axial bore; facets and no thread/seals."
+    },
+    {
+      "benchmark": "drawer",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable shallow open tray; no slides, pull or grain."
+    },
+    {
+      "benchmark": "drawer",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable shallow open tray; no slides, pull or grain."
+    },
+    {
+      "benchmark": "bench",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable long bench silhouette; no apron/joinery or wood grain."
+    },
+    {
+      "benchmark": "bench",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable long bench silhouette; no apron/joinery or wood grain."
+    },
+    {
+      "benchmark": "simple_chair",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "proportions",
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Flat upright back and thin seat, no joinery, ergonomics or grain."
+    },
+    {
+      "benchmark": "simple_chair",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "proportions",
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Flat upright back and thin seat, no joinery, ergonomics or grain."
+    },
+    {
+      "benchmark": "shelving_unit",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Clear repeated shelves and open back; no braces or anti-tip hardware."
+    },
+    {
+      "benchmark": "shelving_unit",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Clear repeated shelves and open back; no braces or anti-tip hardware."
+    },
+    {
+      "benchmark": "planter",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Clear circular opening and closed bottom, cleaner high-sample silhouette; uniform clay color with no drainage or organic variation."
+    },
+    {
+      "benchmark": "planter",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Clear circular opening and closed bottom, cleaner high-sample silhouette; uniform clay color with no drainage or organic variation."
+    },
+    {
+      "benchmark": "toolbox",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable open tray/carry handle; no latch, hinge or detachable lid."
+    },
+    {
+      "benchmark": "toolbox",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable open tray/carry handle; no latch, hinge or detachable lid."
+    },
+    {
+      "benchmark": "monitor_stand",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable raised platform with open underside; no grain or load assessment."
+    },
+    {
+      "benchmark": "monitor_stand",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable raised platform with open underside; no grain or load assessment."
+    },
+    {
+      "benchmark": "side_table",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable square table, thin top and straight legs; no joinery/grain."
+    },
+    {
+      "benchmark": "side_table",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable square table, thin top and straight legs; no joinery/grain."
+    },
+    {
+      "benchmark": "appliance_housing",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable front opening and shell, blank interior; no vents/electronics or fittings."
+    },
+    {
+      "benchmark": "appliance_housing",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Readable front opening and shell, blank interior; no vents/electronics or fittings."
+    },
+    {
+      "benchmark": "product_casing",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Clear contrasting lid seam; no fasteners/snap fit and assembled lid hides the cavity."
+    },
+    {
+      "benchmark": "product_casing",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": false,
+      "below_convincing": [
+        "silhouette",
+        "structural_plausibility",
+        "material_plausibility"
+      ],
+      "notes": "Clear contrasting lid seam; no fasteners/snap fit and assembled lid hides the cavity."
+    }
+  ]
+}

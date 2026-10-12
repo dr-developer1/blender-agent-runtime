@@ -3,7 +3,7 @@
 A model-independent machine interface to Blender, implemented incrementally from
 [the canonical plan](BLENDER_AGENT_RUNTIME_CANONICAL_MASTER_PLAN_V2.md).
 
-Milestones 1–14 provide a persistent headless Blender process, synchronous structured
+Milestones 1–15 provide a persistent headless Blender process, synchronous structured
 IPC, shutdown/death detection, isolated headless testing, and a versioned, typed
 discovery API with structured errors, call logging, session IDs and
 monotonic revision preconditions. Objects receive persistent UUIDs with collision
@@ -19,7 +19,8 @@ report scene diffs, and commit or roll back with monotonic revisions. Diagnostic
 observation adds deterministic fitted cameras and isolated Workbench/EEVEE PNG
 renders, including multi-view, wireframe and silhouette modes.
 Basic materials add opaque Principled PBR creation and whole-mesh assignment by
-persistent material UUID.
+persistent material UUID, with optional bounded procedural wood, metal,
+ceramic and polymer finishes.
 
 Requires Python 3.10+ and a Blender executable on PATH. No Python dependencies are
 needed to run the controller or tests.
@@ -31,6 +32,7 @@ python3 -m unittest discover -s tests/unit -v
 python3 -m unittest discover -s tests/integration -v
 python3 -m unittest discover -s conformance -v
 python3 -m conformance --output artifacts/conformance.json
+python3 -m benchmarks.quality --review docs/evidence/expansion_visual_review_m15_quality_final.json --output artifacts/quality-audit.json --require-quality
 python3 -m controller.headless tests/blender/smoke.py
 python3 -m controller.headless tests/blender/api_smoke.py
 python3 -m controller.headless tests/blender/state_smoke.py
@@ -177,3 +179,25 @@ See [the stool exercise and actual Codex run](docs/STOOL_BENCHMARK.md). The orig
 recipe also passes material assignment; use `--engine EEVEE` to inspect its warm
 brown PBR surface. The original agent evidence remains the pre-material baseline.
 Full benchmark success is not claimed; wood grain and visual limitations remain.
+
+The expanded benchmark suite adds twenty versioned asset briefs with public-API
+manual recipes, role-based validation, agent bridge exercises, traces and six-view
+renders. Run all baselines or select one:
+
+```bash
+python3 -m benchmarks.expansion --output artifacts/expansion-new
+python3 -m benchmarks.agent --benchmark pipe_connector --agent "your agent identity" --output artifacts/pipe-agent-new
+python3 -m benchmarks.replay --output artifacts/replay-new
+```
+
+Recorded Codex runs use separately authored scripted plans; deterministic protocol
+replays are explicitly distinguished from AI builds. Technical acceptance and
+subjective asset quality remain separate. See [expanded benchmarks](docs/BENCHMARK_EXPANSION.md)
+for all twenty briefs, measured results, visual evidence and known shortcomings.
+
+Milestone 15 is complete: all twenty v3 manual builds and twenty scripted-agent
+builds pass technical acceptance and the 4/5 visual self-review gate. All 240
+EEVEE views are reviewed with report/image/source hashes. See the
+[passing quality evidence](docs/evidence/expansion_quality_gate_m15_quality_final.json)
+and [visual overview](docs/evidence/expansion_m15_quality_preview.jpg).
+Milestone 16 remains queued.

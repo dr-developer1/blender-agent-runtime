@@ -7,7 +7,7 @@ from .errors import ToolError
 
 API_VERSION = '1.0'
 SUPPORTED_VERSIONS = (API_VERSION,)
-RUNTIME_VERSION = '0.14.0'
+RUNTIME_VERSION = '0.15.0'
 
 
 class MutationResult(dict):

@@ -1,0 +1,334 @@
+{
+  "format_version": 1,
+  "timestamp": "2026-10-12T20:10:27.878246+00:00",
+  "python_version": "3.12.3",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "blender_executable": "blender",
+  "passed": true,
+  "tests_run": 40,
+  "skipped": 0,
+  "tests": [
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_basic_materials_in_real_blender",
+      "status": "passed",
+      "seconds": 2.819340724000085
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_diagnostic_observation_over_ipc",
+      "status": "passed",
+      "seconds": 3.7275771220001843
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_forced_death_cleans_active_snapshot",
+      "status": "passed",
+      "seconds": 2.486934954000162
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_mesh_control_over_ipc",
+      "status": "passed",
+      "seconds": 2.6537259269998685
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_object_control_over_ipc",
+      "status": "passed",
+      "seconds": 2.626799253999934
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_public_discovery_contract_and_recovery",
+      "status": "passed",
+      "seconds": 2.645828007000091
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_diagnostic_observation",
+      "status": "passed",
+      "seconds": 4.700308050000103
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_evaluated_geometry_and_hierarchy",
+      "status": "passed",
+      "seconds": 2.637105146000067
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_filtered_scene_and_bounded_pagination",
+      "status": "passed",
+      "seconds": 2.8778368830001
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_mesh_control",
+      "status": "passed",
+      "seconds": 2.756996077000167
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_object_control",
+      "status": "passed",
+      "seconds": 2.647736313999985
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_object_identity_lifecycle",
+      "status": "passed",
+      "seconds": 2.6109242550001
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_recovery",
+      "status": "passed",
+      "seconds": 3.0775820270000622
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_scene_mutation_and_restore_advance_timeline",
+      "status": "passed",
+      "seconds": 2.585115373000008
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_semantic_geometry_selection",
+      "status": "passed",
+      "seconds": 2.582462654999972
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_real_validation",
+      "status": "passed",
+      "seconds": 2.6861211810000896
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_restart_and_state_preconditions_over_ipc",
+      "status": "passed",
+      "seconds": 5.282502914999895
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_scene_observation_over_ipc",
+      "status": "passed",
+      "seconds": 2.657475376000093
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_semantic_selection_over_ipc",
+      "status": "passed",
+      "seconds": 5.2674942010000905
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_transactions_and_scene_diff_over_ipc",
+      "status": "passed",
+      "seconds": 2.6875714049999715
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_uuid_persists_across_blender_processes",
+      "status": "passed",
+      "seconds": 5.20113854300007
+    },
+    {
+      "test": "tests.integration.test_api.ApiIntegrationTests.test_validation_over_ipc",
+      "status": "passed",
+      "seconds": 2.6448451360001854
+    },
+    {
+      "test": "tests.integration.test_expansion.ExpansionIntegrationTests.test_all_twenty_public_api_assets_and_rollback",
+      "status": "passed",
+      "seconds": 12.379037447999963,
+      "metrics": {
+        "coffee_table": {
+          "calls": 49,
+          "objects": 5
+        },
+        "storage_crate": {
+          "calls": 49,
+          "objects": 5
+        },
+        "wall_shelf": {
+          "calls": 38,
+          "objects": 3
+        },
+        "bottle": {
+          "calls": 55,
+          "objects": 3
+        },
+        "bookshelf": {
+          "calls": 61,
+          "objects": 7
+        },
+        "cabinet": {
+          "calls": 61,
+          "objects": 7
+        },
+        "desk_lamp": {
+          "calls": 59,
+          "objects": 3
+        },
+        "sci_fi_crate": {
+          "calls": 98,
+          "objects": 8
+        },
+        "metal_bracket": {
+          "calls": 37,
+          "objects": 2
+        },
+        "pipe_connector": {
+          "calls": 55,
+          "objects": 2
+        },
+        "drawer": {
+          "calls": 49,
+          "objects": 5
+        },
+        "bench": {
+          "calls": 49,
+          "objects": 5
+        },
+        "simple_chair": {
+          "calls": 55,
+          "objects": 6
+        },
+        "shelving_unit": {
+          "calls": 67,
+          "objects": 8
+        },
+        "planter": {
+          "calls": 31,
+          "objects": 1
+        },
+        "toolbox": {
+          "calls": 74,
+          "objects": 9
+        },
+        "monitor_stand": {
+          "calls": 37,
+          "objects": 3
+        },
+        "side_table": {
+          "calls": 49,
+          "objects": 5
+        },
+        "appliance_housing": {
+          "calls": 31,
+          "objects": 1
+        },
+        "product_casing": {
+          "calls": 38,
+          "objects": 2
+        }
+      }
+    },
+    {
+      "test": "tests.integration.test_expansion.ExpansionIntegrationTests.test_expansion_bridge_invalid_finish_repair_then_failed_acceptance_rollback",
+      "status": "passed",
+      "seconds": 5.393446111000003
+    },
+    {
+      "test": "tests.integration.test_expansion.ExpansionIntegrationTests.test_expansion_bridge_success_and_distinct_replay_provenance",
+      "status": "passed",
+      "seconds": 4.0592756400001235
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_clean_shutdown",
+      "status": "passed",
+      "seconds": 2.6230038659998627
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_crash_detection",
+      "status": "passed",
+      "seconds": 2.498163371999908
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_early_process_exit",
+      "status": "passed",
+      "seconds": 0.10217881099993065
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_headless_runner_success_and_failure",
+      "status": "passed",
+      "seconds": 5.102366100000154
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_headless_runner_timeout",
+      "status": "passed",
+      "seconds": 0.20498843299992586
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_invalid_request_and_recovery",
+      "status": "passed",
+      "seconds": 2.641700781000054
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_missing_executable",
+      "status": "passed",
+      "seconds": 0.0014919620000455325
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_persistent_serial_main_thread_execution",
+      "status": "passed",
+      "seconds": 2.6250666429998546
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_request_timeout_terminates_child",
+      "status": "passed",
+      "seconds": 4.657502518000001
+    },
+    {
+      "test": "tests.integration.test_process.ProcessTests.test_structured_errors_and_recovery",
+      "status": "passed",
+      "seconds": 2.6141262760002064
+    },
+    {
+      "test": "conformance.test_runtime.RuntimeConformanceTests.test_api_1_0_compatibility",
+      "status": "passed",
+      "seconds": 2.7399955070000033
+    },
+    {
+      "test": "conformance.test_runtime.RuntimeConformanceTests.test_large_scene_accuracy_performance_and_repeated_rollback",
+      "status": "passed",
+      "seconds": 7.088364075000072,
+      "metrics": {
+        "blender_version": "5.2.2 LTS",
+        "measurements": {
+          "filtered_pagination_1000": {
+            "budget_seconds": 30,
+            "seconds": 0.3915247969998745
+          },
+          "five_full_file_rollbacks_250": {
+            "budget_seconds": 30,
+            "seconds": 0.7797906529999636
+          },
+          "hierarchy_2001": {
+            "budget_seconds": 30,
+            "seconds": 0.8941374529999848
+          },
+          "inspect_100": {
+            "budget_seconds": 30,
+            "seconds": 0.07044320899990453
+          },
+          "pagination_2001": {
+            "budget_seconds": 30,
+            "seconds": 0.9187932980000824
+          },
+          "summary_2001": {
+            "budget_seconds": 30,
+            "seconds": 0.030387042000029396
+          }
+        },
+        "object_count": 2001,
+        "recovery_object_count": 250,
+        "rollback_cycles": 5
+      }
+    },
+    {
+      "test": "conformance.test_runtime.RuntimeConformanceTests.test_warm_public_ipc_latency",
+      "status": "passed",
+      "seconds": 2.6260387919999175,
+      "metrics": {
+        "samples": 25,
+        "median_seconds": 0.00043354199988243636,
+        "max_seconds": 0.0011713569999756146,
+        "total_seconds": 0.011561176999975942,
+        "budget_seconds": 10
+      }
+    },
+    {
+      "test": "tests.integration.test_stool.StoolIntegrationTests.test_agent_bridge_rejections_and_disconnect_restore_checkpoint",
+      "status": "passed",
+      "seconds": 2.7424964990000262
+    },
+    {
+      "test": "tests.integration.test_stool.StoolIntegrationTests.test_manual_public_api_baseline_and_recovery",
+      "status": "passed",
+      "seconds": 4.088170115999901
+    }
+  ],
+  "failures": []
+}

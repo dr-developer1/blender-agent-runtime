@@ -97,3 +97,8 @@ not guaranteed identical across Blender versions, GPUs or drivers.
 Blender API references: [Camera](https://docs.blender.org/api/5.2/bpy.types.Camera.html),
 [View3DShading](https://docs.blender.org/api/5.2/bpy.types.View3DShading.html), and
 [render operator](https://docs.blender.org/api/5.2/bpy.ops.render.html).
+
+Milestone 15 raises the isolated EEVEE diagnostic scene from 16 to 128 render
+samples to reduce cavity shadow noise. Source scene sample settings stay intact;
+Workbench and public render budgets are unchanged. Higher samples increase
+render time; the existing transport timeout and renderer cleanup still apply.

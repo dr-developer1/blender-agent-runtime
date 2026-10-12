@@ -42,6 +42,35 @@ assert abs(shader.inputs['Roughness'].default_value - .65) < 1e-6
 assert abs(shader.inputs['Metallic'].default_value - .1) < 1e-6
 assert all(abs(a-b) < 1e-6 for a,b in zip(shader.inputs['Base Color'].default_value, [.22,.08,.025,1]))
 assert any(l.from_node == shader and l.to_node.type == 'OUTPUT_MATERIAL' for l in mat.node_tree.links)
+# Bounded procedural finishes use generated coordinates, with explicit grain axes.
+procedural_ids = []
+for surface in ('wood','coated_metal','ceramic','polymer'):
+    args = {'surface':surface,'base_color':[.25,.12,.04,1],'roughness':.4}
+    if surface == 'wood':
+        args['grain_axis']='Z'
+    response=call('material.create',args)['result']
+    assert response['surface']==surface
+    procedural_ids.append(response['material_id'])
+    material=api.materials.resolve(response['material_id'])
+    shader=next(n for n in material.node_tree.nodes if n.type=='BSDF_PRINCIPLED')
+    assert shader.inputs['Base Color'].is_linked
+    assert shader.inputs['Roughness'].is_linked and shader.inputs['Normal'].is_linked
+    mapping=next(n for n in material.node_tree.nodes if n.type=='VECT_MATH')
+    if surface=='wood':
+        assert response['grain_axis']=='Z'
+        assert abs(mapping.inputs[1].default_value[2]-1.2)<1e-6
+        assert mapping.inputs[1].default_value[0]==18
+    assert any(l.from_socket.name=='Generated' for l in material.node_tree.links)
+count=len(bpy.data.materials)
+for args in ({'surface':'glass'},{'surface':'wood','grain_axis':'invalid'},
+             {'surface':'polymer','grain_axis':'X'},{'grain_axis':'Z'}):
+    call('material.create',args,'INVALID_ARGUMENT')
+assert len(bpy.data.materials)==count
+# A recipe failure cleans its newly allocated material before publication.
+from unittest.mock import patch
+with patch.object(api.materials,'_surface',side_effect=RuntimeError('injected recipe failure')):
+    call('material.create',{'surface':'wood'},'INTERNAL_ERROR')
+assert len(bpy.data.materials)==count
 cube = call('object.create_primitive', {'primitive': 'CUBE'})['result']['object_id']
 linked = call('object.duplicate', {'object_id': cube, 'linked_data': True})['result']['object_id']
 original_mesh = api.identities.resolve(cube).data
@@ -62,10 +91,13 @@ assert cube in call('scene.diff', tx)['result']['diff']['modified_ids']
 call('mesh.inspect_selection', {'selection_handle': handle}, 'INVALID_SELECTION_HANDLE')
 call('transaction.rollback', tx)
 assert not api.identities.resolve(cube).material_slots
+for procedural_id in procedural_ids:
+    material=api.materials.resolve(procedural_id)
+    assert any(n.type=='TEX_NOISE' for n in material.node_tree.nodes)
 assert api.materials.resolve(mid).name == 'Renamed'
 # Unassigned materials survive save/load; materials created after begin disappear.
 tx = {'transaction_id': call('transaction.begin')['result']['transaction_id']}
-new_mid = call('material.create')['result']['material_id']
+new_mid = call('material.create', {'surface':'wood','grain_axis':'Y'})['result']['material_id']
 call('material.assign', {'object_id': cube, 'material_id': new_mid})
 call('transaction.rollback', tx)
 call('material.assign', {'object_id': cube, 'material_id': new_mid}, 'MATERIAL_NOT_FOUND')

@@ -1,5 +1,78 @@
 # Current milestone
 
+Milestone 15 — Benchmark Expansion (steps 77–96): complete.
+All twenty version-3 briefs pass runtime acceptance, scripted-agent evaluation
+and the requested convincing-asset quality gate. Forty fresh builds (twenty manual
+and twenty separately authored Codex scripted plans) commit successfully. All 240
+EEVEE diagnostic views were inspected; every build scores 4/5 in all five visual
+categories. The quality audit verifies complete coverage, current versions,
+committed technical reports, exact image/report hashes and reviewed source hashes.
+The earlier failing quality gates remain historical evidence.
+
+Materials now have bounded procedural wood, coated-metal, ceramic and polymer
+finishes through optional `material.create` fields. Plain defaults and original
+result fields are preserved. Wood grain follows the declared part's longest local
+axis. Both builders bake primitive scale through public booleans before beveling,
+so long panels and narrow legs receive real millimetre edge rounding. EEVEE uses
+128 diagnostic samples; benchmark clients allow 180 seconds per call. Normal
+controller defaults and public observation budgets are unchanged.
+
+The v3 assets add apron frames, crate handholds/battens, braced wall supports,
+shelf backing, cabinet/drawer pulls, chair posts/stretchers, lamp fittings,
+recessed crate latches/inlays, mounting/bolt bores, planter drainage, rear ventilation
+and casing bosses with recessed screw heads. Prior lamp, inlay and tapered-bottle
+repairs remain. Embedded joinery is declared separately from shallow AABB contact;
+interior queries check pocket, slot and bore walls, excluding microscopic bore
+remnants. These checks remain approximate rather than manufacturing certification.
+
+Verification: **113 unit tests and 40 real-Blender conformance cases pass, zero
+skips**. Regressions reject displaced roles, the old floating lamp stem, filled
+crate pockets, an identical-bounds stepped bottle shoulder, a filled pipe bore,
+blocked drainage and a blocked ventilation slot. Rollback restores exact UUID
+inspections. Material tests cover procedural links/axes, persistence, rollback,
+invalid arguments and allocation cleanup after an injected recipe failure.
+
+Runtime/package version: 0.15.0; public API: 1.0; 36 public tools.
+The compatibility baseline explicitly reviews the additive `material.create`
+input/output fields; the other 35 descriptors remain unchanged. Its prior
+descriptor and review are retained in the evidence directory. No provider
+SDK, external texture dependency or per-asset runtime tool was added.
+
+Final evidence:
+
+- [Technical builds](evidence/expansion_m15_quality_final.json)
+- [Visual self-review](evidence/expansion_visual_review_m15_quality_final.json)
+- [Passing quality gate](evidence/expansion_quality_gate_m15_quality_final.json)
+- [Conformance](evidence/conformance_m15_quality_final.json)
+- [Visual overview](evidence/expansion_m15_quality_preview.jpg)
+- [API compatibility review](evidence/material_create_api_1_0_m15_review.json)
+
+Accepted PNGs, reports, traces and submitted agent commands are under
+`artifacts/expansion-m15-quality-accepted/`, with the final scripted casing under
+`artifacts/expansion-m15-quality-casing-agent-fixed/`. The accepted mapping is
+`artifacts/expansion-m15-quality-accepted/final_collection.json`. Its original
+summary retains the 192-sided casing rejection at commit; a 96-sided rerun
+replaces it without raising recovery budgets. Prototype/superseded runs and
+four-way render deadline failures are excluded. The retained final runner
+reproduces all forty builds with two isolated Blender processes by default:
+
+```bash
+python3 -m docs.evidence.expansion_quality_build_m15 --output artifacts/m15-new --jobs 2
+python3 -m benchmarks.quality --review docs/evidence/expansion_visual_review_m15_quality_final.json --output artifacts/m15-audit-new.json --require-quality
+```
+
+Fresh builds require fresh review; old hashes cannot certify them. Reasoning is
+at Codex script-authoring time, with shared briefs and prior baseline knowledge;
+this is an assisted scripted-agent evaluation, not a blind autonomous comparison.
+Visual scores are self-review. Production readiness, physical functionality and
+photorealism remain unassessed. Procedural grain is a mesh-fitted approximation,
+with no end-grain or fixed physical grain scale. See BENCHMARK_EXPANSION.md for
+contracts, run provenance and failure analysis.
+
+Next: Milestone 16 — Adapters (steps 97–100), queued and not started.
+
+# Previous milestone: runtime conformance
+
 Milestone 14 — Runtime Conformance Suite (steps 70–76): complete.
 
 Added a repository conformance report command, a frozen API 1.0 descriptor baseline

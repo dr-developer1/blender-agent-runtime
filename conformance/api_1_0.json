@@ -63,6 +63,14 @@
           "minItems": 4,
           "type": "array"
         },
+        "grain_axis": {
+          "enum": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "type": "string"
+        },
         "metallic": {
           "maximum": 1,
           "minimum": 0,
@@ -77,6 +85,16 @@
           "maximum": 1,
           "minimum": 0,
           "type": "number"
+        },
+        "surface": {
+          "enum": [
+            "plain",
+            "wood",
+            "coated_metal",
+            "ceramic",
+            "polymer"
+          ],
+          "type": "string"
         }
       },
       "required": [],
@@ -94,6 +112,14 @@
           "maxItems": 4,
           "minItems": 4,
           "type": "array"
+        },
+        "grain_axis": {
+          "enum": [
+            "X",
+            "Y",
+            "Z"
+          ],
+          "type": "string"
         },
         "material_id": {
           "maxLength": 64,
@@ -114,6 +140,16 @@
           "maximum": 1,
           "minimum": 0,
           "type": "number"
+        },
+        "surface": {
+          "enum": [
+            "plain",
+            "wood",
+            "coated_metal",
+            "ceramic",
+            "polymer"
+          ],
+          "type": "string"
         }
       },
       "required": [

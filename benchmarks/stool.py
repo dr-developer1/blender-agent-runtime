@@ -2,6 +2,7 @@
 import argparse
 import base64
 import json
+import time
 from pathlib import Path
 
 from controller.client import BlenderClient
@@ -23,13 +24,16 @@ class Exercise:
 
     def call(self, tool, arguments=None):
         arguments = {} if arguments is None else arguments
+        started = time.perf_counter()
         response = self.client.call(tool, arguments)
+        elapsed = time.perf_counter() - started
         # Keep response state and failures; PNG payloads are separate artifacts.
         recorded = json.loads(json.dumps(response))
+        recorded.get('result', {}).pop('png_base64', None)
         for image in recorded.get('result', {}).get('images', []):
             image.pop('png_base64', None)
         self.trace.append({'tool': tool, 'arguments': json.loads(json.dumps(arguments)),
-                           'response': recorded})
+                           'response': recorded, 'seconds': elapsed})
         if not response['success']:
             raise ToolRejected(f"{tool}: {response['error']['code']}")
         return response['result']

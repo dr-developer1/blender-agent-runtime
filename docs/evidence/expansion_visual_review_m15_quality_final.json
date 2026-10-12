@@ -1,0 +1,1425 @@
+{
+  "format_version": 1,
+  "timestamp": "2026-10-12T20:57:03.942170+00:00",
+  "evaluator": "Codex (active continuation session; visual self-review, not independent certification)",
+  "rubric_version": "asset-quality-v1",
+  "sources_sha256": {
+    "benchmarks/catalog.py": "967ee7b5ed2d4d74f2aadf2fb70e8490598f1d7d0287c5e4be8ae14b8458e7ef",
+    "benchmarks/expansion.py": "f09db5b4e74d28fa8aa6394c04f604377d363fefdf99258643ab3b6bd341566c",
+    "benchmarks/agent.py": "35b4d570ec907393364667850b591c38dfc7bfe98cdba2dc34adcc877b1b2306",
+    "benchmarks/quality.py": "019c5853b06c3dce3aa6cb985b8d1d4a3bcdf65071c69778163be6d8f07df85d",
+    "benchmarks/stool.py": "a9ee0f8366a7df87f43010923cc261e1af922d686f4affcd00e47b55c53e32e9",
+    "benchmarks/replay.py": "95d7bf134bac3c935bbb056da39f6c05de49e94418cdaf40c7523478502e6f86",
+    "runtime/materials.py": "0a3a5e444a434c21ba346e2873cd100bd0d3c45137b96bedabee0c8eb7c19cb1",
+    "runtime/observation.py": "2ab2aa3d64a502bb1864261b3f71cce87dc2e75db6055dd28fdbeec0c6a2f086",
+    "runtime/schemas.py": "4cc98d307934678fc76a91d8f74a22f5c184036063a5742ffc22c2bdb7a2a8ae",
+    "docs/evidence/expansion_codex_plan_m15.py": "b69491c2e2f59d3d3f656534ddb9cc3210429f4db607d33dec9659c68ececfb4",
+    "docs/evidence/expansion_quality_build_m15.py": "64e5e9ae7d0b0dd5028448b6a951b5c20984b1e47ea54bebe3400dda68297111",
+    "conformance/api_1_0.json": "ee338ab6db377799416738b8591420721536ad6c6de7ee5e869508c6d504d80a",
+    "pyproject.toml": "becee8ac1c4a2491620b846f87e53846e6d75908d8d38462b03b06a01b6d7eb9"
+  },
+  "review_method": "Inspected all 240 original EEVEE views in twenty labeled contact sheets, each showing the six manual views and the six scripted-agent views. Ratings are authored visual judgments. No scores are inferred from assignment or technical acceptance; no historical review is reused.",
+  "score_interpretation": "4 means convincing for the declared simple engineering brief; 5 would mean polished. All final builds reach 4 in each category. Hidden physical functionality and photorealism are unassessed.",
+  "reviews": [
+    {
+      "benchmark": "appliance_housing",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a clean open-front polymer housing with a substantial frame and seven through-ventilation slots visible from front and back. The cavity, wall thickness silhouette and blue molded finish are coherent across all views; the surface remains deliberately simple. This is a convincing empty enclosure component, with no electronics, fittings or manufacturing certification implied.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/appliance_housing/build/appliance_housing",
+          "engine": "EEVEE",
+          "report_sha256": "3dc862d4744b6c5af57fd9fa4b5224fddd9fc1a47e949108ab20f99d46d4342c",
+          "images_sha256": {
+            "front": "217f9a2a81aef225c793684b54a1d9daa7e7cc18619ecb39ef6545ac20e22a8a",
+            "back": "b040d984f00d1bcc622acd2411102a72a2ea8811755cdaf81e62be7dc7c06bc8",
+            "left": "79aba64e85d1425c10f6987872c06c959679e3069b90bb82af5d36b6bfdf078f",
+            "right": "9d8de87250714f2b62156541255e14779e1aa0016d467af1b25cf1f385717ea5",
+            "top": "d73382bd6c74d07d01cf49064195d66eadc353482538192dfee6e76620584e77",
+            "perspective": "c9292cfa5c6085d39a72a8c88ae94085fffd83bcebc88b84e603e2ff7f21a529"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "appliance_housing",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a clean open-front polymer housing with a substantial frame and seven through-ventilation slots visible from front and back. The cavity, wall thickness silhouette and blue molded finish are coherent across all views; the surface remains deliberately simple. This is a convincing empty enclosure component, with no electronics, fittings or manufacturing certification implied.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/appliance_housing",
+          "engine": "EEVEE",
+          "report_sha256": "2a632e5a745d93a3487ef36ee0ff1949c4b2f72159e46def162e48e4fd06102e",
+          "images_sha256": {
+            "front": "776f4161df6052a52ad26ac8568b4472d1db9855fbfb80b65ce633b8a2d5b96c",
+            "back": "af8298f99fc1a7a1261d7f403f4d31fdb32ee57999740cb24aa37989d31ec406",
+            "left": "463ad10d86e5852530b1c0431167db2f14e450f986d554c73bc21e757c9d18fa",
+            "right": "1d5b973d538e8af6f4f07a65609aa85318e2fc562938c53a462e83f446355508",
+            "top": "86b53512ba66a7642e0529b317bd6d2fa07c00555cca99093baad65604011155",
+            "perspective": "c76fb5bb97f6aee42d08c9bb0650339c733cfe79ca9c71a374dc07308359e09f"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "bench",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a long, low bench with four grounded legs and a continuous apron under the seat. Front/side views establish the support arrangement, while top/perspective views show directional wood grain and clean softened edges. The simple straight-legged furniture design is visually convincing; hidden joinery and seating load ratings are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/bench/build/bench",
+          "engine": "EEVEE",
+          "report_sha256": "eb73ceb6f2f26006b01066bdd71952ddbf8b02406550ca162a1d6cbc4d87a2fc",
+          "images_sha256": {
+            "front": "c44d4ade97a7320c5374a76def387961611d1e2e61a4c26689aa301332316803",
+            "back": "9d9939c0953415220fa6f8c556f215dfc6528c798e11e9dd4f1e5b523532853b",
+            "left": "642d47a12f875b405c9045d7f3760155bec204ecf29672601fc7e6653fbcabe0",
+            "right": "46fdfd3dde4938fa8e10d6b527325f9ff014400e2677df86e3426622a46a52d0",
+            "top": "9ef119c227060e15a9231dc172c97a4ce2017f0e465bc61871930f3872732deb",
+            "perspective": "51e250716991d6fb826136e04d5a43d75b377d48008f6194353e6775ee27a309"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "bench",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a long, low bench with four grounded legs and a continuous apron under the seat. Front/side views establish the support arrangement, while top/perspective views show directional wood grain and clean softened edges. The simple straight-legged furniture design is visually convincing; hidden joinery and seating load ratings are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/bench",
+          "engine": "EEVEE",
+          "report_sha256": "b1436a3f55dbbf8189370e61c81a3b68db6c352f09a342302b625a4dd9378204",
+          "images_sha256": {
+            "front": "4ba2594e538266b65e41421004b0db112bf459bd3bbc996f7bb872be4d8b01f9",
+            "back": "a9cc50bbdd1a2a1a693086d01e73a7505f65e1e4faf55b5cbc192d64bc7d6677",
+            "left": "5bb594e493c2b47f7713415f7a3e7f664b5d4ebfa9cf69d0de1bccfae2bea852",
+            "right": "57c4039e23b64cdffa6445bd55689ccaf3c6b3f1e3aaa1e5299365ab3ac66b10",
+            "top": "d4d12cc782174c62abfef5d827c7bc7c88b053206127b4df757f4dbf46884af8",
+            "perspective": "6b2b94b928333fe96bf84871f3ed82f57a05b13b77275d59ff248adb04852540"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "bookshelf",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "All views show evenly spaced shelves, full-height sides and a recessed backing rather than the former unsupported open back. Grain follows panel and shelf directions, seams are clean, and the front/perspective views establish a believable furniture silhouette in both builds. Anti-tip fastening and load ratings are unassessed; the grain remains a procedural approximation.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/bookshelf/build/bookshelf",
+          "engine": "EEVEE",
+          "report_sha256": "a2c561d05b15f077a5ca6e6176f329c934712c570902918cd6d858b8e690f397",
+          "images_sha256": {
+            "front": "ef1302b3a6ef08910091ddd7e3932f30e66deb7f0a29c916b687c1a1976d7230",
+            "back": "2bacfff4093a2b38bee81252708958c811cf139ef1821c0433877fc32604b0c1",
+            "left": "a2d6f5981e9f4ff080041ac37c6eaf2a58089797c2a925e5d90f3e8357df8ecc",
+            "right": "756cd3c9a8ed418135741a0a0e8646c3d49361ddf8f8af23251235f7cb57c2d9",
+            "top": "d60693eef3f71e7c1df441170cc2a06814ff389c0a3e8687ea8930731f1b2578",
+            "perspective": "0fddee5a3b3114dfb923b55b69bd75a04628e2a5557d4049f6d74113cd9245c8"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "bookshelf",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "All views show evenly spaced shelves, full-height sides and a recessed backing rather than the former unsupported open back. Grain follows panel and shelf directions, seams are clean, and the front/perspective views establish a believable furniture silhouette in both builds. Anti-tip fastening and load ratings are unassessed; the grain remains a procedural approximation.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/bookshelf",
+          "engine": "EEVEE",
+          "report_sha256": "dcb7c5877237bbbbcf110231cbb821bbe30e4e5bbe5aee44f6f09acd39183e39",
+          "images_sha256": {
+            "front": "592b4254ab8171b5b5ff5d1ecba55514b6a43dae353478d7b8c0af69685198f2",
+            "back": "9fe5e4672d3b9b53a48a52c1a904cc0c75e192110da4ae07594389bb1f23720b",
+            "left": "c37211a93cc88d7928d53920de7ef681709cabb35eb8a9b27ba7db5fbdaeb4b1",
+            "right": "f533cc22612e1cf6b5a878efcbdf9a6e10b797c5f761c45f8748b77c9f1244a9",
+            "top": "79216a286c23091b7e3142b1ae66ac4908d5ce3077395f8a8128298ff6dd5dfd",
+            "perspective": "4090f4f0579f0b435998ecefd229c03cb657b52c710a075ae3c74b9d7831f142"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "bottle",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a continuous tapered shoulder, an open neck and a distinct molded closure bead. The blue polymer finish has controlled gloss and clear edge highlights; the bore is legible without the earlier conspicuous cavity noise. The 128/192-sided surfaces retain very slight highlight banding, acceptable at the convincing threshold; this is opaque polymer, not glass.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/bottle/build/bottle",
+          "engine": "EEVEE",
+          "report_sha256": "ad6de9f49a456b4dd5ad358c5d36327e4086a2acbfd5b5a9393af2c819d398e2",
+          "images_sha256": {
+            "front": "6e79f486bd2d28005b811c60643a1b77d4648cc1167e372dfbe9f23cc27d3a1c",
+            "back": "44927291360957b5bebc6e554920a515dfffb5503b823223a11bd314c576ef22",
+            "left": "14baa6d4dbce7ec8475b559367643f7368998c9503321ca10b27a335e1fdd7f6",
+            "right": "b264ea927f5faa05f1bf85d0de4206861e79b8dd94628e08e6b164688aa3ba81",
+            "top": "44fd0c3fdd28ba0bfe6a659f0f8e26e1a54f8de97944a752d792d464d8dfffae",
+            "perspective": "665e80f18c5fc791f27fcfbf90d8db15c0adc8e631d7362c67a417c92f9cb43a"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "bottle",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a continuous tapered shoulder, an open neck and a distinct molded closure bead. The blue polymer finish has controlled gloss and clear edge highlights; the bore is legible without the earlier conspicuous cavity noise. The 128/192-sided surfaces retain very slight highlight banding, acceptable at the convincing threshold; this is opaque polymer, not glass.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/bottle",
+          "engine": "EEVEE",
+          "report_sha256": "95099ee8b07ad48bc14189e583f0a64b8621123d27903c422dc35e218eb43728",
+          "images_sha256": {
+            "front": "b96f5cb3f7166f42d63e299cd63d087a2e7f5bc58692f43899edb058b52dea8f",
+            "back": "bb093a1cee7095f3b3bcf771d3f508a179c3a30bb567361b7a46d69bd5271c5d",
+            "left": "3e18600fd94fbdcd79d42b8b6ec8ca8baa91138d75ff91472ccd0d897c8bc154",
+            "right": "d009c9d7d03b92458886584984179b656061ddd6714a709f06722e533858f367",
+            "top": "aeda57fca975a701a34e507c796afeded76f7900da1c342083e6c44f553f68d3",
+            "perspective": "8b04db17a3679626b31985f48caefc4953d000989d7983a7036f6556b18750b5"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "cabinet",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds read as complete two-door cabinets: a narrow center seam, inset door edges, mounted dark pulls and a closed recessed back are visible. Vertical panel grain and horizontal top grain distinguish construction directions; the rounded perimeter is clean. Doors are static and hidden hinges are not certified. The procedural grain is repetitive rather than photoreal.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/cabinet/build/cabinet",
+          "engine": "EEVEE",
+          "report_sha256": "22ed36401454bb2a79b71fea41a4bdc84cc341f98d33d06c738c0b49e17ef66e",
+          "images_sha256": {
+            "front": "9224171bd2828a0311504518fe6c603928a99b407ee14276c08fb1a6b4d9f940",
+            "back": "587eeb538aab6781298445dd883fb89d22ff44a76ca480e3ea32c663829fd84f",
+            "left": "25209e43a0716692666f0308ea2ebd874098bbd5d3ede0069c73cabfaa4eb3b6",
+            "right": "f2c646717afdffc33b002ce6fb62a47bcd2330a1a48ef53a9fdc39eb87e8d250",
+            "top": "ec63bf8165edaf4202de09b85d418217650d4d567a3c7cd0c10098154563d2b3",
+            "perspective": "276de1ee52473e660566d94da9d6222b47496e7cc7bd63512898640f88d3efc6"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "cabinet",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds read as complete two-door cabinets: a narrow center seam, inset door edges, mounted dark pulls and a closed recessed back are visible. Vertical panel grain and horizontal top grain distinguish construction directions; the rounded perimeter is clean. Doors are static and hidden hinges are not certified. The procedural grain is repetitive rather than photoreal.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/cabinet",
+          "engine": "EEVEE",
+          "report_sha256": "b23305497f7c330ec825052a026b9e5a038a3f856785519ea2c93e992e13fc76",
+          "images_sha256": {
+            "front": "c251a7ee4dc3fe69467adebbc0b7d06d0720975ff98bacca79c48d19adc5c3db",
+            "back": "153f8efa85eb7623680e57c1dbf4914614d58f08a68493a5b74b081e798b9519",
+            "left": "abacbc058cffa6d86d02d6e593c7bf897a18d4deaf7590b1967dac99c4fd0f46",
+            "right": "70854c8fc39c98636eccb5efd6313f01b46c02023a49c9e44bbef5ec2928477f",
+            "top": "4efa559be5f6aedad4e640a1aaac006431601a60ac4e9886f4d9309308be2ec5",
+            "perspective": "aa791900dd67ebcb75412783fa57abe3ce71d33a2958c7b7a80345fa1d0b847c"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "coffee_table",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "All six views of both builds show a clear four-leg table with a continuous apron, directional oak grain and clean millimetre bevel highlights. The apron provides a believable visible load path. Simple flat-pack styling is convincing at this brief's scale; end-grain and hidden fasteners are not represented.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/coffee_table/build/coffee_table",
+          "engine": "EEVEE",
+          "report_sha256": "763b12ec635061349375ce33ce1d0ff9c8bfc867ea04cd71453755fec567dfb7",
+          "images_sha256": {
+            "front": "34d52be927a4d04a0b881f2cf7cfadd63023faf31c26cadd1f3e43471cdaae83",
+            "back": "c7edabaa1405b3ad946bfa702ca1d3ac8e444b23066346bb9525e91a4862c860",
+            "left": "a305f6c3a10f7be8122800e060fd315c18aac22c3a682e16cbca4a048afe4648",
+            "right": "68a64eb57197f86d71e58049c63aa1a65113ddc95aa830040a62fc7ca7da1758",
+            "top": "40efbd9b229314f6066f0b7a5eeeeb1b5d270524be41caf39790befcc1c7bc7d",
+            "perspective": "f16849d3ef1b040aeb75a928ce1fedbfd12b83785dc6c3f8e9030a7abaf859aa"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "coffee_table",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "All six views of both builds show a clear four-leg table with a continuous apron, directional oak grain and clean millimetre bevel highlights. The apron provides a believable visible load path. Simple flat-pack styling is convincing at this brief's scale; end-grain and hidden fasteners are not represented.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/coffee_table",
+          "engine": "EEVEE",
+          "report_sha256": "f8d31aa511fe6d877cb35ddc3c7ce91914d0e8c51e5e11150f531f906355a7c4",
+          "images_sha256": {
+            "front": "6f7417aa89c2a1e3296379d853f85c0774307c50c849332c06138b8122b6ebd4",
+            "back": "382d972088b9b121b7fbd3b701003d52912f6acd03e6d6d3e0a6e62a204103a5",
+            "left": "54f5c1f2ea831c549b2c01b8be80674534e8e16ca21fa4a0ddd4a2822796d4d4",
+            "right": "f9ec016b1814da6aadc04dfa8ea3ffb312f91814b6fa89f8b84bc750741c2c3d",
+            "top": "e020d3a5e17c257b872d48c3519ab019e22c001114727a517bb6ed5b83efd497",
+            "perspective": "2c3fc52be5ac97f46693631407afd3e07edb5850b9d8f23750c2d756ad0d6353"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "desk_lamp",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a balanced cylindrical base, slender upright stem and clean drum shade, with an orange collar and visible base switch. Satin metal highlights establish volume without the former flat finish; the stem/roof joint is independently verified and a socket is modeled inside the shade. No bulb emission or electrical operation is claimed. Fine residual top-view grain/noise does not obscure the surface.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/desk_lamp/build/desk_lamp",
+          "engine": "EEVEE",
+          "report_sha256": "b2dc981800f45e82efdc211a8ac392f92a0bb70d53fc43873bc61e5f29eb50e1",
+          "images_sha256": {
+            "front": "3f2cd36988de8acc1bfc59613370a9e0691124fe14acccf2d7b3f2083c8f1d6a",
+            "back": "b937cd4fe3c1973a56a0d7110262d9f2a29bf6a7b84c14202ea92ddc853363b3",
+            "left": "5925275a6ddd56c0807756ab4dd8f863f5a6168f1a78c0a8c5a4c9b5c07e0801",
+            "right": "d74f89270cd1946ad656f04a7bf643b6f0ccb4b56fc202f19ac341b8e9973d37",
+            "top": "9c7e61c569d2b9bb0fec8f1a1e69ac2bf2dba70d9b238162347917936bb601e4",
+            "perspective": "d39e4a1ad8bae21a9fb774623aa847635c8f0026c99882288073e61620512a3a"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "desk_lamp",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a balanced cylindrical base, slender upright stem and clean drum shade, with an orange collar and visible base switch. Satin metal highlights establish volume without the former flat finish; the stem/roof joint is independently verified and a socket is modeled inside the shade. No bulb emission or electrical operation is claimed. Fine residual top-view grain/noise does not obscure the surface.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/desk_lamp",
+          "engine": "EEVEE",
+          "report_sha256": "b9bc6640f4c333cfe028d6e27eb0065dcc305cdb6cec2788316bf87e33ba6219",
+          "images_sha256": {
+            "front": "0b166a1a94307b705566c3d79f08fe2912a20a03ef80ca826e87fbe0decd7bd3",
+            "back": "f8ab7ed0e366641c9324d6aaccb53416c58ff1313c19528a9a5a726a19999417",
+            "left": "410d7b435d6c7c56f5e605c721486f08b74b20bf3187f424c46052c2c043e43e",
+            "right": "3e91278df67fcb25d8684b09dcd844fbb2089294926f1161390e39782f8020d4",
+            "top": "8ad02d6382e0b0d8bab85395c7a8d370d48b2fd054a541538317c5eefef2f2a0",
+            "perspective": "5f3fae7fe92090b1aa909172658c7f606393734a4fbf89b574afe2fd2648ca42"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "drawer",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "All six views of both builds show a shallow open drawer with a complete floor and clean panel seams. The recessed front accommodates a mounted dark pull within the stated envelope, visibly separate from the timber finish. Grain and edge rounding read coherently at this scale. This is a convincing drawer box; runners, installation clearance and dynamic use are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/drawer/build/drawer",
+          "engine": "EEVEE",
+          "report_sha256": "97ede5cd0cd0720a72701a0bc9165ea860d6e19fe7bf7e334f56b843cb177909",
+          "images_sha256": {
+            "front": "56fc34326f8ac22ea5e9b9516b412085847e6c0a52af5d66e88bd9d79482c292",
+            "back": "7cac1b47b41e9b6ec9dd668d02c36cce1a22d192620cf67144ec2e2afea5a18d",
+            "left": "db26db8e01d7296fa473538a50fb4ebf5a5a4ccaf684387fc3a1e934888f36b5",
+            "right": "ca19ced6bbf50e8b2bbc8dad9934a50aeddcaa2a6d548c7b003252718c843e98",
+            "top": "746aacde35fbf0bda800a3dedf8a1f65e2ac0c41297ddc3440a54d526070d9a0",
+            "perspective": "a1df087a3e136c921d7a274a2127e857b1dde42fb8f7f1526c08bcbabc921c91"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "drawer",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "All six views of both builds show a shallow open drawer with a complete floor and clean panel seams. The recessed front accommodates a mounted dark pull within the stated envelope, visibly separate from the timber finish. Grain and edge rounding read coherently at this scale. This is a convincing drawer box; runners, installation clearance and dynamic use are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/drawer",
+          "engine": "EEVEE",
+          "report_sha256": "5f84a46852f9afebf35a92becdfe7fd7ad811c6157ba3b8d0bb7b188559a674d",
+          "images_sha256": {
+            "front": "cbbf07dd8508c6457411281efce70ab3ecb07a6e1c9d114fbab37a14f9d00414",
+            "back": "d39f8640efe0f43649a036b7ee97ad99b2d89eb8ff41600f3f6ddde5f90063a5",
+            "left": "a1abea531d63ff1aa87013aeada63e2062aa387ddbe68c897d899dad4a58a083",
+            "right": "6362e270218afbe40d0670daf1b03c148e3601a1662c43c00d2af57d9149bbb5",
+            "top": "04ab4da7bea3b36e6351b5a4973308cf53d5378587218282b121ab4c95e870eb",
+            "perspective": "ef54fecf4a4f69b393401c7ed5a580dcd4039554595c4c16d4605b3557f6f424"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "metal_bracket",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds have a readable L profile, consistent plate thickness, bevel highlights and three distinct base bores in top and perspective views. The dark satin metallic finish looks coherent across all six views. The bracket is a convincing simple fabricated component; fasteners, weld metallurgy and load performance remain unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/metal_bracket/build/metal_bracket",
+          "engine": "EEVEE",
+          "report_sha256": "ff548551bcea9671aca20792d5f39e33d5237d0e9e46a630f209b55eae98502d",
+          "images_sha256": {
+            "front": "abdcf2c180af0b408487083dd97302d36fbf642db72ff7e20a435e366ab955b0",
+            "back": "eed2f2503fcc6ea2ac678e95a80730cfb9a6183207c92b839b8e5ceea1d904a4",
+            "left": "ff7e3f3d4fbad5a06814d8623f58d8a14540b54877f390c2639f165417461b63",
+            "right": "c3c2b6bd13d28c4e68e6e365968f08579041f0d7f68d1f154028dc6843509b8d",
+            "top": "d7d2a6fb6cd07ee82e3ba2608766a210b6c9ac7e8d2348027e8b021f3dd2f0e8",
+            "perspective": "5a54e63969babb2d59157644c9e4498def06f2a3ecea5ea9cc7a0deed971b8cc"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "metal_bracket",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds have a readable L profile, consistent plate thickness, bevel highlights and three distinct base bores in top and perspective views. The dark satin metallic finish looks coherent across all six views. The bracket is a convincing simple fabricated component; fasteners, weld metallurgy and load performance remain unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/metal_bracket",
+          "engine": "EEVEE",
+          "report_sha256": "2c4ed34eebd870e7e74522ca74266850d9885a0223692c39fdc7279c4d5128be",
+          "images_sha256": {
+            "front": "7722aba8a9a82bf8be45ea69a4a95bd33eef9fe83298ec23f75216c721e7cf00",
+            "back": "4873a50f22bd653e2ba9be06c7d502aec50ffaae13b34f3de12c5a3bc163bdeb",
+            "left": "68c1eabf856daf29eedc8a15107131cfc66214cba3358c16cba4eab25c0e2f2a",
+            "right": "5ac56651fb01e6aef1d4ccb0fc68b151ed718d2e94652ae667fa759a77cbb697",
+            "top": "595fbf4dd002cd25cbab6901b43c0597e801c7b3881a6577eb77d3ab65986c9e",
+            "perspective": "3529eab7bc28450ccd5555a1a5f2d7f0605f8b18f6a1d6c1b585cba18c21690e"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "monitor_stand",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a low raised platform with substantial side supports and a visible rear reinforcing rail. The open underside and restrained proportions read as a monitor riser. Directional wood grain, rounded edges and clean rail/panel seams are visible across the six views. Visual construction is convincing; monitor loading and stability are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/monitor_stand/build/monitor_stand",
+          "engine": "EEVEE",
+          "report_sha256": "7f5a40c5910b7fccfa7d9c05b59b58ceb3035b4f744f1d590a49fd8b650136e8",
+          "images_sha256": {
+            "front": "844637288ad3a5a8574be92b18c6b285be3e7851d024b9bbe771b0e7235a357f",
+            "back": "0651c7bfcba76d91999bb75871cbf6ccf4766d5db52ae09657f2d45aadf8bc36",
+            "left": "1e742ab141ba929fc004ce2dc25298ef9bce6e32dd686892ad9089b9ee0e3291",
+            "right": "d5eed956c0847a0d88912392e0c1d970516598704e8d3fc4cf14905065a83649",
+            "top": "1ef727d2db3e146915449bcb6a21b060a9c58272128a925534a6562099aa878a",
+            "perspective": "ff48c4c3a47604b1ace21680c604dde306080fa721256a0898f996e154578280"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "monitor_stand",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a low raised platform with substantial side supports and a visible rear reinforcing rail. The open underside and restrained proportions read as a monitor riser. Directional wood grain, rounded edges and clean rail/panel seams are visible across the six views. Visual construction is convincing; monitor loading and stability are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/monitor_stand",
+          "engine": "EEVEE",
+          "report_sha256": "a8e5b20b87e422bfe38bce1740b75720b5084f6ffbf80ffdac58fbfafa3d7f91",
+          "images_sha256": {
+            "front": "960bf6961390197cddde86ab0a350825cf957e192d59e45415a0f1338824643a",
+            "back": "d7c44e7e77d1e3ae69a0339b9cf3a9a1f79c079b88baa93e30e0cf8711576f4e",
+            "left": "dae4d208cf4ec5f5166cdbd1b2d9f1229cbed1160ae83b6cb8d2d6a5707208fc",
+            "right": "13dd69c9acbe32bfc038e60bf8485df715fb1b07629cb1347dbafb52cac74f32",
+            "top": "0efcf32da07dda8dd871ae65216caf7cf80ca4cbf879e0c92beee592fcb8ea17",
+            "perspective": "3afba6bfa092a658df0ed13ef5808bec255baa00fb1fe836fb62f48c9d833f83"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "pipe_connector",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a clean flanged tube silhouette and an unobstructed axial bore. Top and perspective views clearly expose four flange bolt bores around the center opening. The satin metal finish and bevel highlights make the tube/flange construction legible; increased radial sampling keeps faceting unobtrusive. This is a convincing plain flanged connector, without threads, gasket detail or pressure certification.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/pipe_connector/build/pipe_connector",
+          "engine": "EEVEE",
+          "report_sha256": "d47d98166e15236ac1b277aebc4ba6c0f73276600fd8d951250f01ad4e14bacf",
+          "images_sha256": {
+            "front": "09ad1c3f7809d1ab31d6cbb0f1a19202d00d85dc73cb98453281695d9ecbac3a",
+            "back": "99da2102e353d5abd6ac33dd076763610ab850629d4abef5ce5958acb0e60e75",
+            "left": "69504d0d012f05e6c4f2f1e1bae78a597b779b36bf3af8d7900b867c7a82e3fb",
+            "right": "5560808d617d0ea74a595650ce59acb701052062c7dcefe830fea421174df283",
+            "top": "a73da04b450f177a2adfda8d4697a08f2b60047fd66579e3c0748e98b82a9761",
+            "perspective": "548a6758368c088ac9b0c80371d163c80743762e69f1ea222d9a72b66b74864f"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "pipe_connector",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a clean flanged tube silhouette and an unobstructed axial bore. Top and perspective views clearly expose four flange bolt bores around the center opening. The satin metal finish and bevel highlights make the tube/flange construction legible; increased radial sampling keeps faceting unobtrusive. This is a convincing plain flanged connector, without threads, gasket detail or pressure certification.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/pipe_connector",
+          "engine": "EEVEE",
+          "report_sha256": "4c88dfd9c70352e2162ef65c18582ece86771e12e5feb63a5076973122e6593d",
+          "images_sha256": {
+            "front": "c99b2038ac9d21a4983ac2076a98d26789b69facd83d0123aa0ce665b2b20fdd",
+            "back": "77f885397e1a39d45522ba47f1d65601dc956da42d87cad8248b42ce211f6c25",
+            "left": "4e24ad3ff87af89d3395d0226b8e616c916863272149276fbf7e87677395a8e9",
+            "right": "f245d4b7f1a1aa96cf7029a2594553f91c6e04f21e252a97d51fdb9b97c31349",
+            "top": "84ed1ca5ce32ee10ef4e484910f3d2a2dae0cfc85f054aee258cbcab17bf7e31",
+            "perspective": "8a8d0af24875eb97cf15900a0433854aca4945348e6f3e59003cbc987f45fe64"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "planter",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a clean open cylindrical pot with a substantial rim, readable interior floor and a visible central drainage bore in the top view. The warm matte ceramic finish has fine surface variation rather than the earlier unqualified flat color. Radial facets are slight at the diagnostic resolution. This is a convincing simple terracotta planter; firing and horticultural performance are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/planter/build/planter",
+          "engine": "EEVEE",
+          "report_sha256": "e4888741d838630d8a95f6097866e9e5c10763448910b96bc6b9b00f03d82bd8",
+          "images_sha256": {
+            "front": "97e2f60ee4da1dca9e136f9a7deb88fed5776562733cc933bd68443ef79ff07c",
+            "back": "eca430ca87ab319c1b6c1630449baee7369d0cdeeb50f24043831dd66ec3c0ff",
+            "left": "21d956eb31b6b48b30bdd0fafae1271bcd6dfae8ff3f0f8730103e2b471c36c4",
+            "right": "5535b43aee2762de5faa47a805954aeb1ad60bc3246162ddfb742036fd582200",
+            "top": "3a70708ae5ddf53b6ecc2b748e700611d5ed47d58c33153157e4df48d375a980",
+            "perspective": "e82b9f1eabc85f0a834eec77affe2a3856939c16650cf5cb857eefd23d127561"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "planter",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a clean open cylindrical pot with a substantial rim, readable interior floor and a visible central drainage bore in the top view. The warm matte ceramic finish has fine surface variation rather than the earlier unqualified flat color. Radial facets are slight at the diagnostic resolution. This is a convincing simple terracotta planter; firing and horticultural performance are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/planter",
+          "engine": "EEVEE",
+          "report_sha256": "ed772080fc7478672922a495331cdbe2f6540c9e8c2445bf11d63a7a7150bd9b",
+          "images_sha256": {
+            "front": "1d3f84188d47b148c80ddc48df46b88684abd8afb6dc0b8eb912cc14f46f822c",
+            "back": "b888b14991f77b58ff5060da1ae70beace716b7527048e8fd22b44e678dc4821",
+            "left": "949efe7cbc5b59100c1fef3ae382ac0b3a18e84231e90edbbb7183e353363487",
+            "right": "b1a1743bd4b47c820e83668c140d6b3a59f0bf64708c810277bde627ccbef9e3",
+            "top": "b4d8d321bd4d22da63ce90df808a34a074b9bb035a357f11e27aa0d839b1c4b8",
+            "perspective": "2a523bbd809d3f612420252a19f8fb88dd3db988f4d9473402172d6d3c31d44a"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "product_casing",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a clean shallow enclosure, contrasting lid seam and four visibly recessed metal head blanks in the top/perspective views. The shell/lid proportions and molded polymer finish are coherent across all six views. The hollow shell and bored internal bosses are independently checked rather than inferred from the closed exterior. The 96-sided agent fittings remain visually smooth at this scale. Driver slots, snap fits and exact manufacturing tolerances are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-casing-agent-fixed/product_casing",
+          "engine": "EEVEE",
+          "report_sha256": "c4846a084b86ec3bf51e635128ac6ae33d0d962c41a6461b3f8d9abd9e7b61c2",
+          "images_sha256": {
+            "front": "eb4988eae28b3d04eea1aeccb5652a94190b759dd633d254933426a527bd528c",
+            "back": "1efddbc2eb2e46ee8fa41c37ce47fbc4219c1853a015a3ca107244e937aeaf78",
+            "left": "d098cb3feec7ebfe28bf43bceaf90c85a335e304e7bd617a01ce826acda1783e",
+            "right": "85b93d0358eb14419be4c07feb1439dc653086331a03a74f109d022fad33a998",
+            "top": "0ed2f1f6643dbfbb1cd2abe947f2acbc311f7b158818ec4fe8698dd8999cdea6",
+            "perspective": "37041c7f331d17d9dc3a6478cc46884bc9fafe0c212647f9c9d02198ee16c570"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "product_casing",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a clean shallow enclosure, contrasting lid seam and four visibly recessed metal head blanks in the top/perspective views. The shell/lid proportions and molded polymer finish are coherent across all six views. The hollow shell and bored internal bosses are independently checked rather than inferred from the closed exterior. The 96-sided agent fittings remain visually smooth at this scale. Driver slots, snap fits and exact manufacturing tolerances are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/product_casing",
+          "engine": "EEVEE",
+          "report_sha256": "c265460f9781c9d9bd468a27ba5442b702925f1e36044dc686442759ec14a32d",
+          "images_sha256": {
+            "front": "a335def105cc162e9a7277a23afad905d4a4338372fbbe92a2fa8067fb5c2517",
+            "back": "d132e77173e0b978032150e6f63f4fccc9ae9522cf061f327efe3352c4cc0354",
+            "left": "45f71e6a5892993eeb5dfe3add6a5e829a8e18d8bb5cb59fd8ff1d7eaa9e6b2d",
+            "right": "9d17b26c12c6b2e678d99ffd77321f6156e62eb816666565b7a8b9f809775613",
+            "top": "e20204d92f4e045529da526091b8908fdf8ab507ee85e27d0962847a0888beea",
+            "perspective": "1c2dad5ce0f4bbb947159cca0a17939e0fe583633d517711c0a59542d8b6ba08"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "sci_fi_crate",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "All views of both builds show a closed graphite crate with a distinct lid seam. Front and perspective views now expose the orange recessed plates, two latch blocks and slim corner inlays; the fittings are seated in real pockets rather than buried or coplanar. Surface highlights are clean. The design is deliberately simple and stylized, without articulated latch mechanics or structural armor claims.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/sci_fi_crate/build/sci_fi_crate",
+          "engine": "EEVEE",
+          "report_sha256": "f5b16c51421bf888fd3f66708b3204050da354cf35d981f2586a4079346b725b",
+          "images_sha256": {
+            "front": "3e453e81a287b0f13a8ef8c30e7b21cdd6c91ad5fe301173c9ea8dc562738750",
+            "back": "f337f8d8eca6fcdafd2cbdc1b59d2a520798d0441127292b6c83913fa2cc4eb9",
+            "left": "af923bdc8499e62a8f4578c2efeae7ef9527fc1ae9617ea1609e846f19f1877d",
+            "right": "64f6d757acf55a600e8aaa3dcd06cebd676bc01dea2e260bbd4c8e7fb659d511",
+            "top": "d21c102df79de724b7c66b84291293c71a2e909ab55889c176963fa9d4d7aa91",
+            "perspective": "40cfdd582302ccf9d91cb9d821e97a82ea270aaea67c054b0655c21cb6f6df5b"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "sci_fi_crate",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "All views of both builds show a closed graphite crate with a distinct lid seam. Front and perspective views now expose the orange recessed plates, two latch blocks and slim corner inlays; the fittings are seated in real pockets rather than buried or coplanar. Surface highlights are clean. The design is deliberately simple and stylized, without articulated latch mechanics or structural armor claims.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/sci_fi_crate",
+          "engine": "EEVEE",
+          "report_sha256": "565f82766cfef596977fd67e182dee57836f61108a7881c6f2149e9834d0c500",
+          "images_sha256": {
+            "front": "46572310c64c1c4143b26bd5d220027d103943dc1d8af5f108e3e79b4a800533",
+            "back": "2fe7a43610f4fe0662814dbbd648bb22c89077317e9507d4d0017f32eed571a9",
+            "left": "f420578ddb5f7b982df8e817a0a1da901d22712d8dd7f648ba203e1d68075701",
+            "right": "75f9c3cb7bc602d18199c956afa3cf25bc5a0a19e60448d1276f60b12067dc48",
+            "top": "351365c91ebe326fdcefa46d884602161dedc3185d9ad1471039a755b4d844c8",
+            "perspective": "1fcff32df4b1d29bb7fe29c57a86417adb3592bda2350505b17708bb4d4de636"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "shelving_unit",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "All views of both builds show six regularly spaced shelves, full-height side panels and a recessed back that visually braces the unit. Panel and shelf grain directions are distinct, perimeter bevels are readable, and shelf/back seams remain clean. The simple storage unit reaches the convincing threshold; anti-tip hardware and load ratings remain unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/shelving_unit/build/shelving_unit",
+          "engine": "EEVEE",
+          "report_sha256": "a3f816e6f4770b6b82c92f6f6bc35cbd9cb1c041582ba52d5aa45b8d3b87e7c2",
+          "images_sha256": {
+            "front": "db9d69c4d5b2bcdbaf93c81ff6b5cb427c17d46766ce27943264e9772e07486b",
+            "back": "33e1e11a225cb3c74beb0d21dfcc8d49bee11a1d76ffa7641e7ebf1a92c3d0f1",
+            "left": "288d4d18b791bde460e5e3cd71de4f2674fde97a0828da43d7372dc0916da161",
+            "right": "e147c3ab6c1c341dfad86c1adbdf43e4ba82cc752845728fe5839c7e1cbc0b0c",
+            "top": "417c66d91c6e518227ac812b0c72c8b5770ea25db6fe056e50c65a8796497089",
+            "perspective": "bea5d67c7a95030465e7c42c675ab44cb7075cdffd05f0bfb227e386b2b6c370"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "shelving_unit",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "All views of both builds show six regularly spaced shelves, full-height side panels and a recessed back that visually braces the unit. Panel and shelf grain directions are distinct, perimeter bevels are readable, and shelf/back seams remain clean. The simple storage unit reaches the convincing threshold; anti-tip hardware and load ratings remain unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/shelving_unit",
+          "engine": "EEVEE",
+          "report_sha256": "6475ad705c25ad773fa6e1e196da277b72b6b5bafc4b1052a02e232c378b3d84",
+          "images_sha256": {
+            "front": "73a038dd3b9eb0070a97f07f458d68574ad8071d61da0da23e6b104145f9bece",
+            "back": "59abd3fdc8abfc6fe49a02fb2b9297021f3ab769d9a99a7119da6de89fdba317",
+            "left": "a5e80825e53d975f9c3dccaaf415386b16c52c0a6f0c16286e42293831c39402",
+            "right": "3523409caa63c8a9eb068f3e69c40a5851211aa1b171482542fda6562520667b",
+            "top": "415b0d72e6afddc41742fcfff47069837df970930741ac50de3eca433a48e4c1",
+            "perspective": "d77ada8488ce543ee3bd26ae67741bfa6e14dcc4c8cbcd97a467ac6168ea2b04"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "side_table",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a square top, four tall grounded legs and a visible apron frame that connects the supports beneath the top. Perspective and orthographic views give a coherent table silhouette with clean joints and directional timber grain. The simple oak finish reaches the convincing threshold; exact hidden joinery and load performance are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/side_table/build/side_table",
+          "engine": "EEVEE",
+          "report_sha256": "7557c21fecf0960f95f4bc7d91206b1bde82d6d5a2559aefcbba059759b1110d",
+          "images_sha256": {
+            "front": "907f84976438c2945385eec600e006919dc679e1bc2688e7d82166524537bac0",
+            "back": "d0fa3520229b3fdfaef232adce81be7eb71ef8ac614556f5283feba23661b050",
+            "left": "a07f4b295465259053a1cc92b0d44b33f88e9ad619b8e3738862cc3ff65ba35b",
+            "right": "7d65298abbfcf6a27cf1c13cdaebc5991b370305e00c3adc57d9b37c76274c04",
+            "top": "06b0dd86a2791b79b44d37b41a1e628157f2d30a722ef48a31fb968941e0b760",
+            "perspective": "d3e5a4848e5d427c0ab1e4442f640720e8b00b5fa1f45657fcb3946becd0c40a"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "side_table",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a square top, four tall grounded legs and a visible apron frame that connects the supports beneath the top. Perspective and orthographic views give a coherent table silhouette with clean joints and directional timber grain. The simple oak finish reaches the convincing threshold; exact hidden joinery and load performance are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/side_table",
+          "engine": "EEVEE",
+          "report_sha256": "7d22bd6eeda3fc8fa139031d2f27932f209c947c20fe34989fd4846672fbc0dc",
+          "images_sha256": {
+            "front": "532cb5cb272283a9ca3be7c516e9afe2d0b1a896db5b94e45ef01c87fda6244b",
+            "back": "a65791a2b70a05d4dc21e02b3ab5e8e8fe89031d7effe6a6439fea1759227178",
+            "left": "37780c51a99e18bf6275bcea600e93cbddf8763f3d299569696a89995479376c",
+            "right": "af34f1b23e72c51169acf676b29f650352b8eea19f6e47119cb5172c017ca9d9",
+            "top": "d9abf6ee9ab064f7c1843e697ce003ada5b0563346ce338e85cedf6de307da80",
+            "perspective": "c8952a4e5ffcde879e0734770adbc4af76b669e2cd5402ec5d5eff66b1302696"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "simple_chair",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a clear seat/back/leg silhouette with a visible apron, reinforced back posts and lower leg stretchers. Front and perspective views demonstrate the added bracing rather than the former unsupported panel arrangement. Timber grain and softened edges are coherent, with clean rail seams. This simple straight-backed chair is visually convincing; ergonomics, hidden joints and physical seating safety are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/simple_chair/build/simple_chair",
+          "engine": "EEVEE",
+          "report_sha256": "8dc8aa4434a5a6db514c66036a647754e7b3c9606377df3672fdd7d1ec2a3108",
+          "images_sha256": {
+            "front": "e7c8fe9646a3b2610b1dce69f05d52299594157e3de04a792a50fb54ff8d5d2f",
+            "back": "a5b9b8b763cc550f67dd9dad48310170d4098dc9d766b013f69e7640d626639d",
+            "left": "7191e8ba82758dccc83de3872f51a33fc1381869cbd78355635c805832c79d5e",
+            "right": "9f06ad0d6293898a43dad074862a3755827dbf07a5ec707890e8c91ccc74d1db",
+            "top": "5155fc90d0eb40efaec99ecbdff1150d112c24f3815e710421c6d94f7875573f",
+            "perspective": "a0c1941a3eafb88ad4ae7a7f41936c25c40839b9995b02936af05f7f63c3bf5b"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "simple_chair",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a clear seat/back/leg silhouette with a visible apron, reinforced back posts and lower leg stretchers. Front and perspective views demonstrate the added bracing rather than the former unsupported panel arrangement. Timber grain and softened edges are coherent, with clean rail seams. This simple straight-backed chair is visually convincing; ergonomics, hidden joints and physical seating safety are unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/simple_chair",
+          "engine": "EEVEE",
+          "report_sha256": "6bff409f8d6e42d412107bbcc5d6de92d7b523dfd1262ef3f759bbaee02c0e24",
+          "images_sha256": {
+            "front": "efeb96c54a903ecfcceadcfa5e5a86bd167102bd66acb4a695b28cfb60fc9bc8",
+            "back": "042b48335932b5249b55aceb43de9dfb6ef545c3b4914aae4f3bde895efe3617",
+            "left": "7235918797eeaaf3b616221ce98614c57cf190d34f19d8d5ae413a0f254bfd71",
+            "right": "3d06f2e907e8f941bd069f6419ef8f4ef21955da25b10deec48c47db5c5c61df",
+            "top": "7ffe2a5451486f7b6238539e0a62c75c10e2056bb35aff1c8bd9bbf00716ffba",
+            "perspective": "52ccf1bf14122c44b78ea87b162547e9012cb393eb8df1da2ec3e846a678eb3b"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "storage_crate",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show open interiors, clear rectangular front/back handholds, corner battens, clean wall seams and directional timber grain. The top view shows all four reinforcement pieces. This reads as a constructed plywood storage crate; the simplified grain and separate panel joints are not photoreal joinery.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/storage_crate/build/storage_crate",
+          "engine": "EEVEE",
+          "report_sha256": "d2c8e92858bd1306b14410637bbf8e6d1c979616ced257aeecfdaf2e232bf60c",
+          "images_sha256": {
+            "front": "fabb7addbded1be8b1d17274924e848dbce819a47a0c2d00fd9c918a7abdd6e8",
+            "back": "484212f988fb59e6c1dcb5aa343dbe29f6a3e53fda0716e5bd0619e867cc3321",
+            "left": "77939ea6fd40977f372a5ba6abbbb3d83115dbea80d32414b0c08922359b57d7",
+            "right": "ce3420d67d660aa9081be188b7f8605cd32549dea5733abe54fbbea1022221bb",
+            "top": "dc2517620f8661ee5b0e573150b0cc1b9bef809df096ca1aa2bd4f3b09d012df",
+            "perspective": "e3a6573043b5ba9159fe8dd83a4e05f860a2031d01dc765bb343e4ac3c462aa6"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "storage_crate",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show open interiors, clear rectangular front/back handholds, corner battens, clean wall seams and directional timber grain. The top view shows all four reinforcement pieces. This reads as a constructed plywood storage crate; the simplified grain and separate panel joints are not photoreal joinery.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/storage_crate",
+          "engine": "EEVEE",
+          "report_sha256": "4f118cb9757f8f2b7137e3a2d612be13a1646389ce127165658a25a003cc746d",
+          "images_sha256": {
+            "front": "eb1f8ff2dc7f79aacc99414844d56bd0c17f65c1be0ecb0005493ab3dabf9c98",
+            "back": "ec6a907b37938534a26a4082a3a6d59c5ccb221852bbb474666aa3f4dd15c8c0",
+            "left": "2aa1f79b5851dbd4aeebab110317a23c92c3236a4db94a1559960a4e3425d23f",
+            "right": "162b3a393e3def198ee0bb34535165e85d1b79c1157e229fc5a13beebed2e3fd",
+            "top": "beb42123d4bd46eac42e166ad576262ff15660006ea84958c5c3dc6d20b5240a",
+            "perspective": "7153312717825754a9f6b714e52c49940429393fb7a4a72ab50cd6b91f7a847b"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "toolbox",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a complete open metal tote, interior crossbar, raised supported carrying handle and contrasting grip. Top/perspective views reveal the reinforcement and open storage cavity; all six views show clean panel/edge highlights and a coherent satin graphite finish. It is a convincing open toolbox for the declared brief, without a lid or articulated latch requirement. Carry-load strength is unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/toolbox/build/toolbox",
+          "engine": "EEVEE",
+          "report_sha256": "3282f85b053a1768a35cb1085ebdddacba74ecb710a142bc6c9441bad79c380d",
+          "images_sha256": {
+            "front": "c2047aa6a0876eea9623bb5fee6c6ea13ffb01d008646ebca79d42c380d9bf9d",
+            "back": "1e467a94ac0b821277660fca50ab727621f80b5083ffc845022ab7a58d48c3b6",
+            "left": "8d90eb499d02cd7ef0a71568543853dc7e163ba32428b5f1058e0a3ef14cfaa7",
+            "right": "aed55267e420f0a5fb8c85fdfc4cebf9399752f86f9ba6bf1c2668d434f5f5f4",
+            "top": "25edaebc405945aacffd2504e3602647f9b1d72bb7863ea651b5d13430df431c",
+            "perspective": "c993872680fd8318943b89e9ce4d76a55ad21d9a8c0ca77e4036f3efc8e22116"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "toolbox",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "Both builds show a complete open metal tote, interior crossbar, raised supported carrying handle and contrasting grip. Top/perspective views reveal the reinforcement and open storage cavity; all six views show clean panel/edge highlights and a coherent satin graphite finish. It is a convincing open toolbox for the declared brief, without a lid or articulated latch requirement. Carry-load strength is unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/toolbox",
+          "engine": "EEVEE",
+          "report_sha256": "9ba8121d32fb25de447ba4a701a36131bb69130e228f0e47be87150918f30b42",
+          "images_sha256": {
+            "front": "5c7a19e25ee1013bb1f127b7874934f447c4fdda46e2b6ab3e80fdbd522597b2",
+            "back": "4642d44e1d8bd190a1ede947e9c4a4bb9b4f8b4f163dc065ff7e63c96a2c265f",
+            "left": "da8ebc012095d4ca0efcaa3e0effd1a11c96d91a87dd486a0f642817a627b88b",
+            "right": "a6e916c011068eb01950f25fc9653b62bb3348c85cc9b229b25fe9b5e56d2fb0",
+            "top": "5ec6796b2781aabe8bfd2e86d155d2347d62bdb2a07baa666f45e5bcb5e4a5d2",
+            "perspective": "5aee2e7245bb0530cee868038b8aebd7a2f287f47ace0acb5e12c51c99801f55"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "wall_shelf",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "The side views clearly show triangular support assemblies with rear mounting plates, horizontal arms and diagonal braces. Shelf/arm seating is visible. Both builds have clean silhouettes, satin graphite brackets and a wood-grain shelf. Mounting screws and wall attachment strength remain unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/codex_scripted_agent/wall_shelf/build/wall_shelf",
+          "engine": "EEVEE",
+          "report_sha256": "0d3bcffd3fc96c2941962dd095756046e964a91d058127083ed3770bb9120d2c",
+          "images_sha256": {
+            "front": "4471be69c5539572b93b56bbb18a0d71ab7f28b3c755600b43e9dd57738cd2cd",
+            "back": "3d4fedff6007363d1bd6180917971f7793a96fd36e1acddc002459ee973ac655",
+            "left": "cd8d0ed94ff51b21c928b5f908df397d12d257ad96d486d6b634e75e70efef25",
+            "right": "f119165a7436b59b1fcd2a8339dfcdc29134c7a44f2e4e72f28857048aa434d8",
+            "top": "785b534413d2bef8ed7f10bf3dc30a5913375801d2ed4841a5e7af0d9d426266",
+            "perspective": "f49629f4e7faaf64d02b42ac43ce62a3a8c0c73a793f6ae503e1459a6a3bd266"
+          }
+        }
+      ]
+    },
+    {
+      "benchmark": "wall_shelf",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 4,
+        "surface_cleanliness": 4,
+        "material_plausibility": 4
+      },
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "notes": "The side views clearly show triangular support assemblies with rear mounting plates, horizontal arms and diagonal braces. Shelf/arm seating is visible. Both builds have clean silhouettes, satin graphite brackets and a wood-grain shelf. Mounting screws and wall attachment strength remain unassessed.",
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-quality-accepted/manual/wall_shelf",
+          "engine": "EEVEE",
+          "report_sha256": "961cf70d460c7d3223a906ac4cf49f8d87659a85bafa8c4559ebe62698ae38b0",
+          "images_sha256": {
+            "front": "d6b03dfd89e697863a935987a77357e50b168fed2a33d3bb8c61df6ba968f3b4",
+            "back": "788d739bdabab41f2a64cdd65451ccfbb263eecdfd39031d64378209e9663638",
+            "left": "4d5f4496b8848ba20fff3e0f9e1615686638e0afe9a70029a8f6bf2061ae1cb1",
+            "right": "5f47df48d0ac35b69f1e45cb6d78d157aaee630e699b556c492abb75e20ebae9",
+            "top": "57cd845a6aced781665bcb9c46af501d8a0fce615d569dfcf7b7c489c9dcfeb7",
+            "perspective": "b04385bb7441cf7b40ffbf046509497466c661011de66dc11f117616e7d1ac6e"
+          }
+        }
+      ]
+    }
+  ]
+}

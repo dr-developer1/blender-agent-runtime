@@ -8,11 +8,32 @@ public tools. In-process read-only API instances keep the backend disabled.
 linear RGBA components in [0, 1]), `roughness` and `metallic` (both in [0, 1]).
 Defaults are Material, [0.8, 0.8, 0.8, 1], 0.5 and 0. Only opaque alpha 1 is
 supported. It creates a Principled BSDF connected to Material Output and mirrors
-color/roughness/metallic on the viewport material properties. No texture, UV,
-procedural wood grain, transparency, node editing or recipe is provided yet.
+color/roughness/metallic on the viewport material properties. Omitting `surface` preserves this plain shader and the original result shape.
+
+Milestone 15 adds optional bounded procedural `surface` recipes: `plain`, `wood`,
+`coated_metal`, `ceramic`, and `polymer`. Wood accepts `grain_axis` (`X`, `Y`,
+`Z`, default `X`), along the base mesh's local axis; supplying it for another
+surface rejects before material allocation. Generated coordinates require no UVs
+or external images. Each recipe adds deterministic noise, a color ramp, bounded
+roughness variation and subtle bump to the existing Principled shader.
+Wood uses stretched coordinates for longitudinal grain. Base color/roughness
+remain recipe anchors; shader values vary around them. Generated coordinates
+fit each mesh, so these presets do not promise a fixed physical grain scale,
+end-grain, correct grain on arbitrary topology, or photoreal measured materials.
+No arbitrary node editing, image textures, transparency or material updates are
+exposed. Shader creation failure removes the allocated material.
+
+The API 1.0 compatibility baseline explicitly reviews only the additive
+`material.create` input/output fields. The tool description also documents the optional surfaces.
+All original required
+fields, default shader behavior and the other 35 descriptors are preserved.
+The old descriptor is retained in
+[previous descriptor](evidence/material_create_api_1_0_m15_previous.json) and
+[compatibility review](evidence/material_create_api_1_0_m15_review.json).
 
 The result contains `material_id`, actual Blender `name`, `base_color`,
-`roughness`, and `metallic`. The UUID lives in `bar_material_uuid` and persists
+`roughness`, and `metallic`. Explicit `surface` is echoed; wood additionally
+returns the effective `grain_axis`. The UUID lives in `bar_material_uuid` and persists
 across save/load and rename. A fake user retains an unassigned material across
 checkpoint reload. Names are display labels; address materials only with UUIDs.
 Resolution rescans live datablocks and rejects missing or colliding IDs with
@@ -56,5 +77,5 @@ python3 -m benchmarks.stool --output artifacts/new-material-stool --engine EEVEE
 ```
  The exercise now requires material assignment before committing. The six-view material review is recorded in
 [evidence](evidence/stool_material_review_m13.json), independently of the retained
-pre-material Workbench visual scores. A uniform brown PBR surface is a basic
-material approximation, not a realistic wood texture.
+pre-material Workbench visual scores. The historical stool uses the original uniform brown PBR approximation.
+The expanded v3 benchmarks use the new procedural finishes.

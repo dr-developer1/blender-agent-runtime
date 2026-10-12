@@ -49,6 +49,18 @@ monotonic revisions, restored counts and deletion of the private checkpoint.
 The object cap alone does not guarantee that a snapshot fits all budgets.
 
 Recorded Milestone 14 evidence is in `docs/evidence/conformance_m14.json`.
+The Milestone 15 followup adds negative floating-stem and filled-inlay-pocket
+checks to the twenty-asset case. They demonstrate defects hidden by outer bounds
+and approximate connectivity without changing the public validator contract.
+The final report is `docs/evidence/conformance_m15_quality_final.json`.
+Final v3 coverage also rejects blocked planter drainage, a blocked rear ventilation
+slot and an identical-bounds stepped bottle shoulder. Bore queries ignore
+microscopic boolean wall remnants. Procedural material smoke coverage checks
+generated coordinates, effective grain direction, shader links, fake-user
+persistence, removal after rollback and injected recipe failure cleanup.
+API 1.0 retains 36 tools; the reviewed compatibility baseline adds only the optional
+`surface`/`grain_axis` input/output fields to `material.create`. The old descriptor
+is archived in `docs/evidence/material_create_api_1_0_m15_previous.json`.
 The coverage remains limited to the supported runtime contract and the recorded
 Blender/platform combination; multi-release Blender support and stronger
 large-scene scaling are separate work.
@@ -173,3 +185,13 @@ render failures with cleanup. Pure unit tests project AABB corners through every
 view across square, portrait and landscape aspect ratios and verify schemas and
 revision/error semantics. Run
 `python3 -m controller.headless tests/blender/observation_smoke.py --timeout 90`.
+
+Milestone 15 adds three expansion gates, bringing conformance to 40 cases. The
+asset gate contains twenty subtests: public-API construction, UUID-role acceptance,
+geometry/materials, overall/per-role dimensions, intended interior faces, deliberately
+displaced roles and exact inspection restoration after rollback. Its pipe subtest
+fills a bore while preserving exterior dimensions and requires rejection. Two
+bridge gates cover commit with six PNGs, explicit replay provenance, invalid finish
+repair and failed technical acceptance followed by rollback. They supplement
+runtime correctness; they do not certify subjective quality or autonomous AI
+reasoning. See [expanded benchmarks](BENCHMARK_EXPANSION.md).

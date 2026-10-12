@@ -271,7 +271,7 @@ class ObservationService:
                 world.node_tree.nodes['Background'].inputs['Color'].default_value = (.15,.15,.15,1)
                 world.node_tree.nodes['Background'].inputs['Strength'].default_value = .5
                 if hasattr(stage, 'eevee'):
-                    stage.eevee.taa_render_samples = 16
+                    stage.eevee.taa_render_samples = 128
             for source in objects:
                 if mode == 'wireframe':
                     # Actual evaluated edges, including loose edges, with no triangle diagonals.

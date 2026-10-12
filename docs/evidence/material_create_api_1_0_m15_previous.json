@@ -1,0 +1,85 @@
+{
+  "input_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "base_color": {
+        "items": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        "maxItems": 4,
+        "minItems": 4,
+        "type": "array"
+      },
+      "metallic": {
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "name": {
+        "maxLength": 63,
+        "minLength": 1,
+        "type": "string"
+      },
+      "roughness": {
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      }
+    },
+    "required": [],
+    "type": "object"
+  },
+  "output_schema": {
+    "additionalProperties": false,
+    "properties": {
+      "base_color": {
+        "items": {
+          "maximum": 1,
+          "minimum": 0,
+          "type": "number"
+        },
+        "maxItems": 4,
+        "minItems": 4,
+        "type": "array"
+      },
+      "material_id": {
+        "maxLength": 64,
+        "minLength": 1,
+        "type": "string"
+      },
+      "metallic": {
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      },
+      "name": {
+        "maxLength": 63,
+        "minLength": 1,
+        "type": "string"
+      },
+      "roughness": {
+        "maximum": 1,
+        "minimum": 0,
+        "type": "number"
+      }
+    },
+    "required": [
+      "material_id",
+      "name",
+      "base_color",
+      "roughness",
+      "metallic"
+    ],
+    "type": "object"
+  },
+  "side_effects": [
+    "material_creation"
+  ],
+  "supports": {
+    "transactions": true
+  },
+  "transaction_safe": true,
+  "version": "1.0"
+}

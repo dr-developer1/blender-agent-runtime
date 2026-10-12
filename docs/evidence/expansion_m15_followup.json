@@ -1,0 +1,770 @@
+{
+  "format_version": 1,
+  "milestone": 15,
+  "timestamp": "2026-10-12T20:06:59.074630+00:00",
+  "benchmark_count": 20,
+  "evaluated_builds": 40,
+  "evaluation_complete": true,
+  "asset_quality_passed": false,
+  "sources_sha256": {
+    "benchmarks/catalog.py": "0e949d126b51bccb8059fe8d7c6f76a8798d0d6475f430865b133b9e12991f70",
+    "benchmarks/expansion.py": "f6b62e342162584d03bdfe66d753f9f7502b13add21a66573cac27ab4b7a9ad7",
+    "benchmarks/quality.py": "d900a368b8bb394817337613ae0818895d357ffaec16a15fb449d8afe9d221f1",
+    "docs/evidence/expansion_codex_plan_m15.py": "8b3221fe2b307623f44615b2ca94583f89c67a645ad26f75e6598d223d19481f"
+  },
+  "provenance": "20 public-API manual recipes plus 20 Codex-authored scripted plans through the agent bridge. Shared briefs and baseline knowledge; no per-call model invocation or blind comparison.",
+  "manual_collection": "18 successful v1 assets from expansion-m15-verified-manual plus desk_lamp-v2 and sci_fi_crate-v2 from their separate final reruns. The initial suite evaluator TypeError is retained in its failed summary and excluded from accepted evidence.",
+  "excluded_attempts": [
+    "expansion-m15-reverified-manual (sandbox IPC blocked)",
+    "expansion-m15-reverified-codex (sandbox IPC blocked)",
+    "expansion-m15-verified-manual/sci_fi_crate (evaluator variable shadowing)",
+    "expansion-m15-fixed-crate (superseded by stronger pocket back-wall check)"
+  ],
+  "repairs": [
+    "stem reaches shade roof; opposing planar joint checks reject old floating stem",
+    "crate front has actual recessed pockets; back-wall checks reject old overlapped front",
+    "128 manual / 192 scripted-agent radial samples reduce faceting"
+  ],
+  "records": [
+    {
+      "benchmark": "coffee_table",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/coffee_table",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 43,
+        "tool_seconds": 5.34481441299954,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "4b8694aed5bfc84e58611707bbee55b29d8b3558954adf82ee237984239f5179",
+      "trace_sha256": "c1ff760663b5df73cc0ab41d8289dffe0df84b720d8d8284d7c2498787311145"
+    },
+    {
+      "benchmark": "coffee_table",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/coffee_table",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 39,
+        "tool_seconds": 6.669139547000668,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "47957df666393fbe107531501dd9f97083de3ef7cea9db965ab1bb38ccbf7964",
+      "trace_sha256": "1cbf624159a705af9b88314e4a5572d62877ebf036c3f632c98fd646db51a577"
+    },
+    {
+      "benchmark": "storage_crate",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/storage_crate",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 43,
+        "tool_seconds": 6.722192421000386,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "ecd220b7b9cc849c3c6116556a7e4485b9edbabcaf95aa3d0ddb0bd4d657cee7",
+      "trace_sha256": "8f8202d81bcb8e541674404223b2c7e4611b7e23ba2c6eac31dd0571b22fbddd"
+    },
+    {
+      "benchmark": "storage_crate",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/storage_crate",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 41,
+        "tool_seconds": 8.518554214000005,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "b4e62e2af4af478925aec7a21a595008e26e685cfe1b1e6841b4650104b2d015",
+      "trace_sha256": "45dbea007aed2afbaa88c0d3975ac7b4a009aba7dcfd60843faf81e83b98a0e9"
+    },
+    {
+      "benchmark": "wall_shelf",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/wall_shelf",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 34,
+        "tool_seconds": 5.569956850999574,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "c86ecc4a8926eab19a8ad8338276c9efd87ef1ee11e8cef394f55d00e8d7ed0d",
+      "trace_sha256": "3717012bb6f95b43dfdc3d3c851def6a73c4a2e0b0b5233436ab39341994b1bb"
+    },
+    {
+      "benchmark": "wall_shelf",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/wall_shelf",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 34,
+        "tool_seconds": 6.8151306749996365,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "1697f0d4db35b40337103d9473d39bfb9747837ad738e2d453185f6d3d5f845c",
+      "trace_sha256": "89677688b4bf13b8dd1da63525c312f28da6b30b48c7ac3b6b21ee6e107b3dcb"
+    },
+    {
+      "benchmark": "bottle",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/bottle",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 48,
+        "tool_seconds": 6.887501285999974,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "593614afa92ad5c8d5e07dad590164a9f531ecb774ffe4061a87e9ed7db13ef7",
+      "trace_sha256": "a47c3bac496ccbc6cadfadb5776a9179cb1cab1adf381353420ce75e7157e4a2"
+    },
+    {
+      "benchmark": "bottle",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/bottle",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 50,
+        "tool_seconds": 8.269191696999656,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "33279c3c1269157c04ec88c808efaa0e87c97e3be57868c9d94a31d3631f24cc",
+      "trace_sha256": "f919370eb00d4a4761bd0bbb34af83ef3409959d3b29dc51b38610066b259100"
+    },
+    {
+      "benchmark": "bookshelf",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/bookshelf",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 53,
+        "tool_seconds": 5.578746782999929,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "1311566a4bc142019026e5024ba91b533d503fcad65d6fe77de899523725bc1b",
+      "trace_sha256": "c3e9877ac2f5d351cc3873e3635d82cb8b3e6ed48dbfbc172a139479bfdcf7cd"
+    },
+    {
+      "benchmark": "bookshelf",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/bookshelf",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 45,
+        "tool_seconds": 8.787642082999696,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "b9b621d4f78490eea1ca84c9e53c28c505bd1f2fd2c4f895d87af26935cb4e56",
+      "trace_sha256": "783983049d8ba4cff22479df9b88305f86c6ed9d7b22c5c098cedf0fa63e867d"
+    },
+    {
+      "benchmark": "cabinet",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/cabinet",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 53,
+        "tool_seconds": 6.715682416000163,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "1847e481ca3f4767e03ef92c755e242a9c8fb04c6f6065111e8e7896a5eeacb3",
+      "trace_sha256": "7f415df024550dcc7f1cd89601e0a9b5b1fd29ab9e25620b69fafc34939bbb41"
+    },
+    {
+      "benchmark": "cabinet",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/cabinet",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 47,
+        "tool_seconds": 8.308292751000522,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "55154f0b472308552dded6ed482c0b1dd76b2f146ff911a1405669a6d24dadf0",
+      "trace_sha256": "19b9d1211637d100a8447306fb78270a796062e81901ca56657787c83b99231e"
+    },
+    {
+      "benchmark": "desk_lamp",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-manual-lamp-v2/desk_lamp",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 40,
+        "tool_seconds": 12.61345051000012,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "0d873e5e7cf60da9876655890ef430ce477d9f716926ca85954a75fb33b6ac95",
+      "trace_sha256": "60eda8a05878248dfd2c10087e50b81aaf3348b724bd8803c6082ad65dfa282b"
+    },
+    {
+      "benchmark": "desk_lamp",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-codex-lamp-v2/desk_lamp",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 42,
+        "tool_seconds": 13.482660794999902,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "b80aca375e1a9a84877bdbbc585d2b878582a72aa04bd2fffe4a6b3cddc7367d",
+      "trace_sha256": "72afa774154c29bb664cbe98e218dd6786b58a71040126886a73cbefac189672"
+    },
+    {
+      "benchmark": "sci_fi_crate",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-manual-crate-v2/sci_fi_crate",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 69,
+        "tool_seconds": 14.29595294399951,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "0ccfc5115a9290e22a0878c17c495692c5ed4411a8060731b5aeeadce95234ce",
+      "trace_sha256": "d041a08c120979dd40dedcfa49fbc00931c56cb8efd38a6a96589adfba1c9bc8"
+    },
+    {
+      "benchmark": "sci_fi_crate",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-codex-crate-v2/sci_fi_crate",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 67,
+        "tool_seconds": 13.719330403000413,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "48390613c18ba0e6f72047ab150ef1e06d448b6eb241b6d9eabdc4658f5ba6f6",
+      "trace_sha256": "92265d1dcfba39e06df6b7083cbe2cbeb6db4c141a7f691af07dab62864308f1"
+    },
+    {
+      "benchmark": "metal_bracket",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/metal_bracket",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 33,
+        "tool_seconds": 7.957266714999832,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "2a707f31cd7c776a5a3afeef8b7de88da542bd4b56888a16671fd8708ef3fc23",
+      "trace_sha256": "da91999e5d6275141be0803324ab1b7a58ae1a4b006f4b317b8ae709cc3dcda0"
+    },
+    {
+      "benchmark": "metal_bracket",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/metal_bracket",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 35,
+        "tool_seconds": 10.624185496000337,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "8b621acbe08e723c73643d1358ff1fc12f3e040e1aa8c0e734f78902e8e92af3",
+      "trace_sha256": "884d99a78dc797cc6fcdb7d097bd263f45dbe4e5712be1e761463142bd9ce5ad"
+    },
+    {
+      "benchmark": "pipe_connector",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/pipe_connector",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 38,
+        "tool_seconds": 7.65894467600026,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "0069b1d2896ab4430d006d295e48a7d8862520e4a8ab8660bcc0fdfae7eecc07",
+      "trace_sha256": "fbbb22a4259f64429205e421911ae6f462e53e134f3035d17837a28fed9c18af"
+    },
+    {
+      "benchmark": "pipe_connector",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/pipe_connector",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 40,
+        "tool_seconds": 8.396444192999866,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "c4adec6e07cd57d652db53d1859bb363785b0f6f8bd23a479d94fd40417fa2bf",
+      "trace_sha256": "02a0cc43f25b73df43a04bb200010c6ee8c5c245780b5c5a80c5961dfcf4985c"
+    },
+    {
+      "benchmark": "drawer",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/drawer",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 43,
+        "tool_seconds": 7.3467469519996484,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "2e979550f4704c1ee1cef348e41852a46b4165a68ec4cbfba876aef76c007805",
+      "trace_sha256": "c5498353e6161e44cfe588e4f0b9f42fe076e5e6baefac4c6af52a54c03b730e"
+    },
+    {
+      "benchmark": "drawer",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/drawer",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 41,
+        "tool_seconds": 8.271735582000247,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "992abf949472535f7dac445ce7a85a7dad4cd723a12c4ff11a1b2f05f7776848",
+      "trace_sha256": "d38c6f6eaa3728febfd87fdd536e294327594e27aba2ad48d0b1240405a37376"
+    },
+    {
+      "benchmark": "bench",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/bench",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 43,
+        "tool_seconds": 7.485494021999671,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "c26ccf68d7d9fd06385fe36ca0f0a889e4bd239d3cb584a1385c13a681b67a56",
+      "trace_sha256": "5bce3212d8e79b873299950f61be5c2a4288c7b5998787d1ae92eb048924322e"
+    },
+    {
+      "benchmark": "bench",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/bench",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 39,
+        "tool_seconds": 6.895490581000217,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "464175529f81c9386ac7c5ae158f84d19149d244a06d94394f6b9df389730a93",
+      "trace_sha256": "edbaed90b222899a433be92f197ee2c1a7f67b059e022b4d066320021a3a0f49"
+    },
+    {
+      "benchmark": "simple_chair",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/simple_chair",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 48,
+        "tool_seconds": 8.1950603639998,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "7cb78fda246bb2f11a4edb7f32cf47991e8525d5cca882f96ae93fd78afa22d9",
+      "trace_sha256": "ed5b2df2431855e03a0bcbb1161c10c61110165562da6a3a8d4f567ea4141c4e"
+    },
+    {
+      "benchmark": "simple_chair",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/simple_chair",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 44,
+        "tool_seconds": 8.031113169999685,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "cd2c7f538aa3f36f2e10d246ce6cf956d2fd908e99d1dae6ebbdde5bddf49a6b",
+      "trace_sha256": "531b7e79551a05e9f41f657f3bd804be52c1ec02a075c04f0d28c36c5b92829c"
+    },
+    {
+      "benchmark": "shelving_unit",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/shelving_unit",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 58,
+        "tool_seconds": 7.295021807000012,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "228d75d4f80ef742ccd0bc64347f6529f015869e79b01c828f6af67f3d5d281a",
+      "trace_sha256": "6f004988dd523908979c1671c5902e1bfb6a236b026f3091846120c9911715f4"
+    },
+    {
+      "benchmark": "shelving_unit",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/shelving_unit",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 48,
+        "tool_seconds": 6.193992956999637,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "ea5566b6eee96f47f0f660065dc61f7a8273e4a38630553a2b6474fb9e19ed51",
+      "trace_sha256": "4ffa70b0a3f15bbcb735f1043e71b41568b4a6752a04f20aaf6082138e46f5b2"
+    },
+    {
+      "benchmark": "planter",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/planter",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 28,
+        "tool_seconds": 10.600637679000101,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "0f00335a6b86b1ef044dc84304337ddc956686593ffdc5dbeacbdb2ae452b047",
+      "trace_sha256": "41af3f32d6d93fcdf27b3edf3454aa54840208171e9917cd44244bb26eced412"
+    },
+    {
+      "benchmark": "planter",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/planter",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 30,
+        "tool_seconds": 8.234353161000058,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "b4f37afe47624897e4cc862e23e4c927944f768c3fec473d7731fd6be77057e4",
+      "trace_sha256": "211211854c323f3d31721573cef21508c6558082ad279cb2f1ab6730cac33ec1"
+    },
+    {
+      "benchmark": "toolbox",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/toolbox",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 64,
+        "tool_seconds": 11.013786807999736,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "8e27d3f47acda23161911b41d7014fcd0b4cccdef3ef1d0e35fda0e9df520aed",
+      "trace_sha256": "082190684383e26f27b6cd0de6ccb38cf475439bd7107c6d64abf0deb835077a"
+    },
+    {
+      "benchmark": "toolbox",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/toolbox",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 60,
+        "tool_seconds": 6.618502633999242,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "fc5486ee331b121abb48bc9667103fd567424214bbb3216132881efef3021ab1",
+      "trace_sha256": "11ed7f59264e89f424d7ca5a4c50bb1e69bc20ea9f27cc51b4d268bb2f3c2b32"
+    },
+    {
+      "benchmark": "monitor_stand",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/monitor_stand",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 33,
+        "tool_seconds": 7.048130614000343,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "e201ae01c7b8109e34e33eeaa658dfed0aa179d71bc5c0818a7912850b0f481f",
+      "trace_sha256": "1c552fb00949621ed01aaea409b0ddd6863eed211bc49a934e9cae014b49a35a"
+    },
+    {
+      "benchmark": "monitor_stand",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/monitor_stand",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 33,
+        "tool_seconds": 5.843980037999927,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "684bc3da908d056abedb6aa132a8df088210346aff27bbca6d6404c72a00fa04",
+      "trace_sha256": "b9b22accd8636b2cf296a1b0317bced461c81b150cdb0a4fad9ef3110c70ceaa"
+    },
+    {
+      "benchmark": "side_table",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/side_table",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 43,
+        "tool_seconds": 7.453665397000464,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "960529983e3b3983d7b0e620615b3be4cc545ec00055125ad945bdffca8ef98f",
+      "trace_sha256": "485e95c2470efc5da3f7fe437aae30aecde5eb4e37ff14bceb8a4de0596edf27"
+    },
+    {
+      "benchmark": "side_table",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/side_table",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 39,
+        "tool_seconds": 6.196452144998602,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "dc7f9e1a9f53b88b0ff97ff9c661e2057da203f678a56325168c6457a4b98235",
+      "trace_sha256": "f5f6e7261c8c6dca9a1c062cf534c71ea442519b3459b1110e212de4873c54f6"
+    },
+    {
+      "benchmark": "appliance_housing",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/appliance_housing",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 28,
+        "tool_seconds": 8.134198985999546,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "4dc101a4d20c638ffcf9a00a83145f3fa100da541a4bf52374d1121b8bd3c178",
+      "trace_sha256": "4d777eb0c584eb76f94bee78e7496dd97b63e44a00da7ff19a6035f5d93b1951"
+    },
+    {
+      "benchmark": "appliance_housing",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/appliance_housing",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 30,
+        "tool_seconds": 7.090674800000215,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "3cb0f325b787d6eb54fc417d0847188c0c85d933ef4a94c9717a40286b582b70",
+      "trace_sha256": "3c5796bac401c84749556eb17f34ca5131c75fff6972542d39bc7afb51dfb87e"
+    },
+    {
+      "benchmark": "product_casing",
+      "mode": "manual",
+      "directory": "artifacts/expansion-m15-verified-manual/product_casing",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 34,
+        "tool_seconds": 8.035459884000034,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "4034ff047f585ab935edc617e8e9a94bb547e01ae03da8145b3995de1325bd78",
+      "trace_sha256": "f2d10062923bcad88032733de7f00d893ffb9b7b207f08a99ccdcc3d164dc9a6"
+    },
+    {
+      "benchmark": "product_casing",
+      "mode": "codex_scripted_agent",
+      "directory": "artifacts/expansion-m15-verified-codex/product_casing",
+      "technical_passed": true,
+      "metrics": {
+        "tool_calls": 36,
+        "tool_seconds": 6.136949389000165,
+        "structured_rejections": 0,
+        "selection_rejections": 0,
+        "rollbacks": 0,
+        "rejections": [],
+        "context_usage": null,
+        "context_usage_note": "The local bridge cannot measure model token usage."
+      },
+      "report_sha256": "c1e71634bba6fb0431635b7ec55fa90ee0e9a1120cf372d89cbbb3d4ab63f134",
+      "trace_sha256": "03f31100dad419a956d70515ee37d9b0a4987d5d31fad49e2213493f66a85dbd"
+    }
+  ],
+  "agent_collection": "18 successful v1 assets from expansion-m15-verified-codex plus separately rerun desk_lamp-v2 and sci_fi_crate-v2. Their renders are byte-identical to the reviewed repair-run images.",
+  "brief_versions": {
+    "desk_lamp": 2,
+    "sci_fi_crate": 2,
+    "others": 1
+  },
+  "verification": {
+    "unit_tests": 112,
+    "real_blender_conformance_cases": 40,
+    "skipped": 0,
+    "conformance_report": "docs/evidence/conformance_m15_followup.json",
+    "conformance_sha256": "c277d3cd8042e222f6a823d1059482eb4842baa9b36fadfeb3988783766f9ab8",
+    "quality_audit_exit": 0,
+    "require_quality_exit": 1,
+    "expected_quality_failure": "Scores below the explicit convincing target of 4/5; evaluation coverage and all artifact hashes pass."
+  },
+  "historical_source": {
+    "path": "docs/evidence/expansion_codex_plan_m15_original.py",
+    "sha256": "baf8838f55c7f6ac4fdd0232f4b5b2d081652f18494d576a35925f75efb56e17"
+  }
+}

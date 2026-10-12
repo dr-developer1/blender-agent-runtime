@@ -1,0 +1,1661 @@
+{
+  "format_version": 1,
+  "timestamp": "2026-10-11T22:42:57.341247+00:00",
+  "evaluator": "Codex (self-review by the plan/recipe author)",
+  "rubric_version": "asset-quality-v1",
+  "scale": {
+    "1": "poor/missing",
+    "2": "rudimentary",
+    "3": "usable blockout",
+    "4": "convincing",
+    "5": "polished"
+  },
+  "limitations": [
+    "Subjective self-review, not blind independent evaluation.",
+    "Six diagnostic views per source; no underside, exploded interior or production render.",
+    "Material plausibility judged from EEVEE; Workbench used for shape.",
+    "No certification of exact attachment, physical behavior or production readiness."
+  ],
+  "reviews": [
+    {
+      "benchmark": "coffee_table",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Recognizable thin top/four-leg table. No apron/joinery or grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/coffee_table",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "8b1e94b452e89fd253c54e03d31254271cebda32868487178654a622ab051f10",
+            "back": "c45da3380698d8f5d3c5c86d9dc9bc55a07068cfe1d00b5173339899440f7164",
+            "left": "f873294ba5e9c24b2a016e43f7c87ad4ce41197c3cb585c63814eb5e96d26e87",
+            "right": "6dcb349f7d88099d66d004f1bc334932857a1dae2517b989717e77b6dd41544d",
+            "top": "2a2cba787f4bb06c559cd4fa30a9abadfaa74dd61dfdf6bef58f3120779c779b",
+            "perspective": "ce19d0a02697d48d4b4ae4ba5fa936ad183ceda6315ae3362029cb45717597e7"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/coffee_table",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "02373e3f809b4b0b5cedcba7211b8385261481c3f32099f35bd6f80a58e11c90",
+            "back": "ac2fe8b3b70d5eb30d09ebc250bbef09ced2e7a9ab6f538f735b4a548ff821a2",
+            "left": "87050d48bfb94fd7c471224f610e1624a066ab2f8af008cd2bc324e735100c1e",
+            "right": "2476db92555878427b916334ad42910002ecce31b8e040daf41d8a4c94fd896f",
+            "top": "55c7965c76552bdd8efeeb066d8ce077028aa4a8da2854f566775facb91e5033",
+            "perspective": "2101cd42bde6a3edf28c222e81d9ca902c2d570efb2ddefde48d7451f17f2421"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "coffee_table",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Recognizable thin top/four-leg table. No apron/joinery or grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/coffee_table",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "87a42b8564789d0092eedbdfdcf90c1385da76ec2e854032373adc5ba58878be",
+            "back": "3f548c7d02df44e1fd371093ad4482c77898501b8dff8e19e459b2dc6546322d",
+            "left": "703c29098e6ae65512c252d437d80394baa6ccdf128f683fc49b25435bc7c93c",
+            "right": "ae5d7240e5204c316176c79343c747cfe9eead569f39500b5c01a5da33777f41",
+            "top": "6c0abc05de3a4f6e0a4ae4b12122f9612e3404d548512a2dfcfbf874ed30fa7b",
+            "perspective": "fa5cb2392826d60fc706347c263f89e57fb7ad8082477edeb36d850f5f7b0da8"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "storage_crate",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Readable open box, separate wall seams; no crate slats/joinery or grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/storage_crate",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "6aa31df75613f9aa3d035234bf888404c33deb4ccea5952d7bc11a331b026213",
+            "back": "398ace7b2f9e29b1afb8f09cfdb2ff5163c96d01fcd933e965616c3925f79912",
+            "left": "f6043ae0e6af04edaf9030da7bad4ad9b9344c78e1042c9eb4192b451a0e86c4",
+            "right": "f256a1f1106acb00b304c5f7bdf5f5b7f0f3c6385f8af40afc9f6a57952ad18c",
+            "top": "dbd3a83a775f06d2866e619e24d8d02ec2280a77e71213f6170ca5e77e57e781",
+            "perspective": "affbb25c194ed869121938c8c8f924685d97254e05bf61becf2c1f0a76149128"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/storage_crate",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "3ca1e368ae5cb082b4a53074879085fa3d93e008eb30a342b79821dd5dac52f4",
+            "back": "843441df33569ff7635a866d31b847d3f2bd7e8472edaf7120a0bad026557454",
+            "left": "56e32615c9f93046b89d49c7b33bd46b90c30627ff84981459cc472ea5692d1b",
+            "right": "83f4fbebca62c32997eee57bd0dcba8c73645fe348082e5ca8a882c79296314b",
+            "top": "99a022a9f83989d1c459d42cbb4eefd3576070d78ef1256a7cd139856b099a76",
+            "perspective": "e0b963d3e30a029eb0b9b4ad086a7dd7f78a084d555c7631838cc5b716ca5acc"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "storage_crate",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Readable open box, separate wall seams; no crate slats/joinery or grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/storage_crate",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "676712c2f2f119e8485d216e5d1e955031e85e1d2a71db3bd077c8e927e21cd9",
+            "back": "eab57cd72eaa76038f63c8fcca01a53861286a2d5b711ad8bb9cbb77deedf5ec",
+            "left": "aebab729fe9a50becb90a05c3688d582d14a5b242a60a486290e997fa1be04e4",
+            "right": "3b9e0f7fcf8841ecdc6300d71aac3200492daa6935b483bc3555e0abfdb59352",
+            "top": "d12ac0dcb07999f48049114fad062b524f7330378d8ca10d082483972c0ebabd",
+            "perspective": "c102640d07edabc476e977569a199a26101c21405f8861e0e98b658143f1a9de"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "wall_shelf",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Recognizable shelf; brackets are thick planar supports with no mounting hardware.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/wall_shelf",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "b1947c187307a9c1976b3dec54e02091a3f48c0deecefbd45fdebb30a390c85b",
+            "back": "10d963951a442af82b018bda0ed3db1df9ad622a9e7a118eef4eb74ce15057ef",
+            "left": "033db5ae278bc0962aa59c961f9b870590662e2c279e9224d424631960f07990",
+            "right": "2b4a4a306a6e5f0e6ac4838447f72e3e687a1ff4a23075abe456711aada7372b",
+            "top": "fda12a5d643ca2c599e1f7314d093dcfd1ab435bfaf0273afbb94c9a7428fc8a",
+            "perspective": "57f22ec8ef3b6e8eca3aa84e579139c00add5d6312c4115a47b29fa6f533415b"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/wall_shelf",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "e8c74eb58d9fb7d44dde5726165928e36f374513894a0fc94c8d558d1b527263",
+            "back": "bf952ce0d2463f859b6ac2444c364a74901f227011d0b01ffb4725a856715b7f",
+            "left": "a9fe73838bf9b8a4c2bf62bf49b87e6fcb160cea9348849f499d309166cbc637",
+            "right": "ac7371c59672416d113ea3b50fafdb267881e69aafffbdaf95e1a99c1f58201e",
+            "top": "6eeb195294589c25fc31fc4a1905c61fb9012302a734133a1311e2154cce3f66",
+            "perspective": "64b5d792d47ab4ec8b03c4613d79660ba78e634e6a21a5fd344abdd583d45114"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "wall_shelf",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Recognizable shelf; brackets are thick planar supports with no mounting hardware.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/wall_shelf",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "60f4c8ea5332ad3ce659911a06c4a83407d0b4f7e0515cedb56f94c23375a369",
+            "back": "07e6edfaea548faa49315c2bb867426b7fc15345b2ea8ade240371eaf2b9e9e9",
+            "left": "368e0868b1fc1fbcd70a23d3a05d5239df4c8c3d2876b6a8726c47d18824cbe1",
+            "right": "61b721561d50396489cd0ea33cd9e5817b097c7e57df3a444df9d497c6010cff",
+            "top": "4fcdceea4a7aa99a7fe8fc2a8959eac5c18844f2b9a35dd901585d3d6a816bf2",
+            "perspective": "afbe13092d811414fccd3fe4d89519b5e09ffcde99732d7cd3d7325f9d5893e9"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "bottle",
+      "mode": "manual",
+      "scores": {
+        "proportions": 3,
+        "silhouette": 2,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 3,
+        "material_plausibility": 3
+      },
+      "notes": "Stepped flat shoulder and visible body seam; simple open neck, no cap/glass.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/bottle",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "2fb89f268c2a22fbe60a68da8c8f05eb04f7ff279ae09f3b6a7ecbd633b878db",
+            "back": "e7b755b96ed381b95bd70cd18da9826352ac4f2d0f61065eb4db7121a3289906",
+            "left": "9e45c1d6f91da270cead17df6bb46bc505af5936250d7ea4b3e71564944444a5",
+            "right": "377e9ba1648b5b1c1a404486062a4841701a0dd688d19640b85bb76d89527cf8",
+            "top": "9b831c5a582fecf18598265cdc821da4c6ffa6257911795958297021cb2df528",
+            "perspective": "a8d1db65b02126459b468612ce1fa0b9472048ef606019b8e50496bcd9ddcb66"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/bottle",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "18969e616edf4ec735090c56b45b8afefb84b5e5b45addc91a39a06b139aeb3c",
+            "back": "d347895a9873bd529867aaeb62e5d3462989cc8078d8af6fdb357481c1166760",
+            "left": "fa6004d65ea58c6dadc1fcba5326029eba2ec7edd5f0eea2e2ab7f5b4e18c080",
+            "right": "e7934425205f08a857d556327820e8dc1e5473b1b499116edd78d273ae1d54da",
+            "top": "1bc6997bd79a755950ce061838c59d78ff6c03e6316b06056b32bb4dc8697dce",
+            "perspective": "b29d1ee73e4c93a831aa180238e173b0b434a5861eab0ef24bb311235ee070a8"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "bottle",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 3,
+        "silhouette": 2,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 3,
+        "material_plausibility": 3
+      },
+      "notes": "Stepped flat shoulder and visible body seam; simple open neck, no cap/glass.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/bottle",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "8200be144017d23d0fb86ee2fc882b5123d6b203783726edc244982caadad45c",
+            "back": "ac24171702ab4844fe73fa30e12c1d284cf91a7fa80e9882c6a4c3206e7d6d01",
+            "left": "64b7f69838c4a746bab4a59dcbd2b1d852781f795eefa9f3836a0886e21edaaa",
+            "right": "c95c90998ccb14c9f08584a80317582995d16ed20f254ca4a0ec1173e1fd3d21",
+            "top": "412a3a094370b158fcc2de570b482c682af718a166020cce25a056b3d382142b",
+            "perspective": "0d456bc3d83f191609b7c10f4df94495eb9f093aaef8a666e32b057da96251f3"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "bookshelf",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Clear shelf spacing, open back; no joinery, anti-tip hardware or wood grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/bookshelf",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "66cba33b47bc1b5cbd16eb32af92cc5484b3393dd30579d71a114adb3069e17e",
+            "back": "1205d67a8cf4833d99a5d0bbbec8f7bfd58993b8264adce7d92c342863650c6e",
+            "left": "021896d435882f4466bc1ba50bb5030e7c0ec7415a21431e7f2d26740b06a05e",
+            "right": "081097122d928140bf05a9ca08815500882eccdf888e7455eb3cd021226b410e",
+            "top": "e232a8f9b2ff3d255fd38df38c5a6750c8343f1ae97fb20b3d98076178aa9a80",
+            "perspective": "5ddf2dd7089a22976c2608c46bc07f9c9d456109deeccb943b3193b3bcd364b7"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/bookshelf",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "015b792ac8b796f2c9c1b094c9226552324052378c666235b16e8e5d50535a34",
+            "back": "e8f4c9e45079e344311ab9fc59a68415e4851dbfcd1723b30236f8c5c8ba2473",
+            "left": "a871e58343894af5c6c236b4ab54b4c72f61583961fae29fd31461bd1d551d84",
+            "right": "bc6506e1143b027b7ac8efb2292f7d01f0de7cb72adae1de0dad2034d3c6c2ff",
+            "top": "74ba69357441687bc77c3e77fb44a52fb9a230926a1b166e39a74db7c5716b87",
+            "perspective": "6ae76d8d91e2ff6174adcf8c72050bd2d3c40498d210296a5f27a12962dc4add"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "bookshelf",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Clear shelf spacing, open back; no joinery, anti-tip hardware or wood grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/bookshelf",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "c46d55fb34d279227d44e2468c32bf5e6d30d4efd900a51e22c695963e5dc948",
+            "back": "a1562e82d609bdb7af37fa299b4b10438c14b4dd12efe139966b58960b9bc7c0",
+            "left": "699e88e2bffe4ed3d6ec977e6f3a4654f86682687ff80a0f5650875474d99cd0",
+            "right": "2f1177959f6bc777ec6992aac18e702df56001b49ac3c5dc148f7088fbedfa1d",
+            "top": "b3655ec23819a15ade5ab254be921ccb85ff674f6278a5a85e7521467e4e3e32",
+            "perspective": "e5f48a610df8552267003a17f4745bcd3d95d82beab9bdbae6d8e5f32aa63808"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "cabinet",
+      "mode": "manual",
+      "scores": {
+        "proportions": 3,
+        "silhouette": 3,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Static blank doors, open back and no hinges/handles; assignment does not imply wood grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/cabinet",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "6e694180519a922c530bb511e330c3a14338cbbc7ebacbedd2db615b11a75871",
+            "back": "a3bc046b56ad55dadc26afdf15f81a28a4d8e56d97357bc66fe6e7942b8d5ca0",
+            "left": "7c0053b5c99557b1034c897ba5cb6560c14343fcfa2b11eb63ef266da6c82868",
+            "right": "683e5b843b7b986fec57acdcac7ec5442a1cce7613e7cb407bf3a3a29ac146d6",
+            "top": "98f65c1d0c8e451ece005de0c21623e64068dc86d355abf143d1ee121a0f56ef",
+            "perspective": "08df73f07bb5fe4ffd3acf5587770b9e4ee455cecf3e69370f476e6ab9c5cedf"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/cabinet",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "ff991d11d1e4a2fb1e1f8e5996fd23dc13c87c05ef4c010022791f65f314cba5",
+            "back": "cbd58663203050538356c272e03e3da4e8f2780b45f1847b5dafdac9dc019d53",
+            "left": "492e1dabe22748c5d9c11626c144a4dfed15a6207ad595c4c69dee6390d9ba39",
+            "right": "d46d8cb4b1277295ea01085dc0871d15e9d481d5a6e4a6bdf4d0685155642487",
+            "top": "2e47611dc687118f1285a047599db3c3742422221176859559d9bb1b6cfac1c3",
+            "perspective": "da9a4c6767422e2e60f9b6f3cff80f03b6eeda7edc36f946a9948f0f79193e02"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "cabinet",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 3,
+        "silhouette": 3,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Static blank doors, open back and no hinges/handles; assignment does not imply wood grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/cabinet",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "baa68157d06afb32d126372768b8f17200e61c03b093305a2f2fed94335f57af",
+            "back": "ed9d4a81a9254481503e13cba3494aead00176af522c5ac5654a078eab4608d0",
+            "left": "4214fa7f6dc60e59ba8f2d3f383c417cc357459e00ad9cadf5092efbc7cc61e6",
+            "right": "49b8a745b361d86cb9b32f610fe552dee047b2e5df1ba1899d08c8a46556951b",
+            "top": "dcb34ed23aa8c32dd64d2d18014672c4a7ee417b7cbfb9a4582f6f18957eb80b",
+            "perspective": "7cf48456f1b4efe649547e588c51ab22ea2baeb97c034e556164b8cd82a9aeb6"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "desk_lamp",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 1,
+        "surface_cleanliness": 3,
+        "material_plausibility": 3
+      },
+      "notes": "Recognizable lamp silhouette, no luminaire; stem terminates inside the shade cavity, so exact attachment is not established despite AABB connectivity.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/desk_lamp",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "78d54b1321c7aabd083c22805b276883ec8a359dfade938faa20a592208b3914",
+            "back": "ade1a75bed9ed7d57c392ba234e71eb1608550626bcf5124218c5e6049cdc791",
+            "left": "bf5cd22a15470ecc5c7e42014a25c6bfaba2f9d21e8acc5c1304612c6ff02882",
+            "right": "3803e64068d81cba5d4cd4be97725aeaee17f927417f91b7ddb92e34dd466859",
+            "top": "6c75b8f83f8b4b70dbd546db9debd464122bdc6597d16ac6e0a081ce03e37172",
+            "perspective": "8721ab2ba6d4261903ede6f4870e6aa951cad12e50d0e1e6aca7fa7f3da1fb38"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/desk_lamp",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "fbaaee3508595576f5c74a161a957996cce1ca59db28d811824e4549070d829a",
+            "back": "6cc605ec8610c7e5a8bc1bb15dfe8a971f181d6d3b037d2fd884cff8cfd0b502",
+            "left": "aa8a46e864f1f6ee028e36a1bcf43fa9cd111b666b3dd21177ecf09e28963ce8",
+            "right": "23001a54d616abe79c61cd5dc1a345fd59be17921e3720cbcfbbee20b8e98292",
+            "top": "fbb40fcbbfd3358e6b9497461f76e689b0d2f7ac401f68374a3d2ecbd027be64",
+            "perspective": "529d084e6e62698546f24aa32b6fb933c40949cace869c371dfbc1aa2a5dbb3c"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "desk_lamp",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 1,
+        "surface_cleanliness": 3,
+        "material_plausibility": 3
+      },
+      "notes": "Recognizable lamp silhouette, no luminaire; stem terminates inside the shade cavity, so exact attachment is not established despite AABB connectivity.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/desk_lamp",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "77fb391c94fda29ceceedb343249e658e10e7cfadd7c8bfe625f3bcab15d880d",
+            "back": "a69984222fd6aaa19f2ad9d69945c5f2a4a84000b6f49a5244638eb4e8f0b0ac",
+            "left": "e4930689d66bc30e685e2edb2b808ec7a3f4efbf6583030e5b883991710a9973",
+            "right": "e08a081f342db1bcedb812b6b2b183e374c45a6457f96f3e85d0b479410f2e1b",
+            "top": "d254c0fbbcee582e44c256730b735bbb04f41c3018b00d84e93dd58037369c36",
+            "perspective": "39a500849f02839846c7656a53f62018ecb873f581abd210f21d47a020b5e36a"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "sci_fi_crate",
+      "mode": "manual",
+      "scores": {
+        "proportions": 3,
+        "silhouette": 2,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 2,
+        "material_plausibility": 3
+      },
+      "notes": "Plain closed crate; coplanar inlays show shading artifacts, with no latches or useful sci-fi detailing.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/sci_fi_crate",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "eac3554d51fdfe8432132ff332393bc0efa0e65f2d561ed7054f54f581cf129d",
+            "back": "9a51ea6862da0a46b65b96728df2050ddb97f5b54d5b76ca04b2758adcf3f46b",
+            "left": "1c2fdb9363ce641c67421e039c75b4d1278ca56c7337c058991fb463d3b3d7d9",
+            "right": "60253226ce24c5102d531e89cf2f15838c2958b690f68f924cd54b6e7366a4b6",
+            "top": "61c6cc4c8540564d31b603231538228848eefd4a0e37f42c7c008f1bec678f8e",
+            "perspective": "fbf3630a8dbdf7974cd64a0f75a49cb6462bafa89707c2dcc77c17b1bd531cd2"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/sci_fi_crate",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "a4f71abc3cccaaa5b413ea38585a93c60150c683e873b7f8869d56dc1a7ec132",
+            "back": "60d2544c7871df9c03030a3161e35e16f84d8e3ea9068ad1beea85d16324b8f5",
+            "left": "cc7aec8abc09780a0d0676db185fcbdaeb7261c59d85dc32e6d0c36686c514ff",
+            "right": "4f7b64b35404b1c936d5a0e0f1f8370d7975dbff308037a437791e50114c3408",
+            "top": "874d613abea29ce90623ee02db6a2af691ed31870d8b988fbce42e37e38c7658",
+            "perspective": "177564aebdf65a01051405ff36a528fcc0c827d589c39f9d38109f73c7c216a9"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "sci_fi_crate",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 3,
+        "silhouette": 2,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 1,
+        "material_plausibility": 3
+      },
+      "notes": "Plain closed crate; coplanar inlays show shading artifacts, with no latches or useful sci-fi detailing. Codex inlays disappear in the front view and fragment in perspective; severe coplanar overlap.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/sci_fi_crate",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "537e07fdb55c9fa731bd193df42af0568fc3ca073c3bedebeeeaf3d373ef2794",
+            "back": "1ca0562a880541716d389847d08c33406f35cac1c3f5633711a0c91a43abaa25",
+            "left": "f1ae677dc21bce40d9e755702a8b885e117fce052da19a6f3058f1bbff1439f1",
+            "right": "bb49dc836c4adabfcb402bf3d0e7403930a84c1bdcb1e1f4bf94b0069ae093b8",
+            "top": "85b46653ae66a12ab2d67bc9267b987e9e2d6854f57b5cebdd980580507caa92",
+            "perspective": "38cb9531fe9bb52d85bac57415033da86b5bfb1004f509d1842015ca6ab26aa5"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "metal_bracket",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 3
+      },
+      "notes": "Clear L profile and visible through-hole; no fasteners or load assessment.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/metal_bracket",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "aadf8437c2e0dcfe4b30320bb8df4ab8af17270328f481d224edba98fc7c29e9",
+            "back": "d5e93f2e32f86a2ce85a90fd7a9194f747de1a77b5b4a74c6cbf4df192dba33a",
+            "left": "b59e7eb509b462902879b0e5ce8cd5dcf665a740a87068dc0e3a62fed49c434a",
+            "right": "567f0401baff1a89f6d6174de3e295428b519ec5dca287e948c11c7093b98346",
+            "top": "59943bb9fe9c4a04b2347dc6eadcf056a09d5c5da7953eda33bafad8435fa6e1",
+            "perspective": "6e255c3372a09684caf961884540cf5ae3ada9a6d39db8138cf1ca4a23e119d6"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/metal_bracket",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "97cece7a77ba499dce9cd7c485590b7c07b9e7e16e4a68a21cec05d51e38678a",
+            "back": "03663520a00c31c813a2e1083ec6fad0766f908a69f027919c6ea669874632e1",
+            "left": "da15134054c244e2e8732780b0e5c356449556aa6f581ce97137c7cd806f47ac",
+            "right": "a9d4f2dbc4fbff261141f03822c05516d66ffca952335e834b49f0236ccdb5b8",
+            "top": "8b01c03bbb520689d530bb4fa3354270ad8c59cf53d8ceee6912ad221f3f3a42",
+            "perspective": "1eed7029e1293f39777fdb115b0b4ccab3ab6d3ff2a45cee0e2357d64c6dd557"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "metal_bracket",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 3
+      },
+      "notes": "Clear L profile and visible through-hole; no fasteners or load assessment.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/metal_bracket",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "314e5daeb7f203744153e57f47762056d9685b0443c43d1e00ce7a69ab20f5d1",
+            "back": "f7c7356fb09235e5a7aaba759731bad8863bb1b82ca46612825213983c52308e",
+            "left": "6c0a229a84ceac7030ca9f029892a5d32e24a588c2b929895ccf8252f5414d03",
+            "right": "0810a5c5e9cfb9db6f4aacb5483b167f0328c91b8b42686886009806208cc996",
+            "top": "0dea2185fb022672f962a3f94a9e518202d527e1e39e56cd91941d9bf73e9400",
+            "perspective": "8a19a4b16e969399fe4c0c9a70b85c1fb8e59f611876014b45a9505ac71d2903"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "pipe_connector",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 3,
+        "material_plausibility": 3
+      },
+      "notes": "Readable flange and visible axial bore; facets and no thread/seals.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/pipe_connector",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "75ac1cd3ee31b2c0942cd8752b7d1b7382c2ae5bfe762e0566d21cdec180cd0f",
+            "back": "af51b24fdedcd8e08ae63484dd022c8ca31a9d1e046658b574c7886d7dea585d",
+            "left": "2c19b73a5870b09c9ab9bd25d6276e7472e2ad7010172de36b5272ab347e930d",
+            "right": "2391329fc59441b4b5812419771a55bbb9164867558cc9f583d94ca9bf2aeaef",
+            "top": "0a08086b45e67247aef3302939a6cd69e7fae6cd2b1673ecdf21aedb88997fe1",
+            "perspective": "64b72b478ff6aa21f0d5341dd9498ef9ef75da2a1ad643564894ceae7fd4cafe"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/pipe_connector",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "5c94f8ecc48c2e5c4c36e51215bfe2916844872b2713822d4629a5f9443e2d6d",
+            "back": "0ecd3b76637037a256d7ecd2aa66de83aa147ddcb3998ab2905afd7390dabacf",
+            "left": "d6cdbb54106ec01fda73028c642167e511774bcc38f9bbb0b9a7722d1725d24b",
+            "right": "bff674f4edfcd0f541d3ce8811de54662a79736d9a97330c0cb61183be38c277",
+            "top": "66d6d719f16ee4a4f24c1f8cb9ebc3036bcc5000faaca987cc42801986f3ef4e",
+            "perspective": "8c4aee3905f0c71763251a845096ddfd69f1807a1b2aa64d4a8d32ea613a7a84"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "pipe_connector",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 3,
+        "material_plausibility": 3
+      },
+      "notes": "Readable flange and visible axial bore; facets and no thread/seals.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/pipe_connector",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "52eff30350c35a5ae8b5407aaceb7626f48e0c2e324cee5407b1858dd675691d",
+            "back": "48a5a1806b0a8c967e53431de7aa4f368e811624031a9c13b0b14a01c0c31c72",
+            "left": "0bf4c5822700b70d6da3d5f16ea0e04bdbb52aff274e7205ceaec87a80872e84",
+            "right": "0f9071563f1c833b27431d1b061e75e48e14e4e08edd4dc00acdaa13e5826c39",
+            "top": "a9021e334e58bb3ea0ccb40fb1d5e13c86349221005375caf00112fcc6fcb393",
+            "perspective": "daf78f77ad4db23f625a53ccad5fb7afed04ea9861a7cac9eadfe7b7a60d33a1"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "drawer",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Readable shallow open tray; no slides, pull or grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/drawer",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "8ee80f36b972e281cf3a654eb7e6bbff15aba35e3d926062922958a49cc73ac0",
+            "back": "8699718c0f4cf4eca1c64dcf1ad86a1fbc1091fadf887188e71d837473f43574",
+            "left": "b6caadd0afa4c609a9861cf85bc6044379fe780989cbee333d7b9c753b60205f",
+            "right": "7b8d5414329612d0c7dddc8dfbd87045e6db71c7d19edcb2a4649cca2b74193a",
+            "top": "aabfbd6392352e33435c5c8118c7b7e54d59f22d6bf95dc4a4b8724aad206d33",
+            "perspective": "14ca7ea1ad653c5e38384cc90d94c0a791765db12313c64850aa264bc66cf5c4"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/drawer",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "b7f1f82e9c829f059a80cbd34c5708718b60e40bde688464fb27bafa2d0829e2",
+            "back": "7dcc2057bd643694e02512bfbde9e6c3f3482e483b52c9ac6c06ab09b7e3d278",
+            "left": "30ad805f5a8e28aec717bf94d271ce0dd7c7bc01188b86c81ebc4fdebbcaf172",
+            "right": "39d614fa55574ef2e09db3554d3c26f938693433038e551ee4680412dcec7103",
+            "top": "c58403343c2844c2176e19b57afe8a44ff5cf8de5d772f122ea885066dc9ac35",
+            "perspective": "eae297c943fb70b82e5dbd3ebdae67d31cd6878ca7a16b5fb541fb1f62ccee40"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "drawer",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Readable shallow open tray; no slides, pull or grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/drawer",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "b422ccc3ac6b6f68bfa141732340112e93b80ba5d27e5669c0ec37cb8e868678",
+            "back": "c265b1839cdbedf502fbf166aaf25d8c8a1c583e22d86adb54492682efff1ab2",
+            "left": "109866ed694d83ee4e6df385325f9356c303f470f10b4815554106d55fe66674",
+            "right": "e05ee490db126bf494610da9a5cdad5703a5dee191e29e7e11d59cb42fc80dfc",
+            "top": "083dca9b434e1e1012abccd9bc1c8424c26c7253e0803c1c4d852023d6c93253",
+            "perspective": "c63c350ba107ffb36d09daf0c9e25cc41d4ca2ed84f616fd5732af2672a392be"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "bench",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Readable long bench silhouette; no apron/joinery or wood grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/bench",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "ca18f22eabdf3496858257be851a5762b54a0a3925be6f8292dcc093373bcc58",
+            "back": "2cb3501b79d5dfea794a0ab9b31f091870c52b23490d4eb4e03119853f403d09",
+            "left": "6082c2f16fbf235b4302d4b57a83ef4d5d11cef8eeba712532764bdcbb7f6591",
+            "right": "d265a9a5fdd8b49acb0d9e8185c0afdc8367a2b443641d49eef99dc951341a9f",
+            "top": "90ce61db495f1ebf2fb343a7e7a183d708aff249b4762368cf4ac2ad4b63fc3b",
+            "perspective": "5582c5b939bd184899070ec23dd963cf4cd46b8afe7b94e8b14200cd6c3bee9a"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/bench",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "983a35f733820c36f25664651f78fbe0ebe4cfdf7097a411d42573a28dfc80d4",
+            "back": "ab6e2e4f3d252554094e2c44fcee418468ffc45fb7325d8603cf4af18d34f3a9",
+            "left": "f8f9aa84522a51a238aedcc72a3a35849f059fe7e0f7df0fe7d9a10a7747af70",
+            "right": "e941c0fe671bb48522e15ce795b5b4342c3595cc6bb3b2cfacf107ba64605c8b",
+            "top": "669a945a3a93075c6f1a76a82273a05bab7d74febee14163223ff275c0df592e",
+            "perspective": "90075d48833ac35e1ff99e9450648349215f9896b03fc1d5a20bc0399c371023"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "bench",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Readable long bench silhouette; no apron/joinery or wood grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/bench",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "3eaf91f8f417d488c4adb082536c9fb1c647339b1a7bdf3165032c0deb2f1aa8",
+            "back": "49be7925cbc4169362bc4e01225c50acd1c135ae7752b0b2ba5d73fab6166627",
+            "left": "26f58c671d7734191f222d8604b04a7e3de829022725beff3081bdda62f25022",
+            "right": "96fe582630aafbc011acb4c62b062282272274870c61603383113877e3be78e6",
+            "top": "fa1f46782b1fdc0ef60b8ca4afcbab0c05ed13fe25742d642da55052f75f79c0",
+            "perspective": "7eaf2683feacc5c06dc4b284ebab1a3433132d7d10eff1824dabd521da6a79b4"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "simple_chair",
+      "mode": "manual",
+      "scores": {
+        "proportions": 3,
+        "silhouette": 3,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Flat upright back and thin seat, no joinery, ergonomics or grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/simple_chair",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "b693714fe226b3bcbb827b1dd50b36faad0048fd190b0e5d193b96794c738566",
+            "back": "853d70a724d91f51e886a2e48c8d4fcbc4eabefe25d645cb60d4518385289375",
+            "left": "d1daa774f49d7622a73829af6c84ab1975164928ed77f51e01580c3bafe4ecc2",
+            "right": "d30818cf0b344a55b4975ecf5c2d690680db96798df6f8e02a33a386bb724216",
+            "top": "62ba29951a31ac2bfe6bf09a7f99a1ba912de4fd092497e61b60d8e03b4fcc89",
+            "perspective": "6bf8529231606daa55d900eed25b02b0c67bee82cf371ab130ecb1693a445a70"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/simple_chair",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "d1ca378a1de1369f8cba855fdcf268a8fa6f1020b0d429155ed23d449b077bfc",
+            "back": "77fab11953167b1e03395c4f098240af7d1390f338f5fa99e4f88ff59d6ee680",
+            "left": "e72d88eeaeb9db38ff44e4af5966a543239053dda3c7b6a5c57d56ce383efb0f",
+            "right": "fec5f82c8e5cd9396c84b62d4ef8950adeccb76d543575efc52617f3f593ff41",
+            "top": "b6b422b9b50f1a2cf4e16e3cf57e96915bb0e6f93671133010fce98379502862",
+            "perspective": "74dbfd4aac62cd43fb8bdfd29f83b98735fd950432f509e28d70075196d2f042"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "simple_chair",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 3,
+        "silhouette": 3,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Flat upright back and thin seat, no joinery, ergonomics or grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/simple_chair",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "fd19e79586f2a871a1b0355431a240b221011c4111368f8535b8e63e5d1ee495",
+            "back": "e73ae8bc7ead990a3e9a897cbc449910260f2ec22f97c8ceb79b3ac4b5f35c47",
+            "left": "5227a1f033da0f56704607ba243dabe4d6d50e2702cce1b5c2e4110273f3cf80",
+            "right": "5b82deae823795e371f2025cd454d14cb9176370a91265e8ba6017be478a03b5",
+            "top": "1ca13608c2e442fed6cf5b37ff32a0a1b6987627c9f13fa18a1a2f57aead4d77",
+            "perspective": "1c8f8e6fbf90930afd2ef40533b0e6fc9828736590b8cc121f73650664e15a0d"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "shelving_unit",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Clear repeated shelves and open back; no braces or anti-tip hardware.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/shelving_unit",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "e635b9b47327bddce92d40d613bf45cf2ab1ed1abed54ab550fd94d579df4e3c",
+            "back": "225eb48c145d559254831ab01c14501132bce1e75291fa8468295065a059b04d",
+            "left": "16ba456816b19ee71efb347a3c50ea6560b0b4df62b476010a05e0b98870f2d8",
+            "right": "965c12f298c52766b1be8a9d0e5a3929e0cf58e1235b26d7e4b27672ddabe79b",
+            "top": "163659366eb80688fe9c47d3d3ed6e3c79f4ecbefacef0b3373d3612f5b9528b",
+            "perspective": "641dc3033dc031de01aba8261616599d200715b14675d5474650822637486a1d"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/shelving_unit",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "676f4f7ae418560ee7fb20e68053979bdd33ffafcc7208a79fd3115471ce46d0",
+            "back": "b25534c4f7df83f44e89b0638870e060fcb0badb75644505d31c7ae59463e2f9",
+            "left": "dc56321fd7d0741b1ca1b020aaf2ae3241c2b05a672deb827a3478a4c10bee43",
+            "right": "6e5df4efe0ddbf1b6185d2ee6d540a891ac9fce37a18f91e4d700f85fe1861f7",
+            "top": "b54c501af3d0922822e4d589a58534b87e1399b3fea586b1d7dae473aa61a637",
+            "perspective": "cd83e68e8674b65503560aab38dec84b8249838410adcc0b17cb9e13a75ec8d6"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "shelving_unit",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Clear repeated shelves and open back; no braces or anti-tip hardware.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/shelving_unit",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "b1b72b655552a011e47e547998b7d51e9dbc250cdc151e99d0a1188a083afd05",
+            "back": "70e9c56aa092c2ab62f9f6b0cbaa9e84eb5b94fe2f215f6759026aa38c132237",
+            "left": "688ec2adaa79ed87470a2754bad5a53e12d4b76d3bbd5fc8fbe95657647a1598",
+            "right": "182759b9d1f6fd550cdb75430186140ec96d8eb125932f34f456b3f53d6faed8",
+            "top": "19317583994689f2d95a39b6a960129c39f710aa21c5b4ebca4f13f19b608763",
+            "perspective": "3ac9df91db6ef123e4cdf100f9c69e0630e566330bd8972593a706ce0579aa36"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "planter",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 3,
+        "material_plausibility": 3
+      },
+      "notes": "Visible opening and bottom, faceted clay-color walls; no drainage or organic variation.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/planter",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "a83285afbeeb4f380291bbf4b6566f14c6880bfb5e8f43c92c8c633a23f0da2b",
+            "back": "9996639d91af66caa36754d709446eca39625b9980bae5193cd3d6ee9e794cef",
+            "left": "c6a8ae7cc321015ef4e0e19269744b83f8c6543fc5f87ab03e54a1760f682927",
+            "right": "a03b37ab153fffebaf79bdc9e5ad70cb8ad2e3510f31ed2d09ea777b6d9c9938",
+            "top": "04d6c1dfb8ee9ab22bb97daf102801f7b801deac137bc0c4d10ee566e08b4172",
+            "perspective": "f0dc0d0db8822968801185f091cc71c4e73cb4527955bc0c927e0b4f5eefa531"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/planter",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "0dedf19a58be77a2c6482e2f489d8d2c863a323e509696c84bb7a2fd0ea9c2e9",
+            "back": "afd914d58256847f489d782bfe8bb1d0e346fb12789cb0fe051c9c27c6bdce63",
+            "left": "072b88dd9f5ee2727b7541022c07899651f0151753a207c1e9fa7c50cc04bb17",
+            "right": "5cf3df19d85cb8d13ad33a58c95eed85cf4b018ce5b41231ca625d08d41a6f52",
+            "top": "bd7d0f25255a17cbd5b643f9bc06387d82e6004daaae2d15fd88361a0d062d83",
+            "perspective": "374729bc1d3f5ee92aa992a9c05aac046957f520e884ddd47899fd74ec99fc96"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "planter",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 3,
+        "material_plausibility": 3
+      },
+      "notes": "Visible opening and bottom, faceted clay-color walls; no drainage or organic variation.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/planter",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "f8b0b6ae6506cc5f78529bdd12c192fb5fd0e9ba31ff5078aa38998abe1d5c1b",
+            "back": "935ef1519228867ce8d828b86271e32ed0f25507227fdbdf40c394db945b0e3a",
+            "left": "7e8489a0a2f6ffbc188a487e99e97343f321e63387f4972a6b4f668d3c71359e",
+            "right": "fb17e2d71a1f8f3a1b905cb814efb2891dc007e8723080d36eb62a94c1e2aa87",
+            "top": "5457c896360774574c9e114c62c4d389203317400e4730035b22eb092d78904f",
+            "perspective": "f231f67511a2590782ffa7c7ac19dcc8022fa074f1571f443783c621cab7629b"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "toolbox",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 3
+      },
+      "notes": "Readable open tray/carry handle; no latch, hinge or detachable lid.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/toolbox",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "3c8f41baf287ddd5bc947bace412c55ed33a84a90bc0c578ce63ceeed6feef17",
+            "back": "d09fd2ed5c0c16ebcc9764d79d2561b63c38df4b1cbd8e981b2d343f8da00a76",
+            "left": "111fbe110a012c4da6bfd66b0e0f788d21a5609f23911436425e9c83ed234ef9",
+            "right": "7da5604e9a1e8f89ceab790a82f69ec85ce49be7b0b9e493dbedd66cb486297a",
+            "top": "cab5811412f28bfa35ec2095f3139e0792bde74a229b10d350ea19cca04b522a",
+            "perspective": "9c674286acc21ecdca5f9e16535ab765b03ea89825a69c0a90fa2bd0831307bc"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/toolbox",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "38d0b07bda43b4c6b3ab478398b240968fadb2013cc8a8f78f514c1c632efb9d",
+            "back": "c3d768d5665952939b8f28221f643622528810b87ba30c6e3018901730368f04",
+            "left": "776ea06dc9180faaa7e778269cc0433a6f08d6ae1e2699fd585a493efc745686",
+            "right": "12fde40df5529316341efb586c19a15997be20d05769e4e41aa77bbfe27676aa",
+            "top": "7ec48912e0a1e56fa69e50bf3c9ee710b208428a61751ed739d16796ea895cb8",
+            "perspective": "95632f3d48b0bab6e7801d35367c27fd8f795248e1614997025da895107d9526"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "toolbox",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 3
+      },
+      "notes": "Readable open tray/carry handle; no latch, hinge or detachable lid.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/toolbox",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "2db49344c32966a82550dc45e5dd0786aded62602af6844af59fba8fb000d180",
+            "back": "19fafee1600a55c97a5ac701e732142b32fa38d3e54bebdcfa89ee392f1da50c",
+            "left": "6fb243966118236995944714dc85eb8961156a7fcf178f39f1fa399d1fe23aa3",
+            "right": "7b0e7f773c29a9bfa79abb413a891e6f6429d61d3bfdcb7a3b965ba6dd8739da",
+            "top": "961a9af820534214d9cc9cb8f7454f5452f5d93cb8792a22a11d1d04667f11cf",
+            "perspective": "6dec41f8daac0ec681b532c39eb79da240c6a3c1ba89d309c11e58544ce5a8a6"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "monitor_stand",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Readable raised platform with open underside; no grain or load assessment.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/monitor_stand",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "0f6a7d38ea4ea79a8fc0f392dafdc7cee01968cba6dc8a196965165d54b9b6d0",
+            "back": "5c5abc8fb05dc72553ada5f2dcde34704e567b553cbe7deb9d4f50b0134fc6ca",
+            "left": "b3daf81b17c65f0bb3f4fe609a7ce823879ca98217f445f7eb962aac46125cd4",
+            "right": "6edc382dd233ed1ecff37d886a8459c945759a6cb23f2e2c72de6e4ee80dec2f",
+            "top": "10f66af099c63ad9ac98beb42dda45dd14cbc3d373cc7e8d1f65e16e67f1c9b2",
+            "perspective": "60550c855629b0f4ce73d16675b4d5dcc9a51d110e69cddd5e211382be87af4c"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/monitor_stand",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "f557c52cd27eb86eb196b9801ca7c0ec538dd0f0de74fbf7418ebd0ea6498751",
+            "back": "e70574323df085bf4bbf2f6fc6c2f4b736955966408b24deaa7b9e2130d1c041",
+            "left": "631d7e6f740647b37e3d664db5a7b7fa0355e488626d325a8e82df019b28cb9f",
+            "right": "150e16ef0b1a546453835392d10d522feb754b4eee3eff345cea9eab525f60c6",
+            "top": "6dbdf999a2e866f87e02012d5fddf6427123c92785caa9b112938bfd453b54c2",
+            "perspective": "1db9783cb38e6679cb80803b52a6a449e56003761df26846c96c8d58bd69732b"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "monitor_stand",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Readable raised platform with open underside; no grain or load assessment.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/monitor_stand",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "4b4b9f578ba76b834a089418bb94f23523d33122467ba48daac5ebb521f0113e",
+            "back": "5e289228b3d50c05acdb34c4bed35306d5124fb706e5e95dddc1500559ab21f1",
+            "left": "ebcc39531068b663ffd5021eb63b77ad9b11c283b691a70028b2647bac7a8b5f",
+            "right": "d2e7763d72e0665f60bf7010461c110e059c231e024b8fcc580c497ab55083c3",
+            "top": "1635c4a09b8a90919e7bac3a4e6e61c3499e5b1c712df9a46ffb29ee28395927",
+            "perspective": "fb275672fd8438b97411b99f6235ddddea65fabbd0a2915bfc31483834493bb6"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "side_table",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Readable square table, thin top and straight legs; no joinery/grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/side_table",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "4bfd1df9e92f04dbc71dcda53b35f259809a378f23106bd113aa5d73e4b864cf",
+            "back": "71c7b938f96c7aa741225b265d01e18e0d28570d28c016e1246d65a8c674b310",
+            "left": "71c7b938f96c7aa741225b265d01e18e0d28570d28c016e1246d65a8c674b310",
+            "right": "5e80f741af63e70b0598266bea668e14d3705c709c99dac6be5546a55db96211",
+            "top": "0c90f46ee04b03a19dd710dfbdaf2a1ac777862f562af22c3e6f384ef64da25c",
+            "perspective": "62d9a60867606d97533d073b8576587498301fd849b027b3e8dd04223abaf564"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/side_table",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "0d2f8052ea64050319004d1231c3c9abd0a815f977288a2f414b7319b46826ad",
+            "back": "c10ecf50d71916cd1eb40b3245f8d1314545325d8cf05b60eedfe382074f8a5f",
+            "left": "7dbf35163876659fd5bc4a8b9a0802ee6b2088701aea352f15241ba609606a80",
+            "right": "1137f3ae3c4fc35ddbd67d25c77f80df2325a7123fff79ac6c8d514449502fb1",
+            "top": "512b1c2c80ae455256200f24c966be3716ddc8dbba71a605ec777ba3986da19e",
+            "perspective": "367ad7de5c8bfbd8c93bd7b1fe580c97636f75f97cace9241e6c763b0ed3503e"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "side_table",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 4,
+        "structural_plausibility": 3,
+        "surface_cleanliness": 4,
+        "material_plausibility": 2
+      },
+      "notes": "Readable square table, thin top and straight legs; no joinery/grain.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/side_table",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "68673e70b3ddff6f79e2ace6576c9da359a234006d7c41d106c5007275f5c10b",
+            "back": "fb61878ac0e57eee680d2a94a4e7a007d38baa00397b2c5c97222610570de361",
+            "left": "ebf72e68dfca7b5361fc500aba65baf2ad5ea3199f38bc223180daa019df964b",
+            "right": "95d97b138a4f23b30eb86d3dfb6fef6a5fcb7accd5301c5696243c93d7c2ca35",
+            "top": "79c9130427562f6206f854e1a4dcb9301b3094bb60317cd89d1b784dd4db9d90",
+            "perspective": "ed6a4fe0b892c4e3cd5a3d5b47282b165769200b7cad358b6b0e0e20712cb5c4"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "appliance_housing",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 4,
+        "material_plausibility": 3
+      },
+      "notes": "Readable front opening and shell, blank interior; no vents/electronics or fittings.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/appliance_housing",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "f55e325355d9d875fc42e444cb22f46e4d9b395e9e7606777f41480de6a18761",
+            "back": "f5584ce4f0b9dd9b783a33d4cf05bd8254a76f19dc208d0fcaa4a5b36d5d84c5",
+            "left": "77d601eb4b1f33aa0ed818e5be694a1c608f71ce460eac63a53e89283d0ad207",
+            "right": "321a79e22c2f28cdaea8900a366a8226df6f8628b5e9667a26bf948f756831f1",
+            "top": "0c8bf269f1adb6bc86c7bc7cc5937ebc571457a92481018b0c3e4908e635438a",
+            "perspective": "dc4784267b889d072b4026f72ab4f7502b8dc1f810775cf893951f878e4768c0"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/appliance_housing",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "81aa037454c9bf34f9469e34e0ee53d622442e48f832b3a6733c0ec7225a9783",
+            "back": "71e83bc524760b27d07e5359c1020949b0f7a2e6ebe26274f05c7b2f8d3517d4",
+            "left": "c1a686f64d7f4b52e1e316c5821d74224ad21502dc34bd4e9d1dcf1708924878",
+            "right": "c94fca9b3cad45b10edc65c11ecf6b3b7f9baf635938069a3a3c872554925f54",
+            "top": "c6edad062b5c195df6122106ba55abb8fbd33ae7d492c1007fdc2c2a934137ba",
+            "perspective": "7510fda976b1c855a02091a27b5d6dbcf399506599a06610d788762e5fd5161e"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "appliance_housing",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 4,
+        "material_plausibility": 3
+      },
+      "notes": "Readable front opening and shell, blank interior; no vents/electronics or fittings.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/appliance_housing",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "a70eb4671622e56ba9c059853eaa2ceb726dcf534a107ca29f3660d73f66c29e",
+            "back": "cc809002e951066bb58865897b47501292e95a240ed37e0b9c1e0c675ba8d16d",
+            "left": "162f857a6827df89ab32b19783b72aee03cc478a5033c1c5706d2fcc43bc33a9",
+            "right": "300797a17b8fff9200bf602c4a1d005d1c425b00adb6025418e93ed8e7aeb438",
+            "top": "680b79ba8d195b42463fc2eb3ab86d68f7a1f6d42a481c7c74b17bbf100a6b88",
+            "perspective": "6dd4f9453bb73dff9a364430f8f16d0651ebf4817ab040ef1e24e5a2709ec07d"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "product_casing",
+      "mode": "manual",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 4,
+        "material_plausibility": 3
+      },
+      "notes": "Clear contrasting lid seam; no fasteners/snap fit and assembled lid hides the cavity.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-manual-final/product_casing",
+          "engine": "WORKBENCH",
+          "images_sha256": {
+            "front": "457bd61cccf8507d878a6459952610d682f8afd2b995294667a0a1b1af1443eb",
+            "back": "efb17945a36fb209aa5eebe3410a447a19e1ab53a6d45fb7e807d4fa70521df7",
+            "left": "97bbe4cdace4c297c2351c694215e751c1ab4994714c5f39faad902d7511c1e0",
+            "right": "15e185143a66ce84fa3e17a77fa3bf53a3837e0f266b976185c6c10627cfb946",
+            "top": "53f838cc8777f57a38c5a7dace8c421b4c0d82cd723865d68828e3172d2ab383",
+            "perspective": "3d6c52996b5ba76aecfbfd974b879fa08baf1608f72e5f32284b950c7ecf95ae"
+          }
+        },
+        {
+          "directory": "artifacts/expansion-m15-materials/product_casing",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "b39acc1e8de53d01fd66002abd23bd40e24786ac798ee032ff8dca812e2323d0",
+            "back": "4ee02670dec8fad0c0efa5484e35aab555c22ea23a1a83ba98803c4dcf99649f",
+            "left": "70c12e035ab9e61d7329aac05871fa0139a64ad689b3c51143ca3218c60c09c7",
+            "right": "230eeef902ba59fc842cfb19465fa171d12d037251397f4bfe36c9ab6db45203",
+            "top": "905517ea4ea09ccb6d266790829dff87e8345f0fb57f9e57243e226fbfa6ef2b",
+            "perspective": "78506bb4178e662f31861c99c00d32bca20eea0c713246abb51f70c3dd5a0820"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    },
+    {
+      "benchmark": "product_casing",
+      "mode": "codex_scripted_agent",
+      "scores": {
+        "proportions": 4,
+        "silhouette": 3,
+        "structural_plausibility": 2,
+        "surface_cleanliness": 4,
+        "material_plausibility": 3
+      },
+      "notes": "Clear contrasting lid seam; no fasteners/snap fit and assembled lid hides the cavity.",
+      "reviewed_views": [
+        "front",
+        "back",
+        "left",
+        "right",
+        "top",
+        "perspective"
+      ],
+      "image_sources": [
+        {
+          "directory": "artifacts/expansion-m15-codex-final/product_casing",
+          "engine": "EEVEE",
+          "images_sha256": {
+            "front": "0df09ba940b444b7ed0af54d78ead100e929281992c0f21f83bbdea2fc572bd1",
+            "back": "6bebeb44c82d117d7c0a49eacef6f49d1d5142e271b3c73fa8d36564ed032fbf",
+            "left": "2bf90985d48196fea99e0bd114ec7b105d4b5a51c568719fbf3b2bf46cc8aae4",
+            "right": "63191f2318448017de2e381a22c8f6c76a1b3f0a4860f4260da8c6c34d0c07e1",
+            "top": "645c8bf04fa8fa0c05ca389e46d40ee858410d2f64a3cfc3392ba27f00affdcf",
+            "perspective": "0b7e84859c61aeff96386f5b5effa9e1a0cd618d2fdd2a2e52240a4869840cf9"
+          }
+        }
+      ],
+      "full_benchmark_passed": false
+    }
+  ]
+}

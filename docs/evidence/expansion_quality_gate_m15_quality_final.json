@@ -1,0 +1,373 @@
+{
+  "format_version": 1,
+  "rubric_version": "asset-quality-v1",
+  "visual_threshold": 4,
+  "expected_reviews": 40,
+  "evaluation_complete": true,
+  "asset_quality_passed": true,
+  "full_benchmark_passed": true,
+  "production_readiness": "unassessed",
+  "errors": [],
+  "outcomes": [
+    {
+      "benchmark": "appliance_housing",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a clean open-front polymer housing with a substantial frame and seven through-ventilation slots visible from front and back. The cavity, wall thickness silhouette and blue molded finish are coherent across all views; the surface remains deliberately simple. This is a convincing empty enclosure component, with no electronics, fittings or manufacturing certification implied."
+    },
+    {
+      "benchmark": "appliance_housing",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a clean open-front polymer housing with a substantial frame and seven through-ventilation slots visible from front and back. The cavity, wall thickness silhouette and blue molded finish are coherent across all views; the surface remains deliberately simple. This is a convincing empty enclosure component, with no electronics, fittings or manufacturing certification implied."
+    },
+    {
+      "benchmark": "bench",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a long, low bench with four grounded legs and a continuous apron under the seat. Front/side views establish the support arrangement, while top/perspective views show directional wood grain and clean softened edges. The simple straight-legged furniture design is visually convincing; hidden joinery and seating load ratings are unassessed."
+    },
+    {
+      "benchmark": "bench",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a long, low bench with four grounded legs and a continuous apron under the seat. Front/side views establish the support arrangement, while top/perspective views show directional wood grain and clean softened edges. The simple straight-legged furniture design is visually convincing; hidden joinery and seating load ratings are unassessed."
+    },
+    {
+      "benchmark": "bookshelf",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "All views show evenly spaced shelves, full-height sides and a recessed backing rather than the former unsupported open back. Grain follows panel and shelf directions, seams are clean, and the front/perspective views establish a believable furniture silhouette in both builds. Anti-tip fastening and load ratings are unassessed; the grain remains a procedural approximation."
+    },
+    {
+      "benchmark": "bookshelf",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "All views show evenly spaced shelves, full-height sides and a recessed backing rather than the former unsupported open back. Grain follows panel and shelf directions, seams are clean, and the front/perspective views establish a believable furniture silhouette in both builds. Anti-tip fastening and load ratings are unassessed; the grain remains a procedural approximation."
+    },
+    {
+      "benchmark": "bottle",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a continuous tapered shoulder, an open neck and a distinct molded closure bead. The blue polymer finish has controlled gloss and clear edge highlights; the bore is legible without the earlier conspicuous cavity noise. The 128/192-sided surfaces retain very slight highlight banding, acceptable at the convincing threshold; this is opaque polymer, not glass."
+    },
+    {
+      "benchmark": "bottle",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a continuous tapered shoulder, an open neck and a distinct molded closure bead. The blue polymer finish has controlled gloss and clear edge highlights; the bore is legible without the earlier conspicuous cavity noise. The 128/192-sided surfaces retain very slight highlight banding, acceptable at the convincing threshold; this is opaque polymer, not glass."
+    },
+    {
+      "benchmark": "cabinet",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds read as complete two-door cabinets: a narrow center seam, inset door edges, mounted dark pulls and a closed recessed back are visible. Vertical panel grain and horizontal top grain distinguish construction directions; the rounded perimeter is clean. Doors are static and hidden hinges are not certified. The procedural grain is repetitive rather than photoreal."
+    },
+    {
+      "benchmark": "cabinet",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds read as complete two-door cabinets: a narrow center seam, inset door edges, mounted dark pulls and a closed recessed back are visible. Vertical panel grain and horizontal top grain distinguish construction directions; the rounded perimeter is clean. Doors are static and hidden hinges are not certified. The procedural grain is repetitive rather than photoreal."
+    },
+    {
+      "benchmark": "coffee_table",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "All six views of both builds show a clear four-leg table with a continuous apron, directional oak grain and clean millimetre bevel highlights. The apron provides a believable visible load path. Simple flat-pack styling is convincing at this brief's scale; end-grain and hidden fasteners are not represented."
+    },
+    {
+      "benchmark": "coffee_table",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "All six views of both builds show a clear four-leg table with a continuous apron, directional oak grain and clean millimetre bevel highlights. The apron provides a believable visible load path. Simple flat-pack styling is convincing at this brief's scale; end-grain and hidden fasteners are not represented."
+    },
+    {
+      "benchmark": "desk_lamp",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a balanced cylindrical base, slender upright stem and clean drum shade, with an orange collar and visible base switch. Satin metal highlights establish volume without the former flat finish; the stem/roof joint is independently verified and a socket is modeled inside the shade. No bulb emission or electrical operation is claimed. Fine residual top-view grain/noise does not obscure the surface."
+    },
+    {
+      "benchmark": "desk_lamp",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a balanced cylindrical base, slender upright stem and clean drum shade, with an orange collar and visible base switch. Satin metal highlights establish volume without the former flat finish; the stem/roof joint is independently verified and a socket is modeled inside the shade. No bulb emission or electrical operation is claimed. Fine residual top-view grain/noise does not obscure the surface."
+    },
+    {
+      "benchmark": "drawer",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "All six views of both builds show a shallow open drawer with a complete floor and clean panel seams. The recessed front accommodates a mounted dark pull within the stated envelope, visibly separate from the timber finish. Grain and edge rounding read coherently at this scale. This is a convincing drawer box; runners, installation clearance and dynamic use are unassessed."
+    },
+    {
+      "benchmark": "drawer",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "All six views of both builds show a shallow open drawer with a complete floor and clean panel seams. The recessed front accommodates a mounted dark pull within the stated envelope, visibly separate from the timber finish. Grain and edge rounding read coherently at this scale. This is a convincing drawer box; runners, installation clearance and dynamic use are unassessed."
+    },
+    {
+      "benchmark": "metal_bracket",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds have a readable L profile, consistent plate thickness, bevel highlights and three distinct base bores in top and perspective views. The dark satin metallic finish looks coherent across all six views. The bracket is a convincing simple fabricated component; fasteners, weld metallurgy and load performance remain unassessed."
+    },
+    {
+      "benchmark": "metal_bracket",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds have a readable L profile, consistent plate thickness, bevel highlights and three distinct base bores in top and perspective views. The dark satin metallic finish looks coherent across all six views. The bracket is a convincing simple fabricated component; fasteners, weld metallurgy and load performance remain unassessed."
+    },
+    {
+      "benchmark": "monitor_stand",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a low raised platform with substantial side supports and a visible rear reinforcing rail. The open underside and restrained proportions read as a monitor riser. Directional wood grain, rounded edges and clean rail/panel seams are visible across the six views. Visual construction is convincing; monitor loading and stability are unassessed."
+    },
+    {
+      "benchmark": "monitor_stand",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a low raised platform with substantial side supports and a visible rear reinforcing rail. The open underside and restrained proportions read as a monitor riser. Directional wood grain, rounded edges and clean rail/panel seams are visible across the six views. Visual construction is convincing; monitor loading and stability are unassessed."
+    },
+    {
+      "benchmark": "pipe_connector",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a clean flanged tube silhouette and an unobstructed axial bore. Top and perspective views clearly expose four flange bolt bores around the center opening. The satin metal finish and bevel highlights make the tube/flange construction legible; increased radial sampling keeps faceting unobtrusive. This is a convincing plain flanged connector, without threads, gasket detail or pressure certification."
+    },
+    {
+      "benchmark": "pipe_connector",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a clean flanged tube silhouette and an unobstructed axial bore. Top and perspective views clearly expose four flange bolt bores around the center opening. The satin metal finish and bevel highlights make the tube/flange construction legible; increased radial sampling keeps faceting unobtrusive. This is a convincing plain flanged connector, without threads, gasket detail or pressure certification."
+    },
+    {
+      "benchmark": "planter",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a clean open cylindrical pot with a substantial rim, readable interior floor and a visible central drainage bore in the top view. The warm matte ceramic finish has fine surface variation rather than the earlier unqualified flat color. Radial facets are slight at the diagnostic resolution. This is a convincing simple terracotta planter; firing and horticultural performance are unassessed."
+    },
+    {
+      "benchmark": "planter",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a clean open cylindrical pot with a substantial rim, readable interior floor and a visible central drainage bore in the top view. The warm matte ceramic finish has fine surface variation rather than the earlier unqualified flat color. Radial facets are slight at the diagnostic resolution. This is a convincing simple terracotta planter; firing and horticultural performance are unassessed."
+    },
+    {
+      "benchmark": "product_casing",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a clean shallow enclosure, contrasting lid seam and four visibly recessed metal head blanks in the top/perspective views. The shell/lid proportions and molded polymer finish are coherent across all six views. The hollow shell and bored internal bosses are independently checked rather than inferred from the closed exterior. The 96-sided agent fittings remain visually smooth at this scale. Driver slots, snap fits and exact manufacturing tolerances are unassessed."
+    },
+    {
+      "benchmark": "product_casing",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a clean shallow enclosure, contrasting lid seam and four visibly recessed metal head blanks in the top/perspective views. The shell/lid proportions and molded polymer finish are coherent across all six views. The hollow shell and bored internal bosses are independently checked rather than inferred from the closed exterior. The 96-sided agent fittings remain visually smooth at this scale. Driver slots, snap fits and exact manufacturing tolerances are unassessed."
+    },
+    {
+      "benchmark": "sci_fi_crate",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "All views of both builds show a closed graphite crate with a distinct lid seam. Front and perspective views now expose the orange recessed plates, two latch blocks and slim corner inlays; the fittings are seated in real pockets rather than buried or coplanar. Surface highlights are clean. The design is deliberately simple and stylized, without articulated latch mechanics or structural armor claims."
+    },
+    {
+      "benchmark": "sci_fi_crate",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "All views of both builds show a closed graphite crate with a distinct lid seam. Front and perspective views now expose the orange recessed plates, two latch blocks and slim corner inlays; the fittings are seated in real pockets rather than buried or coplanar. Surface highlights are clean. The design is deliberately simple and stylized, without articulated latch mechanics or structural armor claims."
+    },
+    {
+      "benchmark": "shelving_unit",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "All views of both builds show six regularly spaced shelves, full-height side panels and a recessed back that visually braces the unit. Panel and shelf grain directions are distinct, perimeter bevels are readable, and shelf/back seams remain clean. The simple storage unit reaches the convincing threshold; anti-tip hardware and load ratings remain unassessed."
+    },
+    {
+      "benchmark": "shelving_unit",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "All views of both builds show six regularly spaced shelves, full-height side panels and a recessed back that visually braces the unit. Panel and shelf grain directions are distinct, perimeter bevels are readable, and shelf/back seams remain clean. The simple storage unit reaches the convincing threshold; anti-tip hardware and load ratings remain unassessed."
+    },
+    {
+      "benchmark": "side_table",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a square top, four tall grounded legs and a visible apron frame that connects the supports beneath the top. Perspective and orthographic views give a coherent table silhouette with clean joints and directional timber grain. The simple oak finish reaches the convincing threshold; exact hidden joinery and load performance are unassessed."
+    },
+    {
+      "benchmark": "side_table",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a square top, four tall grounded legs and a visible apron frame that connects the supports beneath the top. Perspective and orthographic views give a coherent table silhouette with clean joints and directional timber grain. The simple oak finish reaches the convincing threshold; exact hidden joinery and load performance are unassessed."
+    },
+    {
+      "benchmark": "simple_chair",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a clear seat/back/leg silhouette with a visible apron, reinforced back posts and lower leg stretchers. Front and perspective views demonstrate the added bracing rather than the former unsupported panel arrangement. Timber grain and softened edges are coherent, with clean rail seams. This simple straight-backed chair is visually convincing; ergonomics, hidden joints and physical seating safety are unassessed."
+    },
+    {
+      "benchmark": "simple_chair",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a clear seat/back/leg silhouette with a visible apron, reinforced back posts and lower leg stretchers. Front and perspective views demonstrate the added bracing rather than the former unsupported panel arrangement. Timber grain and softened edges are coherent, with clean rail seams. This simple straight-backed chair is visually convincing; ergonomics, hidden joints and physical seating safety are unassessed."
+    },
+    {
+      "benchmark": "storage_crate",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show open interiors, clear rectangular front/back handholds, corner battens, clean wall seams and directional timber grain. The top view shows all four reinforcement pieces. This reads as a constructed plywood storage crate; the simplified grain and separate panel joints are not photoreal joinery."
+    },
+    {
+      "benchmark": "storage_crate",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show open interiors, clear rectangular front/back handholds, corner battens, clean wall seams and directional timber grain. The top view shows all four reinforcement pieces. This reads as a constructed plywood storage crate; the simplified grain and separate panel joints are not photoreal joinery."
+    },
+    {
+      "benchmark": "toolbox",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a complete open metal tote, interior crossbar, raised supported carrying handle and contrasting grip. Top/perspective views reveal the reinforcement and open storage cavity; all six views show clean panel/edge highlights and a coherent satin graphite finish. It is a convincing open toolbox for the declared brief, without a lid or articulated latch requirement. Carry-load strength is unassessed."
+    },
+    {
+      "benchmark": "toolbox",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "Both builds show a complete open metal tote, interior crossbar, raised supported carrying handle and contrasting grip. Top/perspective views reveal the reinforcement and open storage cavity; all six views show clean panel/edge highlights and a coherent satin graphite finish. It is a convincing open toolbox for the declared brief, without a lid or articulated latch requirement. Carry-load strength is unassessed."
+    },
+    {
+      "benchmark": "wall_shelf",
+      "mode": "codex_scripted_agent",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "The side views clearly show triangular support assemblies with rear mounting plates, horizontal arms and diagonal braces. Shelf/arm seating is visible. Both builds have clean silhouettes, satin graphite brackets and a wood-grain shelf. Mounting screws and wall attachment strength remain unassessed."
+    },
+    {
+      "benchmark": "wall_shelf",
+      "mode": "manual",
+      "technical_passed": true,
+      "visual_rubric_passed": true,
+      "benchmark_passed": true,
+      "below_convincing": [],
+      "notes": "The side views clearly show triangular support assemblies with rear mounting plates, horizontal arms and diagonal braces. Shelf/arm seating is visible. Both builds have clean silhouettes, satin graphite brackets and a wood-grain shelf. Mounting screws and wall attachment strength remain unassessed."
+    }
+  ]
+}
